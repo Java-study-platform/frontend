@@ -6,9 +6,9 @@ export interface UserContextInfo {
 }
 
 export interface IUserContext {
-  isAuth: boolean
-  userInfo: UserContextInfo
-  login: (userInfo: Omit<UserContextInfo, 'roles'>) => Promise<void>
+  isAuth?: boolean
+  userInfo?: UserContextInfo
+  login: (userInfo: UserContextInfo) => void
   logout: () => void
 }
 
@@ -20,6 +20,6 @@ export const defaultUserContextInfoValues: UserContextInfo = {
 export const UserContext = createContext<IUserContext>({
   isAuth: false,
   userInfo: defaultUserContextInfoValues,
-  login: () => Promise.resolve(),
+  login: () => {},
   logout: () => {}
 })

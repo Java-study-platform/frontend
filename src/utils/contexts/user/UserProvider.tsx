@@ -1,7 +1,7 @@
 import { LOCAL_STORAGE, ROUTES } from '@/utils/constants'
+import { useLocalStorage } from '@siberiacancode/reactuse'
 import React from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { useLocalStorage } from 'usehooks-ts'
 import { defaultUserContextInfoValues, UserContext, type UserContextInfo } from './UserContext'
 
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
@@ -11,9 +11,9 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const [isAuth, setIsAuth] = useLocalStorage(LOCAL_STORAGE.IS_AUTH, false)
   const [userInfo, setUserInfo] = useLocalStorage(LOCAL_STORAGE.USER_INFO, defaultUserContextInfoValues)
 
-  const login = React.useCallback(async (userInfo: Omit<UserContextInfo, 'roles'>) => {
+  const login = React.useCallback((userInfo: UserContextInfo) => {
     setIsAuth(true)
-    setUserInfo({ ...userInfo })
+    setUserInfo(userInfo)
   }, [])
 
   const logout = React.useCallback(() => {
@@ -22,10 +22,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
     navigate(ROUTES.LOGIN, { state: { from: location }, replace: true })
   }, [])
 
-  const value = React.useMemo(
-    () => ({ isAuth, userInfo, login, logout }),
-    [isAuth, userInfo, login, logout]
+  return (
+    <UserContext.Provider value={{ isAuth, userInfo, login, logout }}>{children}</UserContext.Provider>
   )
-
-  return <UserContext.Provider value={value}>{children}</UserContext.Provider>
 }

@@ -1,3 +1,11 @@
 {
-  "button": "Мега кнопка"
+  "button.login": "Войти",
+
+  "field.email.label": "Электронная почта",
+  "field.email.placeholder": "example@gmail.com",
+  "field.password.label": "Пароль",
+  "field.password.placeholder": "********",
+
+  "validation.required": "Обязательное поле",
+  "validation.email.format": "Неверный формат почты"
 }

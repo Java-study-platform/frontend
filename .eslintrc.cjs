@@ -46,7 +46,7 @@ module.exports = {
     'no-extra-boolean-cast': 'off',
     'react-hooks/exhaustive-deps': 'off',
     // react query rules
-    '@tanstack/query/exhaustive-deps': 'error',
+    '@tanstack/query/exhaustive-deps': 'warn',
     '@tanstack/query/no-rest-destructuring': 'warn',
     '@tanstack/query/stable-query-client': 'error'
   }

@@ -1,5 +1,3 @@
-'use client'
-
 import { useI18n } from '@/utils/contexts'
 import { I18nText } from '@/components/common'
 import {

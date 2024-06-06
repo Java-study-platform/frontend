@@ -1,3 +1,20 @@
 {
-  "button": "Мега кнопка"
+  "button.login": "Войти",
+
+  "field.username.label": "Ник",
+  "field.username.placeholder": "",
+  "field.firstName.label": "Имя",
+  "field.firstName.placeholder": "Иван",
+  "field.lastName.label": "Фамилия",
+  "field.lastName.placeholder": "Киселев",
+  "field.email.label": "Электронная почта",
+  "field.email.placeholder": "example@gmail.com",
+  "field.password.label": "Пароль",
+  "field.password.placeholder": "********",
+  "field.confirmPassword.label": "Пароль",
+  "field.confirmPassword.placeholder": "********",
+
+  "validation.required": "Обязательное поле",
+  "validation.email.format": "Неверный формат почты",
+  "validation.confirmPassword.match": "Пароли должны совпадать"
 }

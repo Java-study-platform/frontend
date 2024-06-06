@@ -32,7 +32,7 @@ export const RegisterPage = () => {
         <I18nText path="register.title" />
       </Typography>
       <Form {...form}>
-        <form onSubmit={functions.onSubmit} className="mt-10">
+        <form onSubmit={functions.onSubmit} className="mt-7">
           <fieldset disabled={state.isLoading} className="space-y-3">
             <FormField
               control={form.control}

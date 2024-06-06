@@ -1,3 +1,4 @@
+import { usePostUserLoginMutation } from '@/utils/api/hooks'
 import { ROUTES } from '@/utils/constants'
 import { useUserContext } from '@/utils/contexts'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -16,21 +17,20 @@ export const useLoginPage = () => {
       password: ''
     }
   })
-
-  const postAuthLoginEmailMutation = usePostAuthLoginEmailMutation()
+  const postUserLoginMutation = usePostUserLoginMutation()
 
   const onSubmit = loginForm.handleSubmit(async (values) => {
-    const postAuthLoginEmailMutationResponse = await postAuthLoginEmailMutation.mutateAsync({
+    const postUserLoginMutationResponse = await postUserLoginMutation.mutateAsync({
       params: values
     })
 
-    userContext.login({ token: postAuthLoginEmailMutationResponse.token, email: values.email })
+    userContext.login({ token: postUserLoginMutationResponse.token, email: values.email })
     navigate(ROUTES.ROOT)
   })
 
   return {
     state: {
-      isLoading: postAuthLoginEmailMutation.isPending || loginForm.formState.isSubmitting
+      isLoading: postUserLoginMutation.isPending || loginForm.formState.isSubmitting
     },
     form: loginForm,
     functions: { onSubmit }

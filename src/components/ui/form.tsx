@@ -28,13 +28,11 @@ const FormField = <
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
 >({
   ...props
-}: ControllerProps<TFieldValues, TName>) => {
-  return (
-    <FormFieldContext.Provider value={{ name: props.name }}>
-      <Controller {...props} />
-    </FormFieldContext.Provider>
-  )
-}
+}: ControllerProps<TFieldValues, TName>) => (
+  <FormFieldContext.Provider value={{ name: props.name }}>
+    <Controller {...props} />
+  </FormFieldContext.Provider>
+)
 
 const useFormField = () => {
   const fieldContext = React.useContext(FormFieldContext)
@@ -82,16 +80,9 @@ const FormLabel = React.forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root>
 >(({ className, ...props }, ref) => {
-  const { error, formItemId } = useFormField()
+  const { formItemId } = useFormField()
 
-  return (
-    <Label
-      ref={ref}
-      className={cn(error && 'text-destructive', className)}
-      htmlFor={formItemId}
-      {...props}
-    />
-  )
+  return <Label ref={ref} className={cn('text-start', className)} htmlFor={formItemId} {...props} />
 })
 FormLabel.displayName = 'FormLabel'
 
@@ -133,9 +124,8 @@ FormDescription.displayName = 'FormDescription'
 const FormMessage = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLParagraphElement>>(
   ({ className, children, ...props }, ref) => {
     const { error, formMessageId } = useFormField()
-    const body = error ? String(error?.message) : children
 
-    if (!body) {
+    if (!error) {
       return null
     }
 
@@ -143,10 +133,10 @@ const FormMessage = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<
       <p
         ref={ref}
         id={formMessageId}
-        className={cn('text-destructive text-[0.8rem] font-medium', className)}
+        className={cn('text-destructive text-start text-sm font-medium', className)}
         {...props}
       >
-        {body}
+        {children}
       </p>
     )
   }

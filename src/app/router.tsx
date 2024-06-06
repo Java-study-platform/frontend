@@ -1,4 +1,4 @@
-import { LoginPage } from '@/pages'
+import { LoginPage, RegisterPage } from '@/pages'
 import { ROUTES } from '@/utils/constants'
 import { createBrowserRouter, Outlet } from 'react-router-dom'
 import { Layout } from './layout'
@@ -24,7 +24,8 @@ export const router = createBrowserRouter([
       {
         path: ROUTES.LOGIN,
         element: <LoginPage />
-      }
+      },
+      { path: ROUTES.REGISTER, element: <RegisterPage /> }
     ]
   }
 ])

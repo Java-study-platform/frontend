@@ -11,7 +11,8 @@ const typographyVariants = cva('text-foreground', {
       small: 'text-sm font-medium leading-none',
       lead: 'text-lg text-muted-foreground',
       large: 'text-lg font-semibold',
-      sub1: 'text-sm text-muted-foreground',
+      sub1: 'text-base text-muted-foreground',
+      sub2: 'text-sm text-muted-foreground',
       body1: 'leading-7 [&:not(:first-child)]:mt-6'
     }
   },

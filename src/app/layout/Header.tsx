@@ -33,7 +33,7 @@ export const Header = () => {
           </>
         )}
         {!isAuth && (
-          <Link to={ROUTES.LOGIN} className={cn(buttonVariants({ variant: 'outline' }))}>
+          <Link to={ROUTES.LOGIN} className={cn(buttonVariants({ variant: 'default' }))}>
             <LogInIcon className="mr-2 h-4 w-4" />
             <I18nText path="button.login" />
           </Link>

@@ -1,3 +1,4 @@
+import { UserRepresentation } from '@/generated/user-api'
 import { useI18n } from '@/utils/contexts'
 import { I18nText } from '@/components/common'
 import {
@@ -14,9 +15,13 @@ import {
 } from '@/components/ui'
 import { useProfileForm } from './hooks/useProfileForm'
 
-export const ProfileForm = () => {
+interface ProfileFormProps {
+  profile: UserRepresentation
+}
+
+export const ProfileForm = ({ profile }: ProfileFormProps) => {
   const i18n = useI18n()
-  const { state, form, functions } = useProfileForm()
+  const { state, form, functions } = useProfileForm({ profile })
 
   return (
     <Form {...form}>

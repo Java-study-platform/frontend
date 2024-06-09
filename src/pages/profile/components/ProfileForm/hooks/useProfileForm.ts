@@ -1,18 +1,22 @@
-import { DefaultResponseObject } from '@/generated/user-api'
+import { DefaultResponseObject, UserRepresentation } from '@/generated/user-api'
 import { usePostUserLoginMutation } from '@/utils/api/hooks'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { AxiosError } from 'axios'
 import { useForm } from 'react-hook-form'
 import { ProfileSchema, profileSchema } from '../constants/profileSchema'
 
-export const useProfileForm = () => {
+interface UseProfileFormParams {
+  profile: UserRepresentation
+}
+
+export const useProfileForm = ({ profile }: UseProfileFormParams) => {
   const profileForm = useForm<ProfileSchema>({
     resolver: zodResolver(profileSchema),
     defaultValues: {
-      firstName: '',
-      lastName: '',
-      username: '',
-      email: ''
+      firstName: profile.firstName ?? '',
+      lastName: profile.lastName ?? '',
+      username: profile.username ?? '',
+      email: profile.email ?? ''
     }
   })
 

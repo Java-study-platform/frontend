@@ -4,19 +4,17 @@ import { ProfileForm } from './components/ProfileForm/ProfileForm'
 import { useProfilePage } from './hooks/useProfilePage'
 
 export const ProfilePage = () => {
-  const { state } = useProfilePage()
-
-  if (state.loading) {
-    // TODO skeleton
-    return <div>Loading...</div>
-  }
+  const { query } = useProfilePage()
 
   return (
-    <div>
-      <Typography tag="h1" variant="h1">
-        <I18nText path="profile.title" />
-      </Typography>
-      <ProfileForm />
+    <div className="flex h-screen">
+      <div className="container max-w-[500px]">
+        <Typography tag="h1" variant="h1">
+          <I18nText path="profile.title" />
+        </Typography>
+        {/* // TODO loading state */}
+        {query.data?.data.data && <ProfileForm profile={query.data.data.data} />}
+      </div>
     </div>
   )
 }

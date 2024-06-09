@@ -1,13 +1,16 @@
+import { DefaultResponseObject } from '@/generated/user-api'
 import { usePostUserLoginMutation } from '@/utils/api/hooks'
 import { ROUTES } from '@/utils/constants'
-import { useUserContext } from '@/utils/contexts'
+import { useSessionContext, useUserContext } from '@/utils/contexts'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { AxiosError } from 'axios'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { LoginSchema, loginSchema } from '../constants/loginSchema'
 
 export const useLoginPage = () => {
   const navigate = useNavigate()
+  const sessionContext = useSessionContext()
   const userContext = useUserContext()
 
   const loginForm = useForm<LoginSchema>({
@@ -17,14 +20,28 @@ export const useLoginPage = () => {
       password: ''
     }
   })
-  const postUserLoginMutation = usePostUserLoginMutation()
+  const postUserLoginMutation = usePostUserLoginMutation({
+    options: {
+      onError: (error: AxiosError<DefaultResponseObject>) => {
+        if (error.response?.data?.errors) {
+          Object.entries(error.response.data.errors).forEach(([errorKey, errorString]) => {
+            loginForm.setError(errorKey as keyof LoginSchema, {
+              message: errorString[0]
+            })
+          })
+        }
+      }
+    }
+  })
 
   const onSubmit = loginForm.handleSubmit(async (values) => {
-    const postUserLoginMutationResponse = await postUserLoginMutation.mutateAsync({
-      params: values
-    })
+    const postUserLoginMutationResponse = await postUserLoginMutation.mutateAsync(values)
 
-    userContext.login({ token: postUserLoginMutationResponse.token, login: values.login })
+    userContext.setUser({ login: values.login })
+    sessionContext.login({
+      accessToken: postUserLoginMutationResponse.data.data!.accessToken!,
+      refreshToken: postUserLoginMutationResponse.data.data!.refreshToken!
+    })
     navigate(ROUTES.ROOT)
   })
 

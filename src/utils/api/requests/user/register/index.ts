@@ -1,7 +1,7 @@
+import { DefaultResponseObject, UserRegistrationModel } from '@/generated/user-api'
 import { instance } from '@/utils/api/instance'
-import { AxiosResponse } from 'axios'
 
-export type PostUserRegisterRequestParams = Record<string, FIXME>
+export type PostUserRegisterRequestParams = UserRegistrationModel
 
-export const postUserRegister = ({ params }: RequestParams<PostUserRegisterRequestParams>) =>
-  instance.post<FIXME, AxiosResponse<FIXME>, FIXME>('/user/register', params)
+export const postUserRegister = ({ params }: RequestOptions<PostUserRegisterRequestParams>) =>
+  instance.post<DefaultResponseObject>('/user/register', params)

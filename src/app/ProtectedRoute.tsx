@@ -1,10 +1,14 @@
 import { ROUTES } from '@/utils/constants'
-import { useUserContext } from '@/utils/contexts'
+import { useSessionContext } from '@/utils/contexts'
 import { Navigate, useLocation } from 'react-router-dom'
 
 export const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
   const location = useLocation()
-  const { isAuth } = useUserContext()
+  const sessionContext = useSessionContext()
 
-  return isAuth ? children : <Navigate to={ROUTES.LOGIN} replace state={{ from: location }} />
+  return sessionContext.session.isAuth ? (
+    children
+  ) : (
+    <Navigate to={ROUTES.LOGIN} replace state={{ from: location }} />
+  )
 }

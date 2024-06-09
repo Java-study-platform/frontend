@@ -1,4 +1,6 @@
+import { DefaultResponseObject } from '@/generated/user-api'
 import { MutationCache, QueryCache, QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { AxiosError } from 'axios'
 import React from 'react'
 import { toast } from 'sonner'
 
@@ -12,13 +14,23 @@ export const QueryProvider = ({ children }: QueryProviderProps) => {
       new QueryClient({
         defaultOptions: { queries: { refetchOnWindowFocus: false, retry: false } },
         queryCache: new QueryCache({
-          onError: (error) => {
-            toast.error(error.message)
+          onError: (cause) => {
+            if (cause instanceof AxiosError) {
+              const error = (cause as AxiosError<DefaultResponseObject>).response?.data
+              const errors = error?.errors || {}
+
+              if (error?.message && !Object.keys(errors).length) toast.error(error.message)
+            }
           }
         }),
         mutationCache: new MutationCache({
-          onError: (error) => {
-            toast.error(error.message)
+          onError: (cause) => {
+            if (cause instanceof AxiosError) {
+              const error = (cause as AxiosError<DefaultResponseObject>).response?.data
+              const errors = error?.errors || {}
+
+              if (error?.message && !Object.keys(errors).length) toast.error(error.message)
+            }
           }
         })
       }),

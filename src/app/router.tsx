@@ -1,7 +1,8 @@
 import { LoginPage, RegisterPage } from '@/pages'
 import { ROUTES } from '@/utils/constants'
-import { createBrowserRouter, Outlet } from 'react-router-dom'
-import { Layout } from './layout'
+import { createBrowserRouter } from 'react-router-dom'
+import { AuthorizedLayout } from './layout/AuthorizedLayout'
+import { Layout } from './layout/Layout'
 import { ProtectedRoute } from './ProtectedRoute'
 
 export const router = createBrowserRouter([
@@ -11,7 +12,7 @@ export const router = createBrowserRouter([
       {
         element: (
           <ProtectedRoute>
-            <Outlet />
+            <AuthorizedLayout />
           </ProtectedRoute>
         ),
         children: [

@@ -27,68 +27,70 @@ export const LoginPage = () => {
   const { state, form, functions } = useLoginPage()
 
   return (
-    <div className="container max-w-[600px]">
-      <Typography tag="h1" variant="h1">
-        <I18nText path="login.title" />
-      </Typography>
-      <Form {...form}>
-        <form onSubmit={functions.onSubmit} className="mt-7">
-          <fieldset disabled={state.isLoading} className="space-y-3">
-            <FormField
-              control={form.control}
-              name="login"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>
-                    <I18nText path="field.login.label" />
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      disabled={state.isLoading}
-                      placeholder={i18n.formatMessage({ id: 'field.login.placeholder' })}
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage>
-                    {form?.formState?.errors?.login && (
-                      <I18nText path={form.formState.errors.login.message as LocaleMessageId} />
-                    )}
-                  </FormMessage>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>
-                    <I18nText path="field.password.label" />
-                  </FormLabel>
-                  <FormControl>
-                    <PasswordInput
-                      disabled={state.isLoading}
-                      placeholder={i18n.formatMessage({ id: 'field.password.placeholder' })}
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage>
-                    {form.formState?.errors?.password && (
-                      <I18nText path={form.formState.errors.password.message as LocaleMessageId} />
-                    )}
-                  </FormMessage>
-                </FormItem>
-              )}
-            />
-            <Button type="submit" size="lg" loading={state.isLoading}>
-              <I18nText path="button.login" />
-            </Button>
-            <Typography tag="p" variant="sub1">
-              <I18nText path="login.noAccount" values={{ registerLink: RegisterLink }} />
-            </Typography>
-          </fieldset>
-        </form>
-      </Form>
+    <div className="flex h-screen items-center justify-center">
+      <div className="container max-w-[500px]">
+        <Typography tag="h1" variant="h1">
+          <I18nText path="login.title" />
+        </Typography>
+        <Form {...form}>
+          <form onSubmit={functions.onSubmit} className="mt-7">
+            <fieldset disabled={state.isLoading} className="space-y-3">
+              <FormField
+                control={form.control}
+                name="login"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>
+                      <I18nText path="field.login.label" />
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        disabled={state.isLoading}
+                        placeholder={i18n.formatMessage({ id: 'field.login.placeholder' })}
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage>
+                      {form?.formState?.errors?.login && (
+                        <I18nText path={form.formState.errors.login.message as LocaleMessageId} />
+                      )}
+                    </FormMessage>
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>
+                      <I18nText path="field.password.label" />
+                    </FormLabel>
+                    <FormControl>
+                      <PasswordInput
+                        disabled={state.isLoading}
+                        placeholder={i18n.formatMessage({ id: 'field.password.placeholder' })}
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage>
+                      {form.formState?.errors?.password && (
+                        <I18nText path={form.formState.errors.password.message as LocaleMessageId} />
+                      )}
+                    </FormMessage>
+                  </FormItem>
+                )}
+              />
+              <Button type="submit" size="lg" loading={state.isLoading} className="w-full">
+                <I18nText path="button.login" />
+              </Button>
+              <Typography tag="p" variant="sub1" className="text-center">
+                <I18nText path="login.noAccount" values={{ registerLink: RegisterLink }} />
+              </Typography>
+            </fieldset>
+          </form>
+        </Form>
+      </div>
     </div>
   )
 }

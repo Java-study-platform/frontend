@@ -13,7 +13,7 @@ export const useLoginPage = () => {
   const loginForm = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      email: '',
+      login: '',
       password: ''
     }
   })
@@ -24,7 +24,7 @@ export const useLoginPage = () => {
       params: values
     })
 
-    userContext.login({ token: postUserLoginMutationResponse.token, email: values.email })
+    userContext.login({ token: postUserLoginMutationResponse.token, login: values.login })
     navigate(ROUTES.ROOT)
   })
 

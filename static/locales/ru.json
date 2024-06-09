@@ -4,6 +4,8 @@
 
   "field.username.label": "Ник",
   "field.username.placeholder": "username",
+  "field.login.label": "Ник",
+  "field.login.placeholder": "username",
   "field.firstName.label": "Имя",
   "field.firstName.placeholder": "Иван",
   "field.lastName.label": "Фамилия",

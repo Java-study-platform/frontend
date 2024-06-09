@@ -11,6 +11,9 @@
     "lint:fix": "npm run lint -- --fix",
     "format": "prettier --write src/**/*.ts src/**/*.tsx",
     "check": "prettier --check src/**/*.ts src/**/*.tsx",
+    "generate-user-api": "npx swagger-typescript-api -p http://95.163.230.65:8081/api-docs -o ./generated -n user-api.ts",
+    "generate-core-api": "npx swagger-typescript-api -p http://95.163.230.65:8082/api-docs -o ./generated -n core-api.ts",
+    "generate-solution-api": "npx swagger-typescript-api -p http://95.163.230.65:8084/api-docs -o ./generated -n solution-api.ts",
     "preview": "vite preview",
     "prepare": "husky"
   },

@@ -36,22 +36,22 @@ export const LoginPage = () => {
           <fieldset disabled={state.isLoading} className="space-y-3">
             <FormField
               control={form.control}
-              name="email"
+              name="login"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>
-                    <I18nText path="field.email.label" />
+                    <I18nText path="field.login.label" />
                   </FormLabel>
                   <FormControl>
                     <Input
                       disabled={state.isLoading}
-                      placeholder={i18n.formatMessage({ id: 'field.email.placeholder' })}
+                      placeholder={i18n.formatMessage({ id: 'field.login.placeholder' })}
                       {...field}
                     />
                   </FormControl>
                   <FormMessage>
-                    {form?.formState?.errors?.email && (
-                      <I18nText path={form.formState.errors.email.message as LocaleMessageId} />
+                    {form?.formState?.errors?.login && (
+                      <I18nText path={form.formState.errors.login.message as LocaleMessageId} />
                     )}
                   </FormMessage>
                 </FormItem>

@@ -1,7 +1,5 @@
+import { DefaultResponseObject } from '@/generated/user-api'
 import { instance } from '@/utils/api/instance'
-import { AxiosResponse } from 'axios'
 
-export type PostUserLogoutRequestParams = Record<string, FIXME>
-
-export const postUserLogout = ({ params }: RequestParams<PostUserLogoutRequestParams>) =>
-  instance.post<FIXME, AxiosResponse<FIXME>, FIXME>('/user/logout', params)
+export const postUserLogout = (options?: RequestOptions) =>
+  instance.post<DefaultResponseObject>('/user/logout', null, options?.config)

@@ -8,6 +8,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@/static': path.resolve(__dirname, './static'),
+      '@/generated': path.resolve(__dirname, './generated'),
       '@': path.resolve(__dirname, './src')
     }
   }

@@ -1,5 +1,5 @@
 import { ROUTES } from '@/utils/constants'
-import { useUserContext } from '@/utils/contexts'
+import { useSessionContext } from '@/utils/contexts'
 import { cn } from '@/utils/helpers'
 import { PersonIcon } from '@radix-ui/react-icons'
 import { LogInIcon, LogOutIcon } from 'lucide-react'
@@ -8,7 +8,7 @@ import { I18nText } from '@/components/common'
 import { Button, buttonVariants } from '@/components/ui'
 
 export const Header = () => {
-  const { isAuth, logout } = useUserContext()
+  const sessionContext = useSessionContext()
 
   return (
     <header className="container sticky z-20 flex h-[60px] items-center border-b bg-background">
@@ -20,19 +20,22 @@ export const Header = () => {
           <I18nText path="navigation.tasks" />
         </Link>
 
-        {isAuth && (
+        {sessionContext.session.isAuth && (
           <>
             <Link to={ROUTES.PROFILE} className={cn(buttonVariants({ variant: 'outline' }))}>
               <PersonIcon className="mr-2 h-4 w-4" />
               <I18nText path="button.profile" />
             </Link>
-            <Button onClick={logout} className={cn(buttonVariants({ variant: 'outline' }))}>
+            <Button
+              onClick={sessionContext.logout}
+              className={cn(buttonVariants({ variant: 'destructive' }))}
+            >
               <LogOutIcon className="mr-2 h-4 w-4" />
               <I18nText path="button.logout" />
             </Button>
           </>
         )}
-        {!isAuth && (
+        {!sessionContext.session.isAuth && (
           <Link to={ROUTES.LOGIN} className={cn(buttonVariants({ variant: 'default' }))}>
             <LogInIcon className="mr-2 h-4 w-4" />
             <I18nText path="button.login" />

@@ -3,7 +3,7 @@ export {}
 
 declare global {
   interface MutationSettings<Params = void, Func = unknown> {
-    config?: ApiRequestConfig
+    config?: RequestOptions
     options?: import('@tanstack/react-query').UseMutationOptions<
       Awaited<ReturnType<Func>>,
       any,
@@ -25,7 +25,7 @@ declare global {
     >
   }
 
-  type RequestParams<Params = undefined> = Params extends undefined
+  type RequestOptions<Params = undefined> = Params extends undefined
     ? {
         config?: AxiosRequestConfig
       }

@@ -1,13 +1,4 @@
-import { I18nText } from '@/components/common'
-import { Button } from '@/components/ui'
-import './App.css'
+import { RouterProvider } from 'react-router-dom'
+import { router } from './router'
 
-function App() {
-  return (
-    <Button>
-      <I18nText path="button" />
-    </Button>
-  )
-}
-
-export default App
+export const App = () => <RouterProvider router={router} />

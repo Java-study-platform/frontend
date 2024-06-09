@@ -1,3 +1,32 @@
 {
-  "button": "Мега кнопка"
+  "button.login": "Войти",
+  "button.register": "Зарегистрироваться",
+  "button.logout": "Выйти",
+  "button.profile": "Профиль",
+
+  "field.username.label": "Ник",
+  "field.username.placeholder": "username",
+  "field.firstName.label": "Имя",
+  "field.firstName.placeholder": "Иван",
+  "field.lastName.label": "Фамилия",
+  "field.lastName.placeholder": "Киселев",
+  "field.email.label": "Электронная почта",
+  "field.email.placeholder": "example@gmail.com",
+  "field.password.label": "Пароль",
+  "field.password.placeholder": "********",
+  "field.confirmPassword.label": "Подтвердите пароль",
+  "field.confirmPassword.placeholder": "********",
+
+  "validation.required": "Обязательное поле",
+  "validation.email.format": "Неверный формат почты",
+  "validation.confirmPassword.match": "Пароли должны совпадать",
+
+  "navigation.profile": "Профиль",
+  "navigation.tasks": "Задания",
+
+  "register.title": "Добро пожаловать 👋",
+  "register.haveAccount": "Уже есть аккаунт? <loginLink>Войдите</loginLink>",
+
+  "login.title": "Войдите в свой аккаунт",
+  "login.noAccount": "Нет аккаунта? <registerLink>Зарегистрируйтесь</registerLink>"
 }

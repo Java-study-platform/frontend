@@ -1,6 +1,5 @@
 {
-  "plugins": ["prettier-plugin-tailwindcss", "@trivago/prettier-plugin-sort-imports"],
-  "importOrderParserPlugins": ["importAssertions"],
+  "plugins": ["@trivago/prettier-plugin-sort-imports", "prettier-plugin-tailwindcss"],
   "semi": false,
   "printWidth": 105,
   "endOfLine": "lf",

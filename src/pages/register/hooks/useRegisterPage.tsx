@@ -10,7 +10,7 @@ import { RegisterSchema, registerSchema } from '../constants/registerSchema'
 export const useRegisterPage = () => {
   const navigate = useNavigate()
 
-  const loginForm = useForm<RegisterSchema>({
+  const registerForm = useForm<RegisterSchema>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
       firstName: '',
@@ -27,7 +27,7 @@ export const useRegisterPage = () => {
       onError: (error: AxiosError<DefaultResponseObject>) => {
         if (error.response?.data?.errors) {
           Object.entries(error.response.data.errors).forEach(([errorKey, errorString]) => {
-            loginForm.setError(errorKey as keyof RegisterSchema, {
+            registerForm.setError(errorKey as keyof RegisterSchema, {
               message: errorString[0]
             })
           })
@@ -36,16 +36,16 @@ export const useRegisterPage = () => {
     }
   })
 
-  const onSubmit = loginForm.handleSubmit(async (values) => {
+  const onSubmit = registerForm.handleSubmit(async (values) => {
     await postUserRegisterMutation.mutateAsync(values)
     navigate(ROUTES.LOGIN)
   })
 
   return {
     state: {
-      isLoading: postUserRegisterMutation.isPending || loginForm.formState.isSubmitting
+      isLoading: postUserRegisterMutation.isPending || registerForm.formState.isSubmitting
     },
-    form: loginForm,
+    form: registerForm,
     functions: { onSubmit }
   }
 }

@@ -3,6 +3,7 @@ import { usePostUserLoginMutation } from '@/utils/api/hooks'
 import { ROUTES } from '@/utils/constants'
 import { useSessionContext, useUserContext } from '@/utils/contexts'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useDidUpdate } from '@siberiacancode/reactuse'
 import { AxiosError } from 'axios'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
@@ -20,6 +21,7 @@ export const useLoginPage = () => {
       password: ''
     }
   })
+
   const postUserLoginMutation = usePostUserLoginMutation({
     options: {
       onError: (error: AxiosError<DefaultResponseObject>) => {
@@ -33,6 +35,10 @@ export const useLoginPage = () => {
       }
     }
   })
+
+  useDidUpdate(() => {
+    if (sessionContext.session.isAuth) navigate(ROUTES.ROOT)
+  }, [sessionContext.session.isAuth])
 
   const onSubmit = loginForm.handleSubmit(async (values) => {
     const postUserLoginMutationResponse = await postUserLoginMutation.mutateAsync(values)

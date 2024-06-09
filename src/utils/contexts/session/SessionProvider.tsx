@@ -1,7 +1,8 @@
 import { LOCAL_STORAGE, ROUTES } from '@/utils/constants'
-import { useLocalStorage } from '@siberiacancode/reactuse'
 import React from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+// import { useLocalStorage } from '@siberiacancode/reactuse'
+import { useLocalStorage } from 'usehooks-ts'
 import { defaultSessionContextInfoValues, SessionContext, SessionContextInfo } from './SessionContext'
 
 export const SessionProvider = ({ children }: { children: React.ReactNode }) => {

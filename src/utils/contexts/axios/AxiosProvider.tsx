@@ -12,7 +12,7 @@ export const AxiosProvider = ({ children }: { children: React.ReactNode }) => {
 
   React.useEffect(() => {
     setIsSet(true)
-    const successResponseInterceptor = <T, D>(response: AxiosResponse<T, D>): T => response.data
+    const successResponseInterceptor = <T, D>(response: AxiosResponse<T, D>) => response
 
     const errorResponseInterceptor = <T, D>(error: AxiosError<T, D>) => {
       if (
@@ -44,7 +44,8 @@ export const AxiosProvider = ({ children }: { children: React.ReactNode }) => {
 
     const successRequestInterceptor = (config: InternalAxiosRequestConfig) => {
       const session = JSON.parse(localStorage.getItem(LOCAL_STORAGE.SESSION) ?? '')
-      if (!!session) config.headers.Authorization = `Bearer ${session.accessToken}`
+      if (!!session && session.accessToken)
+        config.headers.Authorization = `Bearer ${session.accessToken}`
 
       return config
     }

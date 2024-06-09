@@ -28,7 +28,7 @@ export const Header = () => {
             </Link>
             <Button
               onClick={sessionContext.logout}
-              className={cn(buttonVariants({ variant: 'outline' }))}
+              className={cn(buttonVariants({ variant: 'destructive' }))}
             >
               <LogOutIcon className="mr-2 h-4 w-4" />
               <I18nText path="button.logout" />

@@ -1,11 +1,15 @@
 {
+  "common.loading": "Загрузка",
+
   "button.login": "Войти",
   "button.register": "Зарегистрироваться",
   "button.logout": "Выйти",
   "button.profile": "Профиль",
+  "button.update": "Обновить",
 
   "field.username.label": "Ник",
   "field.username.placeholder": "username",
+  "field.username.description": "Ник используется для входа в систему",
   "field.login.label": "Ник",
   "field.login.placeholder": "username",
   "field.firstName.label": "Имя",
@@ -30,5 +34,7 @@
   "register.haveAccount": "Уже есть аккаунт? <loginLink>Войдите</loginLink>",
 
   "login.title": "Войдите в свой аккаунт",
-  "login.noAccount": "Нет аккаунта? <registerLink>Зарегистрируйтесь</registerLink>"
+  "login.noAccount": "Нет аккаунта? <registerLink>Зарегистрируйтесь</registerLink>",
+
+  "profile.title": "Профиль"
 }

@@ -1,4 +1,4 @@
-import { LoginPage, RegisterPage } from '@/pages'
+import { LoginPage, ProfilePage, RegisterPage } from '@/pages'
 import { ROUTES } from '@/utils/constants'
 import { createBrowserRouter } from 'react-router-dom'
 import { AuthorizedLayout } from './layout/AuthorizedLayout'
@@ -19,6 +19,10 @@ export const router = createBrowserRouter([
           {
             path: ROUTES.ROOT,
             element: <div></div>
+          },
+          {
+            path: ROUTES.PROFILE,
+            element: <ProfilePage />
           }
         ]
       },

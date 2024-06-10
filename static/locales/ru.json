@@ -1,4 +1,6 @@
 {
+  "common.loading": "Загрузка",
+
   "button.login": "Войти",
   "button.register": "Зарегистрироваться",
   "button.logout": "Выйти",

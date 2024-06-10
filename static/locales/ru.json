@@ -6,6 +6,13 @@
   "button.logout": "Выйти",
   "button.profile": "Профиль",
   "button.update": "Обновить",
+  "button.create": "Создать",
+
+  "dialog.createCategory.title": "Создание категории",
+
+  "toast.categoryCreated": "Категория {name} создана",
+  "toast.categoryEdited": "Категория {name} обновлена",
+  "toast.categoryDeleted": "Категория {name} удалена",
 
   "field.username.label": "Ник",
   "field.username.placeholder": "username",
@@ -22,6 +29,8 @@
   "field.password.placeholder": "********",
   "field.confirmPassword.label": "Подтвердите пароль",
   "field.confirmPassword.placeholder": "********",
+  "field.name.label": "Подтвердите пароль",
+  "field.description.label": "Описание",
 
   "validation.required": "Обязательное поле",
   "validation.email.format": "Неверный формат почты",

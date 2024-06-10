@@ -1,3 +1,5 @@
 export * from './login/LoginPage'
 export * from './register/RegisterPage'
 export * from './profile/ProfilePage'
+export * from './topics/TopicsPage'
+export * from './categories/CategoriesPage'

@@ -1,4 +1,4 @@
-import { LoginPage, ProfilePage, RegisterPage } from '@/pages'
+import { CategoriesPage, LoginPage, ProfilePage, RegisterPage, TopicsPage } from '@/pages'
 import { ROUTES } from '@/utils/constants'
 import { createBrowserRouter } from 'react-router-dom'
 import { AuthorizedLayout } from './layout/AuthorizedLayout'
@@ -18,7 +18,11 @@ export const router = createBrowserRouter([
         children: [
           {
             path: ROUTES.ROOT,
-            element: <div></div>
+            element: <TopicsPage />
+          },
+          {
+            path: ROUTES.CATEGORIES,
+            element: <CategoriesPage />
           },
           {
             path: ROUTES.PROFILE,

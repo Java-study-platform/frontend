@@ -29,7 +29,8 @@
   "field.password.placeholder": "********",
   "field.confirmPassword.label": "Подтвердите пароль",
   "field.confirmPassword.placeholder": "********",
-  "field.name.label": "Подтвердите пароль",
+  "field.name.label": "Название",
+  "field.nameFilter.placeholder": "Введите часть названия",
   "field.description.label": "Описание",
 
   "validation.required": "Обязательное поле",
@@ -45,5 +46,7 @@
   "login.title": "Войдите в свой аккаунт",
   "login.noAccount": "Нет аккаунта? <registerLink>Зарегистрируйтесь</registerLink>",
 
-  "profile.title": "Профиль"
+  "profile.title": "Профиль",
+
+  "categories.title": "Категории"
 }

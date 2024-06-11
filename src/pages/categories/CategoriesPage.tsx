@@ -14,11 +14,11 @@ export const CategoriesPage = () => {
     <div className="flex h-screen">
       <div className="container max-w-[500px]">
         <Typography tag="h1" variant="h1">
-          <I18nText path="profile.title" />
+          <I18nText path="categories.title" />
         </Typography>
-        <div className="flex gap-4">
+        <div className="mt-2 flex gap-4">
           <Input
-            placeholder={i18n.formatMessage({ id: 'field.filter.placeholder' })}
+            placeholder={i18n.formatMessage({ id: 'field.nameFilter.placeholder' })}
             defaultValue={state.nameFilter}
             onChange={(event) => functions.onNameFilterChange(event.target.value)}
             className="max-w-[180px]"

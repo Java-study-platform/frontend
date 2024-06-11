@@ -7,7 +7,7 @@ interface CategoryCardProps {
 }
 
 export const CategoryCard = ({ category }: CategoryCardProps) => (
-  <div>
+  <div className="">
     {category.name}
     <EditCategoryDialog category={category} trigger={<Button></Button>} />
   </div>

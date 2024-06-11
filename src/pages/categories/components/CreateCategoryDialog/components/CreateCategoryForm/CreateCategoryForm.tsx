@@ -1,4 +1,3 @@
-import { useI18n } from '@/utils/contexts'
 import { I18nText } from '@/components/common'
 import {
   Button,
@@ -17,12 +16,11 @@ interface CreateCategoryFormProps {
 }
 
 export const CreateCategoryForm = ({ onSubmitted }: CreateCategoryFormProps) => {
-  const i18n = useI18n()
   const { state, form, functions } = useCreateCategoryForm({ onSubmitted })
 
   return (
     <Form {...form}>
-      <form onSubmit={functions.onSubmit} className="mt-7">
+      <form onSubmit={functions.onSubmit}>
         <fieldset disabled={state.isLoading} className="space-y-3">
           <FormField
             control={form.control}
@@ -33,11 +31,7 @@ export const CreateCategoryForm = ({ onSubmitted }: CreateCategoryFormProps) => 
                   <I18nText path="field.name.label" />
                 </FormLabel>
                 <FormControl>
-                  <Input
-                    disabled={state.isLoading}
-                    placeholder={i18n.formatMessage({ id: 'field.name.placeholder' })}
-                    {...field}
-                  />
+                  <Input disabled={state.isLoading} {...field} />
                 </FormControl>
                 <FormMessage>
                   {form?.formState?.errors?.name && (
@@ -56,11 +50,7 @@ export const CreateCategoryForm = ({ onSubmitted }: CreateCategoryFormProps) => 
                   <I18nText path="field.description.label" />
                 </FormLabel>
                 <FormControl>
-                  <Input
-                    disabled={state.isLoading}
-                    placeholder={i18n.formatMessage({ id: 'field.description.placeholder' })}
-                    {...field}
-                  />
+                  <Input disabled={state.isLoading} {...field} />
                 </FormControl>
                 <FormMessage>
                   {form.formState?.errors?.description && (

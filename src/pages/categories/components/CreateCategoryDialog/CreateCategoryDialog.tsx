@@ -6,7 +6,6 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  ScrollArea,
   Typography
 } from '@/components/ui'
 import { CreateCategoryForm } from './components/CreateCategoryForm/CreateCategoryForm'
@@ -22,18 +21,16 @@ export const CreateCategoryDialog = ({ trigger }: CreateCategoryDialogProps) => 
   return (
     <Dialog open={state.open} onOpenChange={functions.setOpen}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
-      <DialogContent className="h-screen w-screen lg:max-h-[700px] lg:max-w-[700px]">
+      <DialogContent className="h-[350px] w-[90%] md:max-w-[500px]">
         <DialogClose />
         <DialogHeader>
           <DialogTitle asChild>
-            <Typography tag="h4" variant="h4">
+            <Typography tag="h2" variant="h2">
               <I18nText path="dialog.createCategory.title" />
             </Typography>
           </DialogTitle>
         </DialogHeader>
-        <ScrollArea className="max-h-[90vh] p-6">
-          <CreateCategoryForm onSubmitted={functions.onSubmitted} />
-        </ScrollArea>
+        <CreateCategoryForm onSubmitted={functions.onSubmitted} />
       </DialogContent>
     </Dialog>
   )

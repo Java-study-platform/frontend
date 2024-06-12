@@ -1,8 +1,9 @@
 import { CategoryDTO } from '@/generated/core-api'
-import { FilePenIcon, LinkIcon, PlusIcon, TrashIcon } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { FilePenIcon, PlusIcon, TrashIcon } from 'lucide-react'
 import { I18nText } from '@/components/common'
 import { Button, Card, CardContent, CardHeader, CardTitle, Typography } from '@/components/ui'
+import { CategoryTopicsDialog } from '../CategoryTopicsDialog/CategoryTopicsDialog'
+import { CreateCategoryTopicDialog } from '../CreateCategoryTopicDialog/CreateCategoryTopicDialog'
 import { DeleteCategoryDialog } from '../DeleteCategoryDialog/DeleteCategoryDialog'
 import { EditCategoryDialog } from '../EditCategoryDialog/EditCategoryDialog'
 
@@ -18,7 +19,6 @@ export const CategoryCard = ({ category }: CategoryCardProps) => (
           {category.name}
         </Typography>
       </CardTitle>
-      {/* // TODO only for admin */}
     </CardHeader>
     <CardContent className="space-y-4">
       {!category.topics?.length && (
@@ -26,16 +26,8 @@ export const CategoryCard = ({ category }: CategoryCardProps) => (
           <I18nText path="categories.noTopics" />
         </Typography>
       )}
-      {!!category.topics?.length && (
-        <div className="flex flex-col gap-2">
-          {category.topics?.map((topic) => (
-            <Link to="#" className="flex items-center gap-2 text-sm">
-              <LinkIcon className="h-4 w-4" />
-              {topic.name}
-            </Link>
-          ))}
-        </div>
-      )}
+      {/* // TODO */}
+      {!!category.topics?.length && <CategoryTopicsDialog topics={category.topics} />}
       {/* // TODO only for admin */}
       <div className="flex gap-2">
         <EditCategoryDialog
@@ -43,7 +35,6 @@ export const CategoryCard = ({ category }: CategoryCardProps) => (
           trigger={
             <Button variant="secondary" size="icon" aria-label="Edit" className="w-full">
               <FilePenIcon className="h-4 w-4" />
-              {/* <I18nText path="button.edit" /> */}
             </Button>
           }
         />
@@ -52,13 +43,13 @@ export const CategoryCard = ({ category }: CategoryCardProps) => (
           trigger={
             <Button variant="destructive" size="icon" aria-label="Delete" className="w-full">
               <TrashIcon className="h-4 w-4" />
-              {/* <I18nText path="button.delete" /> */}
             </Button>
           }
         />
+        {/* // TODO */}
+        <CreateCategoryTopicDialog />
         <Button size="icon" aria-label="Delete" className="w-full">
           <PlusIcon className="h-4 w-4" />
-          {/* <I18nText path="button.createTopic" /> */}
         </Button>
       </div>
     </CardContent>

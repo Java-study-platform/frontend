@@ -4,5 +4,6 @@ export const ROUTES = {
   LOGIN: '/login',
   REGISTER: '/register',
   PROFILE: '/profile',
-  TASKS: '/tasks'
+  TASKS: '/tasks',
+  TOPIC: (id: string) => `/topic/${id}`
 }

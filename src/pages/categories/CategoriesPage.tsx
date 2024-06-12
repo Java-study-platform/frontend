@@ -8,11 +8,11 @@ import { useCategoriesPage } from './hooks/useCategoriesPage'
 
 export const CategoriesPage = () => {
   const i18n = useI18n()
-  const { state, query, functions } = useCategoriesPage()
+  const { state, functions } = useCategoriesPage()
 
   return (
     <div className="flex h-screen">
-      <div className="container max-w-[500px]">
+      <div className="container">
         <Typography tag="h1" variant="h1">
           <I18nText path="categories.title" />
         </Typography>
@@ -34,9 +34,9 @@ export const CategoriesPage = () => {
             <ReloadIcon className="h-4 w-4 animate-spin" />
           </div>
         )}
-        {query.data?.data.data && (
-          <div className="mt-10 flex gap-4">
-            {query.data.data.data.content?.map((category) => (
+        {!!state.categories.length && (
+          <div className="mt-10 flex flex-wrap items-center gap-4">
+            {state.categories.map((category) => (
               <CategoryCard key={category.id} category={category} />
             ))}
           </div>

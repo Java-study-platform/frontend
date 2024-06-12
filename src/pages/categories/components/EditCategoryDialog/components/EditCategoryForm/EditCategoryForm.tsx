@@ -24,7 +24,7 @@ export const EditCategoryForm = ({ category, onSubmitted }: EditCategoryFormProp
 
   return (
     <Form {...form}>
-      <form onSubmit={functions.onSubmit} className="mt-7">
+      <form onSubmit={functions.onSubmit}>
         <fieldset disabled={state.isLoading} className="space-y-3">
           <FormField
             control={form.control}
@@ -73,7 +73,7 @@ export const EditCategoryForm = ({ category, onSubmitted }: EditCategoryFormProp
             )}
           />
           <Button type="submit" size="lg" loading={state.isLoading} className="w-full">
-            <I18nText path="button.create" />
+            <I18nText path="button.edit" />
           </Button>
         </fieldset>
       </form>

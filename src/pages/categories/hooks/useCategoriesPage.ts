@@ -24,7 +24,11 @@ export const useCategoriesPage = () => {
   )
 
   return {
-    state: { nameFilter, loading: getLearningCategoriesQuery.isLoading },
+    state: {
+      categories: getLearningCategoriesQuery.data?.data.data?.content || [],
+      nameFilter,
+      loading: getLearningCategoriesQuery.isLoading
+    },
     query: getLearningCategoriesQuery,
     functions: { onNameFilterChange }
   }

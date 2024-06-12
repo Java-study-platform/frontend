@@ -7,8 +7,16 @@
   "button.profile": "Профиль",
   "button.update": "Обновить",
   "button.create": "Создать",
+  "button.delete": "Удалить",
+  "button.edit": "Обновить",
+  "button.createTopic": "Создать тему",
+  "button.confirmDelete": "Подтвердить удаление",
+  "button.cancel": "Отмена",
 
   "dialog.createCategory.title": "Создание категории",
+
+  "dialog.deleteCategory.title": "Удаление категории",
+  "dialog.deleteCategory.description": "Вы уверены, что хотите удалить категорию {name}?",
 
   "toast.categoryCreated": "Категория {name} создана",
   "toast.categoryEdited": "Категория {name} обновлена",
@@ -48,5 +56,6 @@
 
   "profile.title": "Профиль",
 
-  "categories.title": "Категории"
+  "categories.title": "Категории",
+  "categories.noTopics": "Темы отсутствуют"
 }

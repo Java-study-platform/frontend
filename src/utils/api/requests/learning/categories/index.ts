@@ -12,8 +12,14 @@ export interface GetLearningCategoriesRequestParams {
   sort?: string[]
 }
 
-export const getLearningCategories = (options?: RequestOptions<GetLearningCategoriesRequestParams>) =>
-  instance.get<DefaultResponsePageCategoryDTO>('/learning/categories', options)
+export const getLearningCategories = ({
+  params,
+  config
+}: RequestOptions<GetLearningCategoriesRequestParams>) =>
+  instance.get<DefaultResponsePageCategoryDTO>('/learning/categories', {
+    ...config,
+    params: { ...config?.params, ...params }
+  })
 
 export type PostLearningCategoriesRequestParams = CreateCategoryModel
 

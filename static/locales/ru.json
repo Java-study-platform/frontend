@@ -20,6 +20,7 @@
 
   "dialog.topicsInCategory.title": "Темы в категории {name}",
 
+  "toast.topicCreated": "Тема {name} создана",
   "toast.categoryCreated": "Категория {name} создана",
   "toast.categoryEdited": "Категория {name} обновлена",
   "toast.categoryDeleted": "Категория {name} удалена",

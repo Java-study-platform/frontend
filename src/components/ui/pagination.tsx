@@ -1,7 +1,9 @@
 import { cn } from '@/utils/helpers'
 import { ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react'
 import * as React from 'react'
-import { ButtonProps, buttonVariants } from '@/components/ui/button'
+import { Link } from 'react-router-dom'
+import type { ButtonProps } from '@/components/ui/button'
+import { Button, buttonVariants } from './button'
 
 const Pagination = ({ className, ...props }: React.ComponentProps<'nav'>) => (
   <nav
@@ -28,34 +30,36 @@ PaginationItem.displayName = 'PaginationItem'
 type PaginationLinkProps = {
   isActive?: boolean
 } & Pick<ButtonProps, 'size'> &
-  React.ComponentProps<'a'>
+  React.ComponentProps<typeof Link>
 
 const PaginationLink = ({ className, isActive, size = 'icon', ...props }: PaginationLinkProps) => (
-  <a
-    aria-current={isActive ? 'page' : undefined}
-    className={cn(
-      buttonVariants({
-        variant: isActive ? 'outline' : 'ghost',
-        size
-      }),
-      className
-    )}
-    {...props}
-  />
+  <PaginationItem>
+    <Link
+      aria-current={isActive ? 'page' : undefined}
+      className={cn(
+        buttonVariants({
+          variant: isActive ? 'outline' : 'ghost',
+          size
+        }),
+        className
+      )}
+      {...props}
+    />
+  </PaginationItem>
 )
 PaginationLink.displayName = 'PaginationLink'
 
-const PaginationPrevious = ({ className, ...props }: React.ComponentProps<typeof PaginationLink>) => (
-  <PaginationLink aria-label="Go to previous page" size="default" className={cn(className)} {...props}>
-    <ChevronLeft className="h-4 w-4" />
-  </PaginationLink>
+const PaginationPrevious = ({ className, ...props }: ButtonProps) => (
+  <Button aria-label="Go to next page" size="default" className={cn('', className)} {...props}>
+    <ChevronLeft className="h-12 w-6" />
+  </Button>
 )
 PaginationPrevious.displayName = 'PaginationPrevious'
 
-const PaginationNext = ({ className, ...props }: React.ComponentProps<typeof PaginationLink>) => (
-  <PaginationLink aria-label="Go to next page" size="default" className={cn(className)} {...props}>
-    <ChevronRight className="h-4 w-4" />
-  </PaginationLink>
+const PaginationNext = ({ className, ...props }: ButtonProps) => (
+  <Button aria-label="Go to next page" size="default" className={cn('', className)} {...props}>
+    <ChevronRight className="h-12 w-6" />
+  </Button>
 )
 PaginationNext.displayName = 'PaginationNext'
 

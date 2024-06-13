@@ -55,13 +55,12 @@ export const CategoriesPage = () => {
             <Pagination>
               <PaginationContent className="mt-7 flex flex-wrap justify-center">
                 <PaginationPrevious
+                  variant="outline"
                   size="icon"
-                  isActive={state.pagination.currentPage < 0}
+                  disabled={state.pagination.currentPage <= 1}
                   onClick={() => functions.onPaginationNumberClick(state.pagination.currentPage - 1)}
                   className="mr-3 size-8 border-none"
-                >
-                  pre
-                </PaginationPrevious>
+                />
 
                 {getPaginationNumbers({
                   current: state.pagination.currentPage,
@@ -84,10 +83,11 @@ export const CategoriesPage = () => {
                 ))}
 
                 <PaginationNext
+                  variant="outline"
                   size="icon"
-                  isActive={state.pagination.currentPage < state.pagination.totalPages}
+                  disabled={state.pagination.currentPage >= state.pagination.totalPages}
                   onClick={() => functions.onPaginationNumberClick(state.pagination.currentPage + 1)}
-                  className="ml-3 size-8 border-none"
+                  className="mr-3 size-8 border-none"
                 />
               </PaginationContent>
             </Pagination>

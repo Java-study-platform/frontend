@@ -23,5 +23,8 @@ export const useDeleteCategoryDialog = ({ category }: UseDeleteCategoryDialogPar
       toast.success(i18n.formatMessage({ id: 'toast.categoryDeleted' }, { name: category.name }))
   }
 
-  return { state: { open }, functions: { setOpen, onConfirmDeleteClick } }
+  return {
+    state: { open, loading: deleteLearningCategoriesByIdMutation.isPending },
+    functions: { setOpen, onConfirmDeleteClick }
+  }
 }

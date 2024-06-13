@@ -57,10 +57,14 @@ export const CategoryCard = ({ category }: CategoryCardProps) => (
           }
         />
         {/* // TODO */}
-        <CreateCategoryTopicDialog />
-        <Button size="icon" aria-label="Delete" className="w-full">
-          <PlusIcon className="h-4 w-4" />
-        </Button>
+        <CreateCategoryTopicDialog
+          category={category}
+          trigger={
+            <Button size="icon" aria-label="Delete" className="w-full">
+              <PlusIcon className="h-4 w-4" />
+            </Button>
+          }
+        />
       </div>
     </CardContent>
   </Card>

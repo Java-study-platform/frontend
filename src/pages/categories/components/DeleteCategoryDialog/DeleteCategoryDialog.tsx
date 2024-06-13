@@ -42,10 +42,10 @@ export const DeleteCategoryDialog = ({ category, trigger }: DeleteCategoryDialog
           </DialogDescription>
         )}
         <DialogFooter>
-          <Button variant="ghost" onClick={() => functions.setOpen(false)}>
+          <Button loading={state.loading} variant="ghost" onClick={() => functions.setOpen(false)}>
             <I18nText path="button.cancel" />
           </Button>
-          <Button variant="destructive" onClick={functions.onConfirmDeleteClick}>
+          <Button loading={state.loading} variant="destructive" onClick={functions.onConfirmDeleteClick}>
             <I18nText path="button.confirmDelete" />
           </Button>
         </DialogFooter>

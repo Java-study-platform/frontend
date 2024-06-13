@@ -23,7 +23,7 @@ export const CategoriesPage = () => {
 
   return (
     <div className="flex h-screen">
-      <div className="container">
+      <div className="container max-w-[750px]">
         <Typography tag="h1" variant="h1">
           <I18nText path="categories.title" />
         </Typography>
@@ -32,7 +32,7 @@ export const CategoriesPage = () => {
             placeholder={i18n.formatMessage({ id: 'field.nameFilter.placeholder' })}
             defaultValue={state.nameFilter}
             onChange={(event) => functions.onNameFilterChange(event.target.value)}
-            className="max-w-[180px]"
+            className="max-w-[200px]"
           />
           {/* // TODO only for admin */}
           <CreateCategoryDialog

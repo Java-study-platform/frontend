@@ -50,6 +50,7 @@
 
   "navigation.profile": "Профиль",
   "navigation.tasks": "Задания",
+  "navigation.categories": "Категории",
 
   "register.title": "Добро пожаловать 👋",
   "register.haveAccount": "Уже есть аккаунт? <loginLink>Войдите</loginLink>",
@@ -61,5 +62,8 @@
 
   "categories.title": "Категории",
   "categories.noTopics": "Темы отсутствуют",
-  "categories.checkTopics": "Посмотреть темы"
+  "categories.checkTopics": "Посмотреть темы",
+
+  "topics.title": "Темы",
+  "topics.goToTopic": "Перейти к теме"
 }

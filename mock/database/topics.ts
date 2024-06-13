@@ -1,4 +1,5 @@
 import { TopicDTO } from '../../generated/core-api'
+import { TASKS } from './tasks'
 
 export const TOPICS: TopicDTO[] = [
   {
@@ -6,6 +7,7 @@ export const TOPICS: TopicDTO[] = [
     name: 'Artificial Intelligence',
     categoryId: '1d6e2d16-3d5b-41b4-9e7e-98ef3e0ed7d1',
     authorLogin: 'tech_guru',
+    tasks: TASKS.slice(0, 3),
     createTime: '2023-01-15T10:00:00Z',
     modifiedDate: '2023-06-01T12:30:00Z'
   },
@@ -38,6 +40,7 @@ export const TOPICS: TopicDTO[] = [
     name: 'Online Learning Platforms',
     categoryId: '5e6a7b46-64e9-4c12-9d8f-3c5d6f5b9e36',
     authorLogin: 'educator_pro',
+    tasks: TASKS.slice(3, 5),
     createTime: '2023-05-05T14:30:00Z',
     modifiedDate: '2023-06-10T17:15:00Z'
   },
@@ -70,6 +73,7 @@ export const TOPICS: TopicDTO[] = [
     name: 'Startup Funding',
     categoryId: '9i1e2b16-0b1d-4f56-df0f-7g9h1h9f3g7d',
     authorLogin: 'biz_mogul',
+    tasks: TASKS.slice(5, 10),
     createTime: '2023-09-15T18:30:00Z',
     modifiedDate: '2023-10-15T21:15:00Z'
   },

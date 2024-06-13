@@ -6,7 +6,15 @@ export const getLearningTopicsConfig: RestRequestConfig = {
   method: 'get',
   routes: [
     {
-      data: TOPICS
+      data: {
+        data: {
+          totalPages: 5,
+          totalElements: 50,
+          size: 10,
+          content: TOPICS,
+          pageable: { pageNumber: 0 }
+        }
+      }
     }
   ]
 }

@@ -9,9 +9,10 @@ export const getLearningCategoriesConfig: RestRequestConfig = {
       data: {
         data: {
           totalPages: 5,
-          totalElements: 10,
+          totalElements: 50,
           size: 10,
-          content: CATEGORIES
+          content: CATEGORIES,
+          pageable: { pageNumber: 0 }
         }
       }
     }

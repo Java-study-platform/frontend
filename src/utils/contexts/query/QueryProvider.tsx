@@ -12,7 +12,6 @@ export const QueryProvider = ({ children }: QueryProviderProps) => {
   const queryClient = React.useMemo(
     () =>
       new QueryClient({
-        defaultOptions: { queries: { refetchOnWindowFocus: false, retry: false } },
         queryCache: new QueryCache({
           onError: (cause) => {
             if (cause instanceof AxiosError) {

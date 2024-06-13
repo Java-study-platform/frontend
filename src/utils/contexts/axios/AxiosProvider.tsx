@@ -43,9 +43,13 @@ export const AxiosProvider = ({ children }: { children: React.ReactNode }) => {
     const errorRequestInterceptor = <T, D>(error: AxiosError<T, D>) => Promise.reject(error)
 
     const successRequestInterceptor = (config: InternalAxiosRequestConfig) => {
-      const session = JSON.parse(localStorage.getItem(LOCAL_STORAGE.SESSION) ?? '')
-      if (!!session && session.accessToken)
-        config.headers.Authorization = `Bearer ${session.accessToken}`
+      const localStorageSession = localStorage.getItem(LOCAL_STORAGE.SESSION)
+      if (localStorageSession) {
+        const session = JSON.parse(localStorage.getItem(LOCAL_STORAGE.SESSION) ?? '')
+        if (!!session && 'accessToken' in session) {
+          config.headers.Authorization = `Bearer ${session.accessToken}`
+        }
+      }
 
       return config
     }

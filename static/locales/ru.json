@@ -18,6 +18,8 @@
   "dialog.deleteCategory.title": "Удаление категории",
   "dialog.deleteCategory.description": "Вы уверены, что хотите удалить категорию {name}?",
 
+  "dialog.topicsInCategory.title": "Темы в категории {name}",
+
   "toast.categoryCreated": "Категория {name} создана",
   "toast.categoryEdited": "Категория {name} обновлена",
   "toast.categoryDeleted": "Категория {name} удалена",
@@ -57,5 +59,6 @@
   "profile.title": "Профиль",
 
   "categories.title": "Категории",
-  "categories.noTopics": "Темы отсутствуют"
+  "categories.noTopics": "Темы отсутствуют",
+  "categories.checkTopics": "Посмотреть темы"
 }

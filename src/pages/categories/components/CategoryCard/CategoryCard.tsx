@@ -27,7 +27,17 @@ export const CategoryCard = ({ category }: CategoryCardProps) => (
         </Typography>
       )}
       {/* // TODO */}
-      {!!category.topics?.length && <CategoryTopicsDialog topics={category.topics} />}
+      {!!category.topics?.length && (
+        <CategoryTopicsDialog
+          trigger={
+            <Typography variant="sub2" className="cursor-pointer underline">
+              <I18nText path="categories.checkTopics" />
+            </Typography>
+          }
+          category={category}
+          topics={category.topics}
+        />
+      )}
       {/* // TODO only for admin */}
       <div className="flex gap-2">
         <EditCategoryDialog

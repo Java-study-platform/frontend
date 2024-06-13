@@ -1,4 +1,5 @@
 import { CategoryDTO } from '../../generated/core-api'
+import { TOPICS } from './topics'
 
 export const CATEGORIES: CategoryDTO[] = [
   {
@@ -6,7 +7,7 @@ export const CATEGORIES: CategoryDTO[] = [
     name: 'Technology',
     description: 'All about the latest in tech.',
     authorLogin: 'tech_guru',
-    topics: [],
+    topics: TOPICS,
     createTime: '2023-01-01T10:00:00Z',
     modifiedDate: '2023-06-01T12:00:00Z'
   },

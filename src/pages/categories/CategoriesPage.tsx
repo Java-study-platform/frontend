@@ -1,7 +1,18 @@
 import { useI18n } from '@/utils/contexts'
+import { getPageIndex, getPaginationNumbers } from '@/utils/helpers'
 import { ReloadIcon } from '@radix-ui/react-icons'
 import { I18nText } from '@/components/common'
-import { Button, Input, Typography } from '@/components/ui'
+import {
+  Button,
+  Input,
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationNext,
+  PaginationPrevious,
+  Typography
+} from '@/components/ui'
 import { CategoryCard } from './components/CategoryCard/CategoryCard'
 import { CreateCategoryDialog } from './components/CreateCategoryDialog/CreateCategoryDialog'
 import { useCategoriesPage } from './hooks/useCategoriesPage'
@@ -35,10 +46,51 @@ export const CategoriesPage = () => {
           </div>
         )}
         {!!state.categories.length && (
-          <div className="mt-10 flex flex-wrap items-center gap-4">
-            {state.categories.map((category) => (
-              <CategoryCard key={category.id} category={category} />
-            ))}
+          <div>
+            <div className="mt-10 flex flex-wrap items-center gap-4">
+              {state.categories.map((category) => (
+                <CategoryCard key={category.id} category={category} />
+              ))}
+            </div>
+            <Pagination>
+              <PaginationContent className="mt-7 flex flex-wrap justify-center">
+                <PaginationPrevious
+                  size="icon"
+                  isActive={state.pagination.currentPage < 0}
+                  onClick={() => functions.onPaginationNumberClick(state.pagination.currentPage - 1)}
+                  className="mr-3 size-8 border-none"
+                >
+                  pre
+                </PaginationPrevious>
+
+                {getPaginationNumbers({
+                  current: state.pagination.currentPage,
+                  pageCount: state.pagination.totalPages
+                }).map((page) => (
+                  <PaginationItem key={page}>
+                    {page === '...' && <PaginationEllipsis />}
+                    {page !== '...' && (
+                      <Button
+                        key={page}
+                        variant={state.pagination.currentPage === page ? 'secondary' : 'outline'}
+                        size="sm"
+                        className="h-8 w-8 rounded-lg border border-secondary font-normal"
+                        onClick={() => functions.onPaginationNumberClick(page)}
+                      >
+                        {getPageIndex(page)}
+                      </Button>
+                    )}
+                  </PaginationItem>
+                ))}
+
+                <PaginationNext
+                  size="icon"
+                  isActive={state.pagination.currentPage < state.pagination.totalPages}
+                  onClick={() => functions.onPaginationNumberClick(state.pagination.currentPage + 1)}
+                  className="ml-3 size-8 border-none"
+                />
+              </PaginationContent>
+            </Pagination>
           </div>
         )}
       </div>

@@ -6,6 +6,24 @@
   "button.logout": "Выйти",
   "button.profile": "Профиль",
   "button.update": "Обновить",
+  "button.create": "Создать",
+  "button.delete": "Удалить",
+  "button.edit": "Обновить",
+  "button.createTopic": "Создать тему",
+  "button.confirmDelete": "Подтвердить удаление",
+  "button.cancel": "Отмена",
+
+  "dialog.createCategory.title": "Создание категории",
+
+  "dialog.deleteCategory.title": "Удаление категории",
+  "dialog.deleteCategory.description": "Вы уверены, что хотите удалить категорию {name}?",
+
+  "dialog.topicsInCategory.title": "Темы в категории {name}",
+
+  "toast.topicCreated": "Тема {name} создана",
+  "toast.categoryCreated": "Категория {name} создана",
+  "toast.categoryEdited": "Категория {name} обновлена",
+  "toast.categoryDeleted": "Категория {name} удалена",
 
   "field.username.label": "Ник",
   "field.username.placeholder": "username",
@@ -22,6 +40,9 @@
   "field.password.placeholder": "********",
   "field.confirmPassword.label": "Подтвердите пароль",
   "field.confirmPassword.placeholder": "********",
+  "field.name.label": "Название",
+  "field.nameFilter.placeholder": "Введите часть названия",
+  "field.description.label": "Описание",
 
   "validation.required": "Обязательное поле",
   "validation.email.format": "Неверный формат почты",
@@ -29,6 +50,7 @@
 
   "navigation.profile": "Профиль",
   "navigation.tasks": "Задания",
+  "navigation.categories": "Категории",
 
   "register.title": "Добро пожаловать 👋",
   "register.haveAccount": "Уже есть аккаунт? <loginLink>Войдите</loginLink>",
@@ -36,5 +58,12 @@
   "login.title": "Войдите в свой аккаунт",
   "login.noAccount": "Нет аккаунта? <registerLink>Зарегистрируйтесь</registerLink>",
 
-  "profile.title": "Профиль"
+  "profile.title": "Профиль",
+
+  "categories.title": "Категории",
+  "categories.noTopics": "Темы отсутствуют",
+  "categories.checkTopics": "Посмотреть темы",
+
+  "topics.title": "Темы",
+  "topics.goToTopic": "Перейти к теме"
 }

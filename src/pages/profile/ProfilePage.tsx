@@ -9,7 +9,7 @@ export const ProfilePage = () => {
 
   return (
     <div className="flex h-screen">
-      <div className="container max-w-[500px]">
+      <div className="container max-w-[750px]">
         <Typography tag="h1" variant="h1">
           <I18nText path="profile.title" />
         </Typography>

@@ -2,7 +2,7 @@ import { ROUTES } from '@/utils/constants'
 import { useSessionContext } from '@/utils/contexts'
 import { cn } from '@/utils/helpers'
 import { PersonIcon } from '@radix-ui/react-icons'
-import { LogInIcon, LogOutIcon } from 'lucide-react'
+import { HomeIcon, LogInIcon, LogOutIcon } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { I18nText } from '@/components/common'
 import { Button, buttonVariants } from '@/components/ui'
@@ -13,11 +13,17 @@ export const Header = () => {
   return (
     <header className="container sticky z-20 flex h-[60px] items-center border-b bg-background">
       <nav className="flex items-center space-x-4 lg:space-x-6">
+        <Link to={ROUTES.ROOT}>
+          <HomeIcon />
+        </Link>
         <Link to={ROUTES.PROFILE} className="hover:underline">
           <I18nText path="navigation.profile" />
         </Link>
         <Link to={ROUTES.TASKS} className="hover:underline">
           <I18nText path="navigation.tasks" />
+        </Link>
+        <Link to={ROUTES.CATEGORIES} className="hover:underline">
+          <I18nText path="navigation.categories" />
         </Link>
 
         {sessionContext.session.isAuth && (

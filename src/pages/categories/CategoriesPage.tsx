@@ -1,4 +1,4 @@
-import { useI18n } from '@/utils/contexts'
+import { useI18n, useUserContext } from '@/utils/contexts'
 import { getPageIndex, getPaginationNumbers } from '@/utils/helpers'
 import { ReloadIcon } from '@radix-ui/react-icons'
 import { I18nText } from '@/components/common'
@@ -19,6 +19,7 @@ import { useCategoriesPage } from './hooks/useCategoriesPage'
 
 export const CategoriesPage = () => {
   const i18n = useI18n()
+  const userContext = useUserContext()
   const { state, functions } = useCategoriesPage()
 
   return (
@@ -34,10 +35,11 @@ export const CategoriesPage = () => {
             onChange={(event) => functions.onNameFilterChange(event.target.value)}
             className="max-w-[200px] mdx:max-w-[300px]"
           />
-          {/* // TODO only for admin */}
-          <CreateCategoryDialog
-            trigger={<Button>{i18n.formatMessage({ id: 'button.create' })}</Button>}
-          />
+          {userContext.user?.isAdmin && (
+            <CreateCategoryDialog
+              trigger={<Button>{i18n.formatMessage({ id: 'button.create' })}</Button>}
+            />
+          )}
         </div>
         {state.loading && (
           <div className="mt-2 flex items-center gap-2">

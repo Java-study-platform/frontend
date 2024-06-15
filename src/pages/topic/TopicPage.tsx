@@ -1,5 +1,5 @@
 import { ROUTES } from '@/utils/constants'
-import { useI18n } from '@/utils/contexts'
+import { useI18n, useUserContext } from '@/utils/contexts'
 import { ReloadIcon } from '@radix-ui/react-icons'
 import { LinkIcon } from 'lucide-react'
 import { Link } from 'react-router-dom'
@@ -12,6 +12,7 @@ import { useTopicPage } from './hooks/useTopicPage'
 
 export const TopicPage = () => {
   const i18n = useI18n()
+  const userContext = useUserContext()
   const { state } = useTopicPage()
 
   return (
@@ -23,27 +24,27 @@ export const TopicPage = () => {
             <ReloadIcon className="h-4 w-4 animate-spin" />
           </div>
         )}
-        {/* // TODO only for admin */}
         {state.topic && (
           <div>
             <Typography tag="h1" variant="h1">
               <I18nText path="topic.title" values={{ name: state.topic.name }} />
             </Typography>
-            {/* // TODO only for admin */}
-            <div className="mt-5 flex items-center gap-2">
-              <EditTopicDialog
-                topic={state.topic}
-                trigger={
-                  <Button variant="secondary">{i18n.formatMessage({ id: 'button.edit' })}</Button>
-                }
-              />
-              <CreateTaskDialog
-                topic={state.topic}
-                trigger={
-                  <Button className="">{i18n.formatMessage({ id: 'button.createTopicTask' })}</Button>
-                }
-              />
-            </div>
+            {userContext.user?.isAdmin && (
+              <div className="mt-5 flex items-center gap-2">
+                <EditTopicDialog
+                  topic={state.topic}
+                  trigger={
+                    <Button variant="secondary">{i18n.formatMessage({ id: 'button.edit' })}</Button>
+                  }
+                />
+                <CreateTaskDialog
+                  topic={state.topic}
+                  trigger={
+                    <Button className="">{i18n.formatMessage({ id: 'button.createTopicTask' })}</Button>
+                  }
+                />
+              </div>
+            )}
             {state.topic.tasks?.length && (
               <div className="mt-5 ">
                 <Typography tag="h2" variant="h2">

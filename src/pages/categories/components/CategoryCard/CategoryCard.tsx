@@ -1,4 +1,5 @@
 import { CategoryDTO } from '@/generated/core-api'
+import { useUserContext } from '@/utils/contexts'
 import { FilePenIcon, PlusIcon, TrashIcon } from 'lucide-react'
 import { I18nText } from '@/components/common'
 import { Button, Card, CardContent, CardHeader, CardTitle, Typography } from '@/components/ui'
@@ -11,61 +12,64 @@ interface CategoryCardProps {
   category: CategoryDTO
 }
 
-export const CategoryCard = ({ category }: CategoryCardProps) => (
-  <Card className="w-52 mdx:w-[300px]">
-    <CardHeader className="flex items-center justify-between">
-      <CardTitle>
-        <Typography tag="p" variant="body1" className="w-40 truncate">
-          {category.name}
-        </Typography>
-      </CardTitle>
-    </CardHeader>
-    <CardContent className="space-y-4">
-      {!category.topics?.length && (
-        <Typography>
-          <I18nText path="categories.noTopics" />
-        </Typography>
-      )}
-      {/* // TODO */}
-      {!!category.topics?.length && (
-        <CategoryTopicsDialog
-          trigger={
-            <Typography variant="sub2" className="cursor-pointer underline">
-              <I18nText path="categories.checkTopics" />
-            </Typography>
-          }
-          category={category}
-          topics={category.topics}
-        />
-      )}
-      {/* // TODO only for admin */}
-      <div className="flex gap-2">
-        <EditCategoryDialog
-          category={category}
-          trigger={
-            <Button variant="secondary" size="icon" aria-label="Edit" className="w-full">
-              <FilePenIcon className="h-4 w-4" />
-            </Button>
-          }
-        />
-        <DeleteCategoryDialog
-          category={category}
-          trigger={
-            <Button variant="destructive" size="icon" aria-label="Delete" className="w-full">
-              <TrashIcon className="h-4 w-4" />
-            </Button>
-          }
-        />
-        {/* // TODO */}
-        <CreateCategoryTopicDialog
-          category={category}
-          trigger={
-            <Button size="icon" aria-label="Delete" className="w-full">
-              <PlusIcon className="h-4 w-4" />
-            </Button>
-          }
-        />
-      </div>
-    </CardContent>
-  </Card>
-)
+export const CategoryCard = ({ category }: CategoryCardProps) => {
+  const userContext = useUserContext()
+
+  return (
+    <Card className="w-52 mdx:w-[300px]">
+      <CardHeader className="flex items-center justify-between">
+        <CardTitle>
+          <Typography tag="p" variant="body1" className="w-40 truncate">
+            {category.name}
+          </Typography>
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        {!category.topics?.length && (
+          <Typography>
+            <I18nText path="categories.noTopics" />
+          </Typography>
+        )}
+        {!!category.topics?.length && (
+          <CategoryTopicsDialog
+            trigger={
+              <Typography variant="sub2" className="cursor-pointer underline">
+                <I18nText path="categories.checkTopics" />
+              </Typography>
+            }
+            category={category}
+            topics={category.topics}
+          />
+        )}
+        {userContext.user?.isAdmin && (
+          <div className="flex gap-2">
+            <EditCategoryDialog
+              category={category}
+              trigger={
+                <Button variant="secondary" size="icon" aria-label="Edit" className="w-full">
+                  <FilePenIcon className="h-4 w-4" />
+                </Button>
+              }
+            />
+            <DeleteCategoryDialog
+              category={category}
+              trigger={
+                <Button variant="destructive" size="icon" aria-label="Delete" className="w-full">
+                  <TrashIcon className="h-4 w-4" />
+                </Button>
+              }
+            />
+            <CreateCategoryTopicDialog
+              category={category}
+              trigger={
+                <Button size="icon" aria-label="Delete" className="w-full">
+                  <PlusIcon className="h-4 w-4" />
+                </Button>
+              }
+            />
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  )
+}

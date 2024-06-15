@@ -1,4 +1,4 @@
-import { useI18n } from '@/utils/contexts'
+import { useI18n, useUserContext } from '@/utils/contexts'
 import { getPageIndex, getPaginationNumbers } from '@/utils/helpers'
 import { ReloadIcon } from '@radix-ui/react-icons'
 import { I18nText } from '@/components/common'
@@ -19,6 +19,7 @@ import { useTasksPage } from './hooks/useTasksPage'
 
 export const TasksPage = () => {
   const i18n = useI18n()
+  const userContext = useUserContext()
   const { state, functions } = useTasksPage()
 
   return (
@@ -34,8 +35,9 @@ export const TasksPage = () => {
             onChange={(event) => functions.onNameFilterChange(event.target.value)}
             className="max-w-[200px] mdx:max-w-[300px]"
           />
-          {/* // TODO only for admin (create task) ??? */}
-          <CreateTaskDialog trigger={<Button>{i18n.formatMessage({ id: 'button.create' })}</Button>} />
+          {userContext.user?.isAdmin && (
+            <CreateTaskDialog trigger={<Button>{i18n.formatMessage({ id: 'button.create' })}</Button>} />
+          )}
         </div>
         {state.loading && (
           <div className="mt-2 flex items-center gap-2">

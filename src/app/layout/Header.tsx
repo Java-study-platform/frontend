@@ -16,9 +16,6 @@ export const Header = () => {
         <Link to={ROUTES.ROOT}>
           <HomeIcon />
         </Link>
-        <Link to={ROUTES.PROFILE} className="hover:underline">
-          <I18nText path="navigation.profile" />
-        </Link>
         <Link to={ROUTES.TASKS} className="hover:underline">
           <I18nText path="navigation.tasks" />
         </Link>
@@ -28,16 +25,23 @@ export const Header = () => {
 
         {sessionContext.session.isAuth && (
           <>
-            <Link to={ROUTES.PROFILE} className={cn(buttonVariants({ variant: 'outline' }))}>
-              <PersonIcon className="mr-2 h-4 w-4" />
-              <I18nText path="button.profile" />
+            <Link
+              to={ROUTES.PROFILE}
+              className={cn(buttonVariants({ variant: 'outline' }), '2xsx:px-3')}
+            >
+              <PersonIcon className="mr-2 h-4 w-4 2xsx:mr-0 2xsx:size-3" />
+              <span className="2xsx:hidden">
+                <I18nText path="button.profile" />
+              </span>
             </Link>
             <Button
               onClick={sessionContext.logout}
-              className={cn(buttonVariants({ variant: 'destructive' }))}
+              className={cn(buttonVariants({ variant: 'destructive' }), '2xsx:px-3')}
             >
-              <LogOutIcon className="mr-2 h-4 w-4" />
-              <I18nText path="button.logout" />
+              <LogOutIcon className="mr-2 h-4 w-4 2xsx:mr-0 2xsx:size-3" />
+              <span className="2xsx:hidden">
+                <I18nText path="button.logout" />
+              </span>
             </Button>
           </>
         )}

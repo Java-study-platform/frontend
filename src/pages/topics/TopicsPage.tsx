@@ -23,7 +23,7 @@ export const TopicsPage = () => {
 
   return (
     <div className="flex h-screen">
-      <div className="container max-w-[750px]">
+      <div className="container max-w-[750px] mdx:mx-auto mdx:max-w-[300px]">
         <Typography tag="h1" variant="h1">
           <I18nText path="topics.title" />
         </Typography>
@@ -55,7 +55,7 @@ export const TopicsPage = () => {
                   size="icon"
                   disabled={state.pagination.currentPage <= 1}
                   onClick={() => functions.onPaginationNumberClick(state.pagination.currentPage - 1)}
-                  className="mr-3 size-8 border-none"
+                  className="mr-1 size-8 border-none"
                 />
 
                 {getPaginationNumbers({
@@ -83,7 +83,7 @@ export const TopicsPage = () => {
                   size="icon"
                   disabled={state.pagination.currentPage >= state.pagination.totalPages}
                   onClick={() => functions.onPaginationNumberClick(state.pagination.currentPage + 1)}
-                  className="mr-3 size-8 border-none"
+                  className="mr-1 size-8 border-none"
                 />
               </PaginationContent>
             </Pagination>

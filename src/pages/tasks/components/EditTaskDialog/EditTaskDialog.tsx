@@ -9,6 +9,8 @@ import {
   DialogTrigger,
   Typography
 } from '@/components/ui'
+import { EditTaskForm } from './components/EditTaskForm/EditTaskForm'
+import { useEditTaskDialog } from './hooks/useEditTaskDialog'
 
 interface EditTaskDialogProps {
   task: TaskDTO

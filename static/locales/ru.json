@@ -23,11 +23,16 @@
   "dialog.createTask.title": "Создание задачи",
   "dialog.editTask.title": "Изменение задачи",
 
+  "dialog.deleteTask.title": "Удаление задачи",
+  "dialog.deleteTask.description": "Вы уверены, что хотите удалить задачу {name}?",
+
   "toast.topicCreated": "Тема {name} создана",
   "toast.categoryCreated": "Категория {name} создана",
   "toast.categoryEdited": "Категория {name} обновлена",
   "toast.categoryDeleted": "Категория {name} удалена",
   "toast.taskCreated": "Задача {name} создана",
+  "toast.taskDeleted": "Задача {name} удалена",
+  "toast.taskEdited": "Задача {name} обновлена",
 
   "field.username.label": "Ник",
   "field.username.placeholder": "username",
@@ -53,7 +58,7 @@
   "validation.confirmPassword.match": "Пароли должны совпадать",
 
   "navigation.profile": "Профиль",
-  "navigation.tasks": "Задания",
+  "navigation.tasks": "Задачи",
   "navigation.categories": "Категории",
 
   "register.title": "Добро пожаловать 👋",
@@ -69,5 +74,7 @@
   "categories.checkTopics": "Посмотреть темы",
 
   "topics.title": "Темы",
-  "topics.goToTopic": "Перейти к теме"
+  "topics.goToTopic": "Перейти к теме",
+
+  "tasks.title": "Задачи"
 }

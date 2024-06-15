@@ -11,7 +11,7 @@ export const useEditTaskDialog = () => {
   const onSubmitted = (taskName: string) => {
     setOpen(false)
     queryClient.invalidateQueries({ queryKey: ['getLearningTasks'] })
-    toast.success(i18n.formatMessage({ id: 'toast.TaskEdited' }, { name: taskName }))
+    toast.success(i18n.formatMessage({ id: 'toast.taskEdited' }, { name: taskName }))
   }
 
   return { state: { open }, functions: { setOpen, onSubmitted } }

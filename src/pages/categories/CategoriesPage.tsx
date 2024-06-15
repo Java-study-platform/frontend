@@ -23,16 +23,16 @@ export const CategoriesPage = () => {
 
   return (
     <div className="flex h-screen">
-      <div className="container max-w-[750px]">
+      <div className="container max-w-[750px] mdx:mx-auto mdx:max-w-[300px]">
         <Typography tag="h1" variant="h1">
           <I18nText path="categories.title" />
         </Typography>
-        <div className="mt-2 flex gap-4">
+        <div className="mt-2 flex gap-4 mdx:flex-col">
           <Input
             placeholder={i18n.formatMessage({ id: 'field.nameFilter.placeholder' })}
             defaultValue={state.nameFilter}
             onChange={(event) => functions.onNameFilterChange(event.target.value)}
-            className="max-w-[200px]"
+            className="max-w-[200px] mdx:max-w-[300px]"
           />
           {/* // TODO only for admin */}
           <CreateCategoryDialog
@@ -59,7 +59,7 @@ export const CategoriesPage = () => {
                   size="icon"
                   disabled={state.pagination.currentPage <= 1}
                   onClick={() => functions.onPaginationNumberClick(state.pagination.currentPage - 1)}
-                  className="mr-3 size-8 border-none"
+                  className="mr-1 size-8 border-none"
                 />
 
                 {getPaginationNumbers({
@@ -87,7 +87,7 @@ export const CategoriesPage = () => {
                   size="icon"
                   disabled={state.pagination.currentPage >= state.pagination.totalPages}
                   onClick={() => functions.onPaginationNumberClick(state.pagination.currentPage + 1)}
-                  className="mr-3 size-8 border-none"
+                  className="mr-1 size-8 border-none"
                 />
               </PaginationContent>
             </Pagination>

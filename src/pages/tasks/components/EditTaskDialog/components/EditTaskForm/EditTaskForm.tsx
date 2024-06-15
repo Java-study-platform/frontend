@@ -1,4 +1,4 @@
-import { CategoryDTO } from '@/generated/core-api'
+import { TaskDTO } from '@/generated/core-api'
 import { useI18n } from '@/utils/contexts'
 import { I18nText } from '@/components/common'
 import {
@@ -13,14 +13,14 @@ import {
 } from '@/components/ui'
 import { useEditTaskForm } from './hooks/useEditTaskForm'
 
-interface EditCategoryFormProps {
-  category: CategoryDTO
+interface EditTaskFormProps {
+  task: TaskDTO
   onSubmitted: (name: string) => void
 }
 
-export const EditCategoryForm = ({ category, onSubmitted }: EditCategoryFormProps) => {
+export const EditTaskForm = ({ task, onSubmitted }: EditTaskFormProps) => {
   const i18n = useI18n()
-  const { state, form, functions } = useEditTaskForm({ category, onSubmitted })
+  const { state, form, functions } = useEditTaskForm({ task, onSubmitted })
 
   return (
     <Form {...form}>

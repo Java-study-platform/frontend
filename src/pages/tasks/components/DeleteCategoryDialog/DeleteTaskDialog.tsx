@@ -1,4 +1,4 @@
-import { CategoryDTO } from '@/generated/core-api'
+import { TaskDTO } from '@/generated/core-api'
 import { I18nText } from '@/components/common'
 import {
   Button,
@@ -12,32 +12,32 @@ import {
   DialogTrigger,
   Typography
 } from '@/components/ui'
-import { useDeleteCategoryDialog } from './hooks/useDeleteCategoryDialog'
+import { useDeleteTaskDialog } from './hooks/useDeleteTaskDialog'
 
 interface DeleteCategoryDialogProps {
-  category: CategoryDTO
+  task: TaskDTO
   trigger: JSX.Element
 }
 
-export const DeleteCategoryDialog = ({ category, trigger }: DeleteCategoryDialogProps) => {
-  const { functions, state } = useDeleteCategoryDialog({ category })
+export const DeleteTaskDialog = ({ task, trigger }: DeleteCategoryDialogProps) => {
+  const { functions, state } = useDeleteTaskDialog({ task })
 
   return (
     <Dialog open={state.open} onOpenChange={functions.setOpen}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
-      <DialogContent className="h-[200px] w-[90%] md:max-w-[500px]">
+      <DialogContent className="w-[90%] md:max-w-[500px]">
         <DialogClose />
         <DialogHeader>
           <DialogTitle asChild>
             <Typography tag="h2" variant="h2">
-              <I18nText path="dialog.deleteCategory.title" />
+              <I18nText path="dialog.deleteTask.title" />
             </Typography>
           </DialogTitle>
         </DialogHeader>
-        {category.name && (
+        {task.name && (
           <DialogDescription>
             <Typography>
-              <I18nText path="dialog.deleteCategory.description" values={{ name: category.name }} />
+              <I18nText path="dialog.deleteTask.description" values={{ name: task.name }} />
             </Typography>
           </DialogDescription>
         )}

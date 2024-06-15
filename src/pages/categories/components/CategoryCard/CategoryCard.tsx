@@ -12,7 +12,7 @@ interface CategoryCardProps {
 }
 
 export const CategoryCard = ({ category }: CategoryCardProps) => (
-  <Card className="w-52">
+  <Card className="w-52 mdx:w-[300px]">
     <CardHeader className="flex items-center justify-between">
       <CardTitle>
         <Typography tag="p" variant="body1" className="w-40 truncate">

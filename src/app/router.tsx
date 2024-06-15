@@ -1,4 +1,12 @@
-import { CategoriesPage, LoginPage, ProfilePage, RegisterPage, TopicPage, TopicsPage } from '@/pages'
+import {
+  CategoriesPage,
+  LoginPage,
+  ProfilePage,
+  RegisterPage,
+  TasksPage,
+  TopicPage,
+  TopicsPage
+} from '@/pages'
 import { ROUTES } from '@/utils/constants'
 import { createBrowserRouter } from 'react-router-dom'
 import { AuthorizedLayout } from './layout/AuthorizedLayout'
@@ -31,6 +39,10 @@ export const router = createBrowserRouter([
           {
             path: ROUTES.TOPIC(),
             element: <TopicPage />
+          },
+          {
+            path: ROUTES.TASKS,
+            element: <TasksPage />
           }
         ]
       },

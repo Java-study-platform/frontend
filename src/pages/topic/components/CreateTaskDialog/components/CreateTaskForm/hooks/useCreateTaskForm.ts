@@ -17,7 +17,8 @@ export const useCreateTaskForm = ({ topic, onSubmitted }: useCreateTaskFormParam
     defaultValues: {
       name: '',
       description: '',
-      experienceAmount: '10'
+      experienceAmount: '',
+      timeLimit: ''
     }
   })
 
@@ -39,7 +40,8 @@ export const useCreateTaskForm = ({ topic, onSubmitted }: useCreateTaskFormParam
     await postLearningTasksByTopicIdMutation.mutateAsync({
       ...values,
       topicId: topic.id!,
-      experienceAmount: +values.experienceAmount
+      experienceAmount: +values.experienceAmount,
+      timeLimit: +values.timeLimit
     })
     onSubmitted(values.name)
   })

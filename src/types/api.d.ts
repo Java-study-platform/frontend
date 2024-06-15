@@ -25,6 +25,21 @@ declare global {
     >
   }
 
+  interface InfiniteQuerySettings<Func = unknown> {
+    config?: RequestOptions
+    options?: Omit<
+      import('@tanstack/react-query').UseInfiniteQueryOptions<
+        Awaited<ReturnTyp<Func>>,
+        any,
+        Awaited<ReturnTyp<Func>>,
+        any,
+        import('@tanstack/react-query').QueryKey,
+        number
+      >,
+      'queryKey'
+    >
+  }
+
   type RequestOptions<Params = undefined> = Params extends undefined
     ? {
         config?: AxiosRequestConfig

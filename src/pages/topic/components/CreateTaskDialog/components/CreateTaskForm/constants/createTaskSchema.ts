@@ -9,6 +9,9 @@ export const createTaskSchema = z.object({
   }),
   experienceAmount: z.string().min(1, {
     message: 'validation.required'
+  }),
+  timeLimit: z.string().min(1, {
+    message: 'validation.required'
   })
 })
 

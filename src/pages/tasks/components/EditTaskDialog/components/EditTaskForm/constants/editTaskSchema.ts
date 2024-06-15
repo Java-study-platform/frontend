@@ -10,7 +10,7 @@ export const editTaskSchema = z.object({
   experienceAmount: z.string().min(1, {
     message: 'validation.required'
   }),
-  topicId: z.string().min(1, {
+  timeLimit: z.string().min(1, {
     message: 'validation.required'
   })
 })

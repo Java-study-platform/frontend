@@ -7,6 +7,7 @@
   "button.profile": "Профиль",
   "button.update": "Обновить",
   "button.create": "Создать",
+  "button.createTopicTask": "Создать задачу в теме",
   "button.delete": "Удалить",
   "button.edit": "Обновить",
   "button.createTopic": "Создать тему",
@@ -15,6 +16,10 @@
 
   "dialog.createCategory.title": "Создание категории",
 
+  "dialog.editCategory.title": "Обновление категории",
+
+  "dialog.createTopic.title": "Создание темы в категории {name}",
+
   "dialog.deleteCategory.title": "Удаление категории",
   "dialog.deleteCategory.description": "Вы уверены, что хотите удалить категорию {name}?",
 
@@ -22,9 +27,12 @@
 
   "dialog.createTask.title": "Создание задачи",
   "dialog.editTask.title": "Изменение задачи",
+  "dialog.editTask.link": "Тема",
 
   "dialog.deleteTask.title": "Удаление задачи",
   "dialog.deleteTask.description": "Вы уверены, что хотите удалить задачу {name}?",
+
+  "dialog.editTopic.title": "Обновление темы",
 
   "toast.topicCreated": "Тема {name} создана",
   "toast.categoryCreated": "Категория {name} создана",
@@ -33,6 +41,7 @@
   "toast.taskCreated": "Задача {name} создана",
   "toast.taskDeleted": "Задача {name} удалена",
   "toast.taskEdited": "Задача {name} обновлена",
+  "toast.topicEdited": "Тема {name} обновлена",
 
   "field.username.label": "Ник",
   "field.username.placeholder": "username",
@@ -45,6 +54,7 @@
   "field.lastName.placeholder": "Киселев",
   "field.email.label": "Электронная почта",
   "field.email.placeholder": "example@gmail.com",
+  "field.material.label": "Материал",
   "field.password.label": "Пароль",
   "field.password.placeholder": "********",
   "field.confirmPassword.label": "Подтвердите пароль",
@@ -52,6 +62,11 @@
   "field.name.label": "Название",
   "field.nameFilter.placeholder": "Введите часть названия",
   "field.description.label": "Описание",
+  "field.timeLimit.label": "Тайм лимит",
+  "field.timeLimit.placeholder": "10",
+  "field.experienceAmount.label": "Количество опыта за решение",
+  "field.experienceAmount.placeholder": "100",
+  "field.chooseTopic.label": "Выберете тему",
 
   "validation.required": "Обязательное поле",
   "validation.email.format": "Неверный формат почты",
@@ -75,6 +90,9 @@
 
   "topics.title": "Темы",
   "topics.goToTopic": "Перейти к теме",
+
+  "topic.title": "{name}",
+  "topic.tasks": "Задачи",
 
   "tasks.title": "Задачи"
 }

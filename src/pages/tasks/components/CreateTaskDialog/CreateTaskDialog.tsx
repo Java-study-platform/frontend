@@ -21,7 +21,7 @@ export const CreateTaskDialog = ({ trigger }: CreateTaskDialogProps) => {
   return (
     <Dialog open={state.open} onOpenChange={functions.setOpen}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
-      <DialogContent className="h-[350px] w-[90%] md:max-w-[500px]">
+      <DialogContent className="w-[90%] md:max-w-[500px]">
         <DialogClose />
         <DialogHeader>
           <DialogTitle asChild>

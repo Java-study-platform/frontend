@@ -1,6 +1,6 @@
 import { TaskDTO } from '@/generated/core-api'
 import { DefaultResponseObject } from '@/generated/user-api'
-import { usePutLearningCategoriesByIdMutation } from '@/utils/api/hooks'
+import { usePutLearningTasksByIdMutation } from '@/utils/api/hooks'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { AxiosError } from 'axios'
 import { useForm } from 'react-hook-form'
@@ -18,11 +18,12 @@ export const useEditTaskForm = ({ task, onSubmitted }: useEditTaskFormParams) =>
       name: task.name ?? '',
       description: task.description ?? '',
       experienceAmount: task.experienceAmount ? String(task.experienceAmount) : '',
-      topicId: task.topicId
+      // TODO fix backend
+      timeLimit: ''
     }
   })
 
-  const putLearningCategoriesByIdMutation = usePutLearningCategoriesByIdMutation({
+  const putLearningTasksByIdMutation = usePutLearningTasksByIdMutation({
     options: {
       onError: (error: AxiosError<DefaultResponseObject>) => {
         if (error.response?.data?.errors) {
@@ -37,13 +38,18 @@ export const useEditTaskForm = ({ task, onSubmitted }: useEditTaskFormParams) =>
   })
 
   const onSubmit = editTaskForm.handleSubmit(async (values) => {
-    await putLearningCategoriesByIdMutation.mutateAsync({ ...values, id: task.id! })
+    await putLearningTasksByIdMutation.mutateAsync({
+      ...values,
+      experienceAmount: +values.experienceAmount,
+      timeLimit: +values.timeLimit,
+      id: task.id!
+    })
     onSubmitted(values.name)
   })
 
   return {
     state: {
-      isLoading: putLearningCategoriesByIdMutation.isPending || editTaskForm.formState.isSubmitting
+      isLoading: putLearningTasksByIdMutation.isPending || editTaskForm.formState.isSubmitting
     },
     form: editTaskForm,
     functions: { onSubmit }

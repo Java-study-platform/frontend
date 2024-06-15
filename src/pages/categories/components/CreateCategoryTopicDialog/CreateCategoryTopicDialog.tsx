@@ -23,12 +23,12 @@ export const CreateCategoryTopicDialog = ({ category, trigger }: CreateCategoryT
   return (
     <Dialog open={state.open} onOpenChange={functions.setOpen}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
-      <DialogContent className="h-[250px] w-[90%] md:max-w-[500px]">
+      <DialogContent className="w-[90%] md:max-w-[500px]">
         <DialogClose />
         <DialogHeader>
           <DialogTitle asChild>
             <Typography tag="h2" variant="h2">
-              <I18nText path="dialog.createCategory.title" />
+              <I18nText path="dialog.createTopic.title" values={{ name: category.name }} />
             </Typography>
           </DialogTitle>
         </DialogHeader>

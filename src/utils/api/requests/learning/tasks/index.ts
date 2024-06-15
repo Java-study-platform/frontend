@@ -1,4 +1,4 @@
-import { DefaultResponsePageTopicDTO } from '@/generated/core-api'
+import { DefaultResponsePageTaskDTO } from '@/generated/core-api'
 import { instance } from '@/utils/api/instance'
 
 export interface GetLearningTasksRequestParams {
@@ -9,7 +9,7 @@ export interface GetLearningTasksRequestParams {
 }
 
 export const getLearningTasks = ({ params, config }: RequestOptions<GetLearningTasksRequestParams>) =>
-  instance.get<DefaultResponsePageTopicDTO>('/learning/tasks', {
+  instance.get<DefaultResponsePageTaskDTO>('/learning/tasks', {
     ...config,
     params: { ...config?.params, ...params }
   })

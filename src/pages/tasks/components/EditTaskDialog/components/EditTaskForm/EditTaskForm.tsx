@@ -9,7 +9,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-  Input
+  Input,
+  NumberFormatInput
 } from '@/components/ui'
 import { useEditTaskForm } from './hooks/useEditTaskForm'
 
@@ -72,7 +73,52 @@ export const EditTaskForm = ({ task, onSubmitted }: EditTaskFormProps) => {
               </FormItem>
             )}
           />
-          {/* // TODO add exp and topic select */}
+          <FormField
+            control={form.control}
+            name="experienceAmount"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>
+                  <I18nText path="field.experienceAmount.label" />
+                </FormLabel>
+                <FormControl>
+                  <NumberFormatInput
+                    disabled={state.isLoading}
+                    placeholder={i18n.formatMessage({ id: 'field.experienceAmount.placeholder' })}
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage>
+                  {form.formState?.errors?.experienceAmount && (
+                    <I18nText path={form.formState.errors.experienceAmount.message as LocaleMessageId} />
+                  )}
+                </FormMessage>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="timeLimit"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>
+                  <I18nText path="field.timeLimit.label" />
+                </FormLabel>
+                <FormControl>
+                  <NumberFormatInput
+                    disabled={state.isLoading}
+                    placeholder={i18n.formatMessage({ id: 'field.timeLimit.placeholder' })}
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage>
+                  {form.formState?.errors?.timeLimit && (
+                    <I18nText path={form.formState.errors.timeLimit.message as LocaleMessageId} />
+                  )}
+                </FormMessage>
+              </FormItem>
+            )}
+          />
           <Button type="submit" size="lg" loading={state.isLoading} className="w-full">
             <I18nText path="button.edit" />
           </Button>

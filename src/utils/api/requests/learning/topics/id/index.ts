@@ -1,6 +1,16 @@
 import { DefaultResponseTopicDTO, EditTopicModel } from '@/generated/core-api'
 import { instance } from '@/utils/api/instance'
 
+export interface GetLearningTopicsByIdRequestParams {
+  id: string
+}
+
+export const getLearningTopicsById = ({
+  params,
+  config
+}: RequestOptions<GetLearningTopicsByIdRequestParams>) =>
+  instance.get<DefaultResponseTopicDTO>(`/learning/topics/${params.id}`, config)
+
 export interface PutLearningTopicsByIdRequestParams extends EditTopicModel {
   id: string
 }

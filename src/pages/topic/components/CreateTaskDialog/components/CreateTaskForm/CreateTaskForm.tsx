@@ -1,4 +1,5 @@
 import { TopicDTO } from '@/generated/core-api'
+import { useI18n } from '@/utils/contexts'
 import { I18nText } from '@/components/common'
 import {
   Button,
@@ -8,7 +9,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-  Input
+  Input,
+  NumberFormatInput
 } from '@/components/ui'
 import { useCreateTaskForm } from './hooks/useCreateTaskForm'
 
@@ -18,6 +20,7 @@ interface CreateTaskFormProps {
 }
 
 export const CreateTaskForm = ({ topic, onSubmitted }: CreateTaskFormProps) => {
+  const i18n = useI18n()
   const { state, form, functions } = useCreateTaskForm({ topic, onSubmitted })
 
   return (
@@ -57,6 +60,52 @@ export const CreateTaskForm = ({ topic, onSubmitted }: CreateTaskFormProps) => {
                 <FormMessage>
                   {form.formState?.errors?.description && (
                     <I18nText path={form.formState.errors.description.message as LocaleMessageId} />
+                  )}
+                </FormMessage>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="experienceAmount"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>
+                  <I18nText path="field.experienceAmount.label" />
+                </FormLabel>
+                <FormControl>
+                  <NumberFormatInput
+                    disabled={state.isLoading}
+                    placeholder={i18n.formatMessage({ id: 'field.experienceAmount.placeholder' })}
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage>
+                  {form.formState?.errors?.experienceAmount && (
+                    <I18nText path={form.formState.errors.experienceAmount.message as LocaleMessageId} />
+                  )}
+                </FormMessage>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="timeLimit"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>
+                  <I18nText path="field.timeLimit.label" />
+                </FormLabel>
+                <FormControl>
+                  <NumberFormatInput
+                    disabled={state.isLoading}
+                    placeholder={i18n.formatMessage({ id: 'field.timeLimit.placeholder' })}
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage>
+                  {form.formState?.errors?.timeLimit && (
+                    <I18nText path={form.formState.errors.timeLimit.message as LocaleMessageId} />
                   )}
                 </FormMessage>
               </FormItem>

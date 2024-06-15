@@ -1,16 +1,14 @@
-import { useGetUserProfileQuery } from '@/utils/api/hooks'
-
-// import { useParams } from 'react-router-dom'
+import { useGetLearningTopicsByIdQuery } from '@/utils/api/hooks'
+import { useParams } from 'react-router-dom'
 
 export const useTopicPage = () => {
-  // const params = useParams<{ id: string }>()
-  // TODO get topic
-  const getUserProfileQuery = useGetUserProfileQuery()
+  const params = useParams<{ id: string }>()
+  const getLearningTopicsByIdQuery = useGetLearningTopicsByIdQuery({ id: params.id! })
 
   return {
     state: {
-      loading: getUserProfileQuery.isLoading
-    },
-    query: getUserProfileQuery
+      topic: getLearningTopicsByIdQuery.data?.data.data,
+      loading: getLearningTopicsByIdQuery.isLoading
+    }
   }
 }

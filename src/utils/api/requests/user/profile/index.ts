@@ -1,5 +1,5 @@
-import { DefaultResponseUserRepresentation } from '@/generated/user-api'
+import { DefaultResponseUserDto } from '@/generated/user-api'
 import { instance } from '@/utils/api/instance'
 
 export const getUserProfile = (options?: RequestOptions) =>
-  instance.get<DefaultResponseUserRepresentation>('/user/profile', options?.config)
+  instance.get<DefaultResponseUserDto>('/user/profile', options?.config)

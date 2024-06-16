@@ -183,6 +183,7 @@ export interface TaskDTO {
   experienceAmount?: number
   /** @format uuid */
   topicId?: string
+  timeLimit?: number
   authorLogin?: string
   /** @format date-time */
   createTime?: string

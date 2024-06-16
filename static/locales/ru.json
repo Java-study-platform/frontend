@@ -105,5 +105,12 @@
   "topic.chat.title": "Чат",
   "topic.chat.reply": "Ответ",
 
-  "tasks.title": "Задачи"
+  "tasks.title": "Задачи",
+
+  "task.title": "Задача {name}",
+  "task.goToTopic": "Перейти к теме",
+  "task.description": "Описание: {description}",
+  "task.experienceAmount": "Опыт за решение: {experienceAmount}",
+  "task.timeLimit": "Ограничение по времени: {timeLimit}сек",
+  "task.edit": "Редактировать"
 }

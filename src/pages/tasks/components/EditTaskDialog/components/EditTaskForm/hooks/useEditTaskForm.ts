@@ -18,8 +18,7 @@ export const useEditTaskForm = ({ task, onSubmitted }: useEditTaskFormParams) =>
       name: task.name ?? '',
       description: task.description ?? '',
       experienceAmount: task.experienceAmount ? String(task.experienceAmount) : '',
-      // TODO fix backend
-      timeLimit: ''
+      timeLimit: task.timeLimit ? String(task.timeLimit) : ''
     }
   })
 

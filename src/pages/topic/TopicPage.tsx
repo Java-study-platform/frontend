@@ -38,7 +38,7 @@ export const TopicPage = () => {
                 <EditTopicDialog
                   topic={state.topic}
                   trigger={
-                    <Button variant="secondary" size="sm" className="w-full">
+                    <Button variant="secondary" className="w-full">
                       {i18n.formatMessage({ id: 'button.edit' })}
                     </Button>
                   }
@@ -46,7 +46,7 @@ export const TopicPage = () => {
                 <CreateTaskDialog
                   topic={state.topic}
                   trigger={
-                    <Button size="sm" className="w-full">
+                    <Button className="w-full">
                       {i18n.formatMessage({ id: 'button.createTopicTask' })}
                     </Button>
                   }
@@ -54,7 +54,7 @@ export const TopicPage = () => {
                 <DeleteTopicDialog
                   topic={state.topic}
                   trigger={
-                    <Button variant="destructive" size="sm" className="w-full">
+                    <Button variant="destructive" className="w-full">
                       {i18n.formatMessage({ id: 'button.delete' })}
                     </Button>
                   }

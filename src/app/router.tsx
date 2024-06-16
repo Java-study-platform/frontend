@@ -3,6 +3,7 @@ import {
   LoginPage,
   ProfilePage,
   RegisterPage,
+  TaskPage,
   TasksPage,
   TopicPage,
   TopicsPage
@@ -44,6 +45,10 @@ export const router = createBrowserRouter([
           {
             path: ROUTES.TASKS,
             element: <TasksPage />
+          },
+          {
+            path: ROUTES.TASK(),
+            element: <TaskPage />
           }
         ]
       },

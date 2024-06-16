@@ -86,6 +86,7 @@
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
     "date-fns": "^3.6.0",
+    "escape-html": "^1.0.3",
     "lucide-react": "^0.383.0",
     "mock-config-server": "^3.5.0",
     "react": "^18.2.0",
@@ -98,6 +99,7 @@
     "react-number-format": "^5.4.0",
     "react-router-dom": "6.4",
     "react-tweet": "^3.2.1",
+    "react-use-websocket": "^4.8.1",
     "slate": "^0.103.0",
     "slate-history": "^0.100.0",
     "slate-hyperscript": "^0.100.0",
@@ -111,6 +113,7 @@
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^5.35.6",
     "@trivago/prettier-plugin-sort-imports": "^4.2.0",
+    "@types/escape-html": "^1.0.4",
     "@types/node": "^20.12.12",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",

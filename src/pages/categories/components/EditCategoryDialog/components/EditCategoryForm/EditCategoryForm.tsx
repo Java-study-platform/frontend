@@ -58,11 +58,7 @@ export const EditCategoryForm = ({ category, onSubmitted }: EditCategoryFormProp
                   <I18nText path="field.description.label" />
                 </FormLabel>
                 <FormControl>
-                  <Input
-                    disabled={state.isLoading}
-                    placeholder={i18n.formatMessage({ id: 'field.description.placeholder' })}
-                    {...field}
-                  />
+                  <Input disabled={state.isLoading} {...field} />
                 </FormControl>
                 <FormMessage>
                   {form.formState?.errors?.description && (

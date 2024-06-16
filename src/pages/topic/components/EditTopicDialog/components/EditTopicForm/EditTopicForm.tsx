@@ -19,7 +19,7 @@ interface EditTopicFormProps {
 }
 
 export const EditTopicForm = ({ topic, onSubmitted }: EditTopicFormProps) => {
-  const { state, ref, form, functions } = useEditTopicForm({ topic, onSubmitted })
+  const { state, form, functions } = useEditTopicForm({ topic, onSubmitted })
 
   return (
     <Form {...form}>
@@ -53,7 +53,7 @@ export const EditTopicForm = ({ topic, onSubmitted }: EditTopicFormProps) => {
                   <I18nText path="field.material.label" />
                 </FormLabel>
                 <FormControl>
-                  <RichTextEditor editorRef={ref.materialEditor} />
+                  <RichTextEditor value={state.material} onChange={functions.setMaterial} />
                 </FormControl>
                 <FormMessage>
                   {form?.formState?.errors?.material && (
@@ -64,7 +64,7 @@ export const EditTopicForm = ({ topic, onSubmitted }: EditTopicFormProps) => {
             )}
           />
           <Button type="submit" size="lg" loading={state.isLoading} className="w-full">
-            <I18nText path="button.create" />
+            <I18nText path="button.edit" />
           </Button>
         </fieldset>
       </form>

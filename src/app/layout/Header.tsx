@@ -46,9 +46,11 @@ export const Header = () => {
           </>
         )}
         {!sessionContext.session.isAuth && (
-          <Link to={ROUTES.LOGIN} className={cn(buttonVariants({ variant: 'default' }))}>
-            <LogInIcon className="mr-2 h-4 w-4" />
-            <I18nText path="button.login" />
+          <Link to={ROUTES.LOGIN} className={cn(buttonVariants({ variant: 'default' }), '2xsx:px-3')}>
+            <LogInIcon className="mr-2 h-4 w-4 2xsx:mr-0 2xsx:size-3" />
+            <span className="2xsx:hidden">
+              <I18nText path="button.login" />
+            </span>
           </Link>
         )}
       </nav>

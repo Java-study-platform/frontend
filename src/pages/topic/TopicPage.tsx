@@ -1,12 +1,16 @@
 import { ROUTES } from '@/utils/constants'
 import { useI18n, useUserContext } from '@/utils/contexts'
+import { deserializeEditorValue } from '@/utils/helpers'
+import { getDocumentBodyFromHTMLString } from '@/utils/helpers/getDocumentBodyFromHTMLString'
 import { ReloadIcon } from '@radix-ui/react-icons'
 import { LinkIcon } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { I18nText } from '@/components/common'
 import { Button, RichTextEditor, ScrollArea, Typography } from '@/components/ui'
 import { CreateTaskDialog } from './components/CreateTaskDialog/CreateTaskDialog'
+import { DeleteTopicDialog } from './components/DeleteTopicDialog/DeleteTopicDialog'
 import { EditTopicDialog } from './components/EditTopicDialog/EditTopicDialog'
+import { ChatMessagesProvider } from './components/TopicChat/contexts'
 import { TopicChat } from './components/TopicChat/TopicChat'
 import { useTopicPage } from './hooks/useTopicPage'
 
@@ -30,17 +34,29 @@ export const TopicPage = () => {
               <I18nText path="topic.title" values={{ name: state.topic.name }} />
             </Typography>
             {userContext.user?.isAdmin && (
-              <div className="mt-5 flex items-center gap-2">
+              <div className="mt-5 flex items-center gap-2 mdx:flex-col mdx:items-start">
                 <EditTopicDialog
                   topic={state.topic}
                   trigger={
-                    <Button variant="secondary">{i18n.formatMessage({ id: 'button.edit' })}</Button>
+                    <Button variant="secondary" size="sm" className="w-full">
+                      {i18n.formatMessage({ id: 'button.edit' })}
+                    </Button>
                   }
                 />
                 <CreateTaskDialog
                   topic={state.topic}
                   trigger={
-                    <Button className="">{i18n.formatMessage({ id: 'button.createTopicTask' })}</Button>
+                    <Button size="sm" className="w-full">
+                      {i18n.formatMessage({ id: 'button.createTopicTask' })}
+                    </Button>
+                  }
+                />
+                <DeleteTopicDialog
+                  topic={state.topic}
+                  trigger={
+                    <Button variant="destructive" size="sm" className="w-full">
+                      {i18n.formatMessage({ id: 'button.delete' })}
+                    </Button>
                   }
                 />
               </div>
@@ -60,23 +76,29 @@ export const TopicPage = () => {
                         className="flex items-center gap-2 text-sm underline"
                       >
                         <LinkIcon className="h-3 w-3" />
-                        {task.name}
+                        <Typography variant="large">{task.name}</Typography>
                       </Link>
                     ))}
                   </div>
                 </ScrollArea>
               </div>
             )}
-            {/* // TODO desearialize */}
             {state.topic.material && (
               <div className="mt-5">
+                <Typography tag="h2" variant="h2">
+                  <I18nText path="topic.material" />
+                </Typography>
                 <RichTextEditor
-                  value={[{ type: 'p', children: [{ text: state.topic.material ?? '' }] }]}
+                  value={deserializeEditorValue(getDocumentBodyFromHTMLString(state.topic.material))}
                   readOnly
                 />
               </div>
             )}
-            {state.topic.chatId && <TopicChat />}
+            {state.topic.chatId && (
+              <ChatMessagesProvider chatId={state.topic.chatId}>
+                <TopicChat chatId={state.topic.chatId} />
+              </ChatMessagesProvider>
+            )}
           </div>
         )}
       </div>

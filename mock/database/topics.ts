@@ -8,7 +8,8 @@ export const TOPICS: TopicDTO[] = [
     categoryId: '1d6e2d16-3d5b-41b4-9e7e-98ef3e0ed7d1',
     authorLogin: 'tech_guru',
     tasks: TASKS.slice(0, 3),
-    material: 'material test',
+    material: '<h1>Hello</h1><p><em>goodbuy</em></p><p></p>',
+    chatId: '1a234567-09ab-cdeg-0123-456789abfedb',
     createTime: '2023-01-15T10:00:00Z',
     modifiedDate: '2023-06-01T12:30:00Z'
   },

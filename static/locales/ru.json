@@ -13,6 +13,8 @@
   "button.createTopic": "Создать тему",
   "button.confirmDelete": "Подтвердить удаление",
   "button.cancel": "Отмена",
+  "button.send": "Отправить",
+  "button.editMessage": "Изменить",
 
   "dialog.createCategory.title": "Создание категории",
 
@@ -32,9 +34,13 @@
   "dialog.deleteTask.title": "Удаление задачи",
   "dialog.deleteTask.description": "Вы уверены, что хотите удалить задачу {name}?",
 
+  "dialog.deleteTopic.title": "Удаление темы",
+  "dialog.deleteTopic.description": "Вы уверены, что хотите удалить тему {name}?",
+
   "dialog.editTopic.title": "Обновление темы",
 
   "toast.topicCreated": "Тема {name} создана",
+  "toast.topicDeleted": "Тема {name} удалена",
   "toast.categoryCreated": "Категория {name} создана",
   "toast.categoryEdited": "Категория {name} обновлена",
   "toast.categoryDeleted": "Категория {name} удалена",
@@ -67,6 +73,7 @@
   "field.experienceAmount.label": "Количество опыта за решение",
   "field.experienceAmount.placeholder": "100",
   "field.chooseTopic.label": "Выберете тему",
+  "field.newMessage.placeholder": "Введите новое сообщение",
 
   "validation.required": "Обязательное поле",
   "validation.email.format": "Неверный формат почты",
@@ -93,6 +100,8 @@
 
   "topic.title": "{name}",
   "topic.tasks": "Задачи",
+  "topic.material": "Материал",
+  "topic.chat.title": "Чат",
 
   "tasks.title": "Задачи"
 }

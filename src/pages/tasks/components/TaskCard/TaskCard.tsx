@@ -30,11 +30,11 @@ export const TaskCard = ({ task }: TaskCardProps) => {
       <CardContent className="space-y-4">
         {task.description && <Typography className='"w-40 truncate'>{task.description}</Typography>}
         {userContext.user?.isAdmin && (
-          <div className="flex gap-2">
+          <div className="flex justify-center gap-2">
             <EditTaskDialog
               task={task}
               trigger={
-                <Button variant="secondary" size="icon" aria-label="Edit" className="w-full">
+                <Button variant="secondary" size="icon" aria-label="Edit">
                   <FilePenIcon className="h-4 w-4" />
                 </Button>
               }
@@ -42,7 +42,7 @@ export const TaskCard = ({ task }: TaskCardProps) => {
             <DeleteTaskDialog
               task={task}
               trigger={
-                <Button variant="destructive" size="icon" aria-label="Delete" className="w-full">
+                <Button variant="destructive" size="icon" aria-label="Delete">
                   <TrashIcon className="h-4 w-4" />
                 </Button>
               }

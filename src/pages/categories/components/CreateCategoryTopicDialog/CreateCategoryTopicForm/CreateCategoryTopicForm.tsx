@@ -19,7 +19,7 @@ interface CreateCategoryFormProps {
 }
 
 export const CreateCategoryTopicForm = ({ category, onSubmitted }: CreateCategoryFormProps) => {
-  const { state, ref, form, functions } = useCreateCategoryTopicForm({ category, onSubmitted })
+  const { state, form, functions } = useCreateCategoryTopicForm({ category, onSubmitted })
 
   return (
     <Form {...form}>
@@ -53,7 +53,7 @@ export const CreateCategoryTopicForm = ({ category, onSubmitted }: CreateCategor
                   <I18nText path="field.material.label" />
                 </FormLabel>
                 <FormControl>
-                  <RichTextEditor editorRef={ref.materialEditor} />
+                  <RichTextEditor value={state.material} onChange={functions.setMaterial} />
                 </FormControl>
                 <FormMessage>
                   {form?.formState?.errors?.material && (

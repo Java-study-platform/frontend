@@ -1,8 +1,10 @@
 import { TopicDTO } from '@/generated/core-api'
 import { DefaultResponseObject } from '@/generated/user-api'
 import { usePutLearningTopicsByIdMutation } from '@/utils/api/hooks'
+import { deserializeEditorValue, serializeEditorValue } from '@/utils/helpers'
+import { getDocumentBodyFromHTMLString } from '@/utils/helpers/getDocumentBodyFromHTMLString'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { PlateEditor } from '@udecode/plate-common'
+import { Value } from '@udecode/plate-common'
 import { AxiosError } from 'axios'
 import React from 'react'
 import { useForm } from 'react-hook-form'
@@ -14,12 +16,14 @@ interface useEditTopicFormParams {
 }
 
 export const useEditTopicForm = ({ topic, onSubmitted }: useEditTopicFormParams) => {
-  const materialEditorRef = React.useRef<PlateEditor | null>(null)
+  const [material, setMaterial] = React.useState<Value>(
+    deserializeEditorValue(getDocumentBodyFromHTMLString(topic.material ?? ''))
+  )
   const editTopicForm = useForm<EditTopicSchema>({
     resolver: zodResolver(editTopicSchema),
     defaultValues: {
       name: topic.name ?? '',
-      material: topic.material ?? ''
+      material: ''
     }
   })
 
@@ -40,6 +44,7 @@ export const useEditTopicForm = ({ topic, onSubmitted }: useEditTopicFormParams)
   const onSubmit = editTopicForm.handleSubmit(async (values) => {
     await putLearningTopicsByIdMutation.mutateAsync({
       ...values,
+      material: serializeEditorValue({ children: material }),
       id: topic.id!
     })
     onSubmitted(values.name)
@@ -47,10 +52,10 @@ export const useEditTopicForm = ({ topic, onSubmitted }: useEditTopicFormParams)
 
   return {
     state: {
-      isLoading: putLearningTopicsByIdMutation.isPending || editTopicForm.formState.isSubmitting
+      isLoading: putLearningTopicsByIdMutation.isPending || editTopicForm.formState.isSubmitting,
+      material
     },
-    ref: { materialEditor: materialEditorRef },
     form: editTopicForm,
-    functions: { onSubmit }
+    functions: { onSubmit, setMaterial }
   }
 }

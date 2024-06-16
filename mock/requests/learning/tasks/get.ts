@@ -1,8 +1,8 @@
 import { RestRequestConfig } from 'mock-config-server'
-import { TOPICS } from '../../database/topics'
+import { TASKS } from '../../../database/tasks'
 
-export const getLearningTopicsConfig: RestRequestConfig = {
-  path: '/learning/topics',
+export const getLearningTasksConfig: RestRequestConfig = {
+  path: '/learning/tasks',
   method: 'get',
   routes: [
     {
@@ -11,7 +11,7 @@ export const getLearningTopicsConfig: RestRequestConfig = {
           totalPages: 5,
           totalElements: 50,
           size: 10,
-          content: TOPICS.slice(0, 10),
+          content: TASKS.slice(0, 10),
           pageable: { pageNumber: 0 }
         }
       }
@@ -23,19 +23,19 @@ export const getLearningTopicsConfig: RestRequestConfig = {
           totalPages: 5,
           totalElements: 50,
           size: 10,
-          content: TOPICS.slice(10, 20),
+          content: TASKS.slice(10, 20),
           pageable: { pageNumber: 1 }
         }
       }
     },
     {
-      entities: { query: { queryText: 'tr' } },
+      entities: { query: { queryText: 'da' } },
       data: {
         data: {
           totalPages: 1,
           totalElements: 10,
           size: 10,
-          content: TOPICS.filter((task) => task.name?.toLowerCase()?.includes('tr')),
+          content: TASKS.filter((task) => task.name?.toLowerCase()?.includes('da')),
           pageable: { pageNumber: 0 }
         }
       }

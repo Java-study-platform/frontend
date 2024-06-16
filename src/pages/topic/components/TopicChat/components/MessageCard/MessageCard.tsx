@@ -13,6 +13,7 @@ interface MessageCardProps {
   dislikesCount: number
   onLikeClick: (messageId: string) => void
   onDislikeClick: (messageId: string) => void
+  renderReplies?: () => JSX.Element
 }
 
 export const MessageCard = ({
@@ -23,7 +24,8 @@ export const MessageCard = ({
   hasUserLike,
   isUserOwner,
   onLikeClick,
-  onDislikeClick
+  onDislikeClick,
+  renderReplies
 }: MessageCardProps) => (
   <div className="flex items-start gap-2">
     <div className="grid items-start gap-1 text-sm">
@@ -71,5 +73,6 @@ export const MessageCard = ({
         </Button>
       </div>
     </div>
+    {renderReplies?.()}
   </div>
 )

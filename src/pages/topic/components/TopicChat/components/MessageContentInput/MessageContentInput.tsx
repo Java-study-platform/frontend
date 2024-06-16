@@ -20,12 +20,12 @@ export const MessageContentInput = ({
   return (
     <div>
       <div className="flex items-center gap-2">
-        {!isUserOwner && (
+        {(!isUserOwner || !state.editingMode) && (
           <Typography tag="p" variant="body2">
             {content}
           </Typography>
         )}
-        {isUserOwner && (
+        {isUserOwner && state.editingMode && (
           <Input
             className="h-[50px] text-lg disabled:text-primary"
             {...props}

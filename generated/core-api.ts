@@ -839,6 +839,7 @@ export interface MessageDTO {
   parentMessageId?: string
   /** @format uuid */
   topicId?: string
+  replies?: MessageDTO[]
   reactions?: Record<string, number>
   /** @uniqueItems true */
   currentUserReactions?: ('LIKE' | 'DISLIKE')[]

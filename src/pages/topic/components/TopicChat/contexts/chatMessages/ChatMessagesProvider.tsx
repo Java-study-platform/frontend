@@ -4,7 +4,7 @@ import React from 'react'
 import useWebSocket, { ReadyState } from 'react-use-websocket'
 import { ChatMessagesContext } from './ChatMessagesContext'
 
-const SOCKET_URL = 'ws://localhost:3001'
+const SOCKET_URL = import.meta.env.VITE_WEB_SOCKET_URL
 
 const MESSAGE_TYPE = {
   INITIAL_DATA: 'INITIAL_DATA',
@@ -16,7 +16,7 @@ const MESSAGE_TYPE = {
   NEW_MESSAGE: 'NEW_MESSAGE'
 }
 
-export const queryKey = (chatId: string) => ['getLearningChatsById', chatId]
+export const chatQueryKey = (chatId: string) => ['getLearningChatsById', chatId]
 
 interface ChatMessagesProviderProps {
   children: React.ReactNode
@@ -34,9 +34,9 @@ export const ChatMessagesProvider = ({ children, chatId }: ChatMessagesProviderP
       const { type, payload } = JSON.parse(webSocket.lastMessage.data)
 
       if (type === MESSAGE_TYPE.INITIAL_DATA) {
-        queryClient.setQueryData(queryKey(chatId), () => payload)
+        queryClient.setQueryData(chatQueryKey(chatId), () => payload)
       } else if (type === MESSAGE_TYPE.NEW_MESSAGE) {
-        queryClient.setQueryData<DefaultResponseListMessageDTO>(queryKey(chatId), (oldData) => ({
+        queryClient.setQueryData<DefaultResponseListMessageDTO>(chatQueryKey(chatId), (oldData) => ({
           data: [...(oldData?.data ?? []), payload.data]
         }))
       }
@@ -58,6 +58,7 @@ export const ChatMessagesProvider = ({ children, chatId }: ChatMessagesProviderP
   )
 
   const sendLike = React.useCallback(() => {
+    console.log('#sending like')
     if (canSendMessages) {
       webSocket.sendMessage(
         JSON.stringify({

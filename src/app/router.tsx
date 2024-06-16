@@ -11,7 +11,8 @@ import { ROUTES } from '@/utils/constants'
 import { createBrowserRouter } from 'react-router-dom'
 import { AuthorizedLayout } from './layout/AuthorizedLayout'
 import { Layout } from './layout/Layout'
-import { ProtectedRoute } from './ProtectedRoute'
+
+// import { ProtectedRoute } from './ProtectedRoute'
 
 export const router = createBrowserRouter([
   {
@@ -19,9 +20,9 @@ export const router = createBrowserRouter([
     children: [
       {
         element: (
-          <ProtectedRoute>
-            <AuthorizedLayout />
-          </ProtectedRoute>
+          // <ProtectedRoute>
+          <AuthorizedLayout />
+          // </ProtectedRoute>
         ),
         children: [
           {

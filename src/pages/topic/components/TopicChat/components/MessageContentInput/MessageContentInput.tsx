@@ -54,6 +54,36 @@ export const MessageContentInput = ({
           <I18nText path="button.editMessage" />
         </Button>
       )}
+      {!isUserOwner && !state.replyMode && (
+        <Button
+          variant="link"
+          className="cursor-pointer underline"
+          onClick={() => functions.setReplyMode(true)}
+        >
+          <I18nText path="button.reply" />
+        </Button>
+      )}
+      {!isUserOwner && state.replyMode && state.replyMode && (
+        <div className="mt-5 flex items-center gap-1">
+          <Typography tag="p" variant="body2">
+            <I18nText path="topic.chat.reply" />:
+          </Typography>
+          <Input
+            className="h-[50px] text-lg disabled:text-primary"
+            {...props}
+            value={state.replyContent}
+            onChange={(event) => functions.setReplyContent(event.target.value)}
+          />
+          <div className="flex gap-1">
+            <Button size="icon" onClick={functions.onCancelReplyClick}>
+              <CheckIcon className="h-4 w-4" />
+            </Button>
+            <Button size="icon" onClick={functions.onCancelReplyClick}>
+              <XIcon className="h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

@@ -3,8 +3,6 @@ import { jsx } from 'slate-hyperscript'
 
 // @ts-ignore
 export const deserializeEditorValue = (element, markAttributes = {}) => {
-  debugger
-
   if (element.nodeType === Node.TEXT_NODE) {
     return jsx('text', markAttributes, element.textContent)
   } else if (element.nodeType !== Node.ELEMENT_NODE) {

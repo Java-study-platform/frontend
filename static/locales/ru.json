@@ -15,6 +15,7 @@
   "button.cancel": "Отмена",
   "button.send": "Отправить",
   "button.editMessage": "Изменить",
+  "button.reply": "Ответить",
 
   "dialog.createCategory.title": "Создание категории",
 
@@ -102,6 +103,7 @@
   "topic.tasks": "Задачи",
   "topic.material": "Материал",
   "topic.chat.title": "Чат",
+  "topic.chat.reply": "Ответ",
 
   "tasks.title": "Задачи"
 }

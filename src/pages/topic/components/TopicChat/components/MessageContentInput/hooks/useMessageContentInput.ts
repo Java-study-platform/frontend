@@ -13,6 +13,8 @@ export const useMessageContentInput = ({
   const chatMessagesContext = useChatMessagesContext()
   const [content, setContent] = React.useState(defaultContent)
   const [editingMode, setEditingMode] = React.useState(false)
+  const [replyMode, setReplyMode] = React.useState(false)
+  const [replyContent, setReplyContent] = React.useState('')
 
   const onCancelClick = () => {
     setContent(defaultContent)
@@ -26,8 +28,29 @@ export const useMessageContentInput = ({
     }
   }
 
+  const onCancelReplyClick = () => {
+    setReplyContent('')
+    setReplyMode(false)
+  }
+
+  const onConfirmReplyClick = () => {
+    if (replyContent.length) {
+      setReplyMode(false)
+      chatMessagesContext.sendMessage(replyContent, messageId)
+    }
+  }
+
   return {
-    state: { content, editingMode },
-    functions: { setContent, setEditingMode, onCancelClick, onConfirmClick }
+    state: { content, editingMode, replyMode, replyContent },
+    functions: {
+      setContent,
+      setEditingMode,
+      onCancelClick,
+      onConfirmClick,
+      setReplyMode,
+      onCancelReplyClick,
+      onConfirmReplyClick,
+      setReplyContent
+    }
   }
 }

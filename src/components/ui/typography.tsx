@@ -13,7 +13,8 @@ const typographyVariants = cva('text-foreground', {
       large: 'text-lg font-semibold',
       sub1: 'text-base text-muted-foreground',
       sub2: 'text-sm text-muted-foreground',
-      body1: 'leading-7 [&:not(:first-child)]:mt-6'
+      body1: 'leading-7 [&:not(:first-child)]:mt-6',
+      body2: 'leading-7 text-lg [&:not(:first-child)]:mt-6'
     }
   },
   defaultVariants: {

@@ -1,8 +1,11 @@
 import { CategoryDTO } from '@/generated/core-api'
 import { DefaultResponseObject } from '@/generated/user-api'
 import { usePostLearningTopicsByCategoryIdMutation } from '@/utils/api/hooks'
+import { serializeEditorValue } from '@/utils/helpers'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { Value } from '@udecode/plate-common'
 import { AxiosError } from 'axios'
+import React from 'react'
 import { useForm } from 'react-hook-form'
 import {
   CreateCategoryTopicSchema,
@@ -18,10 +21,12 @@ export const useCreateCategoryTopicForm = ({
   category,
   onSubmitted
 }: useCreateCategoryTopicFormParams) => {
+  const [material, setMaterial] = React.useState<Value>()
   const createCategoryTopicForm = useForm<CreateCategoryTopicSchema>({
     resolver: zodResolver(createCategoryTopicSchema),
     defaultValues: {
-      name: ''
+      name: '',
+      material: ''
     }
   })
 
@@ -41,7 +46,8 @@ export const useCreateCategoryTopicForm = ({
 
   const onSubmit = createCategoryTopicForm.handleSubmit(async (values) => {
     await postLearningTopicsByCategoryIdMutation.mutateAsync({
-      name: values.name,
+      ...values,
+      material: serializeEditorValue({ children: material }),
       categoryId: category.id!
     })
     onSubmitted(values.name)
@@ -51,9 +57,10 @@ export const useCreateCategoryTopicForm = ({
     state: {
       isLoading:
         postLearningTopicsByCategoryIdMutation.isPending ||
-        createCategoryTopicForm.formState.isSubmitting
+        createCategoryTopicForm.formState.isSubmitting,
+      material
     },
     form: createCategoryTopicForm,
-    functions: { onSubmit }
+    functions: { onSubmit, setMaterial }
   }
 }

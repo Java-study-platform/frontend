@@ -7,23 +7,48 @@
   "button.profile": "Профиль",
   "button.update": "Обновить",
   "button.create": "Создать",
+  "button.createTopicTask": "Создать задачу в теме",
   "button.delete": "Удалить",
   "button.edit": "Обновить",
   "button.createTopic": "Создать тему",
   "button.confirmDelete": "Подтвердить удаление",
   "button.cancel": "Отмена",
+  "button.send": "Отправить",
+  "button.editMessage": "Изменить",
+  "button.reply": "Ответить",
 
   "dialog.createCategory.title": "Создание категории",
+
+  "dialog.editCategory.title": "Обновление категории",
+
+  "dialog.createTopic.title": "Создание темы в категории {name}",
 
   "dialog.deleteCategory.title": "Удаление категории",
   "dialog.deleteCategory.description": "Вы уверены, что хотите удалить категорию {name}?",
 
   "dialog.topicsInCategory.title": "Темы в категории {name}",
 
+  "dialog.createTask.title": "Создание задачи",
+  "dialog.editTask.title": "Изменение задачи",
+  "dialog.editTask.link": "Тема",
+
+  "dialog.deleteTask.title": "Удаление задачи",
+  "dialog.deleteTask.description": "Вы уверены, что хотите удалить задачу {name}?",
+
+  "dialog.deleteTopic.title": "Удаление темы",
+  "dialog.deleteTopic.description": "Вы уверены, что хотите удалить тему {name}?",
+
+  "dialog.editTopic.title": "Обновление темы",
+
   "toast.topicCreated": "Тема {name} создана",
+  "toast.topicDeleted": "Тема {name} удалена",
   "toast.categoryCreated": "Категория {name} создана",
   "toast.categoryEdited": "Категория {name} обновлена",
   "toast.categoryDeleted": "Категория {name} удалена",
+  "toast.taskCreated": "Задача {name} создана",
+  "toast.taskDeleted": "Задача {name} удалена",
+  "toast.taskEdited": "Задача {name} обновлена",
+  "toast.topicEdited": "Тема {name} обновлена",
 
   "field.username.label": "Ник",
   "field.username.placeholder": "username",
@@ -36,6 +61,7 @@
   "field.lastName.placeholder": "Киселев",
   "field.email.label": "Электронная почта",
   "field.email.placeholder": "example@gmail.com",
+  "field.material.label": "Материал",
   "field.password.label": "Пароль",
   "field.password.placeholder": "********",
   "field.confirmPassword.label": "Подтвердите пароль",
@@ -43,13 +69,19 @@
   "field.name.label": "Название",
   "field.nameFilter.placeholder": "Введите часть названия",
   "field.description.label": "Описание",
+  "field.timeLimit.label": "Тайм лимит",
+  "field.timeLimit.placeholder": "10",
+  "field.experienceAmount.label": "Количество опыта за решение",
+  "field.experienceAmount.placeholder": "100",
+  "field.chooseTopic.label": "Выберете тему",
+  "field.newMessage.placeholder": "Введите новое сообщение",
 
   "validation.required": "Обязательное поле",
   "validation.email.format": "Неверный формат почты",
   "validation.confirmPassword.match": "Пароли должны совпадать",
 
   "navigation.profile": "Профиль",
-  "navigation.tasks": "Задания",
+  "navigation.tasks": "Задачи",
   "navigation.categories": "Категории",
 
   "register.title": "Добро пожаловать 👋",
@@ -65,5 +97,13 @@
   "categories.checkTopics": "Посмотреть темы",
 
   "topics.title": "Темы",
-  "topics.goToTopic": "Перейти к теме"
+  "topics.goToTopic": "Перейти к теме",
+
+  "topic.title": "{name}",
+  "topic.tasks": "Задачи",
+  "topic.material": "Материал",
+  "topic.chat.title": "Чат",
+  "topic.chat.reply": "Ответ",
+
+  "tasks.title": "Задачи"
 }

@@ -28,7 +28,7 @@ export const EditCategoryDialog = ({ category, trigger }: EditCategoryDialogProp
         <DialogHeader>
           <DialogTitle asChild>
             <Typography tag="h2" variant="h2">
-              <I18nText path="dialog.createCategory.title" />
+              <I18nText path="dialog.editCategory.title" />
             </Typography>
           </DialogTitle>
         </DialogHeader>

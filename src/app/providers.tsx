@@ -7,6 +7,7 @@ import {
 } from '@/utils/contexts'
 import { getMessagesByLocale } from '@/utils/helpers'
 import { Toaster } from 'sonner'
+import { TooltipProvider } from '@/components/plate-ui/tooltip'
 
 interface ProvidersProps {
   children: React.ReactNode
@@ -23,7 +24,7 @@ export const Providers = ({ children }: ProvidersProps) => {
           <UserProvider>
             <AxiosProvider>
               <Toaster />
-              {children}
+              <TooltipProvider>{children}</TooltipProvider>
             </AxiosProvider>
           </UserProvider>
         </SessionProvider>

@@ -6,7 +6,7 @@ export const useGetLearningCategoriesQuery = (
   settings?: QuerySettings<typeof getLearningCategories>
 ) =>
   useQuery({
-    queryKey: ['getLearningCategories'],
+    queryKey: ['getLearningCategories', params.page, params.size, params.sort, params.queryText],
     queryFn: () =>
       getLearningCategories({ params, ...(settings?.config && { config: settings.config }) }),
     ...settings?.options

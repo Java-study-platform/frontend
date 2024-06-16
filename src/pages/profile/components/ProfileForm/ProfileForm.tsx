@@ -1,8 +1,7 @@
-import { UserRepresentation } from '@/generated/user-api'
+import { UserDto } from '@/generated/user-api'
 import { useI18n } from '@/utils/contexts'
 import { I18nText } from '@/components/common'
 import {
-  Button,
   Form,
   FormControl,
   FormDescription,
@@ -10,13 +9,12 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-  Input,
-  PasswordInput
+  Input
 } from '@/components/ui'
 import { useProfileForm } from './hooks/useProfileForm'
 
 interface ProfileFormProps {
-  profile: UserRepresentation
+  profile: UserDto
 }
 
 export const ProfileForm = ({ profile }: ProfileFormProps) => {
@@ -62,7 +60,7 @@ export const ProfileForm = ({ profile }: ProfileFormProps) => {
                   <I18nText path="field.email.label" />
                 </FormLabel>
                 <FormControl>
-                  <PasswordInput
+                  <Input
                     disabled={state.isLoading}
                     placeholder={i18n.formatMessage({ id: 'field.email.placeholder' })}
                     {...field}
@@ -85,8 +83,8 @@ export const ProfileForm = ({ profile }: ProfileFormProps) => {
                   <I18nText path="field.firstName.label" />
                 </FormLabel>
                 <FormControl>
-                  <PasswordInput
-                    disabled={state.isLoading}
+                  <Input
+                    disabled
                     placeholder={i18n.formatMessage({ id: 'field.firstName.placeholder' })}
                     {...field}
                   />
@@ -108,8 +106,8 @@ export const ProfileForm = ({ profile }: ProfileFormProps) => {
                   <I18nText path="field.lastName.label" />
                 </FormLabel>
                 <FormControl>
-                  <PasswordInput
-                    disabled={state.isLoading}
+                  <Input
+                    disabled
                     placeholder={i18n.formatMessage({ id: 'field.lastName.placeholder' })}
                     {...field}
                   />
@@ -122,9 +120,9 @@ export const ProfileForm = ({ profile }: ProfileFormProps) => {
               </FormItem>
             )}
           />
-          <Button type="submit" size="lg" loading={state.isLoading} className="w-full">
+          {/* <Button type="submit" size="lg" loading={state.isLoading} className="w-full">
             <I18nText path="button.update" />
-          </Button>
+          </Button> */}
         </fieldset>
       </form>
     </Form>

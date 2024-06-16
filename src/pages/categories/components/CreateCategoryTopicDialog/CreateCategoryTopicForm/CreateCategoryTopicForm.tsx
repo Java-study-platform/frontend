@@ -8,7 +8,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-  Input
+  Input,
+  RichTextEditor
 } from '@/components/ui'
 import { useCreateCategoryTopicForm } from './hooks/useCreateCategoryTopicForm'
 
@@ -38,6 +39,25 @@ export const CreateCategoryTopicForm = ({ category, onSubmitted }: CreateCategor
                 <FormMessage>
                   {form?.formState?.errors?.name && (
                     <I18nText path={form.formState.errors.name.message as LocaleMessageId} />
+                  )}
+                </FormMessage>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="material"
+            render={() => (
+              <FormItem>
+                <FormLabel>
+                  <I18nText path="field.material.label" />
+                </FormLabel>
+                <FormControl>
+                  <RichTextEditor value={state.material} onChange={functions.setMaterial} />
+                </FormControl>
+                <FormMessage>
+                  {form?.formState?.errors?.material && (
+                    <I18nText path={form.formState.errors.material.message as LocaleMessageId} />
                   )}
                 </FormMessage>
               </FormItem>

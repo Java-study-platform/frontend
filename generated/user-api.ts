@@ -206,54 +206,7 @@ export interface TokenResponse {
   scope?: string
 }
 
-export interface CredentialRepresentation {
-  id?: string
-  type?: string
-  userLabel?: string
-  /** @format int64 */
-  createdDate?: number
-  secretData?: string
-  credentialData?: string
-  /** @format int32 */
-  priority?: number
-  value?: string
-  temporary?: boolean
-  /** @deprecated */
-  device?: string
-  /** @deprecated */
-  hashedSaltedValue?: string
-  /** @deprecated */
-  salt?: string
-  /**
-   * @deprecated
-   * @format int32
-   */
-  hashIterations?: number
-  /**
-   * @deprecated
-   * @format int32
-   */
-  counter?: number
-  /** @deprecated */
-  algorithm?: string
-  /**
-   * @deprecated
-   * @format int32
-   */
-  digits?: number
-  /**
-   * @deprecated
-   * @format int32
-   */
-  period?: number
-  /** @deprecated */
-  config?: {
-    empty?: boolean
-    [key: string]: any
-  }
-}
-
-export interface DefaultResponseUserRepresentation {
+export interface DefaultResponseUserDto {
   status?:
     | '100 CONTINUE'
     | '101 SWITCHING_PROTOCOLS'
@@ -329,90 +282,17 @@ export interface DefaultResponseUserRepresentation {
   message?: string
   /** @format date-time */
   timestamp?: string
-  data?: UserRepresentation
+  data?: UserDto
   errors?: Record<string, string[]>
 }
 
-export interface FederatedIdentityRepresentation {
-  identityProvider?: string
-  userId?: string
-  userName?: string
-}
-
-export interface SocialLinkRepresentation {
-  socialProvider?: string
-  socialUserId?: string
-  socialUsername?: string
-}
-
-export interface UserConsentRepresentation {
-  clientId?: string
-  grantedClientScopes?: string[]
-  /** @format int64 */
-  createdDate?: number
-  /** @format int64 */
-  lastUpdatedDate?: number
-  /** @deprecated */
-  grantedRealmRoles?: string[]
-}
-
-export interface UserProfileAttributeGroupMetadata {
-  name?: string
-  displayHeader?: string
-  displayDescription?: string
-  annotations?: Record<string, object>
-}
-
-export interface UserProfileAttributeMetadata {
-  name?: string
-  displayName?: string
-  required?: boolean
-  readOnly?: boolean
-  annotations?: Record<string, object>
-  validators?: Record<string, Record<string, object>>
-  group?: string
-  multivalued?: boolean
-}
-
-export interface UserProfileMetadata {
-  attributes?: UserProfileAttributeMetadata[]
-  groups?: UserProfileAttributeGroupMetadata[]
-}
-
-export interface UserRepresentation {
-  id?: string
+export interface UserDto {
+  keyCloakId?: string
   username?: string
+  email?: string
   firstName?: string
   lastName?: string
-  email?: string
-  emailVerified?: boolean
-  attributes?: Record<string, string[]>
-  userProfileMetadata?: UserProfileMetadata
-  self?: string
-  origin?: string
-  /** @format int64 */
-  createdTimestamp?: number
-  enabled?: boolean
-  /** @deprecated */
-  totp?: boolean
-  federationLink?: string
-  serviceAccountClientId?: string
-  credentials?: CredentialRepresentation[]
-  /** @uniqueItems true */
-  disableableCredentialTypes?: string[]
-  requiredActions?: string[]
-  federatedIdentities?: FederatedIdentityRepresentation[]
-  realmRoles?: string[]
-  clientRoles?: Record<string, string[]>
-  clientConsents?: UserConsentRepresentation[]
-  /** @format int32 */
-  notBefore?: number
-  /** @deprecated */
-  applicationRoles?: Record<string, string[]>
-  /** @deprecated */
-  socialLinks?: SocialLinkRepresentation[]
-  groups?: string[]
-  access?: Record<string, boolean>
+  roles?: string[]
 }
 
 export type QueryParamsType = Record<string | number, any>
@@ -721,7 +601,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @secure
      */
     getProfile: (params: RequestParams = {}) =>
-      this.request<DefaultResponseUserRepresentation, DefaultResponseObject>({
+      this.request<DefaultResponseUserDto, DefaultResponseObject>({
         path: `/api/user/profile`,
         method: 'GET',
         secure: true,

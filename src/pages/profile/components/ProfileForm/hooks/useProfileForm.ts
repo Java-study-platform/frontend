@@ -1,4 +1,4 @@
-import { DefaultResponseObject, UserRepresentation } from '@/generated/user-api'
+import { DefaultResponseObject, UserDto } from '@/generated/user-api'
 import { usePostUserLoginMutation } from '@/utils/api/hooks'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { AxiosError } from 'axios'
@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form'
 import { ProfileSchema, profileSchema } from '../constants/profileSchema'
 
 interface UseProfileFormParams {
-  profile: UserRepresentation
+  profile: UserDto
 }
 
 export const useProfileForm = ({ profile }: UseProfileFormParams) => {

@@ -3,7 +3,7 @@ import { SolutionDto } from '../../generated/solution-api'
 export const SOLUTIONS: Record<SolutionDto['status'], SolutionDto> = {
   OK: {
     id: '1',
-    solutionCode: 'solution code',
+    solutionCode: 'function() { return 1 }',
     createTime: '2022-01-01T00:00:00.000Z',
     username: 'username',
     taskId: '1',

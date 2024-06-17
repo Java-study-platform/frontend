@@ -1,7 +1,9 @@
+import { ROUTES } from '@/utils/constants'
 import { ReloadIcon } from '@radix-ui/react-icons'
+import { Link } from 'react-router-dom'
 import { I18nText, SolutionStatus } from '@/components/common'
 import { Label, RadioGroup, RadioGroupItem, ScrollArea, Typography } from '@/components/ui'
-import { SolutionTestCasesSection } from '../SolutionTestCasesSection/SolutionTestCasesSection'
+import { SolutionTestsProvider } from '../../../solution/contexts'
 import { useUserSolutionsSection } from './hooks/useUserSolutionsSection'
 
 interface UserSolutionsSectionProps {
@@ -23,9 +25,9 @@ export const UserSolutionsSection = ({ taskId }: UserSolutionsSectionProps) => {
         </div>
       )}
       {state.solutions?.length && (
-        <>
+        <SolutionTestsProvider defaultSolutionId={state.solutions[0].id}>
           <RadioGroup
-            defaultValue={state.solutions[0].id}
+            defaultValue={state.selectedSolutionId ?? state.solutions[0].id}
             onValueChange={functions.setSelectedSolutionId}
             className="flex h-[300px] flex-col"
           >
@@ -37,17 +39,18 @@ export const UserSolutionsSection = ({ taskId }: UserSolutionsSectionProps) => {
                     htmlFor={solution.id}
                     className="flex items-center gap-2 border-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
                   >
-                    <Typography tag="p" variant="body1">
-                      <I18nText path="task.userSolutionsSection.solutionIndex" values={{ index }} />
-                    </Typography>
-                    <SolutionStatus status={solution.status!} />
+                    <Link to={ROUTES.SOLUTION(solution.id)}>
+                      <Typography tag="p" variant="body1">
+                        <I18nText path="task.userSolutionsSection.solutionIndex" values={{ index }} />
+                      </Typography>
+                      <SolutionStatus status={solution.status!} />
+                    </Link>
                   </Label>
                 </div>
               ))}
             </ScrollArea>
           </RadioGroup>
-          <SolutionTestCasesSection solutionId={state.selectedSolutionId ?? state.solutions[0].id} />
-        </>
+        </SolutionTestsProvider>
       )}
     </section>
   )

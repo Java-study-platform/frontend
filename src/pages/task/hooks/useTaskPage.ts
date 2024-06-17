@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 
 export const useTaskPage = () => {
   const params = useParams<{ id: string }>()
-  const getLearningTasksByIdQuery = useGetLearningTasksByIdQuery({ id: params.id })
+  const getLearningTasksByIdQuery = useGetLearningTasksByIdQuery({ id: params.id! })
 
   return {
     state: {

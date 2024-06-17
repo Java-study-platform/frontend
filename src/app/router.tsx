@@ -10,6 +10,7 @@ import {
 } from '@/pages'
 import { ROUTES } from '@/utils/constants'
 import { createBrowserRouter } from 'react-router-dom'
+import { SolutionPage } from '@/pages/solution/SolutionPage'
 import { AuthorizedLayout } from './layout/AuthorizedLayout'
 import { Layout } from './layout/Layout'
 
@@ -49,6 +50,10 @@ export const router = createBrowserRouter([
           {
             path: ROUTES.TASK(),
             element: <TaskPage />
+          },
+          {
+            path: ROUTES.SOLUTION(),
+            element: <SolutionPage />
           }
         ]
       },

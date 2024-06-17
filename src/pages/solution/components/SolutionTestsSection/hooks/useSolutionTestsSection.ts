@@ -1,10 +1,10 @@
 import { useGetSolutionTestsQuery } from '@/utils/api'
 
-interface UseSolutionTestCasesSectionParams {
+interface UseSolutionTestsSectionParams {
   solutionId: string
 }
 
-export const useSolutionTestCasesSection = ({ solutionId }: UseSolutionTestCasesSectionParams) => {
+export const useSolutionTestsSection = ({ solutionId }: UseSolutionTestsSectionParams) => {
   const getSolutionTestsQuery = useGetSolutionTestsQuery({ solutionId })
 
   return {

@@ -1,7 +1,7 @@
+import { ReloadIcon } from '@radix-ui/react-icons'
 import {
   AccessibilityIcon,
   CheckCircleIcon,
-  EllipsisIcon,
   InfinityIcon,
   Repeat2Icon,
   ShieldXIcon,
@@ -27,6 +27,6 @@ export const SolutionStatus = ({ status }: SolutionStatusProps) => (
     {status === 'RUNTIME_ERROR' && <AccessibilityIcon className="h-4 w-4 text-red-500" />}
     {status === 'COMPILATION_ERROR' && <Repeat2Icon className="h-4 w-4 text-red-500" />}
     {status === 'MALICIOUS_CODE' && <ShieldXIcon className="h-4 w-4 text-red-500" />}
-    {status === 'PENDING' && <EllipsisIcon className="h-4 w-4 text-gray-500" />}
+    {status === 'PENDING' && <ReloadIcon className="h-4 w-4 animate-spin text-gray-500" />}
   </div>
 )

@@ -118,5 +118,8 @@
   "task.userSolutionsSection.title": "История решений",
   "task.userSolutionsSection.solutionIndex": "Решение номер {index}",
   "task.solutionTestCasesSection.title": "Тесты решения",
-  "task.solutionTestCasesSection.testIndex": "#{index}"
+  "task.solutionTestCasesSection.testIndex": "#{index}",
+
+  "solution.title": "Решение",
+  "solution.code": "Код решения"
 }

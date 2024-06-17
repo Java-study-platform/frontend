@@ -1,17 +1,17 @@
 import { ReloadIcon } from '@radix-ui/react-icons'
 import { I18nText, SolutionStatus } from '@/components/common'
 import { Typography } from '@/components/ui'
-import { useSolutionTestCasesSection } from './hooks/useSolutionTestCasesSection'
+import { useSolutionTestsSection } from './hooks/useSolutionTestsSection'
 
-interface SolutionTestCasesSectionProps {
+interface SolutionTestsSectionProps {
   solutionId: string
 }
 
-export const SolutionTestCasesSection = ({ solutionId }: SolutionTestCasesSectionProps) => {
-  const { state } = useSolutionTestCasesSection({ solutionId })
+export const SolutionTestsSection = ({ solutionId }: SolutionTestsSectionProps) => {
+  const { state } = useSolutionTestsSection({ solutionId })
 
   return (
-    <div>
+    <section className="mt-10">
       <Typography tag="h2" variant="h2">
         <I18nText path="task.solutionTestCasesSection.title" />
       </Typography>
@@ -33,6 +33,6 @@ export const SolutionTestCasesSection = ({ solutionId }: SolutionTestCasesSectio
           <SolutionStatus status={test.status} />
         </div>
       ))}
-    </div>
+    </section>
   )
 }

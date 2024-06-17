@@ -7,14 +7,13 @@ interface UseUserSolutionsSectionParams {
 
 export const useUserSolutionsSection = ({ taskId }: UseUserSolutionsSectionParams) => {
   const getSolutionByTaskIdQuery = useGetSolutionByTaskIdQuery({ taskId })
-
   const [selectedSolutionId, setSelectedSolutionId] = React.useState<string | undefined>()
 
   return {
     state: {
-      selectedSolutionId,
       solutions: getSolutionByTaskIdQuery.data?.data.data,
-      loading: getSolutionByTaskIdQuery.isLoading
+      loading: getSolutionByTaskIdQuery.isLoading,
+      selectedSolutionId
     },
     functions: {
       setSelectedSolutionId

@@ -37,7 +37,7 @@ export const ChatMessagesProvider = ({ children, chatId }: ChatMessagesProviderP
         queryClient.setQueryData(chatQueryKey(chatId), () => payload)
       } else if (type === MESSAGE_TYPE.NEW_MESSAGE && payload.data.eventType === 'NEW') {
         queryClient.setQueryData<DefaultResponseListMessageDTO>(chatQueryKey(chatId), (oldData) => ({
-          data: [...(oldData?.data ?? []), payload.data]
+          data: [payload.data, ...(oldData?.data ?? [])]
         }))
       }
     }

@@ -6,7 +6,7 @@ export const AuthorizedLayout = () => (
   <Providers>
     <div className="flex min-h-screen w-full flex-col">
       <Header />
-      <div className="mt-[40px] grow">
+      <div className="my-[40px] grow">
         <Outlet />
       </div>
     </div>

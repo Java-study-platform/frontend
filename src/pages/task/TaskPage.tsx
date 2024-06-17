@@ -50,14 +50,14 @@ export const TaskPage = () => {
                 />
               </Typography>
               <Typography tag="p" variant="body2" className="mt-2">
-                <I18nText path="task.timeLimit" values={{ experienceAmount: state.task.timeLimit }} />
+                <I18nText path="task.timeLimit" values={{ timeLimit: state.task.timeLimit }} />
               </Typography>
               {/* // TODO: add example test case */}
             </div>
             {userContext.user?.isUser && (
               <div>
                 <UploadSolutionSection />
-                <UserSolutionsSection />
+                <UserSolutionsSection taskId={state.task.id} />
               </div>
             )}
             {(userContext.user?.isAdmin || userContext.user?.isMentor) && (

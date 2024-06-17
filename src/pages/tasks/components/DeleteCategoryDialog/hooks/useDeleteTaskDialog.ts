@@ -17,7 +17,7 @@ export const useDeleteTaskDialog = ({ task }: UseDeleteCategoryDialogParams) => 
   const deleteLearningTasksByIdMutation = useDeleteLearningTasksByIdMutation()
 
   const onConfirmDeleteClick = async () => {
-    await deleteLearningTasksByIdMutation.mutateAsync({ id: task.id! })
+    await deleteLearningTasksByIdMutation.mutateAsync({ id: task.id })
     queryClient.invalidateQueries({ queryKey: ['getLearningTasks'] })
     if (task.name) toast.success(i18n.formatMessage({ id: 'toast.taskDeleted' }, { name: task.name }))
   }

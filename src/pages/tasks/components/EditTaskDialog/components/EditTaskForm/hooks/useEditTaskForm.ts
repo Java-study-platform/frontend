@@ -41,7 +41,7 @@ export const useEditTaskForm = ({ task, onSubmitted }: useEditTaskFormParams) =>
       ...values,
       experienceAmount: +values.experienceAmount,
       timeLimit: +values.timeLimit,
-      id: task.id!
+      id: task.id
     })
     onSubmitted(values.name)
   })

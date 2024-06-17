@@ -45,7 +45,7 @@ export const MessageCard = ({
         <MessageContentInput
           content={message.content}
           isUserOwner={isUserOwner}
-          messageId={message.id!}
+          messageId={message.id}
         />
       </div>
       <div className="mt-1 flex items-center gap-2">
@@ -53,7 +53,7 @@ export const MessageCard = ({
           variant={hasUserLike ? 'secondary' : 'ghost'}
           disabled={hasUserDislike}
           onClick={() => {
-            if (!hasUserLike) onLikeClick(message.id!)
+            if (!hasUserLike) onLikeClick(message.id)
           }}
           className="p-2"
         >
@@ -64,7 +64,7 @@ export const MessageCard = ({
           variant={hasUserDislike ? 'secondary' : 'ghost'}
           disabled={hasUserLike}
           onClick={() => {
-            if (!hasUserDislike) onDislikeClick(message.id!)
+            if (!hasUserDislike) onDislikeClick(message.id)
           }}
           className="p-2"
         >

@@ -176,7 +176,7 @@ export interface DefaultResponseTopicDTO {
 
 export interface TaskDTO {
   /** @format uuid */
-  id?: string
+  id: string
   name?: string
   description?: string
   /** @format int64 */
@@ -193,7 +193,7 @@ export interface TaskDTO {
 
 export interface TopicDTO {
   /** @format uuid */
-  id?: string
+  id: string
   name?: string
   material?: string
   /** @format uuid */
@@ -295,7 +295,7 @@ export interface DefaultResponseTestCaseDto {
 
 export interface TestCaseDto {
   /** @format uuid */
-  id?: string
+  id: string
   /** @format int64 */
   index?: number
   expectedInput?: string
@@ -403,7 +403,7 @@ export interface EditCategoryModel {
 
 export interface CategoryDTO {
   /** @format uuid */
-  id?: string
+  id: string
   name?: string
   description?: string
   authorLogin?: string
@@ -833,7 +833,7 @@ export interface DefaultResponseListMessageDTO {
 
 export interface MessageDTO {
   /** @format uuid */
-  id?: string
+  id: string
   content?: string
   senderLogin?: string
   /** @format uuid */

@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 
 export const useTopicPage = () => {
   const params = useParams<{ id: string }>()
-  const getLearningTopicsByIdQuery = useGetLearningTopicsByIdQuery({ id: params.id! })
+  const getLearningTopicsByIdQuery = useGetLearningTopicsByIdQuery({ id: params.id })
 
   return {
     state: {

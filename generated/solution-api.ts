@@ -255,7 +255,7 @@ export interface DefaultResponseSolutionDto {
 
 export interface SolutionDto {
   /** @format uuid */
-  id?: string
+  id: string
   solutionCode?: string
   /** @format date-time */
   createTime?: string
@@ -264,7 +264,7 @@ export interface SolutionDto {
   taskId?: string
   /** @format int64 */
   testIndex?: number
-  status?:
+  status:
     | 'PENDING'
     | 'OK'
     | 'WRONG_ANSWER'
@@ -436,12 +436,12 @@ export interface DefaultResponseListTestDto {
 
 export interface TestDto {
   /** @format uuid */
-  id?: string
+  id: string
   /** @format int64 */
   testIndex?: number
   /** @format date-time */
   testTime?: string
-  status?:
+  status:
     | 'PENDING'
     | 'OK'
     | 'WRONG_ANSWER'
@@ -533,7 +533,7 @@ export interface DefaultResponseMentorTestDto {
 
 export interface MentorTestDto {
   /** @format uuid */
-  id?: string
+  id: string
   /** @format int64 */
   testIndex?: number
   /** @format date-time */

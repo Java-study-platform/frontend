@@ -71,8 +71,8 @@ export const TopicPage = () => {
                   <div className="flex flex-col gap-2">
                     {state.topic.tasks?.map((task) => (
                       <Link
-                        key={task.id!}
-                        to={ROUTES.TASK(task.id!)}
+                        key={task.id}
+                        to={ROUTES.TASK(task.id)}
                         className="flex items-center gap-2 text-sm underline"
                       >
                         <LinkIcon className="h-3 w-3" />

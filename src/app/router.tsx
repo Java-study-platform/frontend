@@ -2,6 +2,7 @@ import {
   CategoriesPage,
   LoginPage,
   ProfilePage,
+  RatingPage,
   RegisterPage,
   TaskPage,
   TasksPage,
@@ -54,6 +55,10 @@ export const router = createBrowserRouter([
           {
             path: ROUTES.SOLUTION(),
             element: <SolutionPage />
+          },
+          {
+            path: ROUTES.RATING,
+            element: <RatingPage />
           }
         ]
       },

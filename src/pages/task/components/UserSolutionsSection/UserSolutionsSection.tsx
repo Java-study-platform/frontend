@@ -3,7 +3,6 @@ import { ReloadIcon } from '@radix-ui/react-icons'
 import { Link } from 'react-router-dom'
 import { I18nText, SolutionStatus } from '@/components/common'
 import { Label, RadioGroup, RadioGroupItem, ScrollArea, Typography } from '@/components/ui'
-import { SolutionTestsProvider } from '../../../solution/contexts'
 import { useUserSolutionsSection } from './hooks/useUserSolutionsSection'
 
 interface UserSolutionsSectionProps {
@@ -25,32 +24,30 @@ export const UserSolutionsSection = ({ taskId }: UserSolutionsSectionProps) => {
         </div>
       )}
       {state.solutions?.length && (
-        <SolutionTestsProvider defaultSolutionId={state.solutions[0].id}>
-          <RadioGroup
-            defaultValue={state.selectedSolutionId ?? state.solutions[0].id}
-            onValueChange={functions.setSelectedSolutionId}
-            className="flex h-[300px] flex-col"
-          >
-            <ScrollArea className="h-full">
-              {state.solutions.map((solution, index) => (
-                <div key={solution.id}>
-                  <RadioGroupItem value={solution.id} id={solution.id} className="peer sr-only" />
-                  <Label
-                    htmlFor={solution.id}
-                    className="flex items-center gap-2 border-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                  >
-                    <Link to={ROUTES.SOLUTION(solution.id)}>
-                      <Typography tag="p" variant="body1">
-                        <I18nText path="task.userSolutionsSection.solutionIndex" values={{ index }} />
-                      </Typography>
-                      <SolutionStatus status={solution.status!} />
-                    </Link>
-                  </Label>
-                </div>
-              ))}
-            </ScrollArea>
-          </RadioGroup>
-        </SolutionTestsProvider>
+        <RadioGroup
+          defaultValue={state.selectedSolutionId ?? state.solutions[0].id}
+          onValueChange={functions.setSelectedSolutionId}
+          className="flex h-[300px] flex-col"
+        >
+          <ScrollArea className="h-full">
+            {state.solutions.map((solution, index) => (
+              <div key={solution.id}>
+                <RadioGroupItem value={solution.id!} id={solution.id} className="peer sr-only" />
+                <Label
+                  htmlFor={solution.id}
+                  className="flex items-center gap-2 border-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                >
+                  <Link to={ROUTES.SOLUTION(solution.id)}>
+                    <Typography tag="p" variant="body1">
+                      <I18nText path="task.userSolutionsSection.solutionIndex" values={{ index }} />
+                    </Typography>
+                    <SolutionStatus status={solution.status!} />
+                  </Link>
+                </Label>
+              </div>
+            ))}
+          </ScrollArea>
+        </RadioGroup>
       )}
     </section>
   )

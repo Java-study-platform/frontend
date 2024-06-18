@@ -18,10 +18,6 @@
           }
         ],
         "responses": {
-          "500": {
-            "description": "Internal Server Error",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
           "400": {
             "description": "Bad Request",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
@@ -32,6 +28,10 @@
           },
           "403": {
             "description": "Forbidden",
+            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
+          },
+          "500": {
+            "description": "Internal Server Error",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
           },
           "200": {
@@ -61,10 +61,6 @@
           "required": true
         },
         "responses": {
-          "500": {
-            "description": "Internal Server Error",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
           "400": {
             "description": "Bad Request",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
@@ -75,6 +71,10 @@
           },
           "403": {
             "description": "Forbidden",
+            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
+          },
+          "500": {
+            "description": "Internal Server Error",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
           },
           "200": {
@@ -98,10 +98,6 @@
           }
         ],
         "responses": {
-          "500": {
-            "description": "Internal Server Error",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
           "400": {
             "description": "Bad Request",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
@@ -112,6 +108,10 @@
           },
           "403": {
             "description": "Forbidden",
+            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
+          },
+          "500": {
+            "description": "Internal Server Error",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
           },
           "200": {
@@ -142,10 +142,6 @@
           "required": true
         },
         "responses": {
-          "500": {
-            "description": "Internal Server Error",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
           "400": {
             "description": "Bad Request",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
@@ -156,6 +152,10 @@
           },
           "403": {
             "description": "Forbidden",
+            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
+          },
+          "500": {
+            "description": "Internal Server Error",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
           },
           "200": {
@@ -181,10 +181,6 @@
           }
         ],
         "responses": {
-          "500": {
-            "description": "Internal Server Error",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
           "400": {
             "description": "Bad Request",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
@@ -195,6 +191,10 @@
           },
           "403": {
             "description": "Forbidden",
+            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
+          },
+          "500": {
+            "description": "Internal Server Error",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
           },
           "200": {
@@ -219,10 +219,6 @@
           }
         ],
         "responses": {
-          "500": {
-            "description": "Internal Server Error",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
           "400": {
             "description": "Bad Request",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
@@ -233,6 +229,10 @@
           },
           "403": {
             "description": "Forbidden",
+            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
+          },
+          "500": {
+            "description": "Internal Server Error",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
           },
           "200": {
@@ -260,10 +260,6 @@
           "required": true
         },
         "responses": {
-          "500": {
-            "description": "Internal Server Error",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
           "400": {
             "description": "Bad Request",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
@@ -274,6 +270,10 @@
           },
           "403": {
             "description": "Forbidden",
+            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
+          },
+          "500": {
+            "description": "Internal Server Error",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
           },
           "200": {
@@ -295,10 +295,6 @@
           }
         ],
         "responses": {
-          "500": {
-            "description": "Internal Server Error",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
           "400": {
             "description": "Bad Request",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
@@ -309,6 +305,10 @@
           },
           "403": {
             "description": "Forbidden",
+            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
+          },
+          "500": {
+            "description": "Internal Server Error",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
           },
           "200": {
@@ -338,10 +338,6 @@
           "required": true
         },
         "responses": {
-          "500": {
-            "description": "Internal Server Error",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
           "400": {
             "description": "Bad Request",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
@@ -352,6 +348,10 @@
           },
           "403": {
             "description": "Forbidden",
+            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
+          },
+          "500": {
+            "description": "Internal Server Error",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
           },
           "200": {
@@ -375,10 +375,6 @@
           }
         ],
         "responses": {
-          "500": {
-            "description": "Internal Server Error",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
           "400": {
             "description": "Bad Request",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
@@ -389,6 +385,10 @@
           },
           "403": {
             "description": "Forbidden",
+            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
+          },
+          "500": {
+            "description": "Internal Server Error",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
           },
           "200": {
@@ -418,10 +418,6 @@
           "required": true
         },
         "responses": {
-          "500": {
-            "description": "Internal Server Error",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
           "400": {
             "description": "Bad Request",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
@@ -432,6 +428,10 @@
           },
           "403": {
             "description": "Forbidden",
+            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
+          },
+          "500": {
+            "description": "Internal Server Error",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
           },
           "200": {
@@ -447,7 +447,7 @@
       "get": {
         "tags": ["Тест-кейсы"],
         "summary": "Получение тестов для задачи",
-        "description": "Позволяет получить тесты, относящиеся к конкретной задаче",
+        "description": "Позволяет администратору получить тесты, относящиеся к конкретной задаче",
         "operationId": "getTaskTestCases",
         "parameters": [
           {
@@ -458,10 +458,6 @@
           }
         ],
         "responses": {
-          "500": {
-            "description": "Internal Server Error",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
           "400": {
             "description": "Bad Request",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
@@ -474,6 +470,10 @@
             "description": "Forbidden",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
           },
+          "500": {
+            "description": "Internal Server Error",
+            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
+          },
           "200": {
             "description": "OK",
             "content": {
@@ -482,7 +482,8 @@
               }
             }
           }
-        }
+        },
+        "security": [{ "bearerAuth": [] }]
       },
       "post": {
         "tags": ["Тест-кейсы"],
@@ -504,10 +505,6 @@
           "required": true
         },
         "responses": {
-          "500": {
-            "description": "Internal Server Error",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
           "400": {
             "description": "Bad Request",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
@@ -518,6 +515,10 @@
           },
           "403": {
             "description": "Forbidden",
+            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
+          },
+          "500": {
+            "description": "Internal Server Error",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
           },
           "200": {
@@ -550,10 +551,6 @@
           "required": true
         },
         "responses": {
-          "500": {
-            "description": "Internal Server Error",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
           "400": {
             "description": "Bad Request",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
@@ -564,6 +561,10 @@
           },
           "403": {
             "description": "Forbidden",
+            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
+          },
+          "500": {
+            "description": "Internal Server Error",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
           },
           "200": {
@@ -604,10 +605,6 @@
           }
         ],
         "responses": {
-          "500": {
-            "description": "Internal Server Error",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
           "400": {
             "description": "Bad Request",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
@@ -618,6 +615,10 @@
           },
           "403": {
             "description": "Forbidden",
+            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
+          },
+          "500": {
+            "description": "Internal Server Error",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
           },
           "200": {
@@ -639,10 +640,6 @@
           "required": true
         },
         "responses": {
-          "500": {
-            "description": "Internal Server Error",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
           "400": {
             "description": "Bad Request",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
@@ -653,6 +650,10 @@
           },
           "403": {
             "description": "Forbidden",
+            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
+          },
+          "500": {
+            "description": "Internal Server Error",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
           },
           "200": {
@@ -694,10 +695,6 @@
           }
         ],
         "responses": {
-          "500": {
-            "description": "Internal Server Error",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
           "400": {
             "description": "Bad Request",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
@@ -708,6 +705,10 @@
           },
           "403": {
             "description": "Forbidden",
+            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
+          },
+          "500": {
+            "description": "Internal Server Error",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
           },
           "200": {
@@ -754,10 +755,6 @@
           }
         ],
         "responses": {
-          "500": {
-            "description": "Internal Server Error",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
           "400": {
             "description": "Bad Request",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
@@ -768,6 +765,10 @@
           },
           "403": {
             "description": "Forbidden",
+            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
+          },
+          "500": {
+            "description": "Internal Server Error",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
           },
           "200": {
@@ -793,10 +794,6 @@
           }
         ],
         "responses": {
-          "500": {
-            "description": "Internal Server Error",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
           "400": {
             "description": "Bad Request",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
@@ -807,6 +804,10 @@
           },
           "403": {
             "description": "Forbidden",
+            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
+          },
+          "500": {
+            "description": "Internal Server Error",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
           },
           "200": {
@@ -1007,6 +1008,7 @@
           "name": { "type": "string" },
           "description": { "type": "string" },
           "experienceAmount": { "type": "integer", "format": "int64" },
+          "timeLimit": { "type": "integer", "format": "int64" },
           "topicId": { "type": "string", "format": "uuid" },
           "authorLogin": { "type": "string" },
           "createTime": { "type": "string", "format": "date-time" },
@@ -1451,10 +1453,10 @@
           "content": { "type": "array", "items": { "$ref": "#/components/schemas/TopicDTO" } },
           "number": { "type": "integer", "format": "int32" },
           "sort": { "type": "array", "items": { "$ref": "#/components/schemas/SortObject" } },
+          "pageable": { "$ref": "#/components/schemas/PageableObject" },
+          "numberOfElements": { "type": "integer", "format": "int32" },
           "first": { "type": "boolean" },
           "last": { "type": "boolean" },
-          "numberOfElements": { "type": "integer", "format": "int32" },
-          "pageable": { "$ref": "#/components/schemas/PageableObject" },
           "empty": { "type": "boolean" }
         }
       },
@@ -1585,10 +1587,10 @@
           "content": { "type": "array", "items": { "$ref": "#/components/schemas/TaskDTO" } },
           "number": { "type": "integer", "format": "int32" },
           "sort": { "type": "array", "items": { "$ref": "#/components/schemas/SortObject" } },
+          "pageable": { "$ref": "#/components/schemas/PageableObject" },
+          "numberOfElements": { "type": "integer", "format": "int32" },
           "first": { "type": "boolean" },
           "last": { "type": "boolean" },
-          "numberOfElements": { "type": "integer", "format": "int32" },
-          "pageable": { "$ref": "#/components/schemas/PageableObject" },
           "empty": { "type": "boolean" }
         }
       },
@@ -1796,10 +1798,10 @@
           "content": { "type": "array", "items": { "$ref": "#/components/schemas/CategoryDTO" } },
           "number": { "type": "integer", "format": "int32" },
           "sort": { "type": "array", "items": { "$ref": "#/components/schemas/SortObject" } },
+          "pageable": { "$ref": "#/components/schemas/PageableObject" },
+          "numberOfElements": { "type": "integer", "format": "int32" },
           "first": { "type": "boolean" },
           "last": { "type": "boolean" },
-          "numberOfElements": { "type": "integer", "format": "int32" },
-          "pageable": { "$ref": "#/components/schemas/PageableObject" },
           "empty": { "type": "boolean" }
         }
       }

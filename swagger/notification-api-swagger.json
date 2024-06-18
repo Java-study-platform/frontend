@@ -1,46 +1,29 @@
 {
   "openapi": "3.0.1",
-  "servers": [{ "url": "http://localhost:8081", "description": "Generated server url" }],
-  "tags": [
-    {
-      "name": "Авторизация",
-      "description": "Контроллер, отвечающий за работу с авторизацией и аутентификацией пользователей"
-    },
-    { "name": "Администратор", "description": "Предоставляет функции, доступные онли админу" },
-    { "name": "Пользователь", "description": "Позволяет работать с пользователями" }
-  ],
+  "servers": [{ "url": "http://localhost:8083", "description": "Generated server url" }],
+  "tags": [{ "name": "Уведомления", "description": "Контроллер, отвечающий за работу с уведомлениями" }],
   "paths": {
-    "/api/user/{userId}": {
-      "put": {
-        "tags": ["Администратор"],
-        "summary": "Назначение ролей пользователю",
-        "description": "Позволяет назначить роли пользователю (полностью переназначает их)",
-        "operationId": "assignRoles",
+    "/api/notification/read": {
+      "post": {
+        "tags": ["Уведомления"],
+        "summary": "Прочтение уведомления",
+        "description": "Позволяет прочитать уведомление, чтобы оно было помечено, как прочитанное",
+        "operationId": "readNotification",
         "parameters": [
           {
-            "name": "userId",
-            "in": "path",
+            "name": "notificationId",
+            "in": "query",
             "required": true,
             "schema": { "type": "string", "format": "uuid" }
           }
         ],
-        "requestBody": {
-          "content": {
-            "application/json": { "schema": { "$ref": "#/components/schemas/AssignUserRoleModel" } }
-          },
-          "required": true
-        },
         "responses": {
-          "400": {
-            "description": "Bad Request",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
           "404": {
             "description": "Not Found",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
           },
-          "401": {
-            "description": "Unauthorized",
+          "400": {
+            "description": "Bad Request",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
           },
           "403": {
@@ -48,7 +31,7 @@
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
           },
           "500": {
-            "description": "Что-то пошло не так",
+            "description": "Internal Server Error",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
           },
           "200": {
@@ -59,29 +42,19 @@
         "security": [{ "bearerAuth": [] }]
       }
     },
-    "/api/user/register": {
+    "/api/notification/read/all": {
       "post": {
-        "tags": ["Авторизация"],
-        "summary": "Регистрация пользователя",
-        "description": "Позволяет пользователю зарегистрироваться",
-        "operationId": "registerUser",
-        "requestBody": {
-          "content": {
-            "application/json": { "schema": { "$ref": "#/components/schemas/UserRegistrationModel" } }
-          },
-          "required": true
-        },
+        "tags": ["Уведомления"],
+        "summary": "Прочтение всех уведомлений",
+        "description": "Позволяет пометить все уведомления, как прочитанные",
+        "operationId": "readAllNotification",
         "responses": {
-          "400": {
-            "description": "Bad Request",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
           "404": {
             "description": "Not Found",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
           },
-          "401": {
-            "description": "Unauthorized",
+          "400": {
+            "description": "Bad Request",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
           },
           "403": {
@@ -89,41 +62,7 @@
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
           },
           "500": {
-            "description": "Что-то пошло не так",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
-          "200": {
-            "description": "OK",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          }
-        }
-      }
-    },
-    "/api/user/logout": {
-      "post": {
-        "tags": ["Авторизация"],
-        "summary": "Выход из аккаунта",
-        "description": "Позволяет пользователю выйти из аккаунта",
-        "operationId": "logoutUser",
-        "responses": {
-          "400": {
-            "description": "Bad Request",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
-          "500": {
-            "description": "Что-то пошло не так",
+            "description": "Internal Server Error",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
           },
           "200": {
@@ -134,65 +73,78 @@
         "security": [{ "bearerAuth": [] }]
       }
     },
-    "/api/user/login": {
-      "post": {
-        "tags": ["Авторизация"],
-        "summary": "Авторизация пользователя",
-        "description": "Позволяет пользователю авторизоваться",
-        "operationId": "loginUser",
-        "requestBody": {
-          "content": {
-            "application/json": { "schema": { "$ref": "#/components/schemas/UserLoginModel" } }
+    "/api/notification": {
+      "get": {
+        "tags": ["Уведомления"],
+        "summary": "Получение уведомлений",
+        "description": "Позволяет получить список отсортированных уведомлений с пагинацией",
+        "operationId": "getNotifications",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Zero-based page index (0..N)",
+            "required": false,
+            "schema": { "minimum": 0, "type": "integer", "default": 0 }
           },
-          "required": true
+          {
+            "name": "size",
+            "in": "query",
+            "description": "The size of the page to be returned",
+            "required": false,
+            "schema": { "minimum": 1, "type": "integer", "default": 10 }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+            "required": false,
+            "schema": { "type": "array", "items": { "type": "string" }, "default": ["createTime,DESC"] }
+          },
+          { "name": "search", "in": "query", "required": false, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/DefaultResponsePageNotificationForUserModel" }
+              }
+            }
+          }
         },
-        "responses": {
-          "400": {
-            "description": "Bad Request",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
-          "500": {
-            "description": "Что-то пошло не так",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseTokenResponse" } }
-            }
-          }
-        }
+        "security": [{ "bearerAuth": [] }]
       }
     },
-    "/api/user/top": {
+    "/api/notification/unreaden": {
       "get": {
-        "tags": ["Пользователь"],
-        "summary": "Получение топа пользователей",
-        "description": "Позволяет получить топ пользователей по опыту",
-        "operationId": "getTop",
+        "tags": ["Уведомления"],
+        "summary": "Получение количества непрочитанных уведомлений",
+        "description": "Позволяет получить количество уведомлений, которые пользователь не прочитал",
+        "operationId": "getAmountOfUnreadNotifications",
         "responses": {
-          "400": {
-            "description": "Bad Request",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
           "404": {
             "description": "Not Found",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
           },
-          "401": {
-            "description": "Unauthorized",
+          "400": {
+            "description": "Bad Request",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
           },
           "403": {
@@ -200,48 +152,12 @@
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
           },
           "500": {
-            "description": "Что-то пошло не так",
+            "description": "Internal Server Error",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
           },
           "200": {
             "description": "OK",
-            "content": {
-              "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseListUserTopDto" } }
-            }
-          }
-        }
-      }
-    },
-    "/api/user/profile": {
-      "get": {
-        "tags": ["Пользователь"],
-        "summary": "Получение профиля пользователя",
-        "description": "Позволяет получить информацию о пользователе",
-        "operationId": "getProfile",
-        "responses": {
-          "400": {
-            "description": "Bad Request",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
-          "500": {
-            "description": "Что-то пошло не так",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
-          },
-          "200": {
-            "description": "OK",
-            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseUserDto" } } }
+            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseInteger" } } }
           }
         },
         "security": [{ "bearerAuth": [] }]
@@ -337,30 +253,7 @@
           }
         }
       },
-      "AssignUserRoleModel": {
-        "required": ["roles"],
-        "type": "object",
-        "properties": {
-          "roles": { "maxItems": 3, "minItems": 0, "type": "array", "items": { "type": "string" } }
-        }
-      },
-      "UserRegistrationModel": {
-        "required": ["email", "firstName", "lastName", "username"],
-        "type": "object",
-        "properties": {
-          "username": { "type": "string" },
-          "email": { "type": "string" },
-          "firstName": { "pattern": "[a-zA-Zа-яА-Я\\s]+", "type": "string" },
-          "lastName": { "pattern": "[a-zA-Zа-яА-Я\\s]+", "type": "string" },
-          "password": { "type": "string" }
-        }
-      },
-      "UserLoginModel": {
-        "required": ["login", "password"],
-        "type": "object",
-        "properties": { "login": { "type": "string" }, "password": { "type": "string" } }
-      },
-      "DefaultResponseTokenResponse": {
+      "DefaultResponsePageNotificationForUserModel": {
         "type": "object",
         "properties": {
           "status": {
@@ -440,27 +333,65 @@
           "statusCode": { "type": "integer", "format": "int32" },
           "message": { "type": "string" },
           "timestamp": { "type": "string", "format": "date-time" },
-          "data": { "$ref": "#/components/schemas/TokenResponse" },
+          "data": { "$ref": "#/components/schemas/PageNotificationForUserModel" },
           "errors": {
             "type": "object",
             "additionalProperties": { "type": "array", "items": { "type": "string" } }
           }
         }
       },
-      "TokenResponse": {
+      "NotificationForUserModel": {
         "type": "object",
         "properties": {
-          "accessToken": { "type": "string" },
-          "expiresIn": { "type": "integer", "format": "int64" },
-          "refreshExpiresIn": { "type": "integer", "format": "int64" },
-          "refreshToken": { "type": "string" },
-          "tokenType": { "type": "string" },
-          "notBeforePolicy": { "type": "integer", "format": "int32" },
-          "sessionState": { "type": "string" },
-          "scope": { "type": "string" }
+          "id": { "type": "string", "description": "Идентификатор уведомления", "format": "uuid" },
+          "title": { "type": "string", "description": "Заголовок" },
+          "content": { "type": "string", "description": "Содержание уведомления" },
+          "createTime": { "type": "string", "description": "Время создания", "format": "date-time" },
+          "isRead": { "type": "boolean", "description": "Статус прочтения" }
+        },
+        "description": "Модель для уведомлений, которые получает пользователь"
+      },
+      "PageNotificationForUserModel": {
+        "type": "object",
+        "properties": {
+          "totalElements": { "type": "integer", "format": "int64" },
+          "totalPages": { "type": "integer", "format": "int32" },
+          "size": { "type": "integer", "format": "int32" },
+          "content": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/NotificationForUserModel" }
+          },
+          "number": { "type": "integer", "format": "int32" },
+          "sort": { "type": "array", "items": { "$ref": "#/components/schemas/SortObject" } },
+          "pageable": { "$ref": "#/components/schemas/PageableObject" },
+          "numberOfElements": { "type": "integer", "format": "int32" },
+          "first": { "type": "boolean" },
+          "last": { "type": "boolean" },
+          "empty": { "type": "boolean" }
         }
       },
-      "DefaultResponseListUserTopDto": {
+      "PageableObject": {
+        "type": "object",
+        "properties": {
+          "offset": { "type": "integer", "format": "int64" },
+          "sort": { "type": "array", "items": { "$ref": "#/components/schemas/SortObject" } },
+          "pageSize": { "type": "integer", "format": "int32" },
+          "pageNumber": { "type": "integer", "format": "int32" },
+          "paged": { "type": "boolean" },
+          "unpaged": { "type": "boolean" }
+        }
+      },
+      "SortObject": {
+        "type": "object",
+        "properties": {
+          "direction": { "type": "string" },
+          "nullHandling": { "type": "string" },
+          "ascending": { "type": "boolean" },
+          "property": { "type": "string" },
+          "ignoreCase": { "type": "boolean" }
+        }
+      },
+      "DefaultResponseInteger": {
         "type": "object",
         "properties": {
           "status": {
@@ -540,118 +471,11 @@
           "statusCode": { "type": "integer", "format": "int32" },
           "message": { "type": "string" },
           "timestamp": { "type": "string", "format": "date-time" },
-          "data": { "type": "array", "items": { "$ref": "#/components/schemas/UserTopDto" } },
+          "data": { "type": "integer", "format": "int32" },
           "errors": {
             "type": "object",
             "additionalProperties": { "type": "array", "items": { "type": "string" } }
           }
-        }
-      },
-      "UserTopDto": {
-        "type": "object",
-        "properties": {
-          "id": { "type": "string", "format": "uuid" },
-          "username": { "type": "string" },
-          "experience": { "type": "integer", "format": "int64" }
-        }
-      },
-      "DefaultResponseUserDto": {
-        "type": "object",
-        "properties": {
-          "status": {
-            "type": "string",
-            "enum": [
-              "100 CONTINUE",
-              "101 SWITCHING_PROTOCOLS",
-              "102 PROCESSING",
-              "103 EARLY_HINTS",
-              "103 CHECKPOINT",
-              "200 OK",
-              "201 CREATED",
-              "202 ACCEPTED",
-              "203 NON_AUTHORITATIVE_INFORMATION",
-              "204 NO_CONTENT",
-              "205 RESET_CONTENT",
-              "206 PARTIAL_CONTENT",
-              "207 MULTI_STATUS",
-              "208 ALREADY_REPORTED",
-              "226 IM_USED",
-              "300 MULTIPLE_CHOICES",
-              "301 MOVED_PERMANENTLY",
-              "302 FOUND",
-              "302 MOVED_TEMPORARILY",
-              "303 SEE_OTHER",
-              "304 NOT_MODIFIED",
-              "305 USE_PROXY",
-              "307 TEMPORARY_REDIRECT",
-              "308 PERMANENT_REDIRECT",
-              "400 BAD_REQUEST",
-              "401 UNAUTHORIZED",
-              "402 PAYMENT_REQUIRED",
-              "403 FORBIDDEN",
-              "404 NOT_FOUND",
-              "405 METHOD_NOT_ALLOWED",
-              "406 NOT_ACCEPTABLE",
-              "407 PROXY_AUTHENTICATION_REQUIRED",
-              "408 REQUEST_TIMEOUT",
-              "409 CONFLICT",
-              "410 GONE",
-              "411 LENGTH_REQUIRED",
-              "412 PRECONDITION_FAILED",
-              "413 PAYLOAD_TOO_LARGE",
-              "413 REQUEST_ENTITY_TOO_LARGE",
-              "414 URI_TOO_LONG",
-              "414 REQUEST_URI_TOO_LONG",
-              "415 UNSUPPORTED_MEDIA_TYPE",
-              "416 REQUESTED_RANGE_NOT_SATISFIABLE",
-              "417 EXPECTATION_FAILED",
-              "418 I_AM_A_TEAPOT",
-              "419 INSUFFICIENT_SPACE_ON_RESOURCE",
-              "420 METHOD_FAILURE",
-              "421 DESTINATION_LOCKED",
-              "422 UNPROCESSABLE_ENTITY",
-              "423 LOCKED",
-              "424 FAILED_DEPENDENCY",
-              "425 TOO_EARLY",
-              "426 UPGRADE_REQUIRED",
-              "428 PRECONDITION_REQUIRED",
-              "429 TOO_MANY_REQUESTS",
-              "431 REQUEST_HEADER_FIELDS_TOO_LARGE",
-              "451 UNAVAILABLE_FOR_LEGAL_REASONS",
-              "500 INTERNAL_SERVER_ERROR",
-              "501 NOT_IMPLEMENTED",
-              "502 BAD_GATEWAY",
-              "503 SERVICE_UNAVAILABLE",
-              "504 GATEWAY_TIMEOUT",
-              "505 HTTP_VERSION_NOT_SUPPORTED",
-              "506 VARIANT_ALSO_NEGOTIATES",
-              "507 INSUFFICIENT_STORAGE",
-              "508 LOOP_DETECTED",
-              "509 BANDWIDTH_LIMIT_EXCEEDED",
-              "510 NOT_EXTENDED",
-              "511 NETWORK_AUTHENTICATION_REQUIRED"
-            ]
-          },
-          "statusCode": { "type": "integer", "format": "int32" },
-          "message": { "type": "string" },
-          "timestamp": { "type": "string", "format": "date-time" },
-          "data": { "$ref": "#/components/schemas/UserDto" },
-          "errors": {
-            "type": "object",
-            "additionalProperties": { "type": "array", "items": { "type": "string" } }
-          }
-        }
-      },
-      "UserDto": {
-        "type": "object",
-        "properties": {
-          "keyCloakId": { "type": "string" },
-          "username": { "type": "string" },
-          "email": { "type": "string" },
-          "experience": { "type": "integer", "format": "int64" },
-          "firstName": { "type": "string" },
-          "lastName": { "type": "string" },
-          "roles": { "type": "array", "items": { "type": "string" } }
         }
       }
     },

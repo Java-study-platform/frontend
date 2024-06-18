@@ -7,5 +7,6 @@ export const ROUTES = {
   TASKS: '/tasks',
   TOPIC: (id?: string) => `/topic/${id ?? ':id'}`,
   TASK: (id?: string) => `/task/${id ?? ':id'}`,
-  SOLUTION: (id?: string) => `/solution/${id ?? ':id'}`
+  SOLUTION: (id?: string) => `/solution/${id ?? ':id'}`,
+  RATING: '/rating'
 }

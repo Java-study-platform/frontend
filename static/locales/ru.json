@@ -84,6 +84,7 @@
   "navigation.profile": "Профиль",
   "navigation.tasks": "Задачи",
   "navigation.categories": "Категории",
+  "navigation.rating": "Рейтинг",
 
   "register.title": "Добро пожаловать 👋",
   "register.haveAccount": "Уже есть аккаунт? <loginLink>Войдите</loginLink>",
@@ -121,5 +122,7 @@
   "task.solutionTestCasesSection.testIndex": "#{index}",
 
   "solution.title": "Решение",
-  "solution.code": "Код решения"
+  "solution.code": "Код решения",
+
+  "rating.title": "Топ 100 рейтинг пользователей"
 }

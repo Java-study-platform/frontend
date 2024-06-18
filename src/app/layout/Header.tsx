@@ -22,6 +22,9 @@ export const Header = () => {
         <Link to={ROUTES.CATEGORIES} className="hover:underline">
           <I18nText path="navigation.categories" />
         </Link>
+        <Link to={ROUTES.RATING} className="hover:underline">
+          <I18nText path="navigation.rating" />
+        </Link>
 
         {sessionContext.session.isAuth && (
           <>

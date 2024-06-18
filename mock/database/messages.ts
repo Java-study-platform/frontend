@@ -11,6 +11,22 @@ export const MESSAGES: MessageDTO[] = [
       LIKE: 5,
       DISLIKE: 2
     },
+    replies: [
+      {
+        id: '98765432-10fe-dcba-9876-543210abcdef',
+        content: 'Hey there!',
+        senderLogin: 'bob',
+        parentMessageId: '87654321-fedc-ba09-8765-43210abcdefe',
+        topicId: '76543210-fedc-ba98-7654-3210abcdefed',
+        reactions: {
+          LIKE: 1,
+          DISLIKE: 1
+        },
+        currentUserReactions: ['DISLIKE'],
+        eventType: 'UPDATE',
+        sentAt: '2024-06-15T15:30:00Z'
+      }
+    ],
     currentUserReactions: ['LIKE'],
     eventType: 'NEW',
     sentAt: '2024-06-16T12:00:00Z'

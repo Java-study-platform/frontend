@@ -48,7 +48,7 @@ export const useCreateCategoryTopicForm = ({
     await postLearningTopicsByCategoryIdMutation.mutateAsync({
       ...values,
       material: serializeEditorValue({ children: material }),
-      categoryId: category.id!
+      categoryId: category.id
     })
     onSubmitted(values.name)
   })

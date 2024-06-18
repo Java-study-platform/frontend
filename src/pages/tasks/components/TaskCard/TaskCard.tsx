@@ -18,7 +18,7 @@ export const TaskCard = ({ task }: TaskCardProps) => {
   return (
     <Card className="w-80 mdx:w-[100%]">
       <CardHeader className="flex items-center justify-between">
-        <Link to={ROUTES.TASK(task.id!)} className="w-40 truncate text-center hover:underline">
+        <Link to={ROUTES.TASK(task.id)} className="w-40 truncate text-center hover:underline">
           {task.name}
         </Link>
         <Link to={ROUTES.TOPIC(task.topicId!)} className="ml-2 hover:underline">

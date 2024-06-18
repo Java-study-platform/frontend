@@ -6,5 +6,6 @@ export const ROUTES = {
   PROFILE: '/profile',
   TASKS: '/tasks',
   TOPIC: (id?: string) => `/topic/${id ?? ':id'}`,
-  TASK: (id?: string) => `/task/${id ?? ':id'}`
+  TASK: (id?: string) => `/task/${id ?? ':id'}`,
+  SOLUTION: (id?: string) => `/solution/${id ?? ':id'}`
 }

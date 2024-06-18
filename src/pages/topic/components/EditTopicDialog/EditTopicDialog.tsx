@@ -18,7 +18,7 @@ interface EditTopicDialogProps {
 }
 
 export const EditTopicDialog = ({ topic, trigger }: EditTopicDialogProps) => {
-  const { functions, state } = useEditTopicDialog({ topicId: topic.id! })
+  const { functions, state } = useEditTopicDialog({ topicId: topic.id })
 
   return (
     <Dialog open={state.open} onOpenChange={functions.setOpen}>

@@ -35,9 +35,9 @@ export const ChatMessagesProvider = ({ children, chatId }: ChatMessagesProviderP
 
       if (type === MESSAGE_TYPE.INITIAL_DATA) {
         queryClient.setQueryData(chatQueryKey(chatId), () => payload)
-      } else if (type === MESSAGE_TYPE.NEW_MESSAGE) {
+      } else if (type === MESSAGE_TYPE.NEW_MESSAGE && payload.data.eventType === 'NEW') {
         queryClient.setQueryData<DefaultResponseListMessageDTO>(chatQueryKey(chatId), (oldData) => ({
-          data: [...(oldData?.data ?? []), payload.data]
+          data: [payload.data, ...(oldData?.data ?? [])]
         }))
       }
     }
@@ -58,7 +58,6 @@ export const ChatMessagesProvider = ({ children, chatId }: ChatMessagesProviderP
   )
 
   const sendLike = React.useCallback(() => {
-    console.log('#sending like')
     if (canSendMessages) {
       webSocket.sendMessage(
         JSON.stringify({

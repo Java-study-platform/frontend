@@ -35,7 +35,7 @@ export const useEditCategoryForm = ({ category, onSubmitted }: useEditCategoryFo
   })
 
   const onSubmit = editCategoryForm.handleSubmit(async (values) => {
-    await putLearningCategoriesByIdMutation.mutateAsync({ ...values, id: category.id! })
+    await putLearningCategoriesByIdMutation.mutateAsync({ ...values, id: category.id })
     onSubmitted(values.name)
   })
 

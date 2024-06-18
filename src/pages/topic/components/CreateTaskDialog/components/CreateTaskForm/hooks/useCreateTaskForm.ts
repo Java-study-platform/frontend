@@ -39,7 +39,7 @@ export const useCreateTaskForm = ({ topic, onSubmitted }: useCreateTaskFormParam
   const onSubmit = createTaskForm.handleSubmit(async (values) => {
     await postLearningTasksByTopicIdMutation.mutateAsync({
       ...values,
-      topicId: topic.id!,
+      topicId: topic.id,
       experienceAmount: +values.experienceAmount,
       timeLimit: +values.timeLimit
     })

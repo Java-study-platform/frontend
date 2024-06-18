@@ -40,8 +40,8 @@ export const CategoryTopicsDialog = ({ trigger, category, topics }: CategoryTopi
           <div className="flex flex-col gap-2">
             {topics.map((topic) => (
               <Link
-                key={topic.id!}
-                to={ROUTES.TOPIC(topic.id!)}
+                key={topic.id}
+                to={ROUTES.TOPIC(topic.id)}
                 className="flex items-center gap-2 text-sm underline"
               >
                 <LinkIcon className="h-3 w-3" />

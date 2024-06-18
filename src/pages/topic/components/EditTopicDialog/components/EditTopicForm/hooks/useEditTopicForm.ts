@@ -45,7 +45,7 @@ export const useEditTopicForm = ({ topic, onSubmitted }: useEditTopicFormParams)
     await putLearningTopicsByIdMutation.mutateAsync({
       ...values,
       material: serializeEditorValue({ children: material }),
-      id: topic.id!
+      id: topic.id
     })
     onSubmitted(values.name)
   })

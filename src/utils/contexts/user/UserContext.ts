@@ -5,15 +5,16 @@ export interface UserContextInfo {
   roles: string[]
   isAdmin: boolean
   isMentor: boolean
+  isUser: boolean
 }
 
 export interface IUserContext {
   user?: UserContextInfo
-  setUser: (user: Omit<UserContextInfo, 'isAdmin' | 'isMentor'>) => void
+  setUser: (user: Omit<UserContextInfo, 'isAdmin' | 'isMentor' | 'isUser'>) => void
   clearUser: () => void
 }
 
-export const defaultUserContextInfoValues: Omit<UserContextInfo, 'isAdmin' | 'isMentor'> = {
+export const defaultUserContextInfoValues: Omit<UserContextInfo, 'isAdmin' | 'isMentor' | 'isUser'> = {
   login: '',
   roles: []
 }

@@ -13,6 +13,7 @@ interface MessageCardProps {
   dislikesCount: number
   onLikeClick: (messageId: string) => void
   onDislikeClick: (messageId: string) => void
+  renderReplies?: () => JSX.Element
 }
 
 export const MessageCard = ({
@@ -23,7 +24,8 @@ export const MessageCard = ({
   hasUserLike,
   isUserOwner,
   onLikeClick,
-  onDislikeClick
+  onDislikeClick,
+  renderReplies
 }: MessageCardProps) => (
   <div className="flex items-start gap-2">
     <div className="grid items-start gap-1 text-sm">
@@ -43,7 +45,7 @@ export const MessageCard = ({
         <MessageContentInput
           content={message.content}
           isUserOwner={isUserOwner}
-          messageId={message.id!}
+          messageId={message.id}
         />
       </div>
       <div className="mt-1 flex items-center gap-2">
@@ -51,7 +53,7 @@ export const MessageCard = ({
           variant={hasUserLike ? 'secondary' : 'ghost'}
           disabled={hasUserDislike}
           onClick={() => {
-            if (!hasUserLike) onLikeClick(message.id!)
+            if (!hasUserLike) onLikeClick(message.id)
           }}
           className="p-2"
         >
@@ -62,7 +64,7 @@ export const MessageCard = ({
           variant={hasUserDislike ? 'secondary' : 'ghost'}
           disabled={hasUserLike}
           onClick={() => {
-            if (!hasUserDislike) onDislikeClick(message.id!)
+            if (!hasUserDislike) onDislikeClick(message.id)
           }}
           className="p-2"
         >
@@ -71,5 +73,6 @@ export const MessageCard = ({
         </Button>
       </div>
     </div>
+    {renderReplies?.()}
   </div>
 )

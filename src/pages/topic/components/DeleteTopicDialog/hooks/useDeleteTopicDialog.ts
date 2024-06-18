@@ -18,7 +18,7 @@ export const useDeleteTopicDialog = ({ topic }: UseDeleteTopicDialogParams) => {
   const deleteLearningTopicsByIdMutation = useDeleteLearningTopicsByIdMutation()
 
   const onConfirmDeleteClick = async () => {
-    await deleteLearningTopicsByIdMutation.mutateAsync({ id: topic.id! })
+    await deleteLearningTopicsByIdMutation.mutateAsync({ id: topic.id })
     navigate(ROUTES.ROOT)
     if (topic.name) toast.success(i18n.formatMessage({ id: 'toast.topicDeleted' }, { name: topic.name }))
   }

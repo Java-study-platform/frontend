@@ -37,17 +37,37 @@ export const TopicChat = ({ chatId }: TopicChatProps) => {
       {state.chat && (
         <div className="mt-5 flex flex-col gap-5">
           {state.chat.map((message) => (
-            <MessageCard
-              key={message.id}
-              message={message}
-              likesCount={message.reactions?.LIKE ?? 0}
-              dislikesCount={message.reactions?.DISLIKE ?? 0}
-              hasUserLike={message.currentUserReactions?.includes('LIKE') ?? false}
-              hasUserDislike={message.currentUserReactions?.includes('DISLIKE') ?? false}
-              isUserOwner={message.senderLogin === userContext.user?.login}
-              onLikeClick={functions.onLikeClick}
-              onDislikeClick={functions.onDislikeClick}
-            />
+            <div>
+              <MessageCard
+                key={message.id}
+                message={message}
+                likesCount={message.reactions?.LIKE ?? 0}
+                dislikesCount={message.reactions?.DISLIKE ?? 0}
+                hasUserLike={message.currentUserReactions?.includes('LIKE') ?? false}
+                hasUserDislike={message.currentUserReactions?.includes('DISLIKE') ?? false}
+                isUserOwner={message.senderLogin === userContext.user?.login}
+                onLikeClick={functions.onLikeClick}
+                onDislikeClick={functions.onDislikeClick}
+              />
+              {message.replies?.length && (
+                <div className="relative ml-5 mt-3 flex flex-col gap-5">
+                  <div className="absolute -left-6 top-3 h-1 w-5 bg-black" />
+                  {message.replies.map((reply) => (
+                    <MessageCard
+                      key={reply.id}
+                      message={reply}
+                      likesCount={reply.reactions?.LIKE ?? 0}
+                      dislikesCount={reply.reactions?.DISLIKE ?? 0}
+                      hasUserLike={reply.currentUserReactions?.includes('LIKE') ?? false}
+                      hasUserDislike={reply.currentUserReactions?.includes('DISLIKE') ?? false}
+                      isUserOwner={reply.senderLogin === userContext.user?.login}
+                      onLikeClick={functions.onLikeClick}
+                      onDislikeClick={functions.onDislikeClick}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
         </div>
       )}

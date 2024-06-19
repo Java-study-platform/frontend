@@ -42,6 +42,8 @@
 
   "dialog.editTopic.title": "Обновление темы",
 
+  "dialog.editTestCase.title": "Обновление тест кейса",
+
   "toast.topicCreated": "Тема {name} создана",
   "toast.topicDeleted": "Тема {name} удалена",
   "toast.categoryCreated": "Категория {name} создана",
@@ -52,6 +54,8 @@
   "toast.taskEdited": "Задача {name} обновлена",
   "toast.topicEdited": "Тема {name} обновлена",
   "toast.solutionUploaded": "Решение загружено",
+  "toast.testCaseDeleted": "Тест кейс удален",
+  "toast.testCaseEdited": "Тест кейс изменен",
 
   "field.username.label": "Ник",
   "field.username.placeholder": "username",
@@ -79,6 +83,10 @@
   "field.chooseTopic.label": "Выберете тему",
   "field.newMessage.placeholder": "Введите новое сообщение",
   "field.solutionUsername.placeholder": "Ник пользователя",
+  "field.expectedInput.label": "Ожидаемый ввод",
+  "field.expectedInput.placeholder": "1 1 1",
+  "field.expectedOutput.label": "Ожидаемый вывод",
+  "field.expectedOutput.placeholder": "100",
 
   "validation.required": "Обязательное поле",
   "validation.email.format": "Неверный формат почты",
@@ -125,6 +133,10 @@
   "task.solutionTestCasesSection.testIndex": "#{index}",
   "task.solutionsSection.title": "Решения пользователей",
   "task.solutionsSection.solutions": "Решения",
+  "task.testCasesSection.title": "Тест кейсы",
+  "task.testCasesSection.timeLimit": "Тайм лимит : {timeLimit}сек",
+  "task.testCasesSection.expectedInput": "Ожидаемый ввод:",
+  "task.testCasesSection.expectedOutput": "Ожидаемый вывод:",
 
   "solution.title": "Решение",
   "solution.code": "Код решения",

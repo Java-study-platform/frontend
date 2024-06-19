@@ -39,14 +39,15 @@ export const SolutionsSection = () => {
                   <RadioGroupItem value={solution.id!} id={solution.id} className="peer sr-only" />
                   <Label
                     htmlFor={solution.id}
-                    className="flex items-center gap-2 border-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                    className=" flex items-center gap-2 border-2 p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
                   >
-                    <Link to={ROUTES.SOLUTION(solution.id)}>
+                    <Link to={ROUTES.SOLUTION(solution.id)} className="hover:underline">
                       <Typography tag="p" variant="body1">
+                        {solution.username}:{' '}
                         <I18nText path="task.userSolutionsSection.solutionIndex" values={{ index }} />
                       </Typography>
-                      <SolutionStatus status={solution.status!} />
                     </Link>
+                    <SolutionStatus status={solution.status!} />
                   </Label>
                 </div>
               ))}

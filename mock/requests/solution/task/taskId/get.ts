@@ -1,5 +1,5 @@
 import { RestRequestConfig } from 'mock-config-server'
-import { SOLUTIONS } from '../../../../database/solutions'
+import { SOLUTIONS } from '../../../../database'
 
 export const getSolutionTaskByTaskIdConfig: RestRequestConfig = {
   path: '/solution/task/:taskId',

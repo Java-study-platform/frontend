@@ -17,6 +17,7 @@
     "generate-core-api-file": "npx swagger-typescript-api -p ./swagger/core-api-swagger.json -o ./generated -n core-api.ts",
     "generate-solution-api": "npx swagger-typescript-api -p http://95.163.230.65:8084/api-docs -o ./generated -n solution-api.ts",
     "generate-solution-api-file": "npx swagger-typescript-api -p ./swagger/solution-api-swagger.json -o ./generated -n solution-api.ts",
+    "generate-notification-api-file": "npx swagger-typescript-api -p ./swagger/notification-api-swagger.json -o ./generated -n solution-api.ts",
     "preview": "vite preview",
     "prepare": "husky"
   },

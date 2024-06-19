@@ -21,13 +21,6 @@ export const useMessageContentInput = ({
     setEditingMode(false)
   }
 
-  const onConfirmClick = () => {
-    if (content.length) {
-      setEditingMode(false)
-      chatMessagesContext.sendEditMessage(messageId, content)
-    }
-  }
-
   const onCancelReplyClick = () => {
     setReplyContent('')
     setReplyMode(false)
@@ -46,7 +39,6 @@ export const useMessageContentInput = ({
       setContent,
       setEditingMode,
       onCancelClick,
-      onConfirmClick,
       setReplyMode,
       onCancelReplyClick,
       onConfirmReplyClick,

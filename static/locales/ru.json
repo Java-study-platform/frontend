@@ -56,6 +56,7 @@
   "toast.solutionUploaded": "Решение загружено",
   "toast.testCaseDeleted": "Тест кейс удален",
   "toast.testCaseEdited": "Тест кейс изменен",
+  "toast.testCaseCreated": "Тест кейс создан",
 
   "field.username.label": "Ник",
   "field.username.placeholder": "username",

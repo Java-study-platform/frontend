@@ -7,6 +7,7 @@
       "description": "Контроллер, отвечающий за работу с авторизацией и аутентификацией пользователей"
     },
     { "name": "Администратор", "description": "Предоставляет функции, доступные онли админу" },
+    { "name": "Достижения", "description": "Контроллер, отвечающий за достижения" },
     { "name": "Пользователь", "description": "Позволяет работать с пользователями" }
   ],
   "paths": {
@@ -242,6 +243,45 @@
           "200": {
             "description": "OK",
             "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseUserDto" } } }
+          }
+        },
+        "security": [{ "bearerAuth": [] }]
+      }
+    },
+    "/api/user/achievements": {
+      "get": {
+        "tags": ["Достижения"],
+        "summary": "Получение списка достижений",
+        "description": "Позволяет получить полный список достижений",
+        "operationId": "getAllUserAchievements",
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
+          },
+          "500": {
+            "description": "Что-то пошло не так",
+            "content": { "*/*": { "schema": { "$ref": "#/components/schemas/DefaultResponseObject" } } }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": { "type": "array", "items": { "$ref": "#/components/schemas/AchievementDto" } }
+              }
+            }
           }
         },
         "security": [{ "bearerAuth": [] }]
@@ -652,6 +692,17 @@
           "firstName": { "type": "string" },
           "lastName": { "type": "string" },
           "roles": { "type": "array", "items": { "type": "string" } }
+        }
+      },
+      "AchievementDto": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "format": "uuid" },
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "amountToObtain": { "type": "integer", "format": "int64" },
+          "progress": { "type": "integer", "format": "int64" },
+          "isObtained": { "type": "boolean" }
         }
       }
     },

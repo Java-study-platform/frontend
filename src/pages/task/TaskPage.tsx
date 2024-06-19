@@ -52,7 +52,6 @@ export const TaskPage = () => {
               <Typography tag="p" variant="body2">
                 <I18nText path="task.timeLimit" values={{ timeLimit: state.task.timeLimit }} />
               </Typography>
-              {/* // TODO: add example test case */}
             </div>
             {userContext.user?.isUser && (
               <div>

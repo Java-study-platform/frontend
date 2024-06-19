@@ -11,8 +11,9 @@ interface MessageCardProps {
   hasUserDislike: boolean
   likesCount: number
   dislikesCount: number
-  onLikeClick: (messageId: string) => void
-  onDislikeClick: (messageId: string) => void
+  currentUserReactions: ('LIKE' | 'DISLIKE')[]
+  onLikeClick: (messageId: string, currentUserReactions: ('LIKE' | 'DISLIKE')[]) => void
+  onDislikeClick: (messageId: string, currentUserReactions: ('LIKE' | 'DISLIKE')[]) => void
   renderReplies?: () => JSX.Element
 }
 
@@ -23,6 +24,7 @@ export const MessageCard = ({
   hasUserDislike,
   hasUserLike,
   isUserOwner,
+  currentUserReactions,
   onLikeClick,
   onDislikeClick,
   renderReplies
@@ -53,7 +55,7 @@ export const MessageCard = ({
           variant={hasUserLike ? 'secondary' : 'ghost'}
           disabled={hasUserDislike}
           onClick={() => {
-            if (!hasUserLike) onLikeClick(message.id)
+            if (!hasUserLike) onLikeClick(message.id, currentUserReactions)
           }}
           className="p-2"
         >
@@ -64,7 +66,7 @@ export const MessageCard = ({
           variant={hasUserDislike ? 'secondary' : 'ghost'}
           disabled={hasUserLike}
           onClick={() => {
-            if (!hasUserDislike) onDislikeClick(message.id)
+            if (!hasUserDislike) onDislikeClick(message.id, currentUserReactions)
           }}
           className="p-2"
         >

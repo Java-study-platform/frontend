@@ -15,12 +15,12 @@ export const useTopicChat = ({ chatId }: UseTopicChatParams) => {
     chatMessagesContext.sendMessage(newMessage)
   }
 
-  const onLikeClick = (messageId: string) => {
-    chatMessagesContext.sendLike(messageId)
+  const onLikeClick = (messageId: string, currentUserReactions: ('LIKE' | 'DISLIKE')[]) => {
+    chatMessagesContext.sendReaction(messageId, 'LIKE', currentUserReactions)
   }
 
-  const onDislikeClick = (messageId: string) => {
-    chatMessagesContext.sendDislike(messageId)
+  const onDislikeClick = (messageId: string, currentUserReactions: ('LIKE' | 'DISLIKE')[]) => {
+    chatMessagesContext.sendReaction(messageId, 'DISLIKE', currentUserReactions)
   }
 
   return {

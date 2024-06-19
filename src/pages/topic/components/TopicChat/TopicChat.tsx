@@ -46,6 +46,7 @@ export const TopicChat = ({ chatId }: TopicChatProps) => {
                 hasUserLike={message.currentUserReactions?.includes('LIKE') ?? false}
                 hasUserDislike={message.currentUserReactions?.includes('DISLIKE') ?? false}
                 isUserOwner={message.senderLogin === userContext.user?.login}
+                currentUserReactions={message.currentUserReactions ?? []}
                 onLikeClick={functions.onLikeClick}
                 onDislikeClick={functions.onDislikeClick}
               />
@@ -61,6 +62,7 @@ export const TopicChat = ({ chatId }: TopicChatProps) => {
                       hasUserLike={reply.currentUserReactions?.includes('LIKE') ?? false}
                       hasUserDislike={reply.currentUserReactions?.includes('DISLIKE') ?? false}
                       isUserOwner={reply.senderLogin === userContext.user?.login}
+                      currentUserReactions={message.currentUserReactions ?? []}
                       onLikeClick={functions.onLikeClick}
                       onDislikeClick={functions.onDislikeClick}
                     />

@@ -30,7 +30,8 @@ export const SolutionTestsSection = ({ solutionId }: SolutionTestsSectionProps) 
             />
             {test.testTime}
           </Typography>
-          <SolutionStatus status={test.status} />
+          <SolutionStatus status={test.status!} />
+          {/* // TODO add request for mentor with full info about test */}
         </div>
       ))}
     </section>

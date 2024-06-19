@@ -20,12 +20,12 @@ export const MessageContentInput = ({
   return (
     <div>
       <div className="flex items-center gap-2">
-        {(!isUserOwner || !state.editingMode) && (
+        {/* {(!isUserOwner || !state.editingMode) && (
           <Typography tag="p" variant="body2">
             {content}
           </Typography>
-        )}
-        {isUserOwner && state.editingMode && (
+        )} */}
+        {/* {isUserOwner && state.editingMode && (
           <Input
             className="h-[50px] text-lg disabled:text-primary"
             {...props}
@@ -43,7 +43,7 @@ export const MessageContentInput = ({
               <XIcon className="h-4 w-4" />
             </Button>
           </div>
-        )}
+        )} */}
       </div>
       {isUserOwner && (
         <Button

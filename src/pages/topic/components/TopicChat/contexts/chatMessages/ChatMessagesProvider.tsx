@@ -1,20 +1,8 @@
-import { DefaultResponseListMessageDTO } from '@/generated/core-api'
+import { DefaultResponseListMessageDTO, MessageDTO } from '@/generated/core-api'
+import { useStomp } from '@/utils/hooks'
 import { useQueryClient } from '@tanstack/react-query'
 import React from 'react'
-import useWebSocket, { ReadyState } from 'react-use-websocket'
 import { ChatMessagesContext } from './ChatMessagesContext'
-
-const SOCKET_URL = import.meta.env.VITE_WEB_SOCKET_URL
-
-const MESSAGE_TYPE = {
-  INITIAL_DATA: 'INITIAL_DATA',
-  SEND_MESSAGE: 'SEND_MESSAGE',
-  SEND_LIKE: 'SEND_LIKE',
-  SEND_DISLIKE: 'SEND_DISLIKE',
-  SEND_EDIT_MESSAGE: 'SEND_EDIT_MESSAGE',
-  SEND_DELETE_MESSAGE: 'SEND_DELETE_MESSAGE',
-  NEW_MESSAGE: 'NEW_MESSAGE'
-}
 
 export const chatQueryKey = (chatId: string) => ['getLearningChatsById', chatId]
 
@@ -24,83 +12,73 @@ interface ChatMessagesProviderProps {
 }
 
 export const ChatMessagesProvider = ({ children, chatId }: ChatMessagesProviderProps) => {
-  const webSocket = useWebSocket(SOCKET_URL)
-
   const queryClient = useQueryClient()
-  const canSendMessages = webSocket.readyState === ReadyState.OPEN
+  const stomp = useStomp()
 
   React.useEffect(() => {
-    if (webSocket.lastMessage && webSocket.lastMessage.data) {
-      const { type, payload } = JSON.parse(webSocket.lastMessage.data)
-
-      if (type === MESSAGE_TYPE.INITIAL_DATA) {
-        queryClient.setQueryData(chatQueryKey(chatId), () => payload)
-      } else if (type === MESSAGE_TYPE.NEW_MESSAGE && payload.data.eventType === 'NEW') {
-        queryClient.setQueryData<DefaultResponseListMessageDTO>(chatQueryKey(chatId), (oldData) => ({
-          data: [payload.data, ...(oldData?.data ?? [])]
-        }))
+    stomp.subscribe<MessageDTO>(`/topic/chats/${chatId}`, (messageData) => {
+      if (messageData.eventType === 'UPDATE') {
+        queryClient.setQueryData<DefaultResponseListMessageDTO>(chatQueryKey(chatId), (prevMessages) => {
+          const updatedMessageIndex = prevMessages?.data?.findIndex(
+            (message) => message.id === messageData.id
+          )
+          if (prevMessages?.data && updatedMessageIndex) {
+            prevMessages.data[updatedMessageIndex] = messageData
+          }
+          return {
+            data: prevMessages?.data
+          }
+        })
+        return
       }
+
+      queryClient.setQueryData<DefaultResponseListMessageDTO>(chatQueryKey(chatId), (prevMessages) => ({
+        data: [messageData, ...(prevMessages?.data ?? [])]
+      }))
+    })
+
+    return () => {
+      stomp.unsubscribe(`/topic/chats/${chatId}`)
     }
-  }, [webSocket.lastMessage])
+  }, [stomp.isConnected])
 
   const sendMessage = React.useCallback(
-    (content: string) => {
-      if (canSendMessages) {
-        webSocket.sendMessage(
-          JSON.stringify({
-            type: MESSAGE_TYPE.SEND_MESSAGE,
-            content
-          })
-        )
+    (content: string, parentMessageId?: string) => {
+      if (stomp.isConnected) {
+        stomp.send(`/app/chat/${chatId}`, {
+          content,
+          parentMessageId
+        })
       }
     },
-    [canSendMessages]
+    [stomp.isConnected]
   )
 
-  const sendLike = React.useCallback(() => {
-    if (canSendMessages) {
-      webSocket.sendMessage(
-        JSON.stringify({
-          type: MESSAGE_TYPE.SEND_LIKE
-        })
-      )
-    }
-  }, [canSendMessages])
+  const sendReaction = React.useCallback(
+    (
+      messageId: string,
+      reactionType: 'LIKE' | 'DISLIKE',
+      currentUserReactions: ('LIKE' | 'DISLIKE')[]
+    ) => {
+      if (stomp.isConnected) {
+        if (currentUserReactions.includes(reactionType)) {
+          stomp.send(`/app/chat/${chatId}/unreact`, {
+            messageId,
+            reactionType
+          })
+          return
+        }
 
-  const sendDislike = React.useCallback(() => {
-    if (canSendMessages) {
-      webSocket.sendMessage(
-        JSON.stringify({
-          type: MESSAGE_TYPE.SEND_DISLIKE
+        stomp.send(`/app/chat/${chatId}/react`, {
+          messageId,
+          reactionType
         })
-      )
-    }
-  }, [canSendMessages])
-
-  const sendEditMessage = React.useCallback(() => {
-    if (canSendMessages) {
-      webSocket.sendMessage(
-        JSON.stringify({
-          type: MESSAGE_TYPE.SEND_EDIT_MESSAGE
-        })
-      )
-    }
-  }, [canSendMessages])
-
-  const sendDeleteMessage = React.useCallback(() => {
-    if (canSendMessages) {
-      webSocket.sendMessage(
-        JSON.stringify({
-          type: MESSAGE_TYPE.SEND_DELETE_MESSAGE
-        })
-      )
-    }
-  }, [canSendMessages])
-
-  const value = React.useMemo(
-    () => ({ sendMessage, sendLike, sendDislike, sendEditMessage, sendDeleteMessage }),
-    [canSendMessages]
+      }
+    },
+    [stomp.isConnected]
   )
+
+  const value = React.useMemo(() => ({ sendMessage, sendReaction }), [stomp.isConnected])
 
   return <ChatMessagesContext.Provider value={value}>{children}</ChatMessagesContext.Provider>
 }

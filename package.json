@@ -109,6 +109,7 @@
     "slate-history": "^0.100.0",
     "slate-hyperscript": "^0.100.0",
     "slate-react": "^0.105.0",
+    "sockjs": "^0.3.24",
     "sockjs-client": "^1.6.1",
     "sonner": "^1.4.41",
     "tailwind-merge": "^2.3.0",

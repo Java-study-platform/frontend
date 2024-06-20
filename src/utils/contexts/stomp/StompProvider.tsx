@@ -1,6 +1,6 @@
 import { Client, Stomp, StompConfig, StompSubscription } from '@stomp/stompjs'
 import { createContext, Dispatch, FC, ReactNode, SetStateAction, useEffect, useState } from 'react'
-import * as SockJS from 'sockjs-client'
+import SockJS from 'sockjs-client'
 
 export interface Subscriptions {
   [key: string]: StompSubscription
@@ -27,13 +27,17 @@ interface Props {
   onConnected?: (client: Client) => void
 }
 
-export const StompProvider: FC<Props> = ({ children, onConnected }) => {
+export const StompProvider: FC<Props> = ({ children, config, onConnected }) => {
   const [stompClient] = useState(() => {
-    const sock = new SockJS('http://localhost:8084/ws')
+    const sock = new SockJS(config.brokerURL!)
     const client = Stomp.over(sock)
     return client
   })
   const [subscriptions, setSubscriptions] = useState({})
+
+  useEffect(() => {
+    global = window
+  }, [])
 
   useEffect(() => {
     stompClient?.activate()

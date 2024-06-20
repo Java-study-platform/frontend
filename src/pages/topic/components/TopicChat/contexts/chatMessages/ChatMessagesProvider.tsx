@@ -16,6 +16,7 @@ export const ChatMessagesProvider = ({ children, chatId }: ChatMessagesProviderP
   const stomp = useStomp()
 
   React.useEffect(() => {
+    console.log('#isConnected', stomp.isConnected)
     if (!stomp.isConnected) return
 
     stomp.subscribe<MessageDTO>(`/topic/chats/${chatId}`, (messageData) => {

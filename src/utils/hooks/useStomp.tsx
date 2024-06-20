@@ -1,3 +1,4 @@
+import React from 'react'
 import { useStompContext } from '../contexts/stomp/useStompContext'
 
 interface ObjectType<T = string | undefined> {
@@ -7,6 +8,10 @@ interface ObjectType<T = string | undefined> {
 export const useStomp = () => {
   const value = useStompContext()
   const { stompClient, subscriptions, setSubscriptions } = value
+
+  React.useEffect(() => {
+    console.log('#stompClient.connected', stompClient?.connected)
+  }, [stompClient?.connected])
 
   const send = (path: string, body: ObjectType) => {
     console.log(`#send message to ${path}`)

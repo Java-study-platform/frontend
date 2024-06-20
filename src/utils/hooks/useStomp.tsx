@@ -9,6 +9,8 @@ export const useStomp = () => {
   const { stompClient, subscriptions, setSubscriptions } = value
 
   const send = (path: string, body: ObjectType) => {
+    console.log(`#send message to ${path}`)
+
     stompClient?.publish({
       destination: path,
       body: JSON.stringify(body)
@@ -23,12 +25,14 @@ export const useStomp = () => {
       const body: T = JSON.parse(message.body)
       callback(body)
     })
+    console.log('#subscribe to ', path)
     setSubscriptions((prev) => ({ ...prev, [path]: subscription }))
   }
 
   const unsubscribe = (path: string) => {
     const copy = { ...subscriptions }
     copy[path].unsubscribe()
+    console.log('#unsubscribe from ', path)
     delete copy[path]
     setSubscriptions(() => ({ ...copy }))
   }

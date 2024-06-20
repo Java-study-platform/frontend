@@ -1,5 +1,14 @@
 import { Client, Stomp, StompConfig, StompSubscription } from '@stomp/stompjs'
-import { createContext, Dispatch, FC, ReactNode, SetStateAction, useEffect, useState } from 'react'
+import {
+  createContext,
+  Dispatch,
+  FC,
+  ReactNode,
+  SetStateAction,
+  useEffect,
+  useMemo,
+  useState
+} from 'react'
 import SockJS from 'sockjs-client'
 
 export interface Subscriptions {
@@ -7,6 +16,7 @@ export interface Subscriptions {
 }
 
 export interface StompContextState {
+  isConnected: boolean
   stompClient: Client | null
   subscriptions: Subscriptions
   setSubscriptions: Dispatch<SetStateAction<Subscriptions>>
@@ -31,9 +41,11 @@ export const StompProvider: FC<Props> = ({ children, config, onConnected }) => {
   const [stompClient] = useState(() => {
     const sock = new SockJS(config.brokerURL!, {})
     const client = Stomp.over(sock)
+
     return client
   })
   const [subscriptions, setSubscriptions] = useState({})
+  const [isConnected, setIsConnected] = useState(false)
 
   useEffect(() => {
     if (!stompClient) return
@@ -41,6 +53,7 @@ export const StompProvider: FC<Props> = ({ children, config, onConnected }) => {
     stompClient.connect(
       {},
       () => {
+        setIsConnected(true)
         onConnected?.(stompClient)
         console.log('#stompClient.connect connected')
       },
@@ -56,15 +69,10 @@ export const StompProvider: FC<Props> = ({ children, config, onConnected }) => {
     }
   }, [stompClient])
 
-  return (
-    <StompContext.Provider
-      value={{
-        stompClient,
-        subscriptions,
-        setSubscriptions
-      }}
-    >
-      {children}
-    </StompContext.Provider>
+  const value = useMemo(
+    () => ({ stompClient, subscriptions, setSubscriptions, isConnected }),
+    [stompClient, subscriptions, setSubscriptions, isConnected]
   )
+
+  return <StompContext.Provider value={value}>{children}</StompContext.Provider>
 }

@@ -52,6 +52,6 @@ export const useStomp = () => {
     unsubscribe,
     subscriptions,
     send,
-    isConnected: !!stompClient?.connected
+    isConnected: value.isConnected
   }
 }

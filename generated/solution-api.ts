@@ -91,6 +91,7 @@ export interface DefaultResponseObject {
 
 export interface SendTestSolutionRequest {
   code?: string
+  taskId: string
 }
 
 export interface DefaultResponseSolutionDto {

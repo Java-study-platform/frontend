@@ -29,18 +29,16 @@ interface Props {
 
 export const StompProvider: FC<Props> = ({ children, config, onConnected }) => {
   const [stompClient] = useState(() => {
-    const sock = new SockJS(config.brokerURL!)
+    const sock = new SockJS(config.brokerURL!, {})
     const client = Stomp.over(sock)
     return client
   })
   const [subscriptions, setSubscriptions] = useState({})
 
   useEffect(() => {
-    global = window
-  }, [])
+    if (!stompClient) return
 
-  useEffect(() => {
-    stompClient?.activate()
+    stompClient.activate()
     onConnected?.(stompClient)
     return () => {
       stompClient?.deactivate()

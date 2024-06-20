@@ -16,6 +16,8 @@ export const ChatMessagesProvider = ({ children, chatId }: ChatMessagesProviderP
   const stomp = useStomp()
 
   React.useEffect(() => {
+    if (!stomp.isConnected) return
+
     stomp.subscribe<MessageDTO>(`/topic/chats/${chatId}`, (messageData) => {
       if (messageData.eventType === 'UPDATE') {
         queryClient.setQueryData<DefaultResponseListMessageDTO>(

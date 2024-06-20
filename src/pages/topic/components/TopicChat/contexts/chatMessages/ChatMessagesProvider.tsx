@@ -18,17 +18,14 @@ export const ChatMessagesProvider = ({ children, chatId }: ChatMessagesProviderP
   React.useEffect(() => {
     stomp.subscribe<MessageDTO>(`/topic/chats/${chatId}`, (messageData) => {
       if (messageData.eventType === 'UPDATE') {
-        queryClient.setQueryData<DefaultResponseListMessageDTO>(chatQueryKey(chatId), (prevMessages) => {
-          const updatedMessageIndex = prevMessages?.data?.findIndex(
-            (message) => message.id === messageData.id
-          )
-          if (prevMessages?.data && updatedMessageIndex) {
-            prevMessages.data[updatedMessageIndex] = messageData
-          }
-          return {
-            data: prevMessages?.data
-          }
-        })
+        queryClient.setQueryData<DefaultResponseListMessageDTO>(
+          chatQueryKey(chatId),
+          (prevMessages) => ({
+            data: prevMessages?.data?.map((message) =>
+              message.id === messageData.id ? messageData : message
+            )
+          })
+        )
         return
       }
 

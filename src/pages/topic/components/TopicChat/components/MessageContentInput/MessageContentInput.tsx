@@ -20,10 +20,11 @@ export const MessageContentInput = ({
   return (
     <div>
       <div className="flex items-center gap-2">
+        <Typography tag="p" variant="body2">
+          {content}
+        </Typography>
         {/* {(!isUserOwner || !state.editingMode) && (
-          <Typography tag="p" variant="body2">
-            {content}
-          </Typography>
+
         )} */}
         {/* {isUserOwner && state.editingMode && (
           <Input
@@ -45,7 +46,7 @@ export const MessageContentInput = ({
           </div>
         )} */}
       </div>
-      {isUserOwner && (
+      {/* {isUserOwner && (
         <Button
           variant="link"
           className="cursor-pointer underline"
@@ -53,7 +54,7 @@ export const MessageContentInput = ({
         >
           <I18nText path="button.editMessage" />
         </Button>
-      )}
+      )} */}
       {!isUserOwner && !state.replyMode && (
         <Button
           variant="link"

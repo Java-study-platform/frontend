@@ -35,7 +35,7 @@ export const ProfileForm = ({ profile }: ProfileFormProps) => {
                 </FormLabel>
                 <FormControl>
                   <Input
-                    disabled={state.isLoading}
+                    disabled
                     placeholder={i18n.formatMessage({ id: 'field.username.placeholder' })}
                     {...field}
                   />
@@ -61,7 +61,7 @@ export const ProfileForm = ({ profile }: ProfileFormProps) => {
                 </FormLabel>
                 <FormControl>
                   <Input
-                    disabled={state.isLoading}
+                    disabled
                     placeholder={i18n.formatMessage({ id: 'field.email.placeholder' })}
                     {...field}
                   />

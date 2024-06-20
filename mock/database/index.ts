@@ -1,3 +1,4 @@
+export * from './achievements'
 export * from './categories'
 export * from './messages'
 export * from './profile'

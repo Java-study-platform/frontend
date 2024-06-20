@@ -105,6 +105,7 @@
   "login.noAccount": "Нет аккаунта? <registerLink>Зарегистрируйтесь</registerLink>",
 
   "profile.title": "Профиль",
+  "profile.userAchievements": "Ачивки",
 
   "categories.title": "Категории",
   "categories.noTopics": "Темы отсутствуют",

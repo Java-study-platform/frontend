@@ -1,3 +1,4 @@
+export * from './user/achievements'
 export * from './user/login'
 export * from './user/profile'
 export * from './user/register'

@@ -10,7 +10,7 @@ export const SolutionPage = () => {
   const { state } = useSolutionPage()
 
   return (
-    <div className="flex h-screen">
+    <div className="flex">
       <div className="container max-w-[750px] mdx:mx-auto mdx:max-w-[300px]">
         <div className="flex items-center gap-4">
           <Typography tag="h1" variant="h1">

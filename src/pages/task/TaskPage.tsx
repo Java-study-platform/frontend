@@ -16,7 +16,7 @@ export const TaskPage = () => {
   const { state } = useTaskPage()
 
   return (
-    <div className="flex h-screen">
+    <div className="flex">
       <div className="container max-w-[750px] mdx:mx-auto">
         {state.loading && (
           <div className="mt-2 flex items-center gap-2">

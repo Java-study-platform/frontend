@@ -9,7 +9,7 @@ export const getSolutionByTaskId = ({
   params,
   config
 }: RequestOptions<GetSolutionByTaskIdRequestParams>) =>
-  instance.get<DefaultResponseListSolutionDto>(`/solution/DELETEME/${params.taskId}`, {
+  instance.get<DefaultResponseListSolutionDto>(`/solution/${params.taskId}`, {
     ...config,
     params: { ...config?.params, ...params }
   })

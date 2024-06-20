@@ -10,6 +10,7 @@ import {
   useState
 } from 'react'
 import SockJS from 'sockjs-client'
+import { useSessionContext } from '../session'
 
 export interface Subscriptions {
   [key: string]: StompSubscription
@@ -38,6 +39,7 @@ interface Props {
 }
 
 export const StompProvider: FC<Props> = ({ children, config, onConnected }) => {
+  const sessionContext = useSessionContext()
   const [stompClient] = useState(() => {
     const sock = new SockJS(config.brokerURL!, {})
     const client = Stomp.over(sock)
@@ -51,7 +53,9 @@ export const StompProvider: FC<Props> = ({ children, config, onConnected }) => {
     if (!stompClient) return
 
     stompClient.connect(
-      {},
+      {
+        Authorization: 'Bearer ' + sessionContext.session.accessToken
+      },
       () => {
         setIsConnected(true)
         onConnected?.(stompClient)

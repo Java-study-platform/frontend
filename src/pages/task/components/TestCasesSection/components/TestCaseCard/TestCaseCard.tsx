@@ -59,12 +59,7 @@ export const TestCaseCard = ({ testCase, onDeleteClick }: TaskCardProps) => {
             <EditTestCaseDialog
               testCase={testCase}
               trigger={
-                <Button
-                  variant="secondary"
-                  size="icon"
-                  aria-label="Edit"
-                  onClick={() => onDeleteClick(testCase.id)}
-                >
+                <Button variant="secondary" size="icon" aria-label="Edit">
                   <FilePenIcon className="h-4 w-4" />
                 </Button>
               }

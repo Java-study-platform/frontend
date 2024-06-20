@@ -38,9 +38,20 @@ export const StompProvider: FC<Props> = ({ children, config, onConnected }) => {
   useEffect(() => {
     if (!stompClient) return
 
+    stompClient.connect(
+      {},
+      () => {
+        onConnected?.(stompClient)
+        console.log('#stompClient.connect connected')
+      },
+      (error: FIXME) => {
+        console.error(error)
+      }
+    )
     stompClient.activate()
-    onConnected?.(stompClient)
+
     return () => {
+      stompClient?.disconnect()
       stompClient?.deactivate()
     }
   }, [stompClient])

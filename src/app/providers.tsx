@@ -26,12 +26,7 @@ export const Providers = ({ children }: ProvidersProps) => {
             <AxiosProvider>
               <Toaster />
               <TooltipProvider>
-                <StompProvider
-                  config={{ brokerURL: import.meta.env.VITE_WEB_SOCKET_URL }}
-                  onConnected={() => {
-                    console.log('#connected to client')
-                  }}
-                >
+                <StompProvider config={{ brokerURL: import.meta.env.VITE_WEB_SOCKET_URL }}>
                   {children}
                 </StompProvider>
               </TooltipProvider>

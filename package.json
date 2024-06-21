@@ -19,11 +19,15 @@
     "generate-solution-api-file": "npx swagger-typescript-api -p ./swagger/solution-api-swagger.json -o ./generated -n solution-api.ts",
     "generate-notification-api-file": "npx swagger-typescript-api -p ./swagger/notification-api-swagger.json -o ./generated -n notification-api.ts",
     "preview": "vite preview",
-    "prepare": "husky"
+    "prepare": "husky",
+    "kubb-generate": "kubb"
   },
   "dependencies": {
     "@ariakit/react": "^0.4.7",
     "@hookform/resolvers": "^3.6.0",
+    "@kubb/cli": "^2.20.0",
+    "@kubb/core": "^2.20.0",
+    "@kubb/swagger-ts": "^2.20.0",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-checkbox": "^1.0.4",

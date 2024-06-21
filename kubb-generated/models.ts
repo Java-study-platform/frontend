@@ -1,0 +1,2124 @@
+export const defaultResponseObjectStatus = {
+  '100 CONTINUE': '100 CONTINUE',
+  '101 SWITCHING_PROTOCOLS': '101 SWITCHING_PROTOCOLS',
+  '102 PROCESSING': '102 PROCESSING',
+  '103 EARLY_HINTS': '103 EARLY_HINTS',
+  '103 CHECKPOINT': '103 CHECKPOINT',
+  '200 OK': '200 OK',
+  '201 CREATED': '201 CREATED',
+  '202 ACCEPTED': '202 ACCEPTED',
+  '203 NON_AUTHORITATIVE_INFORMATION': '203 NON_AUTHORITATIVE_INFORMATION',
+  '204 NO_CONTENT': '204 NO_CONTENT',
+  '205 RESET_CONTENT': '205 RESET_CONTENT',
+  '206 PARTIAL_CONTENT': '206 PARTIAL_CONTENT',
+  '207 MULTI_STATUS': '207 MULTI_STATUS',
+  '208 ALREADY_REPORTED': '208 ALREADY_REPORTED',
+  '226 IM_USED': '226 IM_USED',
+  '300 MULTIPLE_CHOICES': '300 MULTIPLE_CHOICES',
+  '301 MOVED_PERMANENTLY': '301 MOVED_PERMANENTLY',
+  '302 FOUND': '302 FOUND',
+  '302 MOVED_TEMPORARILY': '302 MOVED_TEMPORARILY',
+  '303 SEE_OTHER': '303 SEE_OTHER',
+  '304 NOT_MODIFIED': '304 NOT_MODIFIED',
+  '305 USE_PROXY': '305 USE_PROXY',
+  '307 TEMPORARY_REDIRECT': '307 TEMPORARY_REDIRECT',
+  '308 PERMANENT_REDIRECT': '308 PERMANENT_REDIRECT',
+  '400 BAD_REQUEST': '400 BAD_REQUEST',
+  '401 UNAUTHORIZED': '401 UNAUTHORIZED',
+  '402 PAYMENT_REQUIRED': '402 PAYMENT_REQUIRED',
+  '403 FORBIDDEN': '403 FORBIDDEN',
+  '404 NOT_FOUND': '404 NOT_FOUND',
+  '405 METHOD_NOT_ALLOWED': '405 METHOD_NOT_ALLOWED',
+  '406 NOT_ACCEPTABLE': '406 NOT_ACCEPTABLE',
+  '407 PROXY_AUTHENTICATION_REQUIRED': '407 PROXY_AUTHENTICATION_REQUIRED',
+  '408 REQUEST_TIMEOUT': '408 REQUEST_TIMEOUT',
+  '409 CONFLICT': '409 CONFLICT',
+  '410 GONE': '410 GONE',
+  '411 LENGTH_REQUIRED': '411 LENGTH_REQUIRED',
+  '412 PRECONDITION_FAILED': '412 PRECONDITION_FAILED',
+  '413 PAYLOAD_TOO_LARGE': '413 PAYLOAD_TOO_LARGE',
+  '413 REQUEST_ENTITY_TOO_LARGE': '413 REQUEST_ENTITY_TOO_LARGE',
+  '414 URI_TOO_LONG': '414 URI_TOO_LONG',
+  '414 REQUEST_URI_TOO_LONG': '414 REQUEST_URI_TOO_LONG',
+  '415 UNSUPPORTED_MEDIA_TYPE': '415 UNSUPPORTED_MEDIA_TYPE',
+  '416 REQUESTED_RANGE_NOT_SATISFIABLE': '416 REQUESTED_RANGE_NOT_SATISFIABLE',
+  '417 EXPECTATION_FAILED': '417 EXPECTATION_FAILED',
+  '418 I_AM_A_TEAPOT': '418 I_AM_A_TEAPOT',
+  '419 INSUFFICIENT_SPACE_ON_RESOURCE': '419 INSUFFICIENT_SPACE_ON_RESOURCE',
+  '420 METHOD_FAILURE': '420 METHOD_FAILURE',
+  '421 DESTINATION_LOCKED': '421 DESTINATION_LOCKED',
+  '422 UNPROCESSABLE_ENTITY': '422 UNPROCESSABLE_ENTITY',
+  '423 LOCKED': '423 LOCKED',
+  '424 FAILED_DEPENDENCY': '424 FAILED_DEPENDENCY',
+  '425 TOO_EARLY': '425 TOO_EARLY',
+  '426 UPGRADE_REQUIRED': '426 UPGRADE_REQUIRED',
+  '428 PRECONDITION_REQUIRED': '428 PRECONDITION_REQUIRED',
+  '429 TOO_MANY_REQUESTS': '429 TOO_MANY_REQUESTS',
+  '431 REQUEST_HEADER_FIELDS_TOO_LARGE': '431 REQUEST_HEADER_FIELDS_TOO_LARGE',
+  '451 UNAVAILABLE_FOR_LEGAL_REASONS': '451 UNAVAILABLE_FOR_LEGAL_REASONS',
+  '500 INTERNAL_SERVER_ERROR': '500 INTERNAL_SERVER_ERROR',
+  '501 NOT_IMPLEMENTED': '501 NOT_IMPLEMENTED',
+  '502 BAD_GATEWAY': '502 BAD_GATEWAY',
+  '503 SERVICE_UNAVAILABLE': '503 SERVICE_UNAVAILABLE',
+  '504 GATEWAY_TIMEOUT': '504 GATEWAY_TIMEOUT',
+  '505 HTTP_VERSION_NOT_SUPPORTED': '505 HTTP_VERSION_NOT_SUPPORTED',
+  '506 VARIANT_ALSO_NEGOTIATES': '506 VARIANT_ALSO_NEGOTIATES',
+  '507 INSUFFICIENT_STORAGE': '507 INSUFFICIENT_STORAGE',
+  '508 LOOP_DETECTED': '508 LOOP_DETECTED',
+  '509 BANDWIDTH_LIMIT_EXCEEDED': '509 BANDWIDTH_LIMIT_EXCEEDED',
+  '510 NOT_EXTENDED': '510 NOT_EXTENDED',
+  '511 NETWORK_AUTHENTICATION_REQUIRED': '511 NETWORK_AUTHENTICATION_REQUIRED'
+} as const
+export type DefaultResponseObjectStatus =
+  (typeof defaultResponseObjectStatus)[keyof typeof defaultResponseObjectStatus]
+export type DefaultResponseObject = {
+  /**
+   * @type string | undefined
+   */
+  status?: DefaultResponseObjectStatus
+  /**
+   * @type integer | undefined, int32
+   */
+  statusCode?: number
+  /**
+   * @type string | undefined
+   */
+  message?: string
+  /**
+   * @type string | undefined, date-time
+   */
+  timestamp?: string
+  /**
+   * @type object | undefined
+   */
+  data?: object
+  /**
+   * @type object | undefined
+   */
+  errors?: {
+    [key: string]: string[]
+  }
+}
+
+export type EditTopicModel = {
+  /**
+   * @type string
+   */
+  name: string
+  /**
+   * @type string
+   */
+  material: string
+}
+
+export const defaultResponseTopicDtoStatus = {
+  '100 CONTINUE': '100 CONTINUE',
+  '101 SWITCHING_PROTOCOLS': '101 SWITCHING_PROTOCOLS',
+  '102 PROCESSING': '102 PROCESSING',
+  '103 EARLY_HINTS': '103 EARLY_HINTS',
+  '103 CHECKPOINT': '103 CHECKPOINT',
+  '200 OK': '200 OK',
+  '201 CREATED': '201 CREATED',
+  '202 ACCEPTED': '202 ACCEPTED',
+  '203 NON_AUTHORITATIVE_INFORMATION': '203 NON_AUTHORITATIVE_INFORMATION',
+  '204 NO_CONTENT': '204 NO_CONTENT',
+  '205 RESET_CONTENT': '205 RESET_CONTENT',
+  '206 PARTIAL_CONTENT': '206 PARTIAL_CONTENT',
+  '207 MULTI_STATUS': '207 MULTI_STATUS',
+  '208 ALREADY_REPORTED': '208 ALREADY_REPORTED',
+  '226 IM_USED': '226 IM_USED',
+  '300 MULTIPLE_CHOICES': '300 MULTIPLE_CHOICES',
+  '301 MOVED_PERMANENTLY': '301 MOVED_PERMANENTLY',
+  '302 FOUND': '302 FOUND',
+  '302 MOVED_TEMPORARILY': '302 MOVED_TEMPORARILY',
+  '303 SEE_OTHER': '303 SEE_OTHER',
+  '304 NOT_MODIFIED': '304 NOT_MODIFIED',
+  '305 USE_PROXY': '305 USE_PROXY',
+  '307 TEMPORARY_REDIRECT': '307 TEMPORARY_REDIRECT',
+  '308 PERMANENT_REDIRECT': '308 PERMANENT_REDIRECT',
+  '400 BAD_REQUEST': '400 BAD_REQUEST',
+  '401 UNAUTHORIZED': '401 UNAUTHORIZED',
+  '402 PAYMENT_REQUIRED': '402 PAYMENT_REQUIRED',
+  '403 FORBIDDEN': '403 FORBIDDEN',
+  '404 NOT_FOUND': '404 NOT_FOUND',
+  '405 METHOD_NOT_ALLOWED': '405 METHOD_NOT_ALLOWED',
+  '406 NOT_ACCEPTABLE': '406 NOT_ACCEPTABLE',
+  '407 PROXY_AUTHENTICATION_REQUIRED': '407 PROXY_AUTHENTICATION_REQUIRED',
+  '408 REQUEST_TIMEOUT': '408 REQUEST_TIMEOUT',
+  '409 CONFLICT': '409 CONFLICT',
+  '410 GONE': '410 GONE',
+  '411 LENGTH_REQUIRED': '411 LENGTH_REQUIRED',
+  '412 PRECONDITION_FAILED': '412 PRECONDITION_FAILED',
+  '413 PAYLOAD_TOO_LARGE': '413 PAYLOAD_TOO_LARGE',
+  '413 REQUEST_ENTITY_TOO_LARGE': '413 REQUEST_ENTITY_TOO_LARGE',
+  '414 URI_TOO_LONG': '414 URI_TOO_LONG',
+  '414 REQUEST_URI_TOO_LONG': '414 REQUEST_URI_TOO_LONG',
+  '415 UNSUPPORTED_MEDIA_TYPE': '415 UNSUPPORTED_MEDIA_TYPE',
+  '416 REQUESTED_RANGE_NOT_SATISFIABLE': '416 REQUESTED_RANGE_NOT_SATISFIABLE',
+  '417 EXPECTATION_FAILED': '417 EXPECTATION_FAILED',
+  '418 I_AM_A_TEAPOT': '418 I_AM_A_TEAPOT',
+  '419 INSUFFICIENT_SPACE_ON_RESOURCE': '419 INSUFFICIENT_SPACE_ON_RESOURCE',
+  '420 METHOD_FAILURE': '420 METHOD_FAILURE',
+  '421 DESTINATION_LOCKED': '421 DESTINATION_LOCKED',
+  '422 UNPROCESSABLE_ENTITY': '422 UNPROCESSABLE_ENTITY',
+  '423 LOCKED': '423 LOCKED',
+  '424 FAILED_DEPENDENCY': '424 FAILED_DEPENDENCY',
+  '425 TOO_EARLY': '425 TOO_EARLY',
+  '426 UPGRADE_REQUIRED': '426 UPGRADE_REQUIRED',
+  '428 PRECONDITION_REQUIRED': '428 PRECONDITION_REQUIRED',
+  '429 TOO_MANY_REQUESTS': '429 TOO_MANY_REQUESTS',
+  '431 REQUEST_HEADER_FIELDS_TOO_LARGE': '431 REQUEST_HEADER_FIELDS_TOO_LARGE',
+  '451 UNAVAILABLE_FOR_LEGAL_REASONS': '451 UNAVAILABLE_FOR_LEGAL_REASONS',
+  '500 INTERNAL_SERVER_ERROR': '500 INTERNAL_SERVER_ERROR',
+  '501 NOT_IMPLEMENTED': '501 NOT_IMPLEMENTED',
+  '502 BAD_GATEWAY': '502 BAD_GATEWAY',
+  '503 SERVICE_UNAVAILABLE': '503 SERVICE_UNAVAILABLE',
+  '504 GATEWAY_TIMEOUT': '504 GATEWAY_TIMEOUT',
+  '505 HTTP_VERSION_NOT_SUPPORTED': '505 HTTP_VERSION_NOT_SUPPORTED',
+  '506 VARIANT_ALSO_NEGOTIATES': '506 VARIANT_ALSO_NEGOTIATES',
+  '507 INSUFFICIENT_STORAGE': '507 INSUFFICIENT_STORAGE',
+  '508 LOOP_DETECTED': '508 LOOP_DETECTED',
+  '509 BANDWIDTH_LIMIT_EXCEEDED': '509 BANDWIDTH_LIMIT_EXCEEDED',
+  '510 NOT_EXTENDED': '510 NOT_EXTENDED',
+  '511 NETWORK_AUTHENTICATION_REQUIRED': '511 NETWORK_AUTHENTICATION_REQUIRED'
+} as const
+export type DefaultResponseTopicDtoStatus =
+  (typeof defaultResponseTopicDtoStatus)[keyof typeof defaultResponseTopicDtoStatus]
+export type DefaultResponseTopicDto = {
+  /**
+   * @type string | undefined
+   */
+  status?: DefaultResponseTopicDtoStatus
+  /**
+   * @type integer | undefined, int32
+   */
+  statusCode?: number
+  /**
+   * @type string | undefined
+   */
+  message?: string
+  /**
+   * @type string | undefined, date-time
+   */
+  timestamp?: string
+  data?: TopicDto
+  /**
+   * @type object | undefined
+   */
+  errors?: {
+    [key: string]: string[]
+  }
+}
+
+export type TaskDto = {
+  /**
+   * @type string | undefined, uuid
+   */
+  id?: string
+  /**
+   * @type string | undefined
+   */
+  name?: string
+  /**
+   * @type string | undefined
+   */
+  description?: string
+  /**
+   * @type integer | undefined, int64
+   */
+  experienceAmount?: number
+  /**
+   * @type integer | undefined, int64
+   */
+  timeLimit?: number
+  /**
+   * @type string | undefined, uuid
+   */
+  topicId?: string
+  /**
+   * @type string | undefined
+   */
+  authorLogin?: string
+  /**
+   * @type string | undefined, date-time
+   */
+  createTime?: string
+  /**
+   * @type string | undefined, date-time
+   */
+  modifiedDate?: string
+}
+
+export type TopicDto = {
+  /**
+   * @type string | undefined, uuid
+   */
+  id?: string
+  /**
+   * @type string | undefined
+   */
+  name?: string
+  /**
+   * @type string | undefined
+   */
+  material?: string
+  /**
+   * @type string | undefined, uuid
+   */
+  categoryId?: string
+  /**
+   * @type array | undefined
+   */
+  tasks?: TaskDto[]
+  /**
+   * @type string | undefined
+   */
+  authorLogin?: string
+  /**
+   * @type string | undefined, uuid
+   */
+  chatId?: string
+  /**
+   * @type string | undefined, date-time
+   */
+  createTime?: string
+  /**
+   * @type string | undefined, date-time
+   */
+  modifiedDate?: string
+}
+
+export type EditTestModel = {
+  /**
+   * @type string
+   */
+  expectedInput: string
+  /**
+   * @type string
+   */
+  expectedOutput: string
+}
+
+export const defaultResponseTestCaseDtoStatus = {
+  '100 CONTINUE': '100 CONTINUE',
+  '101 SWITCHING_PROTOCOLS': '101 SWITCHING_PROTOCOLS',
+  '102 PROCESSING': '102 PROCESSING',
+  '103 EARLY_HINTS': '103 EARLY_HINTS',
+  '103 CHECKPOINT': '103 CHECKPOINT',
+  '200 OK': '200 OK',
+  '201 CREATED': '201 CREATED',
+  '202 ACCEPTED': '202 ACCEPTED',
+  '203 NON_AUTHORITATIVE_INFORMATION': '203 NON_AUTHORITATIVE_INFORMATION',
+  '204 NO_CONTENT': '204 NO_CONTENT',
+  '205 RESET_CONTENT': '205 RESET_CONTENT',
+  '206 PARTIAL_CONTENT': '206 PARTIAL_CONTENT',
+  '207 MULTI_STATUS': '207 MULTI_STATUS',
+  '208 ALREADY_REPORTED': '208 ALREADY_REPORTED',
+  '226 IM_USED': '226 IM_USED',
+  '300 MULTIPLE_CHOICES': '300 MULTIPLE_CHOICES',
+  '301 MOVED_PERMANENTLY': '301 MOVED_PERMANENTLY',
+  '302 FOUND': '302 FOUND',
+  '302 MOVED_TEMPORARILY': '302 MOVED_TEMPORARILY',
+  '303 SEE_OTHER': '303 SEE_OTHER',
+  '304 NOT_MODIFIED': '304 NOT_MODIFIED',
+  '305 USE_PROXY': '305 USE_PROXY',
+  '307 TEMPORARY_REDIRECT': '307 TEMPORARY_REDIRECT',
+  '308 PERMANENT_REDIRECT': '308 PERMANENT_REDIRECT',
+  '400 BAD_REQUEST': '400 BAD_REQUEST',
+  '401 UNAUTHORIZED': '401 UNAUTHORIZED',
+  '402 PAYMENT_REQUIRED': '402 PAYMENT_REQUIRED',
+  '403 FORBIDDEN': '403 FORBIDDEN',
+  '404 NOT_FOUND': '404 NOT_FOUND',
+  '405 METHOD_NOT_ALLOWED': '405 METHOD_NOT_ALLOWED',
+  '406 NOT_ACCEPTABLE': '406 NOT_ACCEPTABLE',
+  '407 PROXY_AUTHENTICATION_REQUIRED': '407 PROXY_AUTHENTICATION_REQUIRED',
+  '408 REQUEST_TIMEOUT': '408 REQUEST_TIMEOUT',
+  '409 CONFLICT': '409 CONFLICT',
+  '410 GONE': '410 GONE',
+  '411 LENGTH_REQUIRED': '411 LENGTH_REQUIRED',
+  '412 PRECONDITION_FAILED': '412 PRECONDITION_FAILED',
+  '413 PAYLOAD_TOO_LARGE': '413 PAYLOAD_TOO_LARGE',
+  '413 REQUEST_ENTITY_TOO_LARGE': '413 REQUEST_ENTITY_TOO_LARGE',
+  '414 URI_TOO_LONG': '414 URI_TOO_LONG',
+  '414 REQUEST_URI_TOO_LONG': '414 REQUEST_URI_TOO_LONG',
+  '415 UNSUPPORTED_MEDIA_TYPE': '415 UNSUPPORTED_MEDIA_TYPE',
+  '416 REQUESTED_RANGE_NOT_SATISFIABLE': '416 REQUESTED_RANGE_NOT_SATISFIABLE',
+  '417 EXPECTATION_FAILED': '417 EXPECTATION_FAILED',
+  '418 I_AM_A_TEAPOT': '418 I_AM_A_TEAPOT',
+  '419 INSUFFICIENT_SPACE_ON_RESOURCE': '419 INSUFFICIENT_SPACE_ON_RESOURCE',
+  '420 METHOD_FAILURE': '420 METHOD_FAILURE',
+  '421 DESTINATION_LOCKED': '421 DESTINATION_LOCKED',
+  '422 UNPROCESSABLE_ENTITY': '422 UNPROCESSABLE_ENTITY',
+  '423 LOCKED': '423 LOCKED',
+  '424 FAILED_DEPENDENCY': '424 FAILED_DEPENDENCY',
+  '425 TOO_EARLY': '425 TOO_EARLY',
+  '426 UPGRADE_REQUIRED': '426 UPGRADE_REQUIRED',
+  '428 PRECONDITION_REQUIRED': '428 PRECONDITION_REQUIRED',
+  '429 TOO_MANY_REQUESTS': '429 TOO_MANY_REQUESTS',
+  '431 REQUEST_HEADER_FIELDS_TOO_LARGE': '431 REQUEST_HEADER_FIELDS_TOO_LARGE',
+  '451 UNAVAILABLE_FOR_LEGAL_REASONS': '451 UNAVAILABLE_FOR_LEGAL_REASONS',
+  '500 INTERNAL_SERVER_ERROR': '500 INTERNAL_SERVER_ERROR',
+  '501 NOT_IMPLEMENTED': '501 NOT_IMPLEMENTED',
+  '502 BAD_GATEWAY': '502 BAD_GATEWAY',
+  '503 SERVICE_UNAVAILABLE': '503 SERVICE_UNAVAILABLE',
+  '504 GATEWAY_TIMEOUT': '504 GATEWAY_TIMEOUT',
+  '505 HTTP_VERSION_NOT_SUPPORTED': '505 HTTP_VERSION_NOT_SUPPORTED',
+  '506 VARIANT_ALSO_NEGOTIATES': '506 VARIANT_ALSO_NEGOTIATES',
+  '507 INSUFFICIENT_STORAGE': '507 INSUFFICIENT_STORAGE',
+  '508 LOOP_DETECTED': '508 LOOP_DETECTED',
+  '509 BANDWIDTH_LIMIT_EXCEEDED': '509 BANDWIDTH_LIMIT_EXCEEDED',
+  '510 NOT_EXTENDED': '510 NOT_EXTENDED',
+  '511 NETWORK_AUTHENTICATION_REQUIRED': '511 NETWORK_AUTHENTICATION_REQUIRED'
+} as const
+export type DefaultResponseTestCaseDtoStatus =
+  (typeof defaultResponseTestCaseDtoStatus)[keyof typeof defaultResponseTestCaseDtoStatus]
+export type DefaultResponseTestCaseDto = {
+  /**
+   * @type string | undefined
+   */
+  status?: DefaultResponseTestCaseDtoStatus
+  /**
+   * @type integer | undefined, int32
+   */
+  statusCode?: number
+  /**
+   * @type string | undefined
+   */
+  message?: string
+  /**
+   * @type string | undefined, date-time
+   */
+  timestamp?: string
+  data?: TestCaseDto
+  /**
+   * @type object | undefined
+   */
+  errors?: {
+    [key: string]: string[]
+  }
+}
+
+export type TestCaseDto = {
+  /**
+   * @type string | undefined, uuid
+   */
+  id?: string
+  /**
+   * @type integer | undefined, int64
+   */
+  index?: number
+  /**
+   * @type string | undefined
+   */
+  expectedInput?: string
+  /**
+   * @type string | undefined
+   */
+  expectedOutput?: string
+  /**
+   * @type integer | undefined, int64
+   */
+  timeLimit?: number
+}
+
+export type EditTaskModel = {
+  /**
+   * @type string
+   */
+  name: string
+  /**
+   * @type string
+   */
+  description: string
+  /**
+   * @type integer, int64
+   */
+  experienceAmount: number
+  /**
+   * @type integer, int64
+   */
+  timeLimit: number
+}
+
+export const defaultResponseTaskDtoStatus = {
+  '100 CONTINUE': '100 CONTINUE',
+  '101 SWITCHING_PROTOCOLS': '101 SWITCHING_PROTOCOLS',
+  '102 PROCESSING': '102 PROCESSING',
+  '103 EARLY_HINTS': '103 EARLY_HINTS',
+  '103 CHECKPOINT': '103 CHECKPOINT',
+  '200 OK': '200 OK',
+  '201 CREATED': '201 CREATED',
+  '202 ACCEPTED': '202 ACCEPTED',
+  '203 NON_AUTHORITATIVE_INFORMATION': '203 NON_AUTHORITATIVE_INFORMATION',
+  '204 NO_CONTENT': '204 NO_CONTENT',
+  '205 RESET_CONTENT': '205 RESET_CONTENT',
+  '206 PARTIAL_CONTENT': '206 PARTIAL_CONTENT',
+  '207 MULTI_STATUS': '207 MULTI_STATUS',
+  '208 ALREADY_REPORTED': '208 ALREADY_REPORTED',
+  '226 IM_USED': '226 IM_USED',
+  '300 MULTIPLE_CHOICES': '300 MULTIPLE_CHOICES',
+  '301 MOVED_PERMANENTLY': '301 MOVED_PERMANENTLY',
+  '302 FOUND': '302 FOUND',
+  '302 MOVED_TEMPORARILY': '302 MOVED_TEMPORARILY',
+  '303 SEE_OTHER': '303 SEE_OTHER',
+  '304 NOT_MODIFIED': '304 NOT_MODIFIED',
+  '305 USE_PROXY': '305 USE_PROXY',
+  '307 TEMPORARY_REDIRECT': '307 TEMPORARY_REDIRECT',
+  '308 PERMANENT_REDIRECT': '308 PERMANENT_REDIRECT',
+  '400 BAD_REQUEST': '400 BAD_REQUEST',
+  '401 UNAUTHORIZED': '401 UNAUTHORIZED',
+  '402 PAYMENT_REQUIRED': '402 PAYMENT_REQUIRED',
+  '403 FORBIDDEN': '403 FORBIDDEN',
+  '404 NOT_FOUND': '404 NOT_FOUND',
+  '405 METHOD_NOT_ALLOWED': '405 METHOD_NOT_ALLOWED',
+  '406 NOT_ACCEPTABLE': '406 NOT_ACCEPTABLE',
+  '407 PROXY_AUTHENTICATION_REQUIRED': '407 PROXY_AUTHENTICATION_REQUIRED',
+  '408 REQUEST_TIMEOUT': '408 REQUEST_TIMEOUT',
+  '409 CONFLICT': '409 CONFLICT',
+  '410 GONE': '410 GONE',
+  '411 LENGTH_REQUIRED': '411 LENGTH_REQUIRED',
+  '412 PRECONDITION_FAILED': '412 PRECONDITION_FAILED',
+  '413 PAYLOAD_TOO_LARGE': '413 PAYLOAD_TOO_LARGE',
+  '413 REQUEST_ENTITY_TOO_LARGE': '413 REQUEST_ENTITY_TOO_LARGE',
+  '414 URI_TOO_LONG': '414 URI_TOO_LONG',
+  '414 REQUEST_URI_TOO_LONG': '414 REQUEST_URI_TOO_LONG',
+  '415 UNSUPPORTED_MEDIA_TYPE': '415 UNSUPPORTED_MEDIA_TYPE',
+  '416 REQUESTED_RANGE_NOT_SATISFIABLE': '416 REQUESTED_RANGE_NOT_SATISFIABLE',
+  '417 EXPECTATION_FAILED': '417 EXPECTATION_FAILED',
+  '418 I_AM_A_TEAPOT': '418 I_AM_A_TEAPOT',
+  '419 INSUFFICIENT_SPACE_ON_RESOURCE': '419 INSUFFICIENT_SPACE_ON_RESOURCE',
+  '420 METHOD_FAILURE': '420 METHOD_FAILURE',
+  '421 DESTINATION_LOCKED': '421 DESTINATION_LOCKED',
+  '422 UNPROCESSABLE_ENTITY': '422 UNPROCESSABLE_ENTITY',
+  '423 LOCKED': '423 LOCKED',
+  '424 FAILED_DEPENDENCY': '424 FAILED_DEPENDENCY',
+  '425 TOO_EARLY': '425 TOO_EARLY',
+  '426 UPGRADE_REQUIRED': '426 UPGRADE_REQUIRED',
+  '428 PRECONDITION_REQUIRED': '428 PRECONDITION_REQUIRED',
+  '429 TOO_MANY_REQUESTS': '429 TOO_MANY_REQUESTS',
+  '431 REQUEST_HEADER_FIELDS_TOO_LARGE': '431 REQUEST_HEADER_FIELDS_TOO_LARGE',
+  '451 UNAVAILABLE_FOR_LEGAL_REASONS': '451 UNAVAILABLE_FOR_LEGAL_REASONS',
+  '500 INTERNAL_SERVER_ERROR': '500 INTERNAL_SERVER_ERROR',
+  '501 NOT_IMPLEMENTED': '501 NOT_IMPLEMENTED',
+  '502 BAD_GATEWAY': '502 BAD_GATEWAY',
+  '503 SERVICE_UNAVAILABLE': '503 SERVICE_UNAVAILABLE',
+  '504 GATEWAY_TIMEOUT': '504 GATEWAY_TIMEOUT',
+  '505 HTTP_VERSION_NOT_SUPPORTED': '505 HTTP_VERSION_NOT_SUPPORTED',
+  '506 VARIANT_ALSO_NEGOTIATES': '506 VARIANT_ALSO_NEGOTIATES',
+  '507 INSUFFICIENT_STORAGE': '507 INSUFFICIENT_STORAGE',
+  '508 LOOP_DETECTED': '508 LOOP_DETECTED',
+  '509 BANDWIDTH_LIMIT_EXCEEDED': '509 BANDWIDTH_LIMIT_EXCEEDED',
+  '510 NOT_EXTENDED': '510 NOT_EXTENDED',
+  '511 NETWORK_AUTHENTICATION_REQUIRED': '511 NETWORK_AUTHENTICATION_REQUIRED'
+} as const
+export type DefaultResponseTaskDtoStatus =
+  (typeof defaultResponseTaskDtoStatus)[keyof typeof defaultResponseTaskDtoStatus]
+export type DefaultResponseTaskDto = {
+  /**
+   * @type string | undefined
+   */
+  status?: DefaultResponseTaskDtoStatus
+  /**
+   * @type integer | undefined, int32
+   */
+  statusCode?: number
+  /**
+   * @type string | undefined
+   */
+  message?: string
+  /**
+   * @type string | undefined, date-time
+   */
+  timestamp?: string
+  data?: TaskDto
+  /**
+   * @type object | undefined
+   */
+  errors?: {
+    [key: string]: string[]
+  }
+}
+
+export type EditCategoryModel = {
+  /**
+   * @type string
+   */
+  name: string
+  /**
+   * @type string
+   */
+  description: string
+}
+
+export type CategoryDto = {
+  /**
+   * @type string | undefined, uuid
+   */
+  id?: string
+  /**
+   * @type string | undefined
+   */
+  name?: string
+  /**
+   * @type string | undefined
+   */
+  description?: string
+  /**
+   * @type string | undefined
+   */
+  authorLogin?: string
+  /**
+   * @type array | undefined
+   */
+  topics?: TopicDto[]
+  /**
+   * @type string | undefined, date-time
+   */
+  createTime?: string
+  /**
+   * @type string | undefined, date-time
+   */
+  modifiedDate?: string
+}
+
+export const defaultResponseCategoryDtoStatus = {
+  '100 CONTINUE': '100 CONTINUE',
+  '101 SWITCHING_PROTOCOLS': '101 SWITCHING_PROTOCOLS',
+  '102 PROCESSING': '102 PROCESSING',
+  '103 EARLY_HINTS': '103 EARLY_HINTS',
+  '103 CHECKPOINT': '103 CHECKPOINT',
+  '200 OK': '200 OK',
+  '201 CREATED': '201 CREATED',
+  '202 ACCEPTED': '202 ACCEPTED',
+  '203 NON_AUTHORITATIVE_INFORMATION': '203 NON_AUTHORITATIVE_INFORMATION',
+  '204 NO_CONTENT': '204 NO_CONTENT',
+  '205 RESET_CONTENT': '205 RESET_CONTENT',
+  '206 PARTIAL_CONTENT': '206 PARTIAL_CONTENT',
+  '207 MULTI_STATUS': '207 MULTI_STATUS',
+  '208 ALREADY_REPORTED': '208 ALREADY_REPORTED',
+  '226 IM_USED': '226 IM_USED',
+  '300 MULTIPLE_CHOICES': '300 MULTIPLE_CHOICES',
+  '301 MOVED_PERMANENTLY': '301 MOVED_PERMANENTLY',
+  '302 FOUND': '302 FOUND',
+  '302 MOVED_TEMPORARILY': '302 MOVED_TEMPORARILY',
+  '303 SEE_OTHER': '303 SEE_OTHER',
+  '304 NOT_MODIFIED': '304 NOT_MODIFIED',
+  '305 USE_PROXY': '305 USE_PROXY',
+  '307 TEMPORARY_REDIRECT': '307 TEMPORARY_REDIRECT',
+  '308 PERMANENT_REDIRECT': '308 PERMANENT_REDIRECT',
+  '400 BAD_REQUEST': '400 BAD_REQUEST',
+  '401 UNAUTHORIZED': '401 UNAUTHORIZED',
+  '402 PAYMENT_REQUIRED': '402 PAYMENT_REQUIRED',
+  '403 FORBIDDEN': '403 FORBIDDEN',
+  '404 NOT_FOUND': '404 NOT_FOUND',
+  '405 METHOD_NOT_ALLOWED': '405 METHOD_NOT_ALLOWED',
+  '406 NOT_ACCEPTABLE': '406 NOT_ACCEPTABLE',
+  '407 PROXY_AUTHENTICATION_REQUIRED': '407 PROXY_AUTHENTICATION_REQUIRED',
+  '408 REQUEST_TIMEOUT': '408 REQUEST_TIMEOUT',
+  '409 CONFLICT': '409 CONFLICT',
+  '410 GONE': '410 GONE',
+  '411 LENGTH_REQUIRED': '411 LENGTH_REQUIRED',
+  '412 PRECONDITION_FAILED': '412 PRECONDITION_FAILED',
+  '413 PAYLOAD_TOO_LARGE': '413 PAYLOAD_TOO_LARGE',
+  '413 REQUEST_ENTITY_TOO_LARGE': '413 REQUEST_ENTITY_TOO_LARGE',
+  '414 URI_TOO_LONG': '414 URI_TOO_LONG',
+  '414 REQUEST_URI_TOO_LONG': '414 REQUEST_URI_TOO_LONG',
+  '415 UNSUPPORTED_MEDIA_TYPE': '415 UNSUPPORTED_MEDIA_TYPE',
+  '416 REQUESTED_RANGE_NOT_SATISFIABLE': '416 REQUESTED_RANGE_NOT_SATISFIABLE',
+  '417 EXPECTATION_FAILED': '417 EXPECTATION_FAILED',
+  '418 I_AM_A_TEAPOT': '418 I_AM_A_TEAPOT',
+  '419 INSUFFICIENT_SPACE_ON_RESOURCE': '419 INSUFFICIENT_SPACE_ON_RESOURCE',
+  '420 METHOD_FAILURE': '420 METHOD_FAILURE',
+  '421 DESTINATION_LOCKED': '421 DESTINATION_LOCKED',
+  '422 UNPROCESSABLE_ENTITY': '422 UNPROCESSABLE_ENTITY',
+  '423 LOCKED': '423 LOCKED',
+  '424 FAILED_DEPENDENCY': '424 FAILED_DEPENDENCY',
+  '425 TOO_EARLY': '425 TOO_EARLY',
+  '426 UPGRADE_REQUIRED': '426 UPGRADE_REQUIRED',
+  '428 PRECONDITION_REQUIRED': '428 PRECONDITION_REQUIRED',
+  '429 TOO_MANY_REQUESTS': '429 TOO_MANY_REQUESTS',
+  '431 REQUEST_HEADER_FIELDS_TOO_LARGE': '431 REQUEST_HEADER_FIELDS_TOO_LARGE',
+  '451 UNAVAILABLE_FOR_LEGAL_REASONS': '451 UNAVAILABLE_FOR_LEGAL_REASONS',
+  '500 INTERNAL_SERVER_ERROR': '500 INTERNAL_SERVER_ERROR',
+  '501 NOT_IMPLEMENTED': '501 NOT_IMPLEMENTED',
+  '502 BAD_GATEWAY': '502 BAD_GATEWAY',
+  '503 SERVICE_UNAVAILABLE': '503 SERVICE_UNAVAILABLE',
+  '504 GATEWAY_TIMEOUT': '504 GATEWAY_TIMEOUT',
+  '505 HTTP_VERSION_NOT_SUPPORTED': '505 HTTP_VERSION_NOT_SUPPORTED',
+  '506 VARIANT_ALSO_NEGOTIATES': '506 VARIANT_ALSO_NEGOTIATES',
+  '507 INSUFFICIENT_STORAGE': '507 INSUFFICIENT_STORAGE',
+  '508 LOOP_DETECTED': '508 LOOP_DETECTED',
+  '509 BANDWIDTH_LIMIT_EXCEEDED': '509 BANDWIDTH_LIMIT_EXCEEDED',
+  '510 NOT_EXTENDED': '510 NOT_EXTENDED',
+  '511 NETWORK_AUTHENTICATION_REQUIRED': '511 NETWORK_AUTHENTICATION_REQUIRED'
+} as const
+export type DefaultResponseCategoryDtoStatus =
+  (typeof defaultResponseCategoryDtoStatus)[keyof typeof defaultResponseCategoryDtoStatus]
+export type DefaultResponseCategoryDto = {
+  /**
+   * @type string | undefined
+   */
+  status?: DefaultResponseCategoryDtoStatus
+  /**
+   * @type integer | undefined, int32
+   */
+  statusCode?: number
+  /**
+   * @type string | undefined
+   */
+  message?: string
+  /**
+   * @type string | undefined, date-time
+   */
+  timestamp?: string
+  data?: CategoryDto
+  /**
+   * @type object | undefined
+   */
+  errors?: {
+    [key: string]: string[]
+  }
+}
+
+export type CreateTopicModel = {
+  /**
+   * @type string
+   */
+  name: string
+  /**
+   * @type string
+   */
+  material: string
+}
+
+export type CreateTestModel = {
+  /**
+   * @type string
+   */
+  expectedInput: string
+  /**
+   * @type string
+   */
+  expectedOutput: string
+}
+
+export type CreateTaskModel = {
+  /**
+   * @type string
+   */
+  name: string
+  /**
+   * @type string
+   */
+  description: string
+  /**
+   * @type integer, int64
+   */
+  experienceAmount: number
+  /**
+   * @type integer, int64
+   */
+  timeLimit: number
+}
+
+export type CreateCategoryModel = {
+  /**
+   * @type string
+   */
+  name: string
+  /**
+   * @type string
+   */
+  description: string
+}
+
+export const defaultResponsePageTopicDtoStatus = {
+  '100 CONTINUE': '100 CONTINUE',
+  '101 SWITCHING_PROTOCOLS': '101 SWITCHING_PROTOCOLS',
+  '102 PROCESSING': '102 PROCESSING',
+  '103 EARLY_HINTS': '103 EARLY_HINTS',
+  '103 CHECKPOINT': '103 CHECKPOINT',
+  '200 OK': '200 OK',
+  '201 CREATED': '201 CREATED',
+  '202 ACCEPTED': '202 ACCEPTED',
+  '203 NON_AUTHORITATIVE_INFORMATION': '203 NON_AUTHORITATIVE_INFORMATION',
+  '204 NO_CONTENT': '204 NO_CONTENT',
+  '205 RESET_CONTENT': '205 RESET_CONTENT',
+  '206 PARTIAL_CONTENT': '206 PARTIAL_CONTENT',
+  '207 MULTI_STATUS': '207 MULTI_STATUS',
+  '208 ALREADY_REPORTED': '208 ALREADY_REPORTED',
+  '226 IM_USED': '226 IM_USED',
+  '300 MULTIPLE_CHOICES': '300 MULTIPLE_CHOICES',
+  '301 MOVED_PERMANENTLY': '301 MOVED_PERMANENTLY',
+  '302 FOUND': '302 FOUND',
+  '302 MOVED_TEMPORARILY': '302 MOVED_TEMPORARILY',
+  '303 SEE_OTHER': '303 SEE_OTHER',
+  '304 NOT_MODIFIED': '304 NOT_MODIFIED',
+  '305 USE_PROXY': '305 USE_PROXY',
+  '307 TEMPORARY_REDIRECT': '307 TEMPORARY_REDIRECT',
+  '308 PERMANENT_REDIRECT': '308 PERMANENT_REDIRECT',
+  '400 BAD_REQUEST': '400 BAD_REQUEST',
+  '401 UNAUTHORIZED': '401 UNAUTHORIZED',
+  '402 PAYMENT_REQUIRED': '402 PAYMENT_REQUIRED',
+  '403 FORBIDDEN': '403 FORBIDDEN',
+  '404 NOT_FOUND': '404 NOT_FOUND',
+  '405 METHOD_NOT_ALLOWED': '405 METHOD_NOT_ALLOWED',
+  '406 NOT_ACCEPTABLE': '406 NOT_ACCEPTABLE',
+  '407 PROXY_AUTHENTICATION_REQUIRED': '407 PROXY_AUTHENTICATION_REQUIRED',
+  '408 REQUEST_TIMEOUT': '408 REQUEST_TIMEOUT',
+  '409 CONFLICT': '409 CONFLICT',
+  '410 GONE': '410 GONE',
+  '411 LENGTH_REQUIRED': '411 LENGTH_REQUIRED',
+  '412 PRECONDITION_FAILED': '412 PRECONDITION_FAILED',
+  '413 PAYLOAD_TOO_LARGE': '413 PAYLOAD_TOO_LARGE',
+  '413 REQUEST_ENTITY_TOO_LARGE': '413 REQUEST_ENTITY_TOO_LARGE',
+  '414 URI_TOO_LONG': '414 URI_TOO_LONG',
+  '414 REQUEST_URI_TOO_LONG': '414 REQUEST_URI_TOO_LONG',
+  '415 UNSUPPORTED_MEDIA_TYPE': '415 UNSUPPORTED_MEDIA_TYPE',
+  '416 REQUESTED_RANGE_NOT_SATISFIABLE': '416 REQUESTED_RANGE_NOT_SATISFIABLE',
+  '417 EXPECTATION_FAILED': '417 EXPECTATION_FAILED',
+  '418 I_AM_A_TEAPOT': '418 I_AM_A_TEAPOT',
+  '419 INSUFFICIENT_SPACE_ON_RESOURCE': '419 INSUFFICIENT_SPACE_ON_RESOURCE',
+  '420 METHOD_FAILURE': '420 METHOD_FAILURE',
+  '421 DESTINATION_LOCKED': '421 DESTINATION_LOCKED',
+  '422 UNPROCESSABLE_ENTITY': '422 UNPROCESSABLE_ENTITY',
+  '423 LOCKED': '423 LOCKED',
+  '424 FAILED_DEPENDENCY': '424 FAILED_DEPENDENCY',
+  '425 TOO_EARLY': '425 TOO_EARLY',
+  '426 UPGRADE_REQUIRED': '426 UPGRADE_REQUIRED',
+  '428 PRECONDITION_REQUIRED': '428 PRECONDITION_REQUIRED',
+  '429 TOO_MANY_REQUESTS': '429 TOO_MANY_REQUESTS',
+  '431 REQUEST_HEADER_FIELDS_TOO_LARGE': '431 REQUEST_HEADER_FIELDS_TOO_LARGE',
+  '451 UNAVAILABLE_FOR_LEGAL_REASONS': '451 UNAVAILABLE_FOR_LEGAL_REASONS',
+  '500 INTERNAL_SERVER_ERROR': '500 INTERNAL_SERVER_ERROR',
+  '501 NOT_IMPLEMENTED': '501 NOT_IMPLEMENTED',
+  '502 BAD_GATEWAY': '502 BAD_GATEWAY',
+  '503 SERVICE_UNAVAILABLE': '503 SERVICE_UNAVAILABLE',
+  '504 GATEWAY_TIMEOUT': '504 GATEWAY_TIMEOUT',
+  '505 HTTP_VERSION_NOT_SUPPORTED': '505 HTTP_VERSION_NOT_SUPPORTED',
+  '506 VARIANT_ALSO_NEGOTIATES': '506 VARIANT_ALSO_NEGOTIATES',
+  '507 INSUFFICIENT_STORAGE': '507 INSUFFICIENT_STORAGE',
+  '508 LOOP_DETECTED': '508 LOOP_DETECTED',
+  '509 BANDWIDTH_LIMIT_EXCEEDED': '509 BANDWIDTH_LIMIT_EXCEEDED',
+  '510 NOT_EXTENDED': '510 NOT_EXTENDED',
+  '511 NETWORK_AUTHENTICATION_REQUIRED': '511 NETWORK_AUTHENTICATION_REQUIRED'
+} as const
+export type DefaultResponsePageTopicDtoStatus =
+  (typeof defaultResponsePageTopicDtoStatus)[keyof typeof defaultResponsePageTopicDtoStatus]
+export type DefaultResponsePageTopicDto = {
+  /**
+   * @type string | undefined
+   */
+  status?: DefaultResponsePageTopicDtoStatus
+  /**
+   * @type integer | undefined, int32
+   */
+  statusCode?: number
+  /**
+   * @type string | undefined
+   */
+  message?: string
+  /**
+   * @type string | undefined, date-time
+   */
+  timestamp?: string
+  data?: PageTopicDto
+  /**
+   * @type object | undefined
+   */
+  errors?: {
+    [key: string]: string[]
+  }
+}
+
+export type PageTopicDto = {
+  /**
+   * @type integer | undefined, int32
+   */
+  totalPages?: number
+  /**
+   * @type integer | undefined, int64
+   */
+  totalElements?: number
+  /**
+   * @type integer | undefined, int32
+   */
+  size?: number
+  /**
+   * @type array | undefined
+   */
+  content?: TopicDto[]
+  /**
+   * @type integer | undefined, int32
+   */
+  number?: number
+  /**
+   * @type array | undefined
+   */
+  sort?: SortObject[]
+  pageable?: PageableObject
+  /**
+   * @type integer | undefined, int32
+   */
+  numberOfElements?: number
+  /**
+   * @type boolean | undefined
+   */
+  first?: boolean
+  /**
+   * @type boolean | undefined
+   */
+  last?: boolean
+  /**
+   * @type boolean | undefined
+   */
+  empty?: boolean
+}
+
+export type PageableObject = {
+  /**
+   * @type integer | undefined, int64
+   */
+  offset?: number
+  /**
+   * @type array | undefined
+   */
+  sort?: SortObject[]
+  /**
+   * @type integer | undefined, int32
+   */
+  pageNumber?: number
+  /**
+   * @type integer | undefined, int32
+   */
+  pageSize?: number
+  /**
+   * @type boolean | undefined
+   */
+  paged?: boolean
+  /**
+   * @type boolean | undefined
+   */
+  unpaged?: boolean
+}
+
+export type SortObject = {
+  /**
+   * @type string | undefined
+   */
+  direction?: string
+  /**
+   * @type string | undefined
+   */
+  nullHandling?: string
+  /**
+   * @type boolean | undefined
+   */
+  ascending?: boolean
+  /**
+   * @type string | undefined
+   */
+  property?: string
+  /**
+   * @type boolean | undefined
+   */
+  ignoreCase?: boolean
+}
+
+export type TaskFilter = {
+  /**
+   * @type string | undefined
+   */
+  content?: string
+  /**
+   * @type integer | undefined, int64
+   */
+  experienceAmountMin?: number
+  /**
+   * @type integer | undefined, int64
+   */
+  experienceAmountMax?: number
+  /**
+   * @type string | undefined, uuid
+   */
+  topicId?: string
+  /**
+   * @type string | undefined, uuid
+   */
+  categoryId?: string
+}
+
+export const defaultResponsePageTaskDtoStatus = {
+  '100 CONTINUE': '100 CONTINUE',
+  '101 SWITCHING_PROTOCOLS': '101 SWITCHING_PROTOCOLS',
+  '102 PROCESSING': '102 PROCESSING',
+  '103 EARLY_HINTS': '103 EARLY_HINTS',
+  '103 CHECKPOINT': '103 CHECKPOINT',
+  '200 OK': '200 OK',
+  '201 CREATED': '201 CREATED',
+  '202 ACCEPTED': '202 ACCEPTED',
+  '203 NON_AUTHORITATIVE_INFORMATION': '203 NON_AUTHORITATIVE_INFORMATION',
+  '204 NO_CONTENT': '204 NO_CONTENT',
+  '205 RESET_CONTENT': '205 RESET_CONTENT',
+  '206 PARTIAL_CONTENT': '206 PARTIAL_CONTENT',
+  '207 MULTI_STATUS': '207 MULTI_STATUS',
+  '208 ALREADY_REPORTED': '208 ALREADY_REPORTED',
+  '226 IM_USED': '226 IM_USED',
+  '300 MULTIPLE_CHOICES': '300 MULTIPLE_CHOICES',
+  '301 MOVED_PERMANENTLY': '301 MOVED_PERMANENTLY',
+  '302 FOUND': '302 FOUND',
+  '302 MOVED_TEMPORARILY': '302 MOVED_TEMPORARILY',
+  '303 SEE_OTHER': '303 SEE_OTHER',
+  '304 NOT_MODIFIED': '304 NOT_MODIFIED',
+  '305 USE_PROXY': '305 USE_PROXY',
+  '307 TEMPORARY_REDIRECT': '307 TEMPORARY_REDIRECT',
+  '308 PERMANENT_REDIRECT': '308 PERMANENT_REDIRECT',
+  '400 BAD_REQUEST': '400 BAD_REQUEST',
+  '401 UNAUTHORIZED': '401 UNAUTHORIZED',
+  '402 PAYMENT_REQUIRED': '402 PAYMENT_REQUIRED',
+  '403 FORBIDDEN': '403 FORBIDDEN',
+  '404 NOT_FOUND': '404 NOT_FOUND',
+  '405 METHOD_NOT_ALLOWED': '405 METHOD_NOT_ALLOWED',
+  '406 NOT_ACCEPTABLE': '406 NOT_ACCEPTABLE',
+  '407 PROXY_AUTHENTICATION_REQUIRED': '407 PROXY_AUTHENTICATION_REQUIRED',
+  '408 REQUEST_TIMEOUT': '408 REQUEST_TIMEOUT',
+  '409 CONFLICT': '409 CONFLICT',
+  '410 GONE': '410 GONE',
+  '411 LENGTH_REQUIRED': '411 LENGTH_REQUIRED',
+  '412 PRECONDITION_FAILED': '412 PRECONDITION_FAILED',
+  '413 PAYLOAD_TOO_LARGE': '413 PAYLOAD_TOO_LARGE',
+  '413 REQUEST_ENTITY_TOO_LARGE': '413 REQUEST_ENTITY_TOO_LARGE',
+  '414 URI_TOO_LONG': '414 URI_TOO_LONG',
+  '414 REQUEST_URI_TOO_LONG': '414 REQUEST_URI_TOO_LONG',
+  '415 UNSUPPORTED_MEDIA_TYPE': '415 UNSUPPORTED_MEDIA_TYPE',
+  '416 REQUESTED_RANGE_NOT_SATISFIABLE': '416 REQUESTED_RANGE_NOT_SATISFIABLE',
+  '417 EXPECTATION_FAILED': '417 EXPECTATION_FAILED',
+  '418 I_AM_A_TEAPOT': '418 I_AM_A_TEAPOT',
+  '419 INSUFFICIENT_SPACE_ON_RESOURCE': '419 INSUFFICIENT_SPACE_ON_RESOURCE',
+  '420 METHOD_FAILURE': '420 METHOD_FAILURE',
+  '421 DESTINATION_LOCKED': '421 DESTINATION_LOCKED',
+  '422 UNPROCESSABLE_ENTITY': '422 UNPROCESSABLE_ENTITY',
+  '423 LOCKED': '423 LOCKED',
+  '424 FAILED_DEPENDENCY': '424 FAILED_DEPENDENCY',
+  '425 TOO_EARLY': '425 TOO_EARLY',
+  '426 UPGRADE_REQUIRED': '426 UPGRADE_REQUIRED',
+  '428 PRECONDITION_REQUIRED': '428 PRECONDITION_REQUIRED',
+  '429 TOO_MANY_REQUESTS': '429 TOO_MANY_REQUESTS',
+  '431 REQUEST_HEADER_FIELDS_TOO_LARGE': '431 REQUEST_HEADER_FIELDS_TOO_LARGE',
+  '451 UNAVAILABLE_FOR_LEGAL_REASONS': '451 UNAVAILABLE_FOR_LEGAL_REASONS',
+  '500 INTERNAL_SERVER_ERROR': '500 INTERNAL_SERVER_ERROR',
+  '501 NOT_IMPLEMENTED': '501 NOT_IMPLEMENTED',
+  '502 BAD_GATEWAY': '502 BAD_GATEWAY',
+  '503 SERVICE_UNAVAILABLE': '503 SERVICE_UNAVAILABLE',
+  '504 GATEWAY_TIMEOUT': '504 GATEWAY_TIMEOUT',
+  '505 HTTP_VERSION_NOT_SUPPORTED': '505 HTTP_VERSION_NOT_SUPPORTED',
+  '506 VARIANT_ALSO_NEGOTIATES': '506 VARIANT_ALSO_NEGOTIATES',
+  '507 INSUFFICIENT_STORAGE': '507 INSUFFICIENT_STORAGE',
+  '508 LOOP_DETECTED': '508 LOOP_DETECTED',
+  '509 BANDWIDTH_LIMIT_EXCEEDED': '509 BANDWIDTH_LIMIT_EXCEEDED',
+  '510 NOT_EXTENDED': '510 NOT_EXTENDED',
+  '511 NETWORK_AUTHENTICATION_REQUIRED': '511 NETWORK_AUTHENTICATION_REQUIRED'
+} as const
+export type DefaultResponsePageTaskDtoStatus =
+  (typeof defaultResponsePageTaskDtoStatus)[keyof typeof defaultResponsePageTaskDtoStatus]
+export type DefaultResponsePageTaskDto = {
+  /**
+   * @type string | undefined
+   */
+  status?: DefaultResponsePageTaskDtoStatus
+  /**
+   * @type integer | undefined, int32
+   */
+  statusCode?: number
+  /**
+   * @type string | undefined
+   */
+  message?: string
+  /**
+   * @type string | undefined, date-time
+   */
+  timestamp?: string
+  data?: PageTaskDto
+  /**
+   * @type object | undefined
+   */
+  errors?: {
+    [key: string]: string[]
+  }
+}
+
+export type PageTaskDto = {
+  /**
+   * @type integer | undefined, int32
+   */
+  totalPages?: number
+  /**
+   * @type integer | undefined, int64
+   */
+  totalElements?: number
+  /**
+   * @type integer | undefined, int32
+   */
+  size?: number
+  /**
+   * @type array | undefined
+   */
+  content?: TaskDto[]
+  /**
+   * @type integer | undefined, int32
+   */
+  number?: number
+  /**
+   * @type array | undefined
+   */
+  sort?: SortObject[]
+  pageable?: PageableObject
+  /**
+   * @type integer | undefined, int32
+   */
+  numberOfElements?: number
+  /**
+   * @type boolean | undefined
+   */
+  first?: boolean
+  /**
+   * @type boolean | undefined
+   */
+  last?: boolean
+  /**
+   * @type boolean | undefined
+   */
+  empty?: boolean
+}
+
+export const defaultResponseListMessageDtoStatus = {
+  '100 CONTINUE': '100 CONTINUE',
+  '101 SWITCHING_PROTOCOLS': '101 SWITCHING_PROTOCOLS',
+  '102 PROCESSING': '102 PROCESSING',
+  '103 EARLY_HINTS': '103 EARLY_HINTS',
+  '103 CHECKPOINT': '103 CHECKPOINT',
+  '200 OK': '200 OK',
+  '201 CREATED': '201 CREATED',
+  '202 ACCEPTED': '202 ACCEPTED',
+  '203 NON_AUTHORITATIVE_INFORMATION': '203 NON_AUTHORITATIVE_INFORMATION',
+  '204 NO_CONTENT': '204 NO_CONTENT',
+  '205 RESET_CONTENT': '205 RESET_CONTENT',
+  '206 PARTIAL_CONTENT': '206 PARTIAL_CONTENT',
+  '207 MULTI_STATUS': '207 MULTI_STATUS',
+  '208 ALREADY_REPORTED': '208 ALREADY_REPORTED',
+  '226 IM_USED': '226 IM_USED',
+  '300 MULTIPLE_CHOICES': '300 MULTIPLE_CHOICES',
+  '301 MOVED_PERMANENTLY': '301 MOVED_PERMANENTLY',
+  '302 FOUND': '302 FOUND',
+  '302 MOVED_TEMPORARILY': '302 MOVED_TEMPORARILY',
+  '303 SEE_OTHER': '303 SEE_OTHER',
+  '304 NOT_MODIFIED': '304 NOT_MODIFIED',
+  '305 USE_PROXY': '305 USE_PROXY',
+  '307 TEMPORARY_REDIRECT': '307 TEMPORARY_REDIRECT',
+  '308 PERMANENT_REDIRECT': '308 PERMANENT_REDIRECT',
+  '400 BAD_REQUEST': '400 BAD_REQUEST',
+  '401 UNAUTHORIZED': '401 UNAUTHORIZED',
+  '402 PAYMENT_REQUIRED': '402 PAYMENT_REQUIRED',
+  '403 FORBIDDEN': '403 FORBIDDEN',
+  '404 NOT_FOUND': '404 NOT_FOUND',
+  '405 METHOD_NOT_ALLOWED': '405 METHOD_NOT_ALLOWED',
+  '406 NOT_ACCEPTABLE': '406 NOT_ACCEPTABLE',
+  '407 PROXY_AUTHENTICATION_REQUIRED': '407 PROXY_AUTHENTICATION_REQUIRED',
+  '408 REQUEST_TIMEOUT': '408 REQUEST_TIMEOUT',
+  '409 CONFLICT': '409 CONFLICT',
+  '410 GONE': '410 GONE',
+  '411 LENGTH_REQUIRED': '411 LENGTH_REQUIRED',
+  '412 PRECONDITION_FAILED': '412 PRECONDITION_FAILED',
+  '413 PAYLOAD_TOO_LARGE': '413 PAYLOAD_TOO_LARGE',
+  '413 REQUEST_ENTITY_TOO_LARGE': '413 REQUEST_ENTITY_TOO_LARGE',
+  '414 URI_TOO_LONG': '414 URI_TOO_LONG',
+  '414 REQUEST_URI_TOO_LONG': '414 REQUEST_URI_TOO_LONG',
+  '415 UNSUPPORTED_MEDIA_TYPE': '415 UNSUPPORTED_MEDIA_TYPE',
+  '416 REQUESTED_RANGE_NOT_SATISFIABLE': '416 REQUESTED_RANGE_NOT_SATISFIABLE',
+  '417 EXPECTATION_FAILED': '417 EXPECTATION_FAILED',
+  '418 I_AM_A_TEAPOT': '418 I_AM_A_TEAPOT',
+  '419 INSUFFICIENT_SPACE_ON_RESOURCE': '419 INSUFFICIENT_SPACE_ON_RESOURCE',
+  '420 METHOD_FAILURE': '420 METHOD_FAILURE',
+  '421 DESTINATION_LOCKED': '421 DESTINATION_LOCKED',
+  '422 UNPROCESSABLE_ENTITY': '422 UNPROCESSABLE_ENTITY',
+  '423 LOCKED': '423 LOCKED',
+  '424 FAILED_DEPENDENCY': '424 FAILED_DEPENDENCY',
+  '425 TOO_EARLY': '425 TOO_EARLY',
+  '426 UPGRADE_REQUIRED': '426 UPGRADE_REQUIRED',
+  '428 PRECONDITION_REQUIRED': '428 PRECONDITION_REQUIRED',
+  '429 TOO_MANY_REQUESTS': '429 TOO_MANY_REQUESTS',
+  '431 REQUEST_HEADER_FIELDS_TOO_LARGE': '431 REQUEST_HEADER_FIELDS_TOO_LARGE',
+  '451 UNAVAILABLE_FOR_LEGAL_REASONS': '451 UNAVAILABLE_FOR_LEGAL_REASONS',
+  '500 INTERNAL_SERVER_ERROR': '500 INTERNAL_SERVER_ERROR',
+  '501 NOT_IMPLEMENTED': '501 NOT_IMPLEMENTED',
+  '502 BAD_GATEWAY': '502 BAD_GATEWAY',
+  '503 SERVICE_UNAVAILABLE': '503 SERVICE_UNAVAILABLE',
+  '504 GATEWAY_TIMEOUT': '504 GATEWAY_TIMEOUT',
+  '505 HTTP_VERSION_NOT_SUPPORTED': '505 HTTP_VERSION_NOT_SUPPORTED',
+  '506 VARIANT_ALSO_NEGOTIATES': '506 VARIANT_ALSO_NEGOTIATES',
+  '507 INSUFFICIENT_STORAGE': '507 INSUFFICIENT_STORAGE',
+  '508 LOOP_DETECTED': '508 LOOP_DETECTED',
+  '509 BANDWIDTH_LIMIT_EXCEEDED': '509 BANDWIDTH_LIMIT_EXCEEDED',
+  '510 NOT_EXTENDED': '510 NOT_EXTENDED',
+  '511 NETWORK_AUTHENTICATION_REQUIRED': '511 NETWORK_AUTHENTICATION_REQUIRED'
+} as const
+export type DefaultResponseListMessageDtoStatus =
+  (typeof defaultResponseListMessageDtoStatus)[keyof typeof defaultResponseListMessageDtoStatus]
+export type DefaultResponseListMessageDto = {
+  /**
+   * @type string | undefined
+   */
+  status?: DefaultResponseListMessageDtoStatus
+  /**
+   * @type integer | undefined, int32
+   */
+  statusCode?: number
+  /**
+   * @type string | undefined
+   */
+  message?: string
+  /**
+   * @type string | undefined, date-time
+   */
+  timestamp?: string
+  /**
+   * @type array | undefined
+   */
+  data?: MessageDto[]
+  /**
+   * @type object | undefined
+   */
+  errors?: {
+    [key: string]: string[]
+  }
+}
+
+export const messageDtoCurrentUserReactions = {
+  LIKE: 'LIKE',
+  DISLIKE: 'DISLIKE'
+} as const
+export type MessageDtoCurrentUserReactions =
+  (typeof messageDtoCurrentUserReactions)[keyof typeof messageDtoCurrentUserReactions]
+export const messageDtoEventType = {
+  NEW: 'NEW',
+  UPDATE: 'UPDATE'
+} as const
+export type MessageDtoEventType = (typeof messageDtoEventType)[keyof typeof messageDtoEventType]
+export type MessageDto = {
+  /**
+   * @type string | undefined, uuid
+   */
+  id?: string
+  /**
+   * @type string | undefined
+   */
+  content?: string
+  /**
+   * @type string | undefined
+   */
+  senderLogin?: string
+  /**
+   * @type string | undefined, uuid
+   */
+  parentMessageId?: string
+  /**
+   * @type string | undefined, uuid
+   */
+  topicId?: string
+  /**
+   * @type object | undefined
+   */
+  reactions?: {
+    [key: string]: number
+  }
+  /**
+   * @type array | undefined
+   */
+  currentUserReactions?: MessageDtoCurrentUserReactions[]
+  /**
+   * @type string | undefined
+   */
+  eventType?: MessageDtoEventType
+  /**
+   * @type string | undefined, date-time
+   */
+  sentAt?: string
+}
+
+export const defaultResponsePageCategoryDtoStatus = {
+  '100 CONTINUE': '100 CONTINUE',
+  '101 SWITCHING_PROTOCOLS': '101 SWITCHING_PROTOCOLS',
+  '102 PROCESSING': '102 PROCESSING',
+  '103 EARLY_HINTS': '103 EARLY_HINTS',
+  '103 CHECKPOINT': '103 CHECKPOINT',
+  '200 OK': '200 OK',
+  '201 CREATED': '201 CREATED',
+  '202 ACCEPTED': '202 ACCEPTED',
+  '203 NON_AUTHORITATIVE_INFORMATION': '203 NON_AUTHORITATIVE_INFORMATION',
+  '204 NO_CONTENT': '204 NO_CONTENT',
+  '205 RESET_CONTENT': '205 RESET_CONTENT',
+  '206 PARTIAL_CONTENT': '206 PARTIAL_CONTENT',
+  '207 MULTI_STATUS': '207 MULTI_STATUS',
+  '208 ALREADY_REPORTED': '208 ALREADY_REPORTED',
+  '226 IM_USED': '226 IM_USED',
+  '300 MULTIPLE_CHOICES': '300 MULTIPLE_CHOICES',
+  '301 MOVED_PERMANENTLY': '301 MOVED_PERMANENTLY',
+  '302 FOUND': '302 FOUND',
+  '302 MOVED_TEMPORARILY': '302 MOVED_TEMPORARILY',
+  '303 SEE_OTHER': '303 SEE_OTHER',
+  '304 NOT_MODIFIED': '304 NOT_MODIFIED',
+  '305 USE_PROXY': '305 USE_PROXY',
+  '307 TEMPORARY_REDIRECT': '307 TEMPORARY_REDIRECT',
+  '308 PERMANENT_REDIRECT': '308 PERMANENT_REDIRECT',
+  '400 BAD_REQUEST': '400 BAD_REQUEST',
+  '401 UNAUTHORIZED': '401 UNAUTHORIZED',
+  '402 PAYMENT_REQUIRED': '402 PAYMENT_REQUIRED',
+  '403 FORBIDDEN': '403 FORBIDDEN',
+  '404 NOT_FOUND': '404 NOT_FOUND',
+  '405 METHOD_NOT_ALLOWED': '405 METHOD_NOT_ALLOWED',
+  '406 NOT_ACCEPTABLE': '406 NOT_ACCEPTABLE',
+  '407 PROXY_AUTHENTICATION_REQUIRED': '407 PROXY_AUTHENTICATION_REQUIRED',
+  '408 REQUEST_TIMEOUT': '408 REQUEST_TIMEOUT',
+  '409 CONFLICT': '409 CONFLICT',
+  '410 GONE': '410 GONE',
+  '411 LENGTH_REQUIRED': '411 LENGTH_REQUIRED',
+  '412 PRECONDITION_FAILED': '412 PRECONDITION_FAILED',
+  '413 PAYLOAD_TOO_LARGE': '413 PAYLOAD_TOO_LARGE',
+  '413 REQUEST_ENTITY_TOO_LARGE': '413 REQUEST_ENTITY_TOO_LARGE',
+  '414 URI_TOO_LONG': '414 URI_TOO_LONG',
+  '414 REQUEST_URI_TOO_LONG': '414 REQUEST_URI_TOO_LONG',
+  '415 UNSUPPORTED_MEDIA_TYPE': '415 UNSUPPORTED_MEDIA_TYPE',
+  '416 REQUESTED_RANGE_NOT_SATISFIABLE': '416 REQUESTED_RANGE_NOT_SATISFIABLE',
+  '417 EXPECTATION_FAILED': '417 EXPECTATION_FAILED',
+  '418 I_AM_A_TEAPOT': '418 I_AM_A_TEAPOT',
+  '419 INSUFFICIENT_SPACE_ON_RESOURCE': '419 INSUFFICIENT_SPACE_ON_RESOURCE',
+  '420 METHOD_FAILURE': '420 METHOD_FAILURE',
+  '421 DESTINATION_LOCKED': '421 DESTINATION_LOCKED',
+  '422 UNPROCESSABLE_ENTITY': '422 UNPROCESSABLE_ENTITY',
+  '423 LOCKED': '423 LOCKED',
+  '424 FAILED_DEPENDENCY': '424 FAILED_DEPENDENCY',
+  '425 TOO_EARLY': '425 TOO_EARLY',
+  '426 UPGRADE_REQUIRED': '426 UPGRADE_REQUIRED',
+  '428 PRECONDITION_REQUIRED': '428 PRECONDITION_REQUIRED',
+  '429 TOO_MANY_REQUESTS': '429 TOO_MANY_REQUESTS',
+  '431 REQUEST_HEADER_FIELDS_TOO_LARGE': '431 REQUEST_HEADER_FIELDS_TOO_LARGE',
+  '451 UNAVAILABLE_FOR_LEGAL_REASONS': '451 UNAVAILABLE_FOR_LEGAL_REASONS',
+  '500 INTERNAL_SERVER_ERROR': '500 INTERNAL_SERVER_ERROR',
+  '501 NOT_IMPLEMENTED': '501 NOT_IMPLEMENTED',
+  '502 BAD_GATEWAY': '502 BAD_GATEWAY',
+  '503 SERVICE_UNAVAILABLE': '503 SERVICE_UNAVAILABLE',
+  '504 GATEWAY_TIMEOUT': '504 GATEWAY_TIMEOUT',
+  '505 HTTP_VERSION_NOT_SUPPORTED': '505 HTTP_VERSION_NOT_SUPPORTED',
+  '506 VARIANT_ALSO_NEGOTIATES': '506 VARIANT_ALSO_NEGOTIATES',
+  '507 INSUFFICIENT_STORAGE': '507 INSUFFICIENT_STORAGE',
+  '508 LOOP_DETECTED': '508 LOOP_DETECTED',
+  '509 BANDWIDTH_LIMIT_EXCEEDED': '509 BANDWIDTH_LIMIT_EXCEEDED',
+  '510 NOT_EXTENDED': '510 NOT_EXTENDED',
+  '511 NETWORK_AUTHENTICATION_REQUIRED': '511 NETWORK_AUTHENTICATION_REQUIRED'
+} as const
+export type DefaultResponsePageCategoryDtoStatus =
+  (typeof defaultResponsePageCategoryDtoStatus)[keyof typeof defaultResponsePageCategoryDtoStatus]
+export type DefaultResponsePageCategoryDto = {
+  /**
+   * @type string | undefined
+   */
+  status?: DefaultResponsePageCategoryDtoStatus
+  /**
+   * @type integer | undefined, int32
+   */
+  statusCode?: number
+  /**
+   * @type string | undefined
+   */
+  message?: string
+  /**
+   * @type string | undefined, date-time
+   */
+  timestamp?: string
+  data?: PageCategoryDto
+  /**
+   * @type object | undefined
+   */
+  errors?: {
+    [key: string]: string[]
+  }
+}
+
+export type PageCategoryDto = {
+  /**
+   * @type integer | undefined, int32
+   */
+  totalPages?: number
+  /**
+   * @type integer | undefined, int64
+   */
+  totalElements?: number
+  /**
+   * @type integer | undefined, int32
+   */
+  size?: number
+  /**
+   * @type array | undefined
+   */
+  content?: CategoryDto[]
+  /**
+   * @type integer | undefined, int32
+   */
+  number?: number
+  /**
+   * @type array | undefined
+   */
+  sort?: SortObject[]
+  pageable?: PageableObject
+  /**
+   * @type integer | undefined, int32
+   */
+  numberOfElements?: number
+  /**
+   * @type boolean | undefined
+   */
+  first?: boolean
+  /**
+   * @type boolean | undefined
+   */
+  last?: boolean
+  /**
+   * @type boolean | undefined
+   */
+  empty?: boolean
+}
+
+export type GetTopicPathParams = {
+  /**
+   * @type string, uuid
+   */
+  id: string
+}
+/**
+ * @description OK
+ */
+export type GetTopic200 = DefaultResponseTopicDto
+/**
+ * @description Bad Request
+ */
+export type GetTopic400 = DefaultResponseObject
+/**
+ * @description Forbidden
+ */
+export type GetTopic403 = DefaultResponseObject
+/**
+ * @description Not Found
+ */
+export type GetTopic404 = DefaultResponseObject
+/**
+ * @description Internal Server Error
+ */
+export type GetTopic500 = DefaultResponseObject
+/**
+ * @description OK
+ */
+export type GetTopicQueryResponse = DefaultResponseTopicDto
+export type GetTopicQuery = {
+  Response: GetTopicQueryResponse
+  PathParams: GetTopicPathParams
+  Errors: GetTopic400 | GetTopic403 | GetTopic404 | GetTopic500
+}
+
+export type EditTopicPathParams = {
+  /**
+   * @type string, uuid
+   */
+  id: string
+}
+/**
+ * @description OK
+ */
+export type EditTopic200 = DefaultResponseTopicDto
+/**
+ * @description Bad Request
+ */
+export type EditTopic400 = DefaultResponseObject
+/**
+ * @description Forbidden
+ */
+export type EditTopic403 = DefaultResponseObject
+/**
+ * @description Not Found
+ */
+export type EditTopic404 = DefaultResponseObject
+/**
+ * @description Internal Server Error
+ */
+export type EditTopic500 = DefaultResponseObject
+export type EditTopicMutationRequest = EditTopicModel
+/**
+ * @description OK
+ */
+export type EditTopicMutationResponse = DefaultResponseTopicDto
+export type EditTopicMutation = {
+  Response: EditTopicMutationResponse
+  Request: EditTopicMutationRequest
+  PathParams: EditTopicPathParams
+  Errors: EditTopic400 | EditTopic403 | EditTopic404 | EditTopic500
+}
+
+export type DeleteTopicPathParams = {
+  /**
+   * @type string, uuid
+   */
+  id: string
+}
+/**
+ * @description OK
+ */
+export type DeleteTopic200 = DefaultResponseObject
+/**
+ * @description Bad Request
+ */
+export type DeleteTopic400 = DefaultResponseObject
+/**
+ * @description Forbidden
+ */
+export type DeleteTopic403 = DefaultResponseObject
+/**
+ * @description Not Found
+ */
+export type DeleteTopic404 = DefaultResponseObject
+/**
+ * @description Internal Server Error
+ */
+export type DeleteTopic500 = DefaultResponseObject
+/**
+ * @description OK
+ */
+export type DeleteTopicMutationResponse = DefaultResponseObject
+export type DeleteTopicMutation = {
+  Response: DeleteTopicMutationResponse
+  PathParams: DeleteTopicPathParams
+  Errors: DeleteTopic400 | DeleteTopic403 | DeleteTopic404 | DeleteTopic500
+}
+
+export type EditTestCaseQueryParams = {
+  /**
+   * @type string, uuid
+   */
+  testId: string
+}
+/**
+ * @description OK
+ */
+export type EditTestCase200 = DefaultResponseTestCaseDto
+/**
+ * @description Bad Request
+ */
+export type EditTestCase400 = DefaultResponseObject
+/**
+ * @description Forbidden
+ */
+export type EditTestCase403 = DefaultResponseObject
+/**
+ * @description Not Found
+ */
+export type EditTestCase404 = DefaultResponseObject
+/**
+ * @description Internal Server Error
+ */
+export type EditTestCase500 = DefaultResponseObject
+export type EditTestCaseMutationRequest = EditTestModel
+/**
+ * @description OK
+ */
+export type EditTestCaseMutationResponse = DefaultResponseTestCaseDto
+export type EditTestCaseMutation = {
+  Response: EditTestCaseMutationResponse
+  Request: EditTestCaseMutationRequest
+  QueryParams: EditTestCaseQueryParams
+  Errors: EditTestCase400 | EditTestCase403 | EditTestCase404 | EditTestCase500
+}
+
+export type DeleteTestCaseQueryParams = {
+  /**
+   * @type string, uuid
+   */
+  testId: string
+}
+/**
+ * @description OK
+ */
+export type DeleteTestCase200 = DefaultResponseObject
+/**
+ * @description Bad Request
+ */
+export type DeleteTestCase400 = DefaultResponseObject
+/**
+ * @description Forbidden
+ */
+export type DeleteTestCase403 = DefaultResponseObject
+/**
+ * @description Not Found
+ */
+export type DeleteTestCase404 = DefaultResponseObject
+/**
+ * @description Internal Server Error
+ */
+export type DeleteTestCase500 = DefaultResponseObject
+/**
+ * @description OK
+ */
+export type DeleteTestCaseMutationResponse = DefaultResponseObject
+export type DeleteTestCaseMutation = {
+  Response: DeleteTestCaseMutationResponse
+  QueryParams: DeleteTestCaseQueryParams
+  Errors: DeleteTestCase400 | DeleteTestCase403 | DeleteTestCase404 | DeleteTestCase500
+}
+
+export type GetTaskPathParams = {
+  /**
+   * @type string, uuid
+   */
+  id: string
+}
+/**
+ * @description OK
+ */
+export type GetTask200 = DefaultResponseTaskDto
+/**
+ * @description Bad Request
+ */
+export type GetTask400 = DefaultResponseObject
+/**
+ * @description Forbidden
+ */
+export type GetTask403 = DefaultResponseObject
+/**
+ * @description Not Found
+ */
+export type GetTask404 = DefaultResponseObject
+/**
+ * @description Internal Server Error
+ */
+export type GetTask500 = DefaultResponseObject
+/**
+ * @description OK
+ */
+export type GetTaskQueryResponse = DefaultResponseTaskDto
+export type GetTaskQuery = {
+  Response: GetTaskQueryResponse
+  PathParams: GetTaskPathParams
+  Errors: GetTask400 | GetTask403 | GetTask404 | GetTask500
+}
+
+export type EditTaskPathParams = {
+  /**
+   * @type string, uuid
+   */
+  id: string
+}
+/**
+ * @description OK
+ */
+export type EditTask200 = DefaultResponseTaskDto
+/**
+ * @description Bad Request
+ */
+export type EditTask400 = DefaultResponseObject
+/**
+ * @description Forbidden
+ */
+export type EditTask403 = DefaultResponseObject
+/**
+ * @description Not Found
+ */
+export type EditTask404 = DefaultResponseObject
+/**
+ * @description Internal Server Error
+ */
+export type EditTask500 = DefaultResponseObject
+export type EditTaskMutationRequest = EditTaskModel
+/**
+ * @description OK
+ */
+export type EditTaskMutationResponse = DefaultResponseTaskDto
+export type EditTaskMutation = {
+  Response: EditTaskMutationResponse
+  Request: EditTaskMutationRequest
+  PathParams: EditTaskPathParams
+  Errors: EditTask400 | EditTask403 | EditTask404 | EditTask500
+}
+
+export type DeleteTaskPathParams = {
+  /**
+   * @type string, uuid
+   */
+  id: string
+}
+/**
+ * @description OK
+ */
+export type DeleteTask200 = DefaultResponseObject
+/**
+ * @description Bad Request
+ */
+export type DeleteTask400 = DefaultResponseObject
+/**
+ * @description Forbidden
+ */
+export type DeleteTask403 = DefaultResponseObject
+/**
+ * @description Not Found
+ */
+export type DeleteTask404 = DefaultResponseObject
+/**
+ * @description Internal Server Error
+ */
+export type DeleteTask500 = DefaultResponseObject
+/**
+ * @description OK
+ */
+export type DeleteTaskMutationResponse = DefaultResponseObject
+export type DeleteTaskMutation = {
+  Response: DeleteTaskMutationResponse
+  PathParams: DeleteTaskPathParams
+  Errors: DeleteTask400 | DeleteTask403 | DeleteTask404 | DeleteTask500
+}
+
+export type EditCategoryPathParams = {
+  /**
+   * @type string, uuid
+   */
+  id: string
+}
+/**
+ * @description OK
+ */
+export type EditCategory200 = DefaultResponseCategoryDto
+/**
+ * @description Bad Request
+ */
+export type EditCategory400 = DefaultResponseObject
+/**
+ * @description Forbidden
+ */
+export type EditCategory403 = DefaultResponseObject
+/**
+ * @description Not Found
+ */
+export type EditCategory404 = DefaultResponseObject
+/**
+ * @description Internal Server Error
+ */
+export type EditCategory500 = DefaultResponseObject
+export type EditCategoryMutationRequest = EditCategoryModel
+/**
+ * @description OK
+ */
+export type EditCategoryMutationResponse = DefaultResponseCategoryDto
+export type EditCategoryMutation = {
+  Response: EditCategoryMutationResponse
+  Request: EditCategoryMutationRequest
+  PathParams: EditCategoryPathParams
+  Errors: EditCategory400 | EditCategory403 | EditCategory404 | EditCategory500
+}
+
+export type DeleteCategoryPathParams = {
+  /**
+   * @type string, uuid
+   */
+  id: string
+}
+/**
+ * @description OK
+ */
+export type DeleteCategory200 = DefaultResponseObject
+/**
+ * @description Bad Request
+ */
+export type DeleteCategory400 = DefaultResponseObject
+/**
+ * @description Forbidden
+ */
+export type DeleteCategory403 = DefaultResponseObject
+/**
+ * @description Not Found
+ */
+export type DeleteCategory404 = DefaultResponseObject
+/**
+ * @description Internal Server Error
+ */
+export type DeleteCategory500 = DefaultResponseObject
+/**
+ * @description OK
+ */
+export type DeleteCategoryMutationResponse = DefaultResponseObject
+export type DeleteCategoryMutation = {
+  Response: DeleteCategoryMutationResponse
+  PathParams: DeleteCategoryPathParams
+  Errors: DeleteCategory400 | DeleteCategory403 | DeleteCategory404 | DeleteCategory500
+}
+
+export type CreateTopicPathParams = {
+  /**
+   * @type string, uuid
+   */
+  categoryId: string
+}
+/**
+ * @description OK
+ */
+export type CreateTopic200 = DefaultResponseTopicDto
+/**
+ * @description Bad Request
+ */
+export type CreateTopic400 = DefaultResponseObject
+/**
+ * @description Forbidden
+ */
+export type CreateTopic403 = DefaultResponseObject
+/**
+ * @description Not Found
+ */
+export type CreateTopic404 = DefaultResponseObject
+/**
+ * @description Internal Server Error
+ */
+export type CreateTopic500 = DefaultResponseObject
+export type CreateTopicMutationRequest = CreateTopicModel
+/**
+ * @description OK
+ */
+export type CreateTopicMutationResponse = DefaultResponseTopicDto
+export type CreateTopicMutation = {
+  Response: CreateTopicMutationResponse
+  Request: CreateTopicMutationRequest
+  PathParams: CreateTopicPathParams
+  Errors: CreateTopic400 | CreateTopic403 | CreateTopic404 | CreateTopic500
+}
+
+export type GetTaskTestCasesPathParams = {
+  /**
+   * @type string, uuid
+   */
+  taskId: string
+}
+/**
+ * @description OK
+ */
+export type GetTaskTestCases200 = TestCaseDto[]
+/**
+ * @description Bad Request
+ */
+export type GetTaskTestCases400 = DefaultResponseObject
+/**
+ * @description Forbidden
+ */
+export type GetTaskTestCases403 = DefaultResponseObject
+/**
+ * @description Not Found
+ */
+export type GetTaskTestCases404 = DefaultResponseObject
+/**
+ * @description Internal Server Error
+ */
+export type GetTaskTestCases500 = DefaultResponseObject
+/**
+ * @description OK
+ */
+export type GetTaskTestCasesQueryResponse = TestCaseDto[]
+export type GetTaskTestCasesQuery = {
+  Response: GetTaskTestCasesQueryResponse
+  PathParams: GetTaskTestCasesPathParams
+  Errors: GetTaskTestCases400 | GetTaskTestCases403 | GetTaskTestCases404 | GetTaskTestCases500
+}
+
+export type CreateTestCasePathParams = {
+  /**
+   * @type string, uuid
+   */
+  taskId: string
+}
+/**
+ * @description OK
+ */
+export type CreateTestCase200 = DefaultResponseTestCaseDto
+/**
+ * @description Bad Request
+ */
+export type CreateTestCase400 = DefaultResponseObject
+/**
+ * @description Forbidden
+ */
+export type CreateTestCase403 = DefaultResponseObject
+/**
+ * @description Not Found
+ */
+export type CreateTestCase404 = DefaultResponseObject
+/**
+ * @description Internal Server Error
+ */
+export type CreateTestCase500 = DefaultResponseObject
+export type CreateTestCaseMutationRequest = CreateTestModel
+/**
+ * @description OK
+ */
+export type CreateTestCaseMutationResponse = DefaultResponseTestCaseDto
+export type CreateTestCaseMutation = {
+  Response: CreateTestCaseMutationResponse
+  Request: CreateTestCaseMutationRequest
+  PathParams: CreateTestCasePathParams
+  Errors: CreateTestCase400 | CreateTestCase403 | CreateTestCase404 | CreateTestCase500
+}
+
+export type CreateTaskPathParams = {
+  /**
+   * @type string, uuid
+   */
+  topicId: string
+}
+/**
+ * @description OK
+ */
+export type CreateTask200 = DefaultResponseTaskDto
+/**
+ * @description Bad Request
+ */
+export type CreateTask400 = DefaultResponseObject
+/**
+ * @description Forbidden
+ */
+export type CreateTask403 = DefaultResponseObject
+/**
+ * @description Not Found
+ */
+export type CreateTask404 = DefaultResponseObject
+/**
+ * @description Internal Server Error
+ */
+export type CreateTask500 = DefaultResponseObject
+export type CreateTaskMutationRequest = CreateTaskModel
+/**
+ * @description OK
+ */
+export type CreateTaskMutationResponse = DefaultResponseTaskDto
+export type CreateTaskMutation = {
+  Response: CreateTaskMutationResponse
+  Request: CreateTaskMutationRequest
+  PathParams: CreateTaskPathParams
+  Errors: CreateTask400 | CreateTask403 | CreateTask404 | CreateTask500
+}
+
+export type GetCategoriesQueryParams = {
+  /**
+   * @type string | undefined
+   */
+  queryText?: string
+  /**
+   * @description Zero-based page index (0..N)
+   * @type integer | undefined
+   */
+  page?: number
+  /**
+   * @description The size of the page to be returned
+   * @type integer | undefined
+   */
+  size?: number
+  /**
+   * @description Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.
+   * @type array | undefined
+   */
+  sort?: string[]
+}
+/**
+ * @description OK
+ */
+export type GetCategories200 = DefaultResponsePageCategoryDto
+/**
+ * @description Bad Request
+ */
+export type GetCategories400 = DefaultResponseObject
+/**
+ * @description Forbidden
+ */
+export type GetCategories403 = DefaultResponseObject
+/**
+ * @description Not Found
+ */
+export type GetCategories404 = DefaultResponseObject
+/**
+ * @description Internal Server Error
+ */
+export type GetCategories500 = DefaultResponseObject
+/**
+ * @description OK
+ */
+export type GetCategoriesQueryResponse = DefaultResponsePageCategoryDto
+export type GetCategoriesQuery = {
+  Response: GetCategoriesQueryResponse
+  QueryParams: GetCategoriesQueryParams
+  Errors: GetCategories400 | GetCategories403 | GetCategories404 | GetCategories500
+}
+
+/**
+ * @description OK
+ */
+export type CreateCategory200 = DefaultResponseCategoryDto
+/**
+ * @description Bad Request
+ */
+export type CreateCategory400 = DefaultResponseObject
+/**
+ * @description Forbidden
+ */
+export type CreateCategory403 = DefaultResponseObject
+/**
+ * @description Not Found
+ */
+export type CreateCategory404 = DefaultResponseObject
+/**
+ * @description Internal Server Error
+ */
+export type CreateCategory500 = DefaultResponseObject
+export type CreateCategoryMutationRequest = CreateCategoryModel
+/**
+ * @description OK
+ */
+export type CreateCategoryMutationResponse = DefaultResponseCategoryDto
+export type CreateCategoryMutation = {
+  Response: CreateCategoryMutationResponse
+  Request: CreateCategoryMutationRequest
+  Errors: CreateCategory400 | CreateCategory403 | CreateCategory404 | CreateCategory500
+}
+
+export type GetTopicsQueryParams = {
+  /**
+   * @type string | undefined
+   */
+  queryText?: string
+  /**
+   * @description Zero-based page index (0..N)
+   * @type integer | undefined
+   */
+  page?: number
+  /**
+   * @description The size of the page to be returned
+   * @type integer | undefined
+   */
+  size?: number
+  /**
+   * @description Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.
+   * @type array | undefined
+   */
+  sort?: string[]
+}
+/**
+ * @description OK
+ */
+export type GetTopics200 = DefaultResponsePageTopicDto
+/**
+ * @description Bad Request
+ */
+export type GetTopics400 = DefaultResponseObject
+/**
+ * @description Forbidden
+ */
+export type GetTopics403 = DefaultResponseObject
+/**
+ * @description Not Found
+ */
+export type GetTopics404 = DefaultResponseObject
+/**
+ * @description Internal Server Error
+ */
+export type GetTopics500 = DefaultResponseObject
+/**
+ * @description OK
+ */
+export type GetTopicsQueryResponse = DefaultResponsePageTopicDto
+export type GetTopicsQuery = {
+  Response: GetTopicsQueryResponse
+  QueryParams: GetTopicsQueryParams
+  Errors: GetTopics400 | GetTopics403 | GetTopics404 | GetTopics500
+}
+
+export type GetTasksQueryParams = {
+  taskFilter: TaskFilter
+  /**
+   * @description Zero-based page index (0..N)
+   * @type integer | undefined
+   */
+  page?: number
+  /**
+   * @description The size of the page to be returned
+   * @type integer | undefined
+   */
+  size?: number
+  /**
+   * @description Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.
+   * @type array | undefined
+   */
+  sort?: string[]
+}
+/**
+ * @description OK
+ */
+export type GetTasks200 = DefaultResponsePageTaskDto
+/**
+ * @description Bad Request
+ */
+export type GetTasks400 = DefaultResponseObject
+/**
+ * @description Forbidden
+ */
+export type GetTasks403 = DefaultResponseObject
+/**
+ * @description Not Found
+ */
+export type GetTasks404 = DefaultResponseObject
+/**
+ * @description Internal Server Error
+ */
+export type GetTasks500 = DefaultResponseObject
+/**
+ * @description OK
+ */
+export type GetTasksQueryResponse = DefaultResponsePageTaskDto
+export type GetTasksQuery = {
+  Response: GetTasksQueryResponse
+  QueryParams: GetTasksQueryParams
+  Errors: GetTasks400 | GetTasks403 | GetTasks404 | GetTasks500
+}
+
+export type GetChatHistoryPathParams = {
+  /**
+   * @type string, uuid
+   */
+  id: string
+}
+/**
+ * @description OK
+ */
+export type GetChatHistory200 = DefaultResponseListMessageDto
+/**
+ * @description Bad Request
+ */
+export type GetChatHistory400 = DefaultResponseObject
+/**
+ * @description Forbidden
+ */
+export type GetChatHistory403 = DefaultResponseObject
+/**
+ * @description Not Found
+ */
+export type GetChatHistory404 = DefaultResponseObject
+/**
+ * @description Internal Server Error
+ */
+export type GetChatHistory500 = DefaultResponseObject
+/**
+ * @description OK
+ */
+export type GetChatHistoryQueryResponse = DefaultResponseListMessageDto
+export type GetChatHistoryQuery = {
+  Response: GetChatHistoryQueryResponse
+  PathParams: GetChatHistoryPathParams
+  Errors: GetChatHistory400 | GetChatHistory403 | GetChatHistory404 | GetChatHistory500
+}

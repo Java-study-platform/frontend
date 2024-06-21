@@ -9,7 +9,8 @@
     "paths": {
       "@/*": ["./src/*"],
       "@/static/*": ["./static/*"],
-      "@/generated/*": ["./generated/*"]
+      "@/generated/*": ["./generated/*"],
+      "@/kubb-generated/*": ["./kubb-generated/*"]
     },
 
     /* Bundler mode */

@@ -9,6 +9,7 @@ export default defineConfig({
     alias: {
       '@/static': path.resolve(__dirname, './static'),
       '@/generated': path.resolve(__dirname, './generated'),
+      '@/kubb-generated': path.resolve(__dirname, './kubb-generated'),
       '@': path.resolve(__dirname, './src')
     }
   }

@@ -23,7 +23,7 @@ export const UserSolutionsSection = ({ taskId }: UserSolutionsSectionProps) => {
           <ReloadIcon className="h-4 w-4 animate-spin" />
         </div>
       )}
-      {state.solutions?.length && (
+      {!!state.solutions?.length && (
         <RadioGroup
           defaultValue={state.selectedSolutionId ?? state.solutions[0].id}
           onValueChange={functions.setSelectedSolutionId}

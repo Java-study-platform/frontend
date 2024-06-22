@@ -20,31 +20,38 @@ export const ChatMessagesProvider = ({ children, chatId }: ChatMessagesProviderP
 
     stomp.subscribe<MessageDTO>(`/topic/chats/${chatId}`, (messageData) => {
       if (messageData.eventType === 'UPDATE') {
-        queryClient.setQueryData<DefaultResponseListMessageDTO>(chatQueryKey(chatId), (prevMessages) => {
-          const prevMessagesArray = prevMessages?.data ?? []
-          console.log('#prevMessages', prevMessages)
-          console.log('#prevMessages.data', prevMessages?.data)
-          return {
-            ...prevMessages,
-            data: prevMessagesArray.map((message) =>
-              message.id === messageData.id ? messageData : message
-            )
+        queryClient.setQueryData<{ data: DefaultResponseListMessageDTO }>(
+          chatQueryKey(chatId),
+          (oldData) => {
+            const prevMessagesArray = oldData?.data.data ?? []
+
+            return {
+              ...oldData,
+              data: {
+                data: prevMessagesArray.map((message) =>
+                  message.id === messageData.id ? messageData : message
+                )
+              }
+            }
           }
-        })
+        )
         return
       }
 
-      queryClient.setQueryData<DefaultResponseListMessageDTO>(chatQueryKey(chatId), (prevMessages) => {
-        console.log('#prevMessages', prevMessages)
-        console.log('#prevMessages.data', prevMessages?.data)
-        const prevMessagesArray = prevMessages?.data ?? []
-        prevMessagesArray.unshift(messageData)
-        console.log('#prevMessagesArray', prevMessagesArray)
-        return {
-          ...prevMessages,
-          data: [...prevMessagesArray]
+      queryClient.setQueryData<{ data: DefaultResponseListMessageDTO }>(
+        chatQueryKey(chatId),
+        (oldData) => {
+          const prevMessagesArray = oldData?.data.data ?? []
+          prevMessagesArray.unshift(messageData)
+
+          return {
+            ...oldData,
+            data: {
+              data: [...prevMessagesArray]
+            }
+          }
         }
-      })
+      )
     })
 
     return () => {

@@ -9,12 +9,7 @@ interface MessageContentInputProps extends InputProps {
   isUserOwner: boolean
 }
 
-export const MessageContentInput = ({
-  content,
-  isUserOwner,
-  messageId,
-  ...props
-}: MessageContentInputProps) => {
+export const MessageContentInput = ({ content, messageId, ...props }: MessageContentInputProps) => {
   const { state, functions } = useMessageContentInput({ defaultContent: content, messageId })
 
   return (
@@ -55,7 +50,7 @@ export const MessageContentInput = ({
           <I18nText path="button.editMessage" />
         </Button>
       )} */}
-      {!isUserOwner && !state.replyMode && (
+      {!state.replyMode && (
         <Button
           variant="link"
           className="cursor-pointer underline"
@@ -64,7 +59,7 @@ export const MessageContentInput = ({
           <I18nText path="button.reply" />
         </Button>
       )}
-      {!isUserOwner && state.replyMode && state.replyMode && (
+      {state.replyMode && state.replyMode && (
         <div className="mt-5 flex items-center gap-1">
           <Typography tag="p" variant="body2">
             <I18nText path="topic.chat.reply" />:

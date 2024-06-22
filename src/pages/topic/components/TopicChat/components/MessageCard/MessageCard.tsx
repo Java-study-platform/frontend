@@ -36,12 +36,12 @@ export const MessageCard = ({
         <Typography tag="p" variant="large">
           {message.senderLogin}
         </Typography>
-        {/* {message.sentAt && (
+        {message.sentAt && (
           <Typography tag="p" variant="sub1">
             {!fns.isToday(message.sentAt) && fns.format(message.sentAt, 'dd.MM.yyyy ')}
             {fns.format(message.sentAt, 'HH:mm')}
           </Typography>
-        )} */}
+        )}
       </div>
       <div>
         <MessageContentInput

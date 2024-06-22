@@ -42,13 +42,11 @@ export const ChatMessagesProvider = ({ children, chatId }: ChatMessagesProviderP
         chatQueryKey(chatId),
         (oldData) => {
           const prevMessagesArray = oldData?.data.data ?? []
-          console.log('#prevMessagesArray', prevMessagesArray)
-          prevMessagesArray.unshift(messageData)
-          console.log('#prevMessagesArray after adding message', prevMessagesArray)
+
           return {
             ...oldData,
             data: {
-              data: [...prevMessagesArray]
+              data: [...prevMessagesArray, messageData]
             }
           }
         }

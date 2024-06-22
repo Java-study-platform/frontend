@@ -1,4 +1,3 @@
-import React from 'react'
 import { useStompContext } from '../contexts/stomp/useStompContext'
 
 interface ObjectType<T = string | undefined> {
@@ -8,10 +7,6 @@ interface ObjectType<T = string | undefined> {
 export const useStomp = () => {
   const value = useStompContext()
   const { stompClient, subscriptions, setSubscriptions } = value
-
-  React.useEffect(() => {
-    console.log('#stompClient.connected', stompClient?.connected)
-  }, [stompClient?.connected])
 
   const send = (path: string, body: ObjectType) => {
     console.log(`#send message to ${path}`)
@@ -38,8 +33,7 @@ export const useStomp = () => {
 
   const unsubscribe = (path: string) => {
     const copy = { ...subscriptions }
-    if (!copy[path]) return
-    copy[path].unsubscribe()
+    if (copy[path]) copy[path].unsubscribe()
     console.log('#unsubscribe from ', path)
     delete copy[path]
     setSubscriptions(() => ({ ...copy }))

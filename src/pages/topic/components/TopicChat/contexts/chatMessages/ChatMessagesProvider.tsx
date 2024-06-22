@@ -16,29 +16,32 @@ export const ChatMessagesProvider = ({ children, chatId }: ChatMessagesProviderP
   const stomp = useStomp()
 
   React.useEffect(() => {
-    console.log('#isConnected', stomp.isConnected)
     if (!stomp.isConnected) return () => {}
 
     stomp.subscribe<MessageDTO>(`/topic/chats/${chatId}`, (messageData) => {
       if (messageData.eventType === 'UPDATE') {
-        queryClient.setQueryData<DefaultResponseListMessageDTO>(
-          chatQueryKey(chatId),
-          (prevMessages) => ({
+        queryClient.setQueryData<DefaultResponseListMessageDTO>(chatQueryKey(chatId), (prevMessages) => {
+          const prevMessagesArray = prevMessages?.data ?? []
+
+          return {
             ...prevMessages,
-            data: prevMessages?.data?.map((message) =>
+            data: prevMessagesArray.map((message) =>
               message.id === messageData.id ? messageData : message
             )
-          })
-        )
+          }
+        })
         return
       }
-      console.log('#new message', messageData)
-      console.log('#query key', chatQueryKey(chatId))
-      console.log('#new message', messageData)
-      queryClient.setQueryData<DefaultResponseListMessageDTO>(chatQueryKey(chatId), (prevMessages) => ({
-        ...prevMessages,
-        data: [messageData, ...(prevMessages?.data ?? [])]
-      }))
+
+      queryClient.setQueryData<DefaultResponseListMessageDTO>(chatQueryKey(chatId), (prevMessages) => {
+        const prevMessagesArray = prevMessages?.data ?? []
+        prevMessagesArray.unshift(messageData)
+        console.log('#prevMessagesArray', prevMessagesArray)
+        return {
+          ...prevMessages,
+          data: [...prevMessagesArray]
+        }
+      })
     })
 
     return () => {

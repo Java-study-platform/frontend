@@ -26,7 +26,7 @@ export const SolutionTestsProvider = ({ defaultSolutionId, children }: SolutionT
   const queryClient = useQueryClient()
 
   React.useEffect(() => {
-    if (!stomp.isConnected) return
+    if (!stomp.isConnected) return () => {}
 
     stomp.subscribe<TestDto>(
       `/user/${userContext.user?.login}/solution/${solutionId}/test`,

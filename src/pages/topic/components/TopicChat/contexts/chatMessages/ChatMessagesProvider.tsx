@@ -22,7 +22,8 @@ export const ChatMessagesProvider = ({ children, chatId }: ChatMessagesProviderP
       if (messageData.eventType === 'UPDATE') {
         queryClient.setQueryData<DefaultResponseListMessageDTO>(chatQueryKey(chatId), (prevMessages) => {
           const prevMessagesArray = prevMessages?.data ?? []
-
+          console.log('#prevMessages', prevMessages)
+          console.log('#prevMessages.data', prevMessages?.data)
           return {
             ...prevMessages,
             data: prevMessagesArray.map((message) =>
@@ -34,6 +35,8 @@ export const ChatMessagesProvider = ({ children, chatId }: ChatMessagesProviderP
       }
 
       queryClient.setQueryData<DefaultResponseListMessageDTO>(chatQueryKey(chatId), (prevMessages) => {
+        console.log('#prevMessages', prevMessages)
+        console.log('#prevMessages.data', prevMessages?.data)
         const prevMessagesArray = prevMessages?.data ?? []
         prevMessagesArray.unshift(messageData)
         console.log('#prevMessagesArray', prevMessagesArray)

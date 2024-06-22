@@ -6,7 +6,7 @@ export const useGetLearningTopicsByIdQuery = (
   settings?: QuerySettings<typeof getLearningTopicsById>
 ) =>
   useQuery({
-    queryKey: ['getLearningTopicsById'],
+    queryKey: ['getLearningTopicsById', params.id],
     queryFn: () =>
       getLearningTopicsById({ params, ...(settings?.config && { config: settings.config }) }),
     ...settings?.options

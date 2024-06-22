@@ -6,7 +6,7 @@ export const useGetSolutionByTaskIdQuery = (
   settings?: QuerySettings<typeof getSolutionByTaskId>
 ) =>
   useQuery({
-    queryKey: ['getSolutionByTaskId'],
+    queryKey: ['getSolutionByTaskId', params.taskId],
     queryFn: () => getSolutionByTaskId({ params, ...(settings?.config && { config: settings.config }) }),
     ...settings?.options
   })

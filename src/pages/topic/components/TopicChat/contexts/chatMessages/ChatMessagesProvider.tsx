@@ -32,7 +32,9 @@ export const ChatMessagesProvider = ({ children, chatId }: ChatMessagesProviderP
         )
         return
       }
-
+      console.log('#new message', messageData)
+      console.log('#query key', chatQueryKey(chatId))
+      console.log('#new message', messageData)
       queryClient.setQueryData<DefaultResponseListMessageDTO>(chatQueryKey(chatId), (prevMessages) => ({
         ...prevMessages,
         data: [messageData, ...(prevMessages?.data ?? [])]

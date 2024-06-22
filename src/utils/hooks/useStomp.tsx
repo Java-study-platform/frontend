@@ -38,6 +38,7 @@ export const useStomp = () => {
 
   const unsubscribe = (path: string) => {
     const copy = { ...subscriptions }
+    if (!copy[path]) return
     copy[path].unsubscribe()
     console.log('#unsubscribe from ', path)
     delete copy[path]

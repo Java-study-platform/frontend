@@ -71,7 +71,7 @@ export const MessageContentInput = ({ content, messageId, ...props }: MessageCon
             onChange={(event) => functions.setReplyContent(event.target.value)}
           />
           <div className="flex gap-1">
-            <Button size="icon" onClick={functions.onCancelReplyClick}>
+            <Button size="icon" onClick={functions.onConfirmReplyClick}>
               <CheckIcon className="h-4 w-4" />
             </Button>
             <Button size="icon" onClick={functions.onCancelReplyClick}>

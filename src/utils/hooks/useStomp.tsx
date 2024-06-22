@@ -27,7 +27,9 @@ export const useStomp = () => {
     if (subscriptions[path]) return
 
     const subscription = stompClient.subscribe(path, (message) => {
+      console.log('#message', message)
       const body: T = JSON.parse(message.body)
+      console.log('#message body', body)
       callback(body)
     })
     console.log('#subscribe to ', path)

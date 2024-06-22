@@ -50,7 +50,7 @@ export const TopicChat = ({ chatId }: TopicChatProps) => {
                 onLikeClick={functions.onLikeClick}
                 onDislikeClick={functions.onDislikeClick}
               />
-              {message.replies?.length && (
+              {!!message.replies?.length && (
                 <div className="relative ml-5 mt-3 flex flex-col gap-5">
                   <div className="absolute -left-6 top-3 h-1 w-5 bg-black" />
                   {message.replies.map((reply) => (

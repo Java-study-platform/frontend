@@ -61,7 +61,7 @@ export const TopicPage = () => {
                 />
               </div>
             )}
-            {state.topic.tasks?.length && (
+            {!!state.topic.tasks?.length && (
               <div className="mt-5 ">
                 <Typography tag="h2" variant="h2">
                   <I18nText path="topic.tasks" />

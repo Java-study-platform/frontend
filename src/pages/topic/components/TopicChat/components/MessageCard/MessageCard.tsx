@@ -1,5 +1,5 @@
 import { MessageDTO } from '@/generated/core-api'
-// import * as fns from 'date-fns'
+import * as fns from 'date-fns'
 import { CircleUserRoundIcon, ThumbsDownIcon, ThumbsUpIcon } from 'lucide-react'
 import { Button, Typography } from '@/components/ui'
 import { MessageContentInput } from '../MessageContentInput/MessageContentInput'

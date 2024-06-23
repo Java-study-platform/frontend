@@ -18,9 +18,11 @@ export const useDeleteCategoryDialog = ({ category }: UseDeleteCategoryDialogPar
 
   const onConfirmDeleteClick = async () => {
     await deleteLearningCategoriesByIdMutation.mutateAsync({ id: category.id })
+    setOpen(false)
     queryClient.invalidateQueries({ queryKey: ['getLearningCategories'] })
-    if (category.name)
+    if (category.name) {
       toast.success(i18n.formatMessage({ id: 'toast.categoryDeleted' }, { name: category.name }))
+    }
   }
 
   return {

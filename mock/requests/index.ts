@@ -1,5 +1,7 @@
 export * from './learning/topics/get'
 export * from './learning/categories/get'
+export * from './learning/categories/id/delete'
+export * from './learning/categories/id/put'
 export * from './learning/tasks/get'
 export * from './learning/tasks/id/get'
 export * from './learning/topics/id/get'

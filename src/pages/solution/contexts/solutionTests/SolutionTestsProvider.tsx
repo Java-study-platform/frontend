@@ -1,7 +1,12 @@
-import { DefaultResponseListTestDto } from '@/generated/solution-api'
+import {
+  DefaultResponseListTestDto,
+  DefaultResponseSolutionDto,
+  TestDto
+} from '@/generated/solution-api'
+import { useUserContext } from '@/utils/contexts'
+import { useStomp } from '@/utils/hooks'
 import { useQueryClient } from '@tanstack/react-query'
 import React from 'react'
-import useWebSocket from 'react-use-websocket'
 import { SolutionTestsContext } from './SolutionTestsContext'
 
 interface SolutionTestsProviderProps {
@@ -9,43 +14,46 @@ interface SolutionTestsProviderProps {
   defaultSolutionId: string
 }
 
-const SOCKET_URL = import.meta.env.VITE_WEB_SOCKET_URL
-
-const MESSAGE_TYPE = {
-  INITIAL_DATA: 'INITIAL_DATA',
-  NEW_TEST: 'NEW_TEST'
-}
-
-export const solutionTestsQueryKey = (solutionId?: string) => ['getSolutionTests', solutionId]
+export const solutionTestsQueryKey = (solutionId: string) => ['getSolutionTests', solutionId]
+export const solutionQueryKey = (solutionId: string) => ['getSolution', solutionId]
 
 export const SolutionTestsProvider = ({ defaultSolutionId, children }: SolutionTestsProviderProps) => {
+  const userContext = useUserContext()
   const [solutionId, setSolutionId] = React.useState(defaultSolutionId)
 
-  const webSocket = useWebSocket(SOCKET_URL)
+  const stomp = useStomp()
 
   const queryClient = useQueryClient()
-  // const canSendMessages = webSocket.readyState === ReadyState.OPEN
 
   React.useEffect(() => {
-    if (webSocket.lastMessage && webSocket.lastMessage.data) {
-      const { type, payload } = JSON.parse(webSocket.lastMessage.data)
+    if (!stomp.isConnected) return () => {}
 
-      if (type === MESSAGE_TYPE.INITIAL_DATA) {
-        queryClient.setQueryData(solutionTestsQueryKey(solutionId), () => payload)
-      } else if (type === MESSAGE_TYPE.NEW_TEST) {
+    stomp.subscribe<TestDto>(
+      `/user/${userContext.user?.login}/solution/${solutionId}/test`,
+      (messageData) => {
         queryClient.setQueryData<DefaultResponseListTestDto>(
           solutionTestsQueryKey(solutionId),
-          (oldData) => ({
-            data: [payload.data, ...(oldData?.data ?? [])]
+          (prevTests) => ({
+            data: [...(prevTests?.data ?? []), messageData]
           })
         )
       }
-    }
-  }, [webSocket.lastMessage])
+    )
 
-  React.useEffect(() => {
-    console.log('#solutionId', solutionId)
-  }, [solutionId])
+    stomp.subscribe<TestDto>(
+      `/user/${userContext.user?.login}/solution/${solutionId}`,
+      (messageData) => {
+        queryClient.setQueryData<DefaultResponseSolutionDto>(solutionQueryKey(solutionId), () => ({
+          data: messageData
+        }))
+      }
+    )
+
+    return () => {
+      stomp.unsubscribe(`/user/${userContext.user?.login}/solution/${solutionId}`)
+      stomp.unsubscribe(`/user/${userContext.user?.login}/solution/${solutionId}/test`)
+    }
+  }, [stomp.isConnected])
 
   const value = React.useMemo(() => ({ solutionId, setSolutionId }), [solutionId, setSolutionId])
 

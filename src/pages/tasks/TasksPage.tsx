@@ -23,7 +23,7 @@ export const TasksPage = () => {
   const { state, functions } = useTasksPage()
 
   return (
-    <div className="flex h-screen">
+    <div className="flex">
       <div className="container max-w-[750px] mdx:mx-auto mdx:max-w-[300px]">
         <Typography tag="h1" variant="h1">
           <I18nText path="tasks.title" />

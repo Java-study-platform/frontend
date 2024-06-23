@@ -12,9 +12,9 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
     () => ({
       user: {
         ...user,
-        isAdmin: user?.roles?.includes('admin') ?? false,
-        isMentor: user?.roles?.includes('mentor') ?? false,
-        isUser: user?.roles?.includes('user') ?? false
+        isAdmin: user?.roles?.includes('ADMIN') ?? false,
+        isMentor: user?.roles?.includes('MENTOR') ?? false,
+        isUser: user?.roles?.includes('USER') ?? false
       },
       setUser,
       clearUser

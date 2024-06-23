@@ -1,5 +1,5 @@
 import { RestRequestConfig } from 'mock-config-server'
-import { TASKS } from '../../../database/tasks'
+import { TASKS } from '../../../database'
 
 export const getLearningTasksConfig: RestRequestConfig = {
   path: '/learning/tasks',

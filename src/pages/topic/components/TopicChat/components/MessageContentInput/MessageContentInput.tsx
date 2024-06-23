@@ -9,23 +9,19 @@ interface MessageContentInputProps extends InputProps {
   isUserOwner: boolean
 }
 
-export const MessageContentInput = ({
-  content,
-  isUserOwner,
-  messageId,
-  ...props
-}: MessageContentInputProps) => {
+export const MessageContentInput = ({ content, messageId, ...props }: MessageContentInputProps) => {
   const { state, functions } = useMessageContentInput({ defaultContent: content, messageId })
 
   return (
     <div>
       <div className="flex items-center gap-2">
-        {(!isUserOwner || !state.editingMode) && (
-          <Typography tag="p" variant="body2">
-            {content}
-          </Typography>
-        )}
-        {isUserOwner && state.editingMode && (
+        <Typography tag="p" variant="body2">
+          {content}
+        </Typography>
+        {/* {(!isUserOwner || !state.editingMode) && (
+
+        )} */}
+        {/* {isUserOwner && state.editingMode && (
           <Input
             className="h-[50px] text-lg disabled:text-primary"
             {...props}
@@ -43,9 +39,9 @@ export const MessageContentInput = ({
               <XIcon className="h-4 w-4" />
             </Button>
           </div>
-        )}
+        )} */}
       </div>
-      {isUserOwner && (
+      {/* {isUserOwner && (
         <Button
           variant="link"
           className="cursor-pointer underline"
@@ -53,8 +49,8 @@ export const MessageContentInput = ({
         >
           <I18nText path="button.editMessage" />
         </Button>
-      )}
-      {!isUserOwner && !state.replyMode && (
+      )} */}
+      {!state.replyMode && (
         <Button
           variant="link"
           className="cursor-pointer underline"
@@ -63,7 +59,7 @@ export const MessageContentInput = ({
           <I18nText path="button.reply" />
         </Button>
       )}
-      {!isUserOwner && state.replyMode && state.replyMode && (
+      {state.replyMode && state.replyMode && (
         <div className="mt-5 flex items-center gap-1">
           <Typography tag="p" variant="body2">
             <I18nText path="topic.chat.reply" />:
@@ -75,7 +71,7 @@ export const MessageContentInput = ({
             onChange={(event) => functions.setReplyContent(event.target.value)}
           />
           <div className="flex gap-1">
-            <Button size="icon" onClick={functions.onCancelReplyClick}>
+            <Button size="icon" onClick={functions.onConfirmReplyClick}>
               <CheckIcon className="h-4 w-4" />
             </Button>
             <Button size="icon" onClick={functions.onCancelReplyClick}>

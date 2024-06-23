@@ -385,6 +385,18 @@ export interface UserDto {
   roles?: string[]
 }
 
+export interface AchievementDto {
+  /** @format uuid */
+  id?: string
+  name?: string
+  description?: string
+  /** @format int64 */
+  amountToObtain?: number
+  /** @format int64 */
+  progress?: number
+  isObtained?: boolean
+}
+
 export type QueryParamsType = Record<string | number, any>
 export type ResponseFormat = keyof Omit<Body, 'body' | 'bodyUsed'>
 
@@ -708,6 +720,23 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
     getProfile: (params: RequestParams = {}) =>
       this.request<DefaultResponseUserDto, DefaultResponseObject>({
         path: `/api/user/profile`,
+        method: 'GET',
+        secure: true,
+        ...params
+      }),
+
+    /**
+     * @description Позволяет получить полный список достижений
+     *
+     * @tags Достижения
+     * @name GetAllUserAchievements
+     * @summary Получение списка достижений
+     * @request GET:/api/user/achievements
+     * @secure
+     */
+    getAllUserAchievements: (params: RequestParams = {}) =>
+      this.request<AchievementDto[], DefaultResponseObject>({
+        path: `/api/user/achievements`,
         method: 'GET',
         secure: true,
         ...params

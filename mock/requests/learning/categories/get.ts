@@ -1,5 +1,5 @@
 import { RestRequestConfig } from 'mock-config-server'
-import { CATEGORIES } from '../../../database/categories'
+import { CATEGORIES } from '../../../database'
 
 export const getLearningCategoriesConfig: RestRequestConfig = {
   path: '/learning/categories',

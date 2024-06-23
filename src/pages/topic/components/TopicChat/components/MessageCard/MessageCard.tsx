@@ -11,8 +11,9 @@ interface MessageCardProps {
   hasUserDislike: boolean
   likesCount: number
   dislikesCount: number
-  onLikeClick: (messageId: string) => void
-  onDislikeClick: (messageId: string) => void
+  currentUserReactions: ('LIKE' | 'DISLIKE')[]
+  onLikeClick: (messageId: string, currentUserReactions: ('LIKE' | 'DISLIKE')[]) => void
+  onDislikeClick: (messageId: string, currentUserReactions: ('LIKE' | 'DISLIKE')[]) => void
   renderReplies?: () => JSX.Element
 }
 
@@ -23,6 +24,7 @@ export const MessageCard = ({
   hasUserDislike,
   hasUserLike,
   isUserOwner,
+  currentUserReactions,
   onLikeClick,
   onDislikeClick,
   renderReplies
@@ -51,10 +53,7 @@ export const MessageCard = ({
       <div className="mt-1 flex items-center gap-2">
         <Button
           variant={hasUserLike ? 'secondary' : 'ghost'}
-          disabled={hasUserDislike}
-          onClick={() => {
-            if (!hasUserLike) onLikeClick(message.id)
-          }}
+          onClick={() => onLikeClick(message.id, currentUserReactions)}
           className="p-2"
         >
           <ThumbsUpIcon className="mr-1 h-4 w-4" />
@@ -62,10 +61,7 @@ export const MessageCard = ({
         </Button>
         <Button
           variant={hasUserDislike ? 'secondary' : 'ghost'}
-          disabled={hasUserLike}
-          onClick={() => {
-            if (!hasUserDislike) onDislikeClick(message.id)
-          }}
+          onClick={() => onDislikeClick(message.id, currentUserReactions)}
           className="p-2"
         >
           <ThumbsDownIcon className="mr-1 h-4 w-4" />

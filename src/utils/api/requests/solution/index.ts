@@ -17,5 +17,8 @@ export const getSolution = ({ params, config }: RequestOptions<GetSolutionReques
 
 export type PostSolutionRequestParams = SendTestSolutionRequest
 
-export const postSolution = ({ params, config }: RequestOptions<PostSolutionRequestParams>) =>
-  instance.post<DefaultResponseListSolutionDto>('/solution', params, config)
+export const postSolution = ({
+  params: { taskId, ...params },
+  config
+}: RequestOptions<PostSolutionRequestParams>) =>
+  instance.post<DefaultResponseListSolutionDto>(`/solution?taskId=${taskId}`, params, config)

@@ -16,8 +16,8 @@ export const TaskPage = () => {
   const { state } = useTaskPage()
 
   return (
-    <div className="flex h-screen">
-      <div className="container max-w-[750px] mdx:mx-auto mdx:max-w-[300px]">
+    <div className="flex">
+      <div className="container max-w-[750px] mdx:mx-auto">
         {state.loading && (
           <div className="mt-2 flex items-center gap-2">
             <I18nText path="common.loading" />
@@ -39,20 +39,19 @@ export const TaskPage = () => {
                 <I18nText path="task.goToTopic" />
               </Typography>
             </Link>
-            <div>
-              <Typography tag="p" variant="body2" className="mt-2">
+            <div className="mt-2 space-y-1">
+              <Typography tag="p" variant="body2">
                 <I18nText path="task.description" values={{ description: state.task.description }} />
               </Typography>
-              <Typography tag="p" variant="body2" className="mt-2">
+              <Typography tag="p" variant="body2">
                 <I18nText
                   path="task.experienceAmount"
                   values={{ experienceAmount: state.task.experienceAmount }}
                 />
               </Typography>
-              <Typography tag="p" variant="body2" className="mt-2">
+              <Typography tag="p" variant="body2">
                 <I18nText path="task.timeLimit" values={{ timeLimit: state.task.timeLimit }} />
               </Typography>
-              {/* // TODO: add example test case */}
             </div>
             {userContext.user?.isUser && (
               <div>

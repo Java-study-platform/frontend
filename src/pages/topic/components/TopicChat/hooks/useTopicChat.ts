@@ -11,16 +11,22 @@ export const useTopicChat = ({ chatId }: UseTopicChatParams) => {
   const chatMessagesContext = useChatMessagesContext()
   const getLearningChatsByIdQuery = useGetLearningChatsByIdQuery({ id: chatId })
 
+  React.useEffect(() => {
+    if (getLearningChatsByIdQuery.data?.data.data) {
+      console.log('getLearningChatsByIdQuery data', getLearningChatsByIdQuery.data.data.data)
+    }
+  }, [getLearningChatsByIdQuery.data])
+
   const onSendMessageClick = () => {
     chatMessagesContext.sendMessage(newMessage)
   }
 
-  const onLikeClick = (messageId: string) => {
-    chatMessagesContext.sendLike(messageId)
+  const onLikeClick = (messageId: string, currentUserReactions: ('LIKE' | 'DISLIKE')[]) => {
+    chatMessagesContext.sendReaction(messageId, 'LIKE', currentUserReactions)
   }
 
-  const onDislikeClick = (messageId: string) => {
-    chatMessagesContext.sendDislike(messageId)
+  const onDislikeClick = (messageId: string, currentUserReactions: ('LIKE' | 'DISLIKE')[]) => {
+    chatMessagesContext.sendReaction(messageId, 'DISLIKE', currentUserReactions)
   }
 
   return {

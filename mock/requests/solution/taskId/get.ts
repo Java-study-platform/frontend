@@ -1,8 +1,8 @@
 import { RestRequestConfig } from 'mock-config-server'
-import { SOLUTIONS } from '../../../database/solutions'
+import { SOLUTIONS } from '../../../database'
 
 export const getSolutionByTaskIdConfig: RestRequestConfig = {
-  path: '/solution/FIXME/:taskId',
+  path: '/solution/DELETEME/:taskId',
   method: 'get',
   routes: [
     {

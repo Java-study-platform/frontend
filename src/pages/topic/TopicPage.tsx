@@ -20,7 +20,7 @@ export const TopicPage = () => {
   const { state } = useTopicPage()
 
   return (
-    <div className="flex h-screen">
+    <div className="flex">
       <div className="container max-w-[750px] mdx:mx-auto mdx:max-w-[300px]">
         {state.loading && (
           <div className="mt-2 flex items-center gap-2">
@@ -61,7 +61,7 @@ export const TopicPage = () => {
                 />
               </div>
             )}
-            {state.topic.tasks?.length && (
+            {!!state.topic.tasks?.length && (
               <div className="mt-5 ">
                 <Typography tag="h2" variant="h2">
                   <I18nText path="topic.tasks" />

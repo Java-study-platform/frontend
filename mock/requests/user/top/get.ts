@@ -1,5 +1,5 @@
 import { RestRequestConfig } from 'mock-config-server'
-import { PROFILE } from '../../../database/profile'
+import { PROFILE } from '../../../database'
 
 export const getUserTopConfig: RestRequestConfig = {
   path: '/user/top',

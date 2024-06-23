@@ -46,10 +46,11 @@ export const TopicChat = ({ chatId }: TopicChatProps) => {
                 hasUserLike={message.currentUserReactions?.includes('LIKE') ?? false}
                 hasUserDislike={message.currentUserReactions?.includes('DISLIKE') ?? false}
                 isUserOwner={message.senderLogin === userContext.user?.login}
+                currentUserReactions={message.currentUserReactions ?? []}
                 onLikeClick={functions.onLikeClick}
                 onDislikeClick={functions.onDislikeClick}
               />
-              {message.replies?.length && (
+              {!!message.replies?.length && (
                 <div className="relative ml-5 mt-3 flex flex-col gap-5">
                   <div className="absolute -left-6 top-3 h-1 w-5 bg-black" />
                   {message.replies.map((reply) => (
@@ -61,6 +62,7 @@ export const TopicChat = ({ chatId }: TopicChatProps) => {
                       hasUserLike={reply.currentUserReactions?.includes('LIKE') ?? false}
                       hasUserDislike={reply.currentUserReactions?.includes('DISLIKE') ?? false}
                       isUserOwner={reply.senderLogin === userContext.user?.login}
+                      currentUserReactions={message.currentUserReactions ?? []}
                       onLikeClick={functions.onLikeClick}
                       onDislikeClick={functions.onDislikeClick}
                     />

@@ -8,6 +8,15 @@ export const postLearningTasksByTopicIdConfig: RestRequestConfig = {
   interceptors: {
     response: (data, { request }) => {
       DATABASE.TASKS.push({ id: randomUUID(), ...request.body, topicId: request.params.topicId })
+      DATABASE.TOPICS = DATABASE.TOPICS.map((topic) => {
+        if (topic.id === request.params.topicId) {
+          return {
+            ...topic,
+            tasks: [...(topic.tasks ?? []), { id: randomUUID(), ...request.body }]
+          }
+        }
+        return topic
+      })
       return data
     }
   },

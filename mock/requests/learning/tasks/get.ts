@@ -1,5 +1,5 @@
 import { RestRequestConfig } from 'mock-config-server'
-import { TASKS } from '../../../database'
+import { DATABASE } from '../../../database'
 
 export const getLearningTasksConfig: RestRequestConfig = {
   path: '/learning/tasks',
@@ -11,7 +11,7 @@ export const getLearningTasksConfig: RestRequestConfig = {
           totalPages: 5,
           totalElements: 50,
           size: 10,
-          content: TASKS.slice(0, 10),
+          content: DATABASE.TASKS.slice(0, 10),
           pageable: { pageNumber: 0 }
         }
       }
@@ -23,7 +23,7 @@ export const getLearningTasksConfig: RestRequestConfig = {
           totalPages: 5,
           totalElements: 50,
           size: 10,
-          content: TASKS.slice(10, 20),
+          content: DATABASE.TASKS.slice(10, 20),
           pageable: { pageNumber: 1 }
         }
       }
@@ -35,7 +35,7 @@ export const getLearningTasksConfig: RestRequestConfig = {
           totalPages: 1,
           totalElements: 10,
           size: 10,
-          content: TASKS.filter((task) => task.name?.toLowerCase()?.includes('da')),
+          content: DATABASE.TASKS.filter((task) => task.name?.toLowerCase()?.includes('da')),
           pageable: { pageNumber: 0 }
         }
       }

@@ -1,5 +1,5 @@
 import { RestRequestConfig } from 'mock-config-server'
-import { SOLUTIONS } from '../../database'
+import { DATABASE } from '../../database'
 
 export const getSolutionConfig: RestRequestConfig = {
   path: '/solution',
@@ -8,7 +8,7 @@ export const getSolutionConfig: RestRequestConfig = {
     {
       data: (request) => {
         const { solutionId } = request.query
-        return { data: Object.values(SOLUTIONS).find((solution) => solution.id === solutionId) }
+        return { data: Object.values(DATABASE.SOLUTIONS).find((solution) => solution.id === solutionId) }
       }
     }
   ]

@@ -1,5 +1,5 @@
 import { RestRequestConfig } from 'mock-config-server'
-import { MESSAGES } from '../../../../database'
+import { DATABASE } from '../../../../database'
 
 export const getLearningChatsByIdConfig: RestRequestConfig = {
   path: '/learning/chats/:id',
@@ -7,7 +7,7 @@ export const getLearningChatsByIdConfig: RestRequestConfig = {
   routes: [
     {
       data: {
-        data: MESSAGES
+        data: DATABASE.MESSAGES
       }
     }
   ]

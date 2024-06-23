@@ -42,11 +42,24 @@ export const ChatMessagesProvider = ({ children, chatId }: ChatMessagesProviderP
         chatQueryKey(chatId),
         (oldData) => {
           const prevMessagesArray = oldData?.data.data ?? []
+          if (!messageData.parentMessageId) {
+            return {
+              ...oldData,
+              data: {
+                data: [...prevMessagesArray, messageData]
+              }
+            }
+          }
 
           return {
             ...oldData,
             data: {
-              data: [...prevMessagesArray, messageData]
+              data: prevMessagesArray.map((message) => {
+                if (message.id !== messageData.parentMessageId) return message
+
+                const prevMessageReplies = message?.replies ?? []
+                return { ...message, replies: [...prevMessageReplies, messageData] }
+              })
             }
           }
         }

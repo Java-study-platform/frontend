@@ -37,7 +37,7 @@ export const useRegisterPage = () => {
   })
 
   const onSubmit = registerForm.handleSubmit(async (values) => {
-    await postUserRegisterMutation.mutateAsync(values)
+    await postUserRegisterMutation.mutateAsync({ ...values, username: values.username.trim() })
     navigate(ROUTES.LOGIN)
   })
 

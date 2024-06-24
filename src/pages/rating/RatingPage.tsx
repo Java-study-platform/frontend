@@ -1,5 +1,7 @@
+import { ROUTES } from '@/utils/constants'
 import { ReloadIcon } from '@radix-ui/react-icons'
 import { CrownIcon } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { I18nText } from '@/components/common'
 import { Typography } from '@/components/ui'
 import { useRatingPage } from './hooks/useRatingPage'
@@ -27,12 +29,14 @@ export const RatingPage = () => {
                   <CrownIcon className="h-5 w-5 fill-yellow-300" />
                 </div>
               )}
-              <Typography tag="p" variant="large" className="max-w-[250px] truncate">
-                {user.username}
-              </Typography>
-              <Typography tag="p" variant="large">
-                - {user.experience}
-              </Typography>
+              <Link to={ROUTES.PROFILE(user.username)} className="flex hover:underline">
+                <Typography tag="p" variant="large" className="max-w-[250px] truncate">
+                  {user.username}
+                </Typography>
+                <Typography tag="p" variant="large">
+                  -{user.experience}
+                </Typography>
+              </Link>
             </div>
           ))}
         </div>

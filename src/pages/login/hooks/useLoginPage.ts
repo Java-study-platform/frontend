@@ -1,5 +1,5 @@
 import { DefaultResponseObject } from '@/generated/user-api'
-import { getUserProfile } from '@/utils/api'
+import { getUserProfileUsername } from '@/utils/api'
 import { usePostUserLoginMutation } from '@/utils/api/hooks'
 import { ROUTES } from '@/utils/constants'
 import { useSessionContext, useUserContext } from '@/utils/contexts'
@@ -42,18 +42,23 @@ export const useLoginPage = () => {
   }, [sessionContext.session.isAuth])
 
   const onSubmit = loginForm.handleSubmit(async (values) => {
-    const postUserLoginMutationResponse = await postUserLoginMutation.mutateAsync(values)
+    const postUserLoginMutationResponse = await postUserLoginMutation.mutateAsync({
+      login: values.login.trim(),
+      password: values.password
+    })
     sessionContext.login({
       accessToken: postUserLoginMutationResponse.data.data!.accessToken!,
       refreshToken: postUserLoginMutationResponse.data.data!.refreshToken!
     })
 
-    const getUserProfileResponse = await getUserProfile()
+    const getUserProfileUsernameResponse = await getUserProfileUsername({
+      params: { username: values.login }
+    })
 
     userContext.setUser({
       login: values.login,
-      roles: getUserProfileResponse.data.data?.roles ?? [],
-      experience: getUserProfileResponse.data.data?.experience ?? 0
+      roles: getUserProfileUsernameResponse.data.data?.roles ?? [],
+      experience: getUserProfileUsernameResponse.data.data?.experience ?? 0
     })
     navigate(ROUTES.ROOT)
   })

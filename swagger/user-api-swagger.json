@@ -213,12 +213,15 @@
         }
       }
     },
-    "/api/user/profile": {
+    "/api/user/profile/{username}": {
       "get": {
         "tags": ["Пользователь"],
         "summary": "Получение профиля пользователя",
         "description": "Позволяет получить информацию о пользователе",
         "operationId": "getProfile",
+        "parameters": [
+          { "name": "username", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
         "responses": {
           "400": {
             "description": "Bad Request",
@@ -248,12 +251,15 @@
         "security": [{ "bearerAuth": [] }]
       }
     },
-    "/api/user/achievements": {
+    "/api/user/achievements/{username}": {
       "get": {
         "tags": ["Достижения"],
         "summary": "Получение списка достижений",
         "description": "Позволяет получить полный список достижений",
         "operationId": "getAllUserAchievements",
+        "parameters": [
+          { "name": "username", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
         "responses": {
           "400": {
             "description": "Bad Request",

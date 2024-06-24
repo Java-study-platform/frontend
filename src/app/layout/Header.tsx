@@ -30,7 +30,7 @@ export const Header = () => {
         {sessionContext.session.isAuth && (
           <>
             <Link
-              to={ROUTES.PROFILE}
+              to={ROUTES.PROFILE(userContext.user?.login)}
               className={cn(buttonVariants({ variant: 'outline' }), '2xsx:px-3')}
             >
               <PersonIcon className="mr-2 h-4 w-4 2xsx:mr-0 2xsx:size-3" />

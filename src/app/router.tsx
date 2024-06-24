@@ -14,19 +14,14 @@ import { createBrowserRouter } from 'react-router-dom'
 import { SolutionPage } from '@/pages/solution/SolutionPage'
 import { AuthorizedLayout } from './layout/AuthorizedLayout'
 import { Layout } from './layout/Layout'
-
-// import { ProtectedRoute } from './ProtectedRoute'
+import { ProtectedRoute } from './ProtectedRoute'
 
 export const router = createBrowserRouter([
   {
     element: <Layout />,
     children: [
       {
-        element: (
-          // <ProtectedRoute>
-          <AuthorizedLayout />
-          // </ProtectedRoute>
-        ),
+        element: <AuthorizedLayout />,
         children: [
           {
             path: ROUTES.ROOT,
@@ -36,10 +31,7 @@ export const router = createBrowserRouter([
             path: ROUTES.CATEGORIES,
             element: <CategoriesPage />
           },
-          {
-            path: ROUTES.PROFILE,
-            element: <ProfilePage />
-          },
+
           {
             path: ROUTES.TOPIC(),
             element: <TopicPage />
@@ -52,13 +44,27 @@ export const router = createBrowserRouter([
             path: ROUTES.TASK(),
             element: <TaskPage />
           },
+
+          {
+            path: ROUTES.RATING,
+            element: <RatingPage />
+          }
+        ]
+      },
+      {
+        element: (
+          <ProtectedRoute>
+            <AuthorizedLayout />
+          </ProtectedRoute>
+        ),
+        children: [
           {
             path: ROUTES.SOLUTION(),
             element: <SolutionPage />
           },
           {
-            path: ROUTES.RATING,
-            element: <RatingPage />
+            path: ROUTES.PROFILE(),
+            element: <ProfilePage />
           }
         ]
       },

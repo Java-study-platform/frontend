@@ -25,7 +25,7 @@ export const useUploadSolutionSection = () => {
     state: {
       code,
       loading: postSolutionMutation.isPending,
-      solutionId: '1'
+      solutionId: postSolutionMutation.data?.data.data?.id
     },
     functions: { setCode, onUploadSolutionClick }
   }

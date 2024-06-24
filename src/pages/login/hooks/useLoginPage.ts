@@ -50,7 +50,11 @@ export const useLoginPage = () => {
 
     const getUserProfileResponse = await getUserProfile()
 
-    userContext.setUser({ login: values.login, roles: getUserProfileResponse.data.data?.roles ?? [] })
+    userContext.setUser({
+      login: values.login,
+      roles: getUserProfileResponse.data.data?.roles ?? [],
+      experience: getUserProfileResponse.data.data?.experience ?? 0
+    })
     navigate(ROUTES.ROOT)
   })
 

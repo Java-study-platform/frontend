@@ -1,3 +1,4 @@
+import { useUserContext } from '@/utils/contexts'
 import { ReloadIcon } from '@radix-ui/react-icons'
 import { PlusIcon } from 'lucide-react'
 import { I18nText } from '@/components/common'
@@ -7,6 +8,7 @@ import { TestCaseCard } from './components/TestCaseCard/TestCaseCard'
 import { useTestCasesSection } from './hooks/useTestCasesSection'
 
 export const TestCasesSection = () => {
+  const userContext = useUserContext()
   const { state, functions } = useTestCasesSection()
 
   return (
@@ -15,13 +17,15 @@ export const TestCasesSection = () => {
         <Typography tag="h2" variant="h2">
           <I18nText path="task.testCasesSection.title" />
         </Typography>
-        <CreateTestCaseDialog
-          trigger={
-            <Button size="icon" className="-mt-2">
-              <PlusIcon className="h-4 w-4" />
-            </Button>
-          }
-        />
+        {userContext.user?.isAdmin && (
+          <CreateTestCaseDialog
+            trigger={
+              <Button size="icon" className="-mt-2">
+                <PlusIcon className="h-4 w-4" />
+              </Button>
+            }
+          />
+        )}
       </div>
       {state.loading && (
         <div className="mt-2 flex items-center gap-2">

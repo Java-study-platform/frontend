@@ -1,6 +1,7 @@
 import { createContext } from 'react'
 
 export interface UserContextInfo {
+  experience: number
   login: string
   roles: string[]
   isAdmin: boolean
@@ -15,6 +16,7 @@ export interface IUserContext {
 }
 
 export const defaultUserContextInfoValues: Omit<UserContextInfo, 'isAdmin' | 'isMentor' | 'isUser'> = {
+  experience: 0,
   login: '',
   roles: []
 }

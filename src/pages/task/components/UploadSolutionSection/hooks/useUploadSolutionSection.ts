@@ -11,6 +11,11 @@ export const useUploadSolutionSection = () => {
   const postSolutionMutation = usePostSolutionMutation()
 
   const onUploadSolutionClick = async () => {
+    if (!code) {
+      toast.error(i18n.formatMessage({ id: 'toast.codeRequired' }))
+      return
+    }
+
     await postSolutionMutation.mutateAsync({ code, taskId: params.id! })
     toast.success(i18n.formatMessage({ id: 'toast.solutionUploaded' }))
     setCode('')

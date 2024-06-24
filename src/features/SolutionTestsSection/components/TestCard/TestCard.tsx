@@ -8,14 +8,18 @@ import { useTestCard } from './hooks/useTestCard'
 
 interface TestCardProps {
   test: TestDto
+  moreInfo: boolean
 }
 
-export const TestCard = ({ test }: TestCardProps) => {
+export const TestCard = ({ test, moreInfo }: TestCardProps) => {
   const userContext = useUserContext()
   const { state } = useTestCard({ testId: test.id! })
 
   return (
-    <AccordionItem value={test.id!} disabled={!userContext.user?.isAdmin && !userContext.user?.isMentor}>
+    <AccordionItem
+      value={test.id!}
+      disabled={(!userContext.user?.isAdmin && !userContext.user?.isMentor) || !moreInfo}
+    >
       <AccordionTrigger className="flex items-center">
         <Typography tag="p" className="[&:not(:first-child)]:mt-0">
           <I18nText path="task.solutionTestCasesSection.testIndex" values={{ index: test.testIndex }} />

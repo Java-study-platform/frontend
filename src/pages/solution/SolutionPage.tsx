@@ -1,4 +1,3 @@
-import { SolutionTestsProvider } from '@/features/contexts'
 import { SolutionTestsSection } from '@/features/SolutionTestsSection'
 import { ReloadIcon } from '@radix-ui/react-icons'
 import CodeEditor from '@uiw/react-textarea-code-editor'
@@ -25,27 +24,25 @@ export const SolutionPage = () => {
           </div>
         )}
         {state.solution && (
-          <SolutionTestsProvider defaultSolutionId={state.solution.id!}>
-            <div className="mt-10">
-              <Typography tag="h2" variant="h2">
-                <I18nText path="solution.code" />
-              </Typography>
-              <CodeEditor
-                className="mt-5"
-                value={state.solution.solutionCode}
-                language="java"
-                placeholder="Please enter java code."
-                readOnly
-                padding={15}
-                style={{
-                  backgroundColor: '#f5f5f5',
-                  fontFamily:
-                    'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace'
-                }}
-              />
-              <SolutionTestsSection solutionId={state.solution.id!} />
-            </div>
-          </SolutionTestsProvider>
+          <div className="mt-10">
+            <Typography tag="h2" variant="h2">
+              <I18nText path="solution.code" />
+            </Typography>
+            <CodeEditor
+              className="mt-5"
+              value={state.solution.solutionCode}
+              language="java"
+              placeholder="Please enter java code."
+              readOnly
+              padding={15}
+              style={{
+                backgroundColor: '#f5f5f5',
+                fontFamily:
+                  'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace'
+              }}
+            />
+            <SolutionTestsSection moreInfo solutionId={state.solution.id!} />
+          </div>
         )}
       </div>
     </div>

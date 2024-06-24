@@ -6,9 +6,10 @@ import { useSolutionTestsSection } from './hooks/useSolutionTestsSection'
 
 interface SolutionTestsSectionProps {
   solutionId: string
+  moreInfo?: boolean
 }
 
-export const SolutionTestsSection = ({ solutionId }: SolutionTestsSectionProps) => {
+export const SolutionTestsSection = ({ solutionId, moreInfo = false }: SolutionTestsSectionProps) => {
   const { state } = useSolutionTestsSection({ solutionId })
 
   return (
@@ -20,7 +21,7 @@ export const SolutionTestsSection = ({ solutionId }: SolutionTestsSectionProps) 
         </div>
       )}
       <Accordion type="multiple" className="mt-10 flex max-w-[400px] flex-col gap-4">
-        {state.tests?.map((test) => <TestCard key={test.id} test={test} />)}
+        {state.tests?.map((test) => <TestCard key={test.id} moreInfo={moreInfo} test={test} />)}
       </Accordion>
     </section>
   )

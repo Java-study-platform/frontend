@@ -2,7 +2,7 @@ import { useUserContext } from '@/utils/contexts'
 import { ReloadIcon } from '@radix-ui/react-icons'
 import { PlusIcon } from 'lucide-react'
 import { I18nText } from '@/components/common'
-import { Button, ScrollArea, Typography } from '@/components/ui'
+import { Button, Typography } from '@/components/ui'
 import { CreateTestCaseDialog } from './components/CreateTestCaseDialog/CreateTestCaseDialog'
 import { TestCaseCard } from './components/TestCaseCard/TestCaseCard'
 import { useTestCasesSection } from './hooks/useTestCasesSection'
@@ -33,8 +33,8 @@ export const TestCasesSection = () => {
           <ReloadIcon className="h-4 w-4 animate-spin" />
         </div>
       )}
-      <div className="h-[500px]">
-        <ScrollArea className="h-[100%]">
+      <div className="max-h-[500px]">
+        <div className="h-full overflow-y-auto">
           {state.testCases?.map((testCase) => (
             <TestCaseCard
               key={testCase.id}
@@ -42,7 +42,7 @@ export const TestCasesSection = () => {
               onDeleteClick={functions.onDeleteTestCaseClick}
             />
           ))}
-        </ScrollArea>
+        </div>
       </div>
     </section>
   )

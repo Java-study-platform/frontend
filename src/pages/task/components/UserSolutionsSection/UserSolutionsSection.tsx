@@ -2,7 +2,7 @@ import { ROUTES } from '@/utils/constants'
 import { ReloadIcon } from '@radix-ui/react-icons'
 import { Link } from 'react-router-dom'
 import { I18nText, SolutionStatus } from '@/components/common'
-import { Label, RadioGroup, RadioGroupItem, ScrollArea, Typography } from '@/components/ui'
+import { Label, RadioGroup, RadioGroupItem, Typography } from '@/components/ui'
 import { useUserSolutionsSection } from './hooks/useUserSolutionsSection'
 
 interface UserSolutionsSectionProps {
@@ -27,9 +27,9 @@ export const UserSolutionsSection = ({ taskId }: UserSolutionsSectionProps) => {
         <RadioGroup
           defaultValue={state.selectedSolutionId ?? state.solutions[0].id}
           onValueChange={functions.setSelectedSolutionId}
-          className="flex h-[300px] flex-col"
+          className="flex max-h-[300px] flex-col"
         >
-          <ScrollArea className="h-full">
+          <div className="h-full overflow-y-auto">
             {state.solutions.map((solution, index) => (
               <div key={solution.id}>
                 <RadioGroupItem value={solution.id!} id={solution.id} className="peer sr-only" />
@@ -46,7 +46,7 @@ export const UserSolutionsSection = ({ taskId }: UserSolutionsSectionProps) => {
                 </Label>
               </div>
             ))}
-          </ScrollArea>
+          </div>
         </RadioGroup>
       )}
       {!state.solutions?.length && !state.loading && (

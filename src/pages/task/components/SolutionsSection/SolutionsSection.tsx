@@ -3,7 +3,7 @@ import { useI18n } from '@/utils/contexts'
 import { ReloadIcon } from '@radix-ui/react-icons'
 import { Link } from 'react-router-dom'
 import { I18nText, SolutionStatus } from '@/components/common'
-import { Input, Label, RadioGroup, RadioGroupItem, ScrollArea, Typography } from '@/components/ui'
+import { Input, Label, RadioGroup, RadioGroupItem, Typography } from '@/components/ui'
 import { useSolutionsSection } from './hooks/useSolutionsSection'
 
 export const SolutionsSection = () => {
@@ -27,9 +27,9 @@ export const SolutionsSection = () => {
           <ReloadIcon className="h-4 w-4 animate-spin" />
         </div>
       )}
-      {state.solutions && (
-        <RadioGroup className="mt-5 flex h-[300px] flex-col">
-          <ScrollArea className="h-full">
+      {!!state.solutions?.length && (
+        <RadioGroup className="mt-5 flex max-h-[300px] flex-col">
+          <div className="h-full overflow-y-auto">
             {state.solutions.map((solution, index) => (
               <div key={solution.id}>
                 <RadioGroupItem value={solution.id!} id={solution.id} className="peer sr-only" />
@@ -47,7 +47,7 @@ export const SolutionsSection = () => {
                 </Label>
               </div>
             ))}
-          </ScrollArea>
+          </div>
         </RadioGroup>
       )}
     </section>

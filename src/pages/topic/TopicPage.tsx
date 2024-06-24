@@ -6,7 +6,7 @@ import { ReloadIcon } from '@radix-ui/react-icons'
 import { LinkIcon } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { I18nText } from '@/components/common'
-import { Button, RichTextEditor, ScrollArea, Typography } from '@/components/ui'
+import { Button, RichTextEditor, Typography } from '@/components/ui'
 import { CreateTaskDialog } from './components/CreateTaskDialog/CreateTaskDialog'
 import { DeleteTopicDialog } from './components/DeleteTopicDialog/DeleteTopicDialog'
 import { EditTopicDialog } from './components/EditTopicDialog/EditTopicDialog'
@@ -67,21 +67,22 @@ export const TopicPage = () => {
                   <Typography tag="h2" variant="h2">
                     <I18nText path="topic.tasks" />
                   </Typography>
-
-                  <ScrollArea className="mt-5 max-h-[500px] ">
-                    <div className="flex flex-col gap-2">
-                      {state.topic.tasks?.map((task) => (
-                        <Link
-                          key={task.id}
-                          to={ROUTES.TASK(task.id)}
-                          className="flex items-center gap-2 text-sm underline"
-                        >
-                          <LinkIcon className="h-3 w-3" />
-                          <Typography variant="large">{task.name}</Typography>
-                        </Link>
-                      ))}
+                  <div className="max-h-[500px]">
+                    <div className="mt-5 h-full">
+                      <div className="flex flex-col gap-2">
+                        {state.topic.tasks?.map((task) => (
+                          <Link
+                            key={task.id}
+                            to={ROUTES.TASK(task.id)}
+                            className="flex items-center gap-2 text-sm underline"
+                          >
+                            <LinkIcon className="h-3 w-3" />
+                            <Typography variant="large">{task.name}</Typography>
+                          </Link>
+                        ))}
+                      </div>
                     </div>
-                  </ScrollArea>
+                  </div>
                 </div>
               )}
               {state.topic.material && (

@@ -17,7 +17,11 @@ export const useUploadSolutionSection = () => {
   }
 
   return {
-    state: { code, loading: postSolutionMutation.isPending },
+    state: {
+      code,
+      loading: postSolutionMutation.isPending,
+      solutionId: postSolutionMutation.data?.data.data?.id
+    },
     functions: { setCode, onUploadSolutionClick }
   }
 }

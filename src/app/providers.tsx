@@ -3,7 +3,6 @@ import {
   I18nProvider,
   QueryProvider,
   SessionProvider,
-  StompProvider,
   UserProvider
 } from '@/utils/contexts'
 import { getMessagesByLocale } from '@/utils/helpers'
@@ -25,11 +24,7 @@ export const Providers = ({ children }: ProvidersProps) => {
           <UserProvider>
             <AxiosProvider>
               <Toaster />
-              <TooltipProvider>
-                <StompProvider config={{ brokerURL: import.meta.env.VITE_WEB_SOCKET_URL }}>
-                  {children}
-                </StompProvider>
-              </TooltipProvider>
+              <TooltipProvider>{children}</TooltipProvider>
             </AxiosProvider>
           </UserProvider>
         </SessionProvider>

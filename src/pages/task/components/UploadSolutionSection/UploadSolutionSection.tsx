@@ -1,3 +1,5 @@
+import { SolutionTestsProvider } from '@/features/contexts'
+import { SolutionTestsSection } from '@/features/SolutionTestsSection'
 import CodeEditor from '@uiw/react-textarea-code-editor'
 import { I18nText } from '@/components/common'
 import { Button, Typography } from '@/components/ui'
@@ -26,6 +28,11 @@ export const UploadSolutionSection = () => {
       <Button onClick={functions.onUploadSolutionClick} className="mt-5">
         <I18nText path="button.send" />
       </Button>
+      {state.solutionId && (
+        <SolutionTestsProvider defaultSolutionId={state.solutionId}>
+          <SolutionTestsSection solutionId={state.solutionId} />
+        </SolutionTestsProvider>
+      )}
     </section>
   )
 }

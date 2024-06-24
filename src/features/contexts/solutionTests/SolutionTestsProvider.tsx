@@ -1,6 +1,7 @@
 import {
   DefaultResponseListTestDto,
   DefaultResponseSolutionDto,
+  SolutionDto,
   TestDto
 } from '@/generated/solution-api'
 import { useUserContext } from '@/utils/contexts'
@@ -31,21 +32,30 @@ export const SolutionTestsProvider = ({ defaultSolutionId, children }: SolutionT
     stomp.subscribe<TestDto>(
       `/user/${userContext.user?.login}/solution/${solutionId}/test`,
       (messageData) => {
-        queryClient.setQueryData<DefaultResponseListTestDto>(
+        queryClient.setQueryData<{ data: DefaultResponseListTestDto }>(
           solutionTestsQueryKey(solutionId),
-          (prevTests) => ({
-            data: [...(prevTests?.data ?? []), messageData]
-          })
+          (oldData) => {
+            const prevTestsArray = oldData?.data.data ?? []
+
+            return {
+              ...oldData,
+              data: { data: [...prevTestsArray, messageData] }
+            }
+          }
         )
       }
     )
 
-    stomp.subscribe<TestDto>(
+    stomp.subscribe<SolutionDto>(
       `/user/${userContext.user?.login}/solution/${solutionId}`,
       (messageData) => {
-        queryClient.setQueryData<DefaultResponseSolutionDto>(solutionQueryKey(solutionId), () => ({
-          data: messageData
-        }))
+        queryClient.setQueryData<{ data: DefaultResponseSolutionDto }>(
+          solutionQueryKey(solutionId),
+          (oldData) => ({
+            ...oldData,
+            data: { data: messageData }
+          })
+        )
       }
     )
 
@@ -53,7 +63,7 @@ export const SolutionTestsProvider = ({ defaultSolutionId, children }: SolutionT
       stomp.unsubscribe(`/user/${userContext.user?.login}/solution/${solutionId}`)
       stomp.unsubscribe(`/user/${userContext.user?.login}/solution/${solutionId}/test`)
     }
-  }, [stomp.isConnected])
+  }, [stomp.isConnected, userContext.user?.login])
 
   const value = React.useMemo(() => ({ solutionId, setSolutionId }), [solutionId, setSolutionId])
 

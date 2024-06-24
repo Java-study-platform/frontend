@@ -1,9 +1,9 @@
+import { SolutionTestsProvider } from '@/features/contexts'
+import { SolutionTestsSection } from '@/features/SolutionTestsSection'
 import { ReloadIcon } from '@radix-ui/react-icons'
 import CodeEditor from '@uiw/react-textarea-code-editor'
 import { I18nText, SolutionStatus } from '@/components/common'
 import { Typography } from '@/components/ui'
-import { SolutionTestsSection } from './components/SolutionTestsSection/SolutionTestsSection'
-import { SolutionTestsProvider } from './contexts'
 import { useSolutionPage } from './hooks/useSolutionPage'
 
 export const SolutionPage = () => {

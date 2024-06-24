@@ -375,6 +375,7 @@ export interface DefaultResponseUserDto {
 }
 
 export interface UserDto {
+  id: string
   keyCloakId?: string
   username?: string
   email?: string

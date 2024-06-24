@@ -30,6 +30,7 @@
   "button.send": "Отправить",
   "button.editMessage": "Изменить",
   "button.reply": "Ответить",
+  "button.set": "Назначить",
 
   "usersCombobox.searchPlaceholder": "Выберете пользователя",
 
@@ -103,6 +104,8 @@
   "field.expectedInput.placeholder": "1 1 1",
   "field.expectedOutput.label": "Ожидаемый вывод",
   "field.expectedOutput.placeholder": "100",
+
+  "select.roles.placeholder": "Выберите роль",
 
   "validation.required": "Обязательное поле",
   "validation.email.format": "Неверный формат почты",

@@ -1,4 +1,4 @@
-import { useGetUserProfileUsernameQuery } from '@/utils/api/hooks'
+import { useGetUserProfileUsernameQuery } from '@/utils/api'
 import { useParams } from 'react-router-dom'
 
 export const useProfilePage = () => {
@@ -9,8 +9,8 @@ export const useProfilePage = () => {
 
   return {
     state: {
-      loading: getUserProfileUsernameQuery.isLoading
-    },
-    query: getUserProfileUsernameQuery
+      loading: getUserProfileUsernameQuery.isLoading,
+      profile: getUserProfileUsernameQuery.data?.data.data
+    }
   }
 }

@@ -25,6 +25,24 @@ export const ChatMessagesProvider = ({ children, chatId }: ChatMessagesProviderP
           (oldData) => {
             const prevMessagesArray = oldData?.data.data ?? []
 
+            if (!!messageData.parentMessageId) {
+              return {
+                ...oldData,
+                data: {
+                  data: prevMessagesArray.map((message) =>
+                    message.id === messageData.parentMessageId
+                      ? {
+                          ...message,
+                          replies: message?.replies?.map((reply) =>
+                            reply.id === messageData.id ? messageData : reply
+                          )
+                        }
+                      : message
+                  )
+                }
+              }
+            }
+
             return {
               ...oldData,
               data: {
@@ -35,7 +53,6 @@ export const ChatMessagesProvider = ({ children, chatId }: ChatMessagesProviderP
             }
           }
         )
-        return
       }
 
       queryClient.setQueryData<{ data: DefaultResponseListMessageDTO }>(

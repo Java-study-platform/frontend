@@ -11,12 +11,6 @@ export const useTopicChat = ({ chatId }: UseTopicChatParams) => {
   const chatMessagesContext = useChatMessagesContext()
   const getLearningChatsByIdQuery = useGetLearningChatsByIdQuery({ id: chatId })
 
-  React.useEffect(() => {
-    if (getLearningChatsByIdQuery.data?.data.data) {
-      console.log('getLearningChatsByIdQuery data', getLearningChatsByIdQuery.data.data.data)
-    }
-  }, [getLearningChatsByIdQuery.data])
-
   const onSendMessageClick = () => {
     chatMessagesContext.sendMessage(newMessage)
   }

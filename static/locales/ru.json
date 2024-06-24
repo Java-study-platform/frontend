@@ -126,7 +126,7 @@
   "task.goToTopic": "Перейти к теме",
   "task.description": "Описание: {description}",
   "task.experienceAmount": "Опыт за решение: {experienceAmount}",
-  "task.timeLimit": "Ограничение по времени: {timeLimit}сек",
+  "task.timeLimit": "Ограничение по времени: {timeLimit}мс",
   "task.edit": "Редактировать",
   "task.uploadSolutionSection.title": "Введите решение",
   "task.userSolutionsSection.title": "История решений",
@@ -136,7 +136,7 @@
   "task.solutionsSection.title": "Решения пользователей",
   "task.solutionsSection.solutions": "Решения",
   "task.testCasesSection.title": "Тест кейсы",
-  "task.testCasesSection.timeLimit": "Тайм лимит : {timeLimit}сек",
+  "task.testCasesSection.timeLimit": "Тайм лимит : {timeLimit}мс",
   "task.testCasesSection.expectedInput": "Ожидаемый ввод:",
   "task.testCasesSection.expectedOutput": "Ожидаемый вывод:",
 

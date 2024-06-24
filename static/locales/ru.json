@@ -73,6 +73,7 @@
   "toast.testCaseEdited": "Тест кейс изменен",
   "toast.testCaseCreated": "Тест кейс создан",
   "toast.codeRequired": "Введите код решения",
+  "toast.descriptionRequired": "Введите описание задачи",
 
   "field.username.label": "Ник",
   "field.username.placeholder": "username",
@@ -142,7 +143,7 @@
 
   "task.title": "Задача {name}",
   "task.goToTopic": "Перейти к теме",
-  "task.description": "Описание: {description}",
+  "task.description": "Описание: ",
   "task.experienceAmount": "Опыт за решение: {experienceAmount}",
   "task.timeLimit": "Ограничение по времени: {timeLimit}сек",
   "task.edit": "Редактировать",

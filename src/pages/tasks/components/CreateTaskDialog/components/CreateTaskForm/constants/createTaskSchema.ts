@@ -4,9 +4,7 @@ export const createTaskSchema = z.object({
   name: z.string().min(1, {
     message: 'validation.required'
   }),
-  description: z.string().min(1, {
-    message: 'validation.required'
-  }),
+  description: z.string(),
   experienceAmount: z.string().min(1, {
     message: 'validation.required'
   }),

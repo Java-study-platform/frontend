@@ -1,10 +1,11 @@
 import { ROUTES } from '@/utils/constants'
 import { StompProvider, useUserContext } from '@/utils/contexts'
+import { deserializeEditorValue, getDocumentBodyFromHTMLString } from '@/utils/helpers'
 import { ReloadIcon } from '@radix-ui/react-icons'
 import { LinkIcon } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { I18nText } from '@/components/common'
-import { Button, Typography } from '@/components/ui'
+import { Button, RichTextEditor, Typography } from '@/components/ui'
 import { DeleteTaskDialog } from '../tasks/components/DeleteCategoryDialog/DeleteTaskDialog'
 import { EditTaskDialog } from '../tasks/components/EditTaskDialog/EditTaskDialog'
 import { SolutionsSection } from './components/SolutionsSection/SolutionsSection'
@@ -64,7 +65,13 @@ export const TaskPage = () => {
               </Link>
               <div className="mt-2 space-y-1">
                 <Typography tag="p" variant="body2">
-                  <I18nText path="task.description" values={{ description: state.task.description }} />
+                  <I18nText path="task.description" />
+                  <RichTextEditor
+                    value={deserializeEditorValue(
+                      getDocumentBodyFromHTMLString(state.task.description ?? '')
+                    )}
+                    readOnly
+                  />
                 </Typography>
                 <Typography tag="p" variant="body2">
                   <I18nText

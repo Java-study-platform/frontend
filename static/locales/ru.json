@@ -1,6 +1,18 @@
 {
   "common.loading": "Загрузка",
 
+  "solution.status.ok": "OK",
+  "solution.status.wrong_answer": "WA",
+  "solution.status.time_limit": "TL",
+  "solution.status.runtime_error": "RE",
+  "solution.status.compilation_error": "CE",
+  "solution.status.malicious_code": "MC",
+  "solution.status.pending": "Pending",
+
+  "test.time": "{time}мс",
+  "test.input": "Ввод",
+  "test.output": "Вывод",
+
   "button.login": "Войти",
   "button.register": "Зарегистрироваться",
   "button.logout": "Выйти",
@@ -130,7 +142,8 @@
   "task.edit": "Редактировать",
   "task.uploadSolutionSection.title": "Введите решение",
   "task.userSolutionsSection.title": "История решений",
-  "task.userSolutionsSection.solutionIndex": "Решение номер {index}",
+  "task.userSolutionsSection.solutionIndex": "#{index}",
+  "task.userSolutionsSection.noSolutions": "Нет решений",
   "task.solutionTestCasesSection.title": "Тесты решения",
   "task.solutionTestCasesSection.testIndex": "#{index}",
   "task.solutionsSection.title": "Решения пользователей",

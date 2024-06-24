@@ -32,7 +32,7 @@ export const SolutionPage = () => {
               </Typography>
               <CodeEditor
                 className="mt-5"
-                defaultValue={state.solution.solutionCode}
+                value={state.solution.solutionCode}
                 language="java"
                 placeholder="Please enter java code."
                 readOnly

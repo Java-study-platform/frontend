@@ -49,6 +49,11 @@ export const UserSolutionsSection = ({ taskId }: UserSolutionsSectionProps) => {
           </ScrollArea>
         </RadioGroup>
       )}
+      {!state.solutions?.length && !state.loading && (
+        <Typography tag="p">
+          <I18nText path="task.userSolutionsSection.noSolutions" />
+        </Typography>
+      )}
     </section>
   )
 }

@@ -2,7 +2,7 @@ import { SolutionTestsProvider } from '@/features/contexts'
 import { SolutionTestsSection } from '@/features/SolutionTestsSection'
 import CodeEditor from '@uiw/react-textarea-code-editor'
 import { I18nText } from '@/components/common'
-import { Button, Typography } from '@/components/ui'
+import { Button, ScrollArea, Typography } from '@/components/ui'
 import { useUploadSolutionSection } from './hooks/useUploadSolutionSection'
 
 export const UploadSolutionSection = () => {
@@ -30,7 +30,16 @@ export const UploadSolutionSection = () => {
       </Button>
       {state.solutionId && (
         <SolutionTestsProvider defaultSolutionId={state.solutionId}>
-          <SolutionTestsSection solutionId={state.solutionId} />
+          <div className="mt-10">
+            <Typography tag="h2" variant="h2">
+              <I18nText path="task.solutionTestCasesSection.title" />
+            </Typography>
+            <div className="h-[400px]">
+              <ScrollArea className="h-[100%]">
+                <SolutionTestsSection solutionId={state.solutionId} />
+              </ScrollArea>
+            </div>
+          </div>
         </SolutionTestsProvider>
       )}
     </section>

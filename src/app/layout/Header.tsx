@@ -11,7 +11,7 @@ export const Header = () => {
   const sessionContext = useSessionContext()
 
   return (
-    <header className="container sticky z-20 flex h-[60px] items-center border-b bg-background">
+    <header className="container z-20 flex h-[60px] items-center border-b bg-background">
       <nav className="flex items-center space-x-4 lg:space-x-6">
         <Link to={ROUTES.ROOT}>
           <HomeIcon />

@@ -19,7 +19,7 @@ export const SolutionsSection = () => {
         placeholder={i18n.formatMessage({ id: 'field.solutionUsername.placeholder' })}
         defaultValue={state.username}
         onChange={(event) => functions.setUsername(event.target.value)}
-        className="max-w-[200px] mdx:max-w-[300px]"
+        className="mt-5 max-w-[200px] mdx:max-w-[300px]"
       />
       {state.loading && (
         <div className="mt-2 flex items-center gap-2">
@@ -28,32 +28,27 @@ export const SolutionsSection = () => {
         </div>
       )}
       {state.solutions && (
-        <div className="mt-5">
-          <Typography tag="h3" variant="h3">
-            <I18nText path="task.solutionsSection.solutions" />
-          </Typography>
-          <RadioGroup className="mt-5 flex h-[300px] flex-col">
-            <ScrollArea className="h-full">
-              {state.solutions.map((solution, index) => (
-                <div key={solution.id}>
-                  <RadioGroupItem value={solution.id!} id={solution.id} className="peer sr-only" />
-                  <Label
-                    htmlFor={solution.id}
-                    className=" flex items-center gap-2 border-2 p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
-                  >
-                    <Link to={ROUTES.SOLUTION(solution.id)} className="hover:underline">
-                      <Typography tag="p" variant="body1">
-                        {solution.username}:{' '}
-                        <I18nText path="task.userSolutionsSection.solutionIndex" values={{ index }} />
-                      </Typography>
-                    </Link>
-                    <SolutionStatus status={solution.status!} />
-                  </Label>
-                </div>
-              ))}
-            </ScrollArea>
-          </RadioGroup>
-        </div>
+        <RadioGroup className="mt-5 flex h-[300px] flex-col">
+          <ScrollArea className="h-full">
+            {state.solutions.map((solution, index) => (
+              <div key={solution.id}>
+                <RadioGroupItem value={solution.id!} id={solution.id} className="peer sr-only" />
+                <Label
+                  htmlFor={solution.id}
+                  className=" flex items-center gap-2 border-2 p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                >
+                  <Link to={ROUTES.SOLUTION(solution.id)} className="hover:underline">
+                    <Typography tag="p" variant="body1">
+                      {solution.username}:{' '}
+                      <I18nText path="task.userSolutionsSection.solutionIndex" values={{ index }} />
+                    </Typography>
+                  </Link>
+                  <SolutionStatus status={solution.status!} />
+                </Label>
+              </div>
+            ))}
+          </ScrollArea>
+        </RadioGroup>
       )}
     </section>
   )

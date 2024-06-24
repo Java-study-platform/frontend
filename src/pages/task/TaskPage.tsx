@@ -4,7 +4,9 @@ import { ReloadIcon } from '@radix-ui/react-icons'
 import { LinkIcon } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { I18nText } from '@/components/common'
-import { Typography } from '@/components/ui'
+import { Button, Typography } from '@/components/ui'
+import { DeleteTaskDialog } from '../tasks/components/DeleteCategoryDialog/DeleteTaskDialog'
+import { EditTaskDialog } from '../tasks/components/EditTaskDialog/EditTaskDialog'
 import { SolutionsSection } from './components/SolutionsSection/SolutionsSection'
 import { TestCasesSection } from './components/TestCasesSection/TestCasesSection'
 import { UploadSolutionSection } from './components/UploadSolutionSection/UploadSolutionSection'
@@ -30,7 +32,27 @@ export const TaskPage = () => {
               <Typography tag="h2" variant="h2">
                 <I18nText path="task.title" values={{ name: state.task.name }} />
               </Typography>
-              <Link to={ROUTES.TOPIC(state.task.topicId!)} className="flex">
+              {userContext.user?.isAdmin && (
+                <div className="mt-5 flex justify-start gap-2">
+                  <EditTaskDialog
+                    task={state.task}
+                    trigger={
+                      <Button variant="secondary" aria-label="Edit">
+                        <I18nText path="button.edit" />
+                      </Button>
+                    }
+                  />
+                  <DeleteTaskDialog
+                    task={state.task}
+                    trigger={
+                      <Button variant="destructive" aria-label="Delete">
+                        <I18nText path="button.delete" />
+                      </Button>
+                    }
+                  />
+                </div>
+              )}
+              <Link to={ROUTES.TOPIC(state.task.topicId!)} className="mt-5 flex">
                 <Typography
                   tag="span"
                   variant="sub1"

@@ -62,7 +62,7 @@ export const TopicChat = ({ chatId }: TopicChatProps) => {
                       hasUserLike={reply.currentUserReactions?.includes('LIKE') ?? false}
                       hasUserDislike={reply.currentUserReactions?.includes('DISLIKE') ?? false}
                       isUserOwner={reply.senderLogin === userContext.user?.login}
-                      currentUserReactions={message.currentUserReactions ?? []}
+                      currentUserReactions={reply.currentUserReactions ?? []}
                       onLikeClick={functions.onLikeClick}
                       onDislikeClick={functions.onDislikeClick}
                     />

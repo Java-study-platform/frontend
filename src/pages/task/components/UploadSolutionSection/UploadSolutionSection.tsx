@@ -25,7 +25,7 @@ export const UploadSolutionSection = () => {
           fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace'
         }}
       />
-      <Button onClick={functions.onUploadSolutionClick} className="mt-5">
+      <Button loading={state.loading} onClick={functions.onUploadSolutionClick} className="mt-5">
         <I18nText path="button.send" />
       </Button>
       {state.solutionId && (

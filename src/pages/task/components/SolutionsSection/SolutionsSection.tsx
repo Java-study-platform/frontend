@@ -43,7 +43,7 @@ export const SolutionsSection = () => {
                       <I18nText path="task.userSolutionsSection.solutionIndex" values={{ index }} />
                     </Typography>
                   </Link>
-                  <SolutionStatus status={solution.status!} />
+                  {solution.status && <SolutionStatus status={solution.status} />}
                 </Label>
               </div>
             ))}

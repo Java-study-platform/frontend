@@ -12,7 +12,8 @@ export const postSolutionConfig: RestRequestConfig = {
         DATABASE.USER_SOLUTIONS.push({
           id: randomUUID(),
           ...request.body,
-          taskId
+          taskId,
+          status: 'PENDING'
         })
 
         return { data: DATABASE.USER_SOLUTIONS }

@@ -37,12 +37,15 @@ export const UserSolutionsSection = ({ taskId }: UserSolutionsSectionProps) => {
                   htmlFor={solution.id}
                   className="flex items-center gap-2 border-2 p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
                 >
-                  <Link to={ROUTES.SOLUTION(solution.id)}>
+                  <Link
+                    to={ROUTES.SOLUTION(solution.id)}
+                    className="flex items-center gap-1 hover:underline"
+                  >
                     <Typography tag="p" variant="body1">
                       <I18nText path="task.userSolutionsSection.solutionIndex" values={{ index }} />
                     </Typography>
+                    {solution.status && <SolutionStatus status={solution.status} />}
                   </Link>
-                  <SolutionStatus status={solution.status!} />
                 </Label>
               </div>
             ))}

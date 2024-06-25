@@ -7,6 +7,8 @@ import {
   ShieldXIcon,
   XCircleIcon
 } from 'lucide-react'
+import { Typography } from '../ui'
+import { I18nText } from './I18nText'
 
 interface SolutionStatusProps {
   status:
@@ -20,7 +22,10 @@ interface SolutionStatusProps {
 }
 
 export const SolutionStatus = ({ status }: SolutionStatusProps) => (
-  <div>
+  <div className="flex items-center gap-1">
+    <Typography tag="p">
+      <I18nText path={`solution.status.${status.toLowerCase()}` as LocaleMessageId} />
+    </Typography>
     {status === 'OK' && <CheckCircleIcon className="h-4 w-4 text-green-500" />}
     {status === 'WRONG_ANSWER' && <XCircleIcon className="h-4 w-4 text-red-500" />}
     {status === 'TIME_LIMIT' && <InfinityIcon className="h-4 w-4 text-yellow-500" />}

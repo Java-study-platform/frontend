@@ -6,10 +6,10 @@ export interface GetSolutionByTaskIdRequestParams {
 }
 
 export const getSolutionByTaskId = ({
-  params,
+  params: { taskId, ...params },
   config
 }: RequestOptions<GetSolutionByTaskIdRequestParams>) =>
-  instance.get<DefaultResponseListSolutionDto>(`/solution/${params.taskId}`, {
+  instance.get<DefaultResponseListSolutionDto>(`/solution/${taskId}`, {
     ...config,
     params: { ...config?.params, ...params }
   })

@@ -9,13 +9,15 @@ export const postSolutionConfig: RestRequestConfig = {
     {
       data: (request) => {
         const { taskId } = request.query
-        DATABASE.USER_SOLUTIONS.push({
+        const newSolution = {
           id: randomUUID(),
           ...request.body,
-          taskId
-        })
+          taskId,
+          status: 'PENDING'
+        }
+        DATABASE.USER_SOLUTIONS.push(newSolution)
 
-        return { data: DATABASE.USER_SOLUTIONS }
+        return { data: newSolution }
       }
     }
   ]

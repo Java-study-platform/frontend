@@ -375,6 +375,7 @@ export interface DefaultResponseUserDto {
 }
 
 export interface UserDto {
+  id: string
   keyCloakId?: string
   username?: string
   email?: string
@@ -714,12 +715,12 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @tags Пользователь
      * @name GetProfile
      * @summary Получение профиля пользователя
-     * @request GET:/api/user/profile
+     * @request GET:/api/user/profile/{username}
      * @secure
      */
-    getProfile: (params: RequestParams = {}) =>
+    getProfile: (username: string, params: RequestParams = {}) =>
       this.request<DefaultResponseUserDto, DefaultResponseObject>({
-        path: `/api/user/profile`,
+        path: `/api/user/profile/${username}`,
         method: 'GET',
         secure: true,
         ...params
@@ -731,12 +732,12 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @tags Достижения
      * @name GetAllUserAchievements
      * @summary Получение списка достижений
-     * @request GET:/api/user/achievements
+     * @request GET:/api/user/achievements/{username}
      * @secure
      */
-    getAllUserAchievements: (params: RequestParams = {}) =>
+    getAllUserAchievements: (username: string, params: RequestParams = {}) =>
       this.request<AchievementDto[], DefaultResponseObject>({
-        path: `/api/user/achievements`,
+        path: `/api/user/achievements/${username}`,
         method: 'GET',
         secure: true,
         ...params

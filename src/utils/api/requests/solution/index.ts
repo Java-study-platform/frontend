@@ -1,8 +1,4 @@
-import {
-  DefaultResponseListSolutionDto,
-  DefaultResponseSolutionDto,
-  SendTestSolutionRequest
-} from '@/generated/solution-api'
+import { DefaultResponseSolutionDto, SendTestSolutionRequest } from '@/generated/solution-api'
 import { instance } from '@/utils/api/instance'
 
 export interface GetSolutionRequestParams {
@@ -21,4 +17,4 @@ export const postSolution = ({
   params: { taskId, ...params },
   config
 }: RequestOptions<PostSolutionRequestParams>) =>
-  instance.post<DefaultResponseListSolutionDto>(`/solution?taskId=${taskId}`, params, config)
+  instance.post<DefaultResponseSolutionDto>(`/solution?taskId=${taskId}`, params, config)

@@ -25,11 +25,35 @@ export const ChatMessagesProvider = ({ children, chatId }: ChatMessagesProviderP
           (oldData) => {
             const prevMessagesArray = oldData?.data.data ?? []
 
+            if (!!messageData.parentMessageId) {
+              return {
+                ...oldData,
+                data: {
+                  ...oldData?.data,
+                  data: prevMessagesArray.map((message) => {
+                    const isParentMessage = message.id === messageData.parentMessageId
+
+                    if (isParentMessage) {
+                      return {
+                        ...message,
+                        replies: message?.replies?.map((reply) =>
+                          reply.id === messageData.id ? { ...reply, ...messageData } : reply
+                        )
+                      }
+                    }
+
+                    return message
+                  })
+                }
+              }
+            }
+
             return {
               ...oldData,
               data: {
+                ...oldData?.data,
                 data: prevMessagesArray.map((message) =>
-                  message.id === messageData.id ? messageData : message
+                  message.id === messageData.id ? { ...message, ...messageData } : message
                 )
               }
             }
@@ -46,6 +70,7 @@ export const ChatMessagesProvider = ({ children, chatId }: ChatMessagesProviderP
             return {
               ...oldData,
               data: {
+                ...oldData?.data,
                 data: [...prevMessagesArray, messageData]
               }
             }
@@ -54,8 +79,10 @@ export const ChatMessagesProvider = ({ children, chatId }: ChatMessagesProviderP
           return {
             ...oldData,
             data: {
+              ...oldData?.data,
               data: prevMessagesArray.map((message) => {
-                if (message.id !== messageData.parentMessageId) return message
+                const isParentMessage = message.id === messageData.parentMessageId
+                if (!isParentMessage) return message
 
                 const prevMessageReplies = message?.replies ?? []
                 return { ...message, replies: [...prevMessageReplies, messageData] }

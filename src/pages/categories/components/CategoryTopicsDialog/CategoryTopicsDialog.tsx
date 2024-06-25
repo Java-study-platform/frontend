@@ -10,7 +10,6 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  ScrollArea,
   Typography
 } from '@/components/ui'
 import { useCategoryTopicsDialog } from './hooks/useCategoryTopicsDialog'
@@ -27,7 +26,7 @@ export const CategoryTopicsDialog = ({ trigger, category, topics }: CategoryTopi
   return (
     <Dialog open={state.open} onOpenChange={functions.setOpen}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
-      <DialogContent className="h-[300px] w-[90%] md:max-w-[500px]">
+      <DialogContent className="max-h-[400px] w-[90%] md:max-w-[500px]">
         <DialogClose />
         <DialogHeader>
           <DialogTitle asChild>
@@ -36,7 +35,7 @@ export const CategoryTopicsDialog = ({ trigger, category, topics }: CategoryTopi
             </Typography>
           </DialogTitle>
         </DialogHeader>
-        <ScrollArea className="max-h-[90%]">
+        <div className="h-full">
           <div className="flex flex-col gap-2">
             {topics.map((topic) => (
               <Link
@@ -49,7 +48,7 @@ export const CategoryTopicsDialog = ({ trigger, category, topics }: CategoryTopi
               </Link>
             ))}
           </div>
-        </ScrollArea>
+        </div>
       </DialogContent>
     </Dialog>
   )

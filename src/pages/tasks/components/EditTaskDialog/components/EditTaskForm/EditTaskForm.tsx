@@ -10,7 +10,8 @@ import {
   FormLabel,
   FormMessage,
   Input,
-  NumberFormatInput
+  NumberFormatInput,
+  RichTextEditor
 } from '@/components/ui'
 import { useEditTaskForm } from './hooks/useEditTaskForm'
 
@@ -53,13 +54,13 @@ export const EditTaskForm = ({ task, onSubmitted }: EditTaskFormProps) => {
           <FormField
             control={form.control}
             name="description"
-            render={({ field }) => (
+            render={() => (
               <FormItem>
                 <FormLabel>
                   <I18nText path="field.description.label" />
                 </FormLabel>
                 <FormControl>
-                  <Input disabled={state.isLoading} {...field} />
+                  <RichTextEditor value={state.description} onChange={functions.setDescription} />
                 </FormControl>
                 <FormMessage>
                   {form.formState?.errors?.description && (

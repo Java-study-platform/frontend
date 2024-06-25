@@ -1,8 +1,13 @@
 import { DefaultResponseObject } from '@/generated/user-api'
 import { usePostLearningTasksByTopicIdMutation } from '@/utils/api/hooks'
+import { useI18n } from '@/utils/contexts'
+import { serializeEditorValue } from '@/utils/helpers'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { Value } from '@udecode/plate-common'
 import { AxiosError } from 'axios'
+import React from 'react'
 import { useForm } from 'react-hook-form'
+import { toast } from 'sonner'
 import { CreateTaskSchema, createTaskSchema } from '../constants/createTaskSchema'
 
 interface useCreateTaskFormParams {
@@ -10,6 +15,9 @@ interface useCreateTaskFormParams {
 }
 
 export const useCreateTaskForm = ({ onSubmitted }: useCreateTaskFormParams) => {
+  const i18n = useI18n()
+  const [description, setDescription] = React.useState<Value>()
+
   const createTaskForm = useForm<CreateTaskSchema>({
     resolver: zodResolver(createTaskSchema),
     defaultValues: {
@@ -36,8 +44,14 @@ export const useCreateTaskForm = ({ onSubmitted }: useCreateTaskFormParams) => {
   })
 
   const onSubmit = createTaskForm.handleSubmit(async (values) => {
+    if (!description) {
+      toast.error(i18n.formatMessage({ id: 'toast.descriptionRequired' }))
+      return
+    }
+
     await postLearningTasksByTopicIdMutation.mutateAsync({
       ...values,
+      description: serializeEditorValue({ children: description }),
       timeLimit: +values.timeLimit,
       experienceAmount: +values.experienceAmount
     })
@@ -46,9 +60,10 @@ export const useCreateTaskForm = ({ onSubmitted }: useCreateTaskFormParams) => {
 
   return {
     state: {
+      description,
       isLoading: postLearningTasksByTopicIdMutation.isPending || createTaskForm.formState.isSubmitting
     },
     form: createTaskForm,
-    functions: { onSubmit }
+    functions: { onSubmit, setDescription }
   }
 }

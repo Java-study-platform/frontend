@@ -1,3 +1,5 @@
+import { SolutionTestsProvider } from '@/features/contexts'
+import { SolutionTestsSection } from '@/features/SolutionTestsSection'
 import CodeEditor from '@uiw/react-textarea-code-editor'
 import { I18nText } from '@/components/common'
 import { Button, Typography } from '@/components/ui'
@@ -23,9 +25,19 @@ export const UploadSolutionSection = () => {
           fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace'
         }}
       />
-      <Button onClick={functions.onUploadSolutionClick} className="mt-5">
+      <Button loading={state.loading} onClick={functions.onUploadSolutionClick} className="mt-5">
         <I18nText path="button.send" />
       </Button>
+      {state.solutionId && (
+        <SolutionTestsProvider taskId={state.taskId} defaultSolutionId={state.solutionId}>
+          <div className="mt-10">
+            <Typography tag="h2" variant="h2">
+              <I18nText path="task.solutionTestCasesSection.title" />
+            </Typography>
+            <SolutionTestsSection solutionId={state.solutionId} />
+          </div>
+        </SolutionTestsProvider>
+      )}
     </section>
   )
 }

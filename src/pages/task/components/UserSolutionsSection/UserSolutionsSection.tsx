@@ -2,7 +2,7 @@ import { ROUTES } from '@/utils/constants'
 import { ReloadIcon } from '@radix-ui/react-icons'
 import { Link } from 'react-router-dom'
 import { I18nText, SolutionStatus } from '@/components/common'
-import { Label, RadioGroup, RadioGroupItem, ScrollArea, Typography } from '@/components/ui'
+import { Label, RadioGroup, RadioGroupItem, Typography } from '@/components/ui'
 import { useUserSolutionsSection } from './hooks/useUserSolutionsSection'
 
 interface UserSolutionsSectionProps {
@@ -27,9 +27,9 @@ export const UserSolutionsSection = ({ taskId }: UserSolutionsSectionProps) => {
         <RadioGroup
           defaultValue={state.selectedSolutionId ?? state.solutions[0].id}
           onValueChange={functions.setSelectedSolutionId}
-          className="flex h-[300px] flex-col"
+          className="flex max-h-[300px] flex-col"
         >
-          <ScrollArea className="h-full">
+          <div className="h-full overflow-y-auto">
             {state.solutions.map((solution, index) => (
               <div key={solution.id}>
                 <RadioGroupItem value={solution.id!} id={solution.id} className="peer sr-only" />
@@ -37,17 +37,25 @@ export const UserSolutionsSection = ({ taskId }: UserSolutionsSectionProps) => {
                   htmlFor={solution.id}
                   className="flex items-center gap-2 border-2 p-2 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
                 >
-                  <Link to={ROUTES.SOLUTION(solution.id)}>
+                  <Link
+                    to={ROUTES.SOLUTION(solution.id)}
+                    className="flex items-center gap-1 hover:underline"
+                  >
                     <Typography tag="p" variant="body1">
                       <I18nText path="task.userSolutionsSection.solutionIndex" values={{ index }} />
                     </Typography>
+                    {solution.status && <SolutionStatus status={solution.status} />}
                   </Link>
-                  <SolutionStatus status={solution.status!} />
                 </Label>
               </div>
             ))}
-          </ScrollArea>
+          </div>
         </RadioGroup>
+      )}
+      {!state.solutions?.length && !state.loading && (
+        <Typography tag="p">
+          <I18nText path="task.userSolutionsSection.noSolutions" />
+        </Typography>
       )}
     </section>
   )

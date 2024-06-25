@@ -13,7 +13,7 @@ export const useTopicChat = ({ chatId }: UseTopicChatParams) => {
 
   React.useEffect(() => {
     if (getLearningChatsByIdQuery.data?.data.data) {
-      console.log('getLearningChatsByIdQuery data', getLearningChatsByIdQuery.data.data.data)
+      console.log('#getLearningChatsByIdQuery', getLearningChatsByIdQuery.data?.data.data)
     }
   }, [getLearningChatsByIdQuery.data])
 

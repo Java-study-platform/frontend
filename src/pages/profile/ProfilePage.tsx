@@ -1,12 +1,15 @@
+import { useUserContext } from '@/utils/contexts'
 import { ReloadIcon } from '@radix-ui/react-icons'
 import { I18nText } from '@/components/common'
 import { Typography } from '@/components/ui'
+import { ChangeUserRole } from './components/ChangeUserRole/ChangeUserRole'
 import { ProfileForm } from './components/ProfileForm/ProfileForm'
 import { UserAchievements } from './components/UserAchievements/UserAchievements'
 import { useProfilePage } from './hooks/useProfilePage'
 
 export const ProfilePage = () => {
-  const { state, query } = useProfilePage()
+  const userContext = useUserContext()
+  const { state } = useProfilePage()
 
   return (
     <div className="flex">
@@ -20,9 +23,12 @@ export const ProfilePage = () => {
             <ReloadIcon className="h-4 w-4 animate-spin" />
           </div>
         )}
-        {query.data?.data.data && (
+        {state.profile && (
           <div>
-            <ProfileForm profile={query.data.data.data} />
+            {userContext.user?.isAdmin && (
+              <ChangeUserRole defaultRoles={state.profile.roles ?? []} userId={state.profile.id} />
+            )}
+            <ProfileForm profile={state.profile} />
             <UserAchievements />
           </div>
         )}

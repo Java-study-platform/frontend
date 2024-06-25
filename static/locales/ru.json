@@ -1,6 +1,20 @@
 {
   "common.loading": "Загрузка",
 
+  "solution.status.ok": "OK",
+  "solution.status.wrong_answer": "WA",
+  "solution.status.time_limit": "TL",
+  "solution.status.runtime_error": "RE",
+  "solution.status.compilation_error": "CE",
+  "solution.status.malicious_code": "MC",
+  "solution.status.pending": "Pending",
+
+  "test.time": "{time}мс",
+  "test.input": "Ввод",
+  "test.output": "Вывод",
+
+  "header.experience": "Опыт: {experience}",
+
   "button.login": "Войти",
   "button.register": "Зарегистрироваться",
   "button.logout": "Выйти",
@@ -16,6 +30,7 @@
   "button.send": "Отправить",
   "button.editMessage": "Изменить",
   "button.reply": "Ответить",
+  "button.set": "Назначить",
 
   "usersCombobox.searchPlaceholder": "Выберете пользователя",
 
@@ -57,6 +72,8 @@
   "toast.testCaseDeleted": "Тест кейс удален",
   "toast.testCaseEdited": "Тест кейс изменен",
   "toast.testCaseCreated": "Тест кейс создан",
+  "toast.codeRequired": "Введите код решения",
+  "toast.descriptionRequired": "Введите описание задачи",
 
   "field.username.label": "Ник",
   "field.username.placeholder": "username",
@@ -84,10 +101,13 @@
   "field.chooseTopic.label": "Выберете тему",
   "field.newMessage.placeholder": "Введите новое сообщение",
   "field.solutionUsername.placeholder": "Ник пользователя",
+  "field.solutionUsername.description": "Введите минимум 3 символа",
   "field.expectedInput.label": "Ожидаемый ввод",
   "field.expectedInput.placeholder": "1 1 1",
   "field.expectedOutput.label": "Ожидаемый вывод",
   "field.expectedOutput.placeholder": "100",
+
+  "select.roles.placeholder": "Выберите роль",
 
   "validation.required": "Обязательное поле",
   "validation.email.format": "Неверный формат почты",
@@ -124,13 +144,14 @@
 
   "task.title": "Задача {name}",
   "task.goToTopic": "Перейти к теме",
-  "task.description": "Описание: {description}",
+  "task.description": "Описание: ",
   "task.experienceAmount": "Опыт за решение: {experienceAmount}",
   "task.timeLimit": "Ограничение по времени: {timeLimit}мс",
   "task.edit": "Редактировать",
   "task.uploadSolutionSection.title": "Введите решение",
   "task.userSolutionsSection.title": "История решений",
-  "task.userSolutionsSection.solutionIndex": "Решение номер {index}",
+  "task.userSolutionsSection.solutionIndex": "#{index}",
+  "task.userSolutionsSection.noSolutions": "Нет решений",
   "task.solutionTestCasesSection.title": "Тесты решения",
   "task.solutionTestCasesSection.testIndex": "#{index}",
   "task.solutionsSection.title": "Решения пользователей",

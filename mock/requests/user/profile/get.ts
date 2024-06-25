@@ -2,7 +2,7 @@ import { RestRequestConfig } from 'mock-config-server'
 import { DATABASE } from '../../../database'
 
 export const getUserProfileConfig: RestRequestConfig = {
-  path: '/user/profile',
+  path: '/user/profile/:username',
   method: 'get',
   routes: [
     {

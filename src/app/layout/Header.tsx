@@ -1,5 +1,5 @@
 import { ROUTES } from '@/utils/constants'
-import { useSessionContext } from '@/utils/contexts'
+import { useSessionContext, useUserContext } from '@/utils/contexts'
 import { cn } from '@/utils/helpers'
 import { PersonIcon } from '@radix-ui/react-icons'
 import { HomeIcon, LogInIcon, LogOutIcon } from 'lucide-react'
@@ -8,10 +8,11 @@ import { I18nText } from '@/components/common'
 import { Button, buttonVariants } from '@/components/ui'
 
 export const Header = () => {
+  const userContext = useUserContext()
   const sessionContext = useSessionContext()
 
   return (
-    <header className="container sticky z-20 flex h-[60px] items-center border-b bg-background">
+    <header className="container z-20 flex h-[60px] items-center border-b bg-background">
       <nav className="flex items-center space-x-4 lg:space-x-6">
         <Link to={ROUTES.ROOT}>
           <HomeIcon />
@@ -29,12 +30,15 @@ export const Header = () => {
         {sessionContext.session.isAuth && (
           <>
             <Link
-              to={ROUTES.PROFILE}
+              to={ROUTES.PROFILE(userContext.user?.login)}
               className={cn(buttonVariants({ variant: 'outline' }), '2xsx:px-3')}
             >
               <PersonIcon className="mr-2 h-4 w-4 2xsx:mr-0 2xsx:size-3" />
               <span className="2xsx:hidden">
-                <I18nText path="button.profile" />
+                <I18nText
+                  path="header.experience"
+                  values={{ experience: userContext.user?.experience ?? 0 }}
+                />
               </span>
             </Link>
             <Button

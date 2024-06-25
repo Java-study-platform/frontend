@@ -20,7 +20,7 @@ interface EditTaskDialogProps {
 }
 
 export const EditTaskDialog = ({ task, trigger }: EditTaskDialogProps) => {
-  const { functions, state } = useEditTaskDialog()
+  const { functions, state } = useEditTaskDialog({ taskId: task.id })
 
   return (
     <Dialog open={state.open} onOpenChange={functions.setOpen}>

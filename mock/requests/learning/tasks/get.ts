@@ -1,42 +1,27 @@
 import { RestRequestConfig } from 'mock-config-server'
-import { TASKS } from '../../../database'
+import { DATABASE } from '../../../database'
+
+const DEFAULT_SIZE = 10
+const DEFAULT_PAGE = 0
 
 export const getLearningTasksConfig: RestRequestConfig = {
   path: '/learning/tasks',
   method: 'get',
   routes: [
     {
-      data: {
-        data: {
-          totalPages: 5,
-          totalElements: 50,
-          size: 10,
-          content: TASKS.slice(0, 10),
-          pageable: { pageNumber: 0 }
-        }
-      }
-    },
-    {
-      entities: { query: { page: 1 } },
-      data: {
-        data: {
-          totalPages: 5,
-          totalElements: 50,
-          size: 10,
-          content: TASKS.slice(10, 20),
-          pageable: { pageNumber: 1 }
-        }
-      }
-    },
-    {
-      entities: { query: { queryText: 'da' } },
-      data: {
-        data: {
-          totalPages: 1,
-          totalElements: 10,
-          size: 10,
-          content: TASKS.filter((task) => task.name?.toLowerCase()?.includes('da')),
-          pageable: { pageNumber: 0 }
+      data: (request) => {
+        const { page } = request.query
+
+        const tasks = DATABASE.TASKS
+
+        return {
+          data: {
+            totalPages: tasks.length / DEFAULT_SIZE,
+            totalElements: tasks.length,
+            size: DEFAULT_SIZE,
+            content: tasks,
+            pageable: { pageNumber: page ?? DEFAULT_PAGE }
+          }
         }
       }
     }

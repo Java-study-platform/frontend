@@ -1,5 +1,5 @@
 import { RestRequestConfig } from 'mock-config-server'
-import { USER_TESTS } from '../../../database'
+import { DATABASE } from '../../../database'
 
 export const getSolutionTestsConfig: RestRequestConfig = {
   path: '/solution/tests',
@@ -7,7 +7,7 @@ export const getSolutionTestsConfig: RestRequestConfig = {
   routes: [
     {
       data: {
-        data: USER_TESTS
+        data: DATABASE.USER_TESTS
       }
     }
   ]

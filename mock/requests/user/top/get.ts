@@ -1,5 +1,5 @@
 import { RestRequestConfig } from 'mock-config-server'
-import { PROFILE } from '../../../database'
+import { DATABASE } from '../../../database'
 
 export const getUserTopConfig: RestRequestConfig = {
   path: '/user/top',
@@ -7,7 +7,11 @@ export const getUserTopConfig: RestRequestConfig = {
   routes: [
     {
       data: {
-        data: [PROFILE.ADMIN, PROFILE.ADMIN]
+        data: [
+          DATABASE.PROFILE.ADMIN,
+          DATABASE.PROFILE.MENTOR,
+          ...(Array.isArray(DATABASE.PROFILE.USERS) ? DATABASE.PROFILE.USERS : [])
+        ]
       }
     }
   ]

@@ -1,42 +1,33 @@
 import { RestRequestConfig } from 'mock-config-server'
-import { CATEGORIES } from '../../../database'
+import { DATABASE } from '../../../database'
+
+const DEFAULT_SIZE = 10
+const DEFAULT_PAGE = 0
 
 export const getLearningCategoriesConfig: RestRequestConfig = {
   path: '/learning/categories',
   method: 'get',
   routes: [
     {
-      data: {
-        data: {
-          totalPages: 5,
-          totalElements: 50,
-          size: 10,
-          content: CATEGORIES.slice(0, 10),
-          pageable: { pageNumber: 0 }
+      data: (request) => {
+        const { queryText, page } = request.query
+
+        let categories = DATABASE.CATEGORIES
+
+        if (typeof queryText === 'string') {
+          categories = categories.filter((category) =>
+            category.name?.toLowerCase()?.includes(queryText.toLowerCase())
+          )
         }
-      }
-    },
-    {
-      entities: { query: { page: 1 } },
-      data: {
-        data: {
-          totalPages: 5,
-          totalElements: 50,
-          size: 10,
-          content: CATEGORIES.slice(10, 20),
-          pageable: { pageNumber: 1 }
-        }
-      }
-    },
-    {
-      entities: { query: { queryText: 'a' } },
-      data: {
-        data: {
-          totalPages: 1,
-          totalElements: 10,
-          size: 10,
-          content: CATEGORIES.filter((task) => task.name?.toLowerCase()?.includes('a')),
-          pageable: { pageNumber: 0 }
+
+        return {
+          data: {
+            totalPages: categories.length / DEFAULT_SIZE,
+            totalElements: categories.length,
+            size: DEFAULT_SIZE,
+            content: categories,
+            pageable: { pageNumber: page ?? DEFAULT_PAGE }
+          }
         }
       }
     }

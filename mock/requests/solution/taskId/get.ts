@@ -1,5 +1,5 @@
 import { RestRequestConfig } from 'mock-config-server'
-import { SOLUTIONS } from '../../../database'
+import { DATABASE } from '../../../database'
 
 export const getSolutionByTaskIdConfig: RestRequestConfig = {
   path: '/solution/DELETEME/:taskId',
@@ -7,7 +7,7 @@ export const getSolutionByTaskIdConfig: RestRequestConfig = {
   routes: [
     {
       data: {
-        data: Object.values(SOLUTIONS)
+        data: Object.values(DATABASE.SOLUTIONS)
       }
     }
   ]

@@ -59,6 +59,7 @@ export const ChatMessagesProvider = ({ children, chatId }: ChatMessagesProviderP
             }
           }
         )
+        return
       }
 
       queryClient.setQueryData<{ data: DefaultResponseListMessageDTO }>(

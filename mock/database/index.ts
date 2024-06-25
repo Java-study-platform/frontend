@@ -6,6 +6,7 @@ import { SOLUTIONS } from './solutions'
 import { TASKS } from './tasks'
 import { TEST_CASES } from './testCases'
 import { TOPICS } from './topics'
+import { USER_SOLUTIONS } from './userSolutions'
 import { USER_TESTS } from './userTests'
 
 export const DATABASE = {
@@ -14,6 +15,7 @@ export const DATABASE = {
   MESSAGES,
   PROFILE,
   SOLUTIONS,
+  USER_SOLUTIONS,
   TASKS,
   TEST_CASES,
   TOPICS,

@@ -1,6 +1,6 @@
 import { SolutionDto } from '../../generated/solution-api'
 
-export const SOLUTIONS: Record<SolutionDto['status'], SolutionDto> = {
+export const SOLUTIONS: Record<string, SolutionDto> = {
   OK: {
     id: '1',
     solutionCode: 'function() { return 1 }',

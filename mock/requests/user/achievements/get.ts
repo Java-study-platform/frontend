@@ -1,12 +1,12 @@
 import { RestRequestConfig } from 'mock-config-server'
-import { ACHIEVEMENTS } from '../../../database'
+import { DATABASE } from '../../../database'
 
 export const getUserAchievementsConfig: RestRequestConfig = {
   path: '/user/achievements',
   method: 'get',
   routes: [
     {
-      data: ACHIEVEMENTS
+      data: DATABASE.ACHIEVEMENTS
     }
   ]
 }

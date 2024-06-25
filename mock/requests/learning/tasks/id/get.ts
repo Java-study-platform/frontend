@@ -1,5 +1,5 @@
 import { RestRequestConfig } from 'mock-config-server'
-import { TASKS } from '../../../../database'
+import { DATABASE } from '../../../../database'
 
 export const getLearningTasksByIdConfig: RestRequestConfig = {
   path: '/learning/tasks/:id',
@@ -8,7 +8,7 @@ export const getLearningTasksByIdConfig: RestRequestConfig = {
     {
       data: (request) => {
         const { id } = request.params
-        return { data: TASKS.find((task) => task.id === id) }
+        return { data: DATABASE.TASKS.find((task) => task.id === id) }
       }
     }
   ]

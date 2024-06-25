@@ -2,6 +2,7 @@ import { TestDto } from '@/generated/solution-api'
 import { useUserContext } from '@/utils/contexts'
 import { ReloadIcon } from '@radix-ui/react-icons'
 import CodeEditor from '@uiw/react-textarea-code-editor'
+import * as fns from 'date-fns'
 import { I18nText, SolutionStatus } from '@/components/common'
 import { AccordionContent, AccordionItem, AccordionTrigger, Typography } from '@/components/ui'
 import { useTestCard } from './hooks/useTestCard'
@@ -24,7 +25,7 @@ export const TestCard = ({ test, moreInfo }: TestCardProps) => {
         <Typography tag="p" className="[&:not(:first-child)]:mt-0">
           <I18nText path="task.solutionTestCasesSection.testIndex" values={{ index: test.testIndex }} />
           {' - '}
-          <I18nText path="test.time" values={{ time: test.testTime }} />
+          {test.testTime && fns.format(new Date(test.testTime), 'dd-MM-yyyy HH:mm')}
         </Typography>
         <SolutionStatus status={test.status!} />
       </AccordionTrigger>

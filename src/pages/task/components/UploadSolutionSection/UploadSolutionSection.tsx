@@ -34,11 +34,7 @@ export const UploadSolutionSection = () => {
             <Typography tag="h2" variant="h2">
               <I18nText path="task.solutionTestCasesSection.title" />
             </Typography>
-            <div className="max-h-[400px]">
-              <div className="h-full overflow-y-auto">
-                <SolutionTestsSection solutionId={state.solutionId} />
-              </div>
-            </div>
+            <SolutionTestsSection solutionId={state.solutionId} />
           </div>
         </SolutionTestsProvider>
       )}

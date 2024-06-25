@@ -29,7 +29,7 @@ export const UploadSolutionSection = () => {
         <I18nText path="button.send" />
       </Button>
       {state.solutionId && (
-        <SolutionTestsProvider defaultSolutionId={state.solutionId}>
+        <SolutionTestsProvider taskId={state.taskId} defaultSolutionId={state.solutionId}>
           <div className="mt-10">
             <Typography tag="h2" variant="h2">
               <I18nText path="task.solutionTestCasesSection.title" />

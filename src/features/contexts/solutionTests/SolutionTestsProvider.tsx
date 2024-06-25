@@ -1,6 +1,6 @@
 import {
+  DefaultResponseListSolutionDto,
   DefaultResponseListTestDto,
-  DefaultResponseSolutionDto,
   SolutionDto,
   TestDto
 } from '@/generated/solution-api'
@@ -12,12 +12,17 @@ import { SolutionTestsContext } from './SolutionTestsContext'
 interface SolutionTestsProviderProps {
   children: React.ReactNode
   defaultSolutionId: string
+  taskId: string
 }
 
 export const solutionTestsQueryKey = (solutionId: string) => ['getSolutionTests', solutionId]
-export const solutionQueryKey = (solutionId: string) => ['getSolution', solutionId]
+export const solutionsQueryKey = (taskId: string) => ['getSolutionByTaskId', taskId]
 
-export const SolutionTestsProvider = ({ defaultSolutionId, children }: SolutionTestsProviderProps) => {
+export const SolutionTestsProvider = ({
+  taskId,
+  defaultSolutionId,
+  children
+}: SolutionTestsProviderProps) => {
   const [solutionId, setSolutionId] = React.useState(defaultSolutionId)
 
   const stomp = useStomp()
@@ -36,6 +41,7 @@ export const SolutionTestsProvider = ({ defaultSolutionId, children }: SolutionT
             return {
               ...oldData,
               data: {
+                ...oldData?.data,
                 data: prevTestsArray.map((test) =>
                   test.id === messageData.id ? { ...test, ...messageData } : test
                 )
@@ -45,19 +51,28 @@ export const SolutionTestsProvider = ({ defaultSolutionId, children }: SolutionT
 
           return {
             ...oldData,
-            data: { data: [...prevTestsArray, messageData] }
+            data: { ...oldData?.data, data: [...prevTestsArray, messageData] }
           }
         }
       )
     })
 
     stomp.subscribe<SolutionDto>(`/solution/${solutionId}`, (messageData) => {
-      queryClient.setQueryData<{ data: DefaultResponseSolutionDto }>(
-        solutionQueryKey(solutionId),
-        (oldData) => ({
-          ...oldData,
-          data: { data: messageData }
-        })
+      queryClient.setQueryData<{ data: DefaultResponseListSolutionDto }>(
+        solutionsQueryKey(taskId),
+        (oldData) => {
+          const prevSolutions = oldData?.data.data ?? []
+
+          return {
+            ...oldData,
+            data: {
+              ...oldData?.data,
+              data: prevSolutions.map((solution) =>
+                solution.id === messageData.id ? { ...solution, ...messageData } : solution
+              )
+            }
+          }
+        }
       )
     })
 
@@ -65,7 +80,7 @@ export const SolutionTestsProvider = ({ defaultSolutionId, children }: SolutionT
       stomp.unsubscribe(`/solution/${solutionId}`)
       stomp.unsubscribe(`/solution/${solutionId}/test`)
     }
-  }, [stomp.isConnected, solutionId])
+  }, [stomp.isConnected, solutionId, taskId])
 
   const value = React.useMemo(() => ({ solutionId, setSolutionId }), [solutionId, setSolutionId])
 

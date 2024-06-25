@@ -101,6 +101,7 @@
   "field.chooseTopic.label": "Выберете тему",
   "field.newMessage.placeholder": "Введите новое сообщение",
   "field.solutionUsername.placeholder": "Ник пользователя",
+  "field.solutionUsername.description": "Введите минимум 3 символа",
   "field.expectedInput.label": "Ожидаемый ввод",
   "field.expectedInput.placeholder": "1 1 1",
   "field.expectedOutput.label": "Ожидаемый вывод",

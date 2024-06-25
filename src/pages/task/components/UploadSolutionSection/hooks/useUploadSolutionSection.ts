@@ -25,6 +25,7 @@ export const useUploadSolutionSection = () => {
 
   return {
     state: {
+      taskId: params.id!,
       code,
       loading: postSolutionMutation.isPending,
       solutionId: postSolutionMutation.data?.data.data?.id

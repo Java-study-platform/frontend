@@ -17,7 +17,7 @@ export const useSolutionsSection = () => {
       taskId: params.id!,
       username: username
     },
-    { options: { enabled: username.length > 3 } }
+    { options: { enabled: username.length > 2 } }
   )
 
   return {

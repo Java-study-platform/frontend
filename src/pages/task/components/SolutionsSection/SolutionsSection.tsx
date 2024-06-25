@@ -21,6 +21,9 @@ export const SolutionsSection = () => {
         onChange={(event) => functions.setUsername(event.target.value)}
         className="mt-5 max-w-[200px] mdx:max-w-[300px]"
       />
+      <Typography tag="p" variant="sub1" className="mt-2">
+        <I18nText path="field.solutionUsername.description" />
+      </Typography>
       {state.loading && (
         <div className="mt-2 flex items-center gap-2">
           <I18nText path="common.loading" />

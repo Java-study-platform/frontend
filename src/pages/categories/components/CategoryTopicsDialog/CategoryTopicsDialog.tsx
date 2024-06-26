@@ -26,7 +26,7 @@ export const CategoryTopicsDialog = ({ trigger, category, topics }: CategoryTopi
   return (
     <Dialog open={state.open} onOpenChange={functions.setOpen}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
-      <DialogContent className="max-h-[400px] w-[90%] md:max-w-[500px]">
+      <DialogContent className="max-h-screen w-[90%] overflow-y-scroll md:max-w-[500px]">
         <DialogClose />
         <DialogHeader>
           <DialogTitle asChild>
@@ -35,19 +35,17 @@ export const CategoryTopicsDialog = ({ trigger, category, topics }: CategoryTopi
             </Typography>
           </DialogTitle>
         </DialogHeader>
-        <div className="h-full">
-          <div className="flex flex-col gap-2">
-            {topics.map((topic) => (
-              <Link
-                key={topic.id}
-                to={ROUTES.TOPIC(topic.id)}
-                className="flex items-center gap-2 text-sm underline"
-              >
-                <LinkIcon className="h-3 w-3" />
-                {topic.name}
-              </Link>
-            ))}
-          </div>
+        <div className="flex flex-col gap-2">
+          {topics.map((topic) => (
+            <Link
+              key={topic.id}
+              to={ROUTES.TOPIC(topic.id)}
+              className="flex items-center gap-2 text-sm underline"
+            >
+              <LinkIcon className="h-3 w-3" />
+              {topic.name}
+            </Link>
+          ))}
         </div>
       </DialogContent>
     </Dialog>

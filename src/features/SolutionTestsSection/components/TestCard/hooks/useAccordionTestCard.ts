@@ -1,10 +1,10 @@
 import { useGetSolutionTestsInfoByTestIdQuery } from '@/utils/api'
 
-interface UseTestCardParams {
+interface UseAccordionTestCardParams {
   testId: string
 }
 
-export const useTestCard = ({ testId }: UseTestCardParams) => {
+export const useAccordionTestCard = ({ testId }: UseAccordionTestCardParams) => {
   const getSolutionTestsInfoByTestIdQuery = useGetSolutionTestsInfoByTestIdQuery({ testId })
 
   return {

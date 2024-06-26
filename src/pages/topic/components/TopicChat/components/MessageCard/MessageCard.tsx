@@ -1,6 +1,8 @@
 import { MessageDTO } from '@/generated/core-api'
+import { ROUTES } from '@/utils/constants'
 import * as fns from 'date-fns'
 import { CircleUserRoundIcon, ThumbsDownIcon, ThumbsUpIcon } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { Button, Typography } from '@/components/ui'
 import { MessageContentInput } from '../MessageContentInput/MessageContentInput'
 
@@ -33,9 +35,11 @@ export const MessageCard = ({
     <div className="grid items-start gap-1 text-sm">
       <div className="flex items-center gap-2">
         <CircleUserRoundIcon className="h-6 w-6 fill-purple-300" />
-        <Typography tag="p" variant="large">
-          {message.senderLogin}
-        </Typography>
+        <Link to={ROUTES.PROFILE(message.senderLogin)} className="hover:underline">
+          <Typography tag="p" variant="large">
+            {message.senderLogin}
+          </Typography>
+        </Link>
         {message.sentAt && (
           <Typography tag="p" variant="sub1">
             {!fns.isToday(message.sentAt) && fns.format(message.sentAt, 'dd.MM.yyyy ')}

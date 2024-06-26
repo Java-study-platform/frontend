@@ -48,6 +48,10 @@ export const router = createBrowserRouter([
           {
             path: ROUTES.RATING,
             element: <RatingPage />
+          },
+          {
+            path: ROUTES.PROFILE(),
+            element: <ProfilePage />
           }
         ]
       },
@@ -61,10 +65,6 @@ export const router = createBrowserRouter([
           {
             path: ROUTES.SOLUTION(),
             element: <SolutionPage />
-          },
-          {
-            path: ROUTES.PROFILE(),
-            element: <ProfilePage />
           }
         ]
       },
